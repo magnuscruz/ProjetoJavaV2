@@ -1,0 +1,50 @@
+import java.io.Serializable;
+import java.time.LocalTime;
+import java.util.GregorianCalendar;
+
+public class Restaurante extends Utilizador implements Serializable {
+    private int lotacaoEsplanada;
+    private int lotacaoFum;
+    private int lotacaoNFum;
+    private LocalTime inicioHorarioAlm;
+    private LocalTime fimHorarioAlm;
+    private LocalTime inicioHorarioJan;
+    private LocalTime fimHorarioJan;
+    private double pontuacaoMedia;
+    private int horaInicioAlm;
+    private int minInicioAlm;
+    private int horaFimAlm;
+    private int minFimAlm;
+    private int horaInicioJan;
+    private int minInicioJan;
+    private int horaFimJan;
+    private int minFimJan;
+
+
+    public Restaurante(String nome, String morada, String telefone, String email, String username, String password, int lotacaoEsplanada, int lotacaoFum, int lotacaoNFum, int horaInicioAlm, int minInicioAlm, int horaFimAlm, int minFimAlm, int horaInicioJan, int minInicioJan, int horaFimJan, int minFimJan) {
+        super(nome, morada, telefone, email, username,password);
+        this.lotacaoEsplanada = lotacaoEsplanada;
+        this.lotacaoFum = lotacaoFum;
+        this.lotacaoNFum = lotacaoNFum;
+        this.inicioHorarioAlm = LocalTime.of(horaInicioAlm, minInicioAlm);
+        this.fimHorarioAlm = LocalTime.of(horaFimAlm, minFimAlm);
+        this.inicioHorarioJan = LocalTime.of(horaInicioJan, minInicioJan);
+        this.fimHorarioJan = LocalTime.of(horaFimJan, minFimJan);
+        //this.pontuacaoMedio = pontuacao;
+
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + "Restaurante{" +
+                "lotacaoEsplanada=" + lotacaoEsplanada +
+                ", lotacaoFum=" + lotacaoFum +
+                ", lotacaoNFum=" + lotacaoNFum +
+                ", inicioHorarioAlm=" + inicioHorarioAlm +
+                ", fimHorarioAlm=" + fimHorarioAlm +
+                ", inicioHorarioJan=" + inicioHorarioJan +
+                ", fimHorarioJan=" + fimHorarioJan +
+                ", pontuacaoMedia=" + pontuacaoMedia +
+                "} ";
+    }
+}
