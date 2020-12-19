@@ -1,3 +1,5 @@
+package com.company;
+
 import GUI.Frame;
 
 import javax.swing.*;

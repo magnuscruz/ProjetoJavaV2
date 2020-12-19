@@ -1,3 +1,5 @@
+package com.company;
+
 public class Prato {
     private String nome;
     private String descricao;
