@@ -3,7 +3,7 @@ package com.company;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public abstract class Utilizador  {
+public abstract class Utilizador implements Serializable {
     private static int idd = 1;
     private static int idRestaurante;
     private static int idCliente;
