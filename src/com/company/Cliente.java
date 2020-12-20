@@ -15,8 +15,8 @@ public class Cliente extends Utilizador {
         return "\nCliente: " + super.toString();
     }
 
-    public void criarReservaTakeAway(String cliente, String restaurante, int ano, int mes, int dia, int hora, int minuto, int numPessoas) {
-        listaReservas.add(new Take_Away("Pedro", "Xpto", 2020, 10, 1, 20, 10,10));
-    }
+//    public void criarReservaTakeAway(String cliente, String restaurante, int ano, int mes, int dia, int hora, int minuto, int numPessoas) {
+//        listaReservas.add(new Take_Away("Pedro", "Xpto", 2020, 10, 1, 20, 10,10));
+//    }
 
 }

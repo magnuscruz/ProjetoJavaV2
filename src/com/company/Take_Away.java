@@ -20,15 +20,13 @@ public class Take_Away extends Reserva implements Serializable {
 
     public Take_Away(String cliente, String restaurante, int ano, int mes, int dia, int hora, int minuto, int quantidade) {
         super(cliente, restaurante, ano, mes, dia, hora, minuto);
-        this.listaPratos = listaPratos;
         this.quantidade = quantidade;
         this.valorTotal = valorTotal;
     }
 
     @Override
     public String toString() {
-        return "Take_Away{" +
-                "listaPratos=" + listaPratos +
+        return "Take_Away{" + super.toString()+
                 ", quantidade=" + quantidade +
                 ", valorTotal=" + valorTotal +
                 '}';

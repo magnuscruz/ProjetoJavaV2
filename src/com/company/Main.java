@@ -64,9 +64,9 @@ public class Main {
         System.out.println();
         System.out.println("---------------------------");
 
-        sistema.cliente.criarReservaTakeAway("Pedro", "Xpto", 2020,10,1,20,30,5);
+        sistema.criarReservaTakeAway("Pedro", "Xpto", 2020,10,1,20,30,5);
 
-        System.out.println("Lista Reservas: "+ sistema.cliente.listaReservas);
+        System.out.println("Lista Reservas: "+ sistema.listaReservas);
 
     }
 

@@ -22,7 +22,7 @@ public class Presencial extends Reserva implements Serializable {
 
     @Override
     public String toString() {
-        return "Presencial{" +
+        return "Presencial{" + super.toString()+
                 "zona=" + zona +
                 ", numeroLugares=" + numeroLugares +
                 '}';

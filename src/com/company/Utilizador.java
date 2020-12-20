@@ -9,7 +9,7 @@ public abstract class Utilizador implements Serializable {
   //  private static int idCliente;
 
     ArrayList<Comentario> listaComentarios = new ArrayList<>();
-    ArrayList<Reserva> listaReservas = new ArrayList<>();
+    //ArrayList<Reserva> listaReservas = new ArrayList<>();
 
     protected int id;
     protected String nome;

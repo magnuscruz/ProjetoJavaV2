@@ -8,6 +8,8 @@ public class Sistema implements Serializable {
     public ArrayList<Utilizador> listaUtilizadores = new ArrayList<>();
     public ArrayList<Comentario> listaComentarios = new ArrayList<>();
     private Utilizador utilizarAtivo;
+
+    ArrayList<Reserva> listaReservas = new ArrayList<>();
     protected Cliente cliente;
 
 public void utilizadorExiste (String username){
@@ -23,4 +25,8 @@ public void utilizadorExiste (String username){
         System.out.println("Nao existe");
     }
 }
+
+    public void criarReservaTakeAway(String cliente, String restaurante, int ano, int mes, int dia, int hora, int minuto, int numPessoas) {
+        listaReservas.add(new Take_Away("Pedro", "Xpto", 2020, 10, 1, 20, 10,10));
+    }
 }
