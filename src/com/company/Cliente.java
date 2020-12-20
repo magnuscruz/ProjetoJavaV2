@@ -11,7 +11,7 @@ public class Cliente extends Utilizador  {
 
     @Override
     public String toString() {
-        return super.toString();
+        return "\nCliente: " +  super.toString();
     }
 
 }
