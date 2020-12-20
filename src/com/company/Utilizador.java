@@ -4,14 +4,14 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public abstract class Utilizador implements Serializable {
-    private static int idd = 1;
-    private static int idRestaurante;
-    private static int idCliente;
+  //  private static int idd;
+   // private static int idRestaurante;
+  //  private static int idCliente;
 
     ArrayList<Comentario> listaComentarios = new ArrayList<>();
     ArrayList<Reserva> listaReservas = new ArrayList<>();
 
-    private int id;
+    protected int id;
     private String nome;
     private String morada;
     private String telefone;
@@ -21,7 +21,7 @@ public abstract class Utilizador implements Serializable {
 
 
     public Utilizador(String nome, String morada, String telefone, String email, String username, String password) {
-        this.id = idd++;
+
         this.nome = nome;
         this.morada = morada;
         this.telefone = telefone;

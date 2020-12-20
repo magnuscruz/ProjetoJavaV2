@@ -5,6 +5,9 @@ import java.time.LocalTime;
 import java.util.GregorianCalendar;
 
 public class Restaurante extends Utilizador implements Serializable {
+    private static int idRestaurante=1;
+
+
     private int lotacaoEsplanada;
     private int lotacaoFum;
     private int lotacaoNFum;
@@ -25,6 +28,7 @@ public class Restaurante extends Utilizador implements Serializable {
 
     public Restaurante(String nome, String morada, String telefone, String email, String username, String password, int lotacaoEsplanada, int lotacaoFum, int lotacaoNFum, int horaInicioAlm, int minInicioAlm, int horaFimAlm, int minFimAlm, int horaInicioJan, int minInicioJan, int horaFimJan, int minFimJan) {
         super(nome, morada, telefone, email, username,password);
+        this.id = idRestaurante++;
         this.lotacaoEsplanada = lotacaoEsplanada;
         this.lotacaoFum = lotacaoFum;
         this.lotacaoNFum = lotacaoNFum;
