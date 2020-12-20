@@ -14,7 +14,8 @@ public void utilizadorExiste (String username){
     boolean a = true;
     for (int i = 0; i < listaUtilizadores.size(); i++) {
         if (username.equalsIgnoreCase(listaUtilizadores.get(i).getUsername())){
-            System.out.println("Utilizador com o username: "+ listaUtilizadores.get(i).getUsername() + " existe");
+            String nomeClasse = listaUtilizadores.get(i).getClass().getSimpleName();//// Imprime o nome da Classe. Tem é de se associar a uma variavel
+            System.out.println("Utilizador com o username: "+ listaUtilizadores.get(i).getUsername() + " é do tipo: "+ nomeClasse);
             a = false;
         }
     }
