@@ -35,7 +35,7 @@ public abstract class  Reserva implements Serializable {
         return "Reserva{" +
                 "cliente=" + cliente +
                 ", restaurante=" + restaurante +
-                ", data=" + data +
+                ", data=" + (data.get(GregorianCalendar.YEAR)+ "/" + (data.get(GregorianCalendar.MONTH )+1)+ "/" + data.get(GregorianCalendar.DAY_OF_MONTH))+
                 ", horario=" + horario +
                 '}';
     }
