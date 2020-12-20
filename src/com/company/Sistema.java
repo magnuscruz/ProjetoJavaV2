@@ -10,5 +10,16 @@ public class Sistema implements Serializable {
     private Utilizador utilizarAtivo;
 
 
-
+public void utilizadorExiste (String username){
+    boolean a = true;
+    for (int i = 0; i < listaUtilizadores.size(); i++) {
+        if (username.equalsIgnoreCase(listaUtilizadores.get(i).getUsername())){
+            System.out.println("Utilizador com o username: "+ listaUtilizadores.get(i).getUsername() + " existe");
+            a = false;
+        }
+    }
+    if(a){
+        System.out.println("Nao existe");
+    }
+}
 }

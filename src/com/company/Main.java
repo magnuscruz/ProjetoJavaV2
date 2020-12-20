@@ -37,7 +37,7 @@ public class Main {
                 case "1":
                 //sistema.listaComentarios.add(new Comentario("Excelente", 5, (Cliente) sistema.listaUtilizadores.get(2), (Restaurante)sistema.listaUtilizadores.get(1), 01,2, 2020 ));
                    // sistema.listaUtilizadores.add(new Restaurante ("Xpto", "rua t", "4455555", "eee@hhh", "aaa","ert", 20, 10, 20, 11, 30, 15, 00, 17, 00, 23, 00));
-                   // sistema.listaUtilizadores.add(new Cliente("Pedro","Rua", "966", "ze@a.pt", "Zezeze", "111111"));
+                    sistema.listaUtilizadores.add(new Cliente("Pedro","Rua", "966", "ze@a.pt", "Zezeze", "111111"));
 
                     break;
                 case "2":
@@ -60,6 +60,10 @@ public class Main {
         System.out.println("--------------------------");
         System.out.println("Lista Comentarios: ");
         System.out.println(sistema.listaComentarios);
+
+        System.out.println();
+        System.out.println("------------------------------");
+        sistema.utilizadorExiste("zezeze");
     }
 
 }
