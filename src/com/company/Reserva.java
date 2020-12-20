@@ -9,14 +9,17 @@ public class Reserva implements Serializable {
     private Cliente cliente;
     private Restaurante restaurante;
     private GregorianCalendar data;
-    private LocalTime hora;
+    private LocalTime horario;
+    private int hora;
+    private int minuto;
 
 
-    public Reserva(Cliente cliente, Restaurante restaurante, GregorianCalendar data, LocalTime hora) {
+    public Reserva(Cliente cliente, Restaurante restaurante, GregorianCalendar data, int hora, int minuto) {
         this.cliente = cliente;
         this.restaurante = restaurante;
         this.data = data;
-        this.hora = hora;
+        this.horario = LocalTime.of(hora,minuto);
+
 
     }
 
@@ -26,7 +29,7 @@ public class Reserva implements Serializable {
                 "cliente=" + cliente +
                 ", restaurante=" + restaurante +
                 ", data=" + data +
-                ", hora=" + hora +
+                ", horario=" + horario +
                 '}';
     }
 }
