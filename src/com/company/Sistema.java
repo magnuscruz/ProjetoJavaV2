@@ -8,7 +8,7 @@ public class Sistema implements Serializable {
     public ArrayList<Utilizador> listaUtilizadores = new ArrayList<>();
     public ArrayList<Comentario> listaComentarios = new ArrayList<>();
     private Utilizador utilizarAtivo;
-
+    protected Cliente cliente;
 
 public void utilizadorExiste (String username){
     boolean a = true;

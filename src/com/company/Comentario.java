@@ -20,7 +20,6 @@ public class Comentario implements Serializable {
         this.cliente = cliente;
         this.restaurante = restaurante;
         this.data = new GregorianCalendar (ano, (mes-1), dia);
-
     }
 
     @Override

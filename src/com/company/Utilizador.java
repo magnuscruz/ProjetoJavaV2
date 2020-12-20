@@ -12,12 +12,12 @@ public abstract class Utilizador implements Serializable {
     ArrayList<Reserva> listaReservas = new ArrayList<>();
 
     protected int id;
-    private String nome;
-    private String morada;
-    private String telefone;
-    private String email;
-    private String username;
-    private String password;
+    protected String nome;
+    protected String morada;
+    protected String telefone;
+    protected String email;
+    protected String username;
+    protected String password;
 
 
     public Utilizador(String nome, String morada, String telefone, String email, String username, String password) {
