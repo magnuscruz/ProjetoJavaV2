@@ -16,4 +16,7 @@ public class Cliente extends Utilizador implements Serializable {
         return "\nCliente: " + super.toString();
     }
 
+    public String toStringComentarios (){
+        return "nome: "+ nome;
+    }
 }

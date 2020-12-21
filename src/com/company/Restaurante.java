@@ -54,5 +54,8 @@ public class Restaurante extends Utilizador implements Serializable {
                 "} ";
     }
 
+    public String toStringComentarios  (){
+        return "Nome: " + nome;
+    }
 
 }
