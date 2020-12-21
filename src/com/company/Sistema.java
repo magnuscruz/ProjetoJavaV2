@@ -9,24 +9,21 @@ public class Sistema implements Serializable {
     public ArrayList<Comentario> listaComentarios = new ArrayList<>();
     private Utilizador utilizarAtivo;
 
-    ArrayList<Reserva> listaReservas = new ArrayList<>();
+//    ArrayList<Reserva> listaReservas = new ArrayList<>();
     protected Cliente cliente;
 
-public void utilizadorExiste (String username){
-    boolean a = true;
-    for (int i = 0; i < listaUtilizadores.size(); i++) {
-        if (username.equalsIgnoreCase(listaUtilizadores.get(i).getUsername())){
-            String nomeClasse = listaUtilizadores.get(i).getClass().getSimpleName();//// Imprime o nome da Classe. Tem é de se associar a uma variavel
-            System.out.println("Utilizador com o username: "+ listaUtilizadores.get(i).getUsername() + " é do tipo: "+ nomeClasse);
-            a = false;
+    public void utilizadorExiste(String username) {
+        boolean a = true;
+        for (int i = 0; i < listaUtilizadores.size(); i++) {
+            if (username.equalsIgnoreCase(listaUtilizadores.get(i).getUsername())) {
+                String nomeClasse = listaUtilizadores.get(i).getClass().getSimpleName();//// Imprime o nome da Classe. Tem é de se associar a uma variavel
+                System.out.println("Utilizador com o username: " + listaUtilizadores.get(i).getUsername() + " é do tipo: " + nomeClasse);
+                a = false;
+            }
+        }
+        if (a) {
+            System.out.println("Nao existe");
         }
     }
-    if(a){
-        System.out.println("Nao existe");
-    }
-}
 
-    public void criarReservaTakeAway(String cliente, String restaurante, int ano, int mes, int dia, int hora, int minuto, int numPessoas) {
-        listaReservas.add(new Take_Away("Pedro", "Xpto", 2020, 10, 1, 20, 10,10));
-    }
 }

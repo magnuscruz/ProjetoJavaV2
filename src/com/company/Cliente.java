@@ -1,9 +1,11 @@
 package com.company;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
-public class Cliente extends Utilizador {
+public class Cliente extends Utilizador implements Serializable {
     private static int idCliente = 5000;
+    ArrayList<Reserva> listaReservas = new ArrayList<>();
 
     public Cliente(String nome, String morada, String telefone, String email, String username, String password) {
         super(nome, morada, telefone, email, username, password);
@@ -14,9 +16,5 @@ public class Cliente extends Utilizador {
     public String toString() {
         return "\nCliente: " + super.toString();
     }
-
-//    public void criarReservaTakeAway(String cliente, String restaurante, int ano, int mes, int dia, int hora, int minuto, int numPessoas) {
-//        listaReservas.add(new Take_Away("Pedro", "Xpto", 2020, 10, 1, 20, 10,10));
-//    }
 
 }
