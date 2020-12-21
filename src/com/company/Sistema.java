@@ -7,10 +7,12 @@ import java.util.ArrayList;
 public class Sistema implements Serializable {
     public ArrayList<Utilizador> listaUtilizadores = new ArrayList<>();
     public ArrayList<Comentario> listaComentarios = new ArrayList<>();
-    private Utilizador utilizarAtivo;
 
-//    ArrayList<Reserva> listaReservas = new ArrayList<>();
-    protected Cliente cliente;
+
+    private Utilizador utilizarAtivo;
+   // protected Utilizador utilizador;
+   ArrayList<Reserva> listaReservas = new ArrayList<>();
+
 
     public void utilizadorExiste(String username) {
         boolean a = true;

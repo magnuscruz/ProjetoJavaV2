@@ -10,7 +10,7 @@ public class Main {
     public static void main(String[] args) throws Exception, ClassNotFoundException {
         Scanner sc = new Scanner(System.in);
         Sistema sistema = new Sistema();
-       // Frame f = new Frame();
+        // Frame f = new Frame();
 
         FicheiroDeObjectos ficheiroOb = new FicheiroDeObjectos();
 
@@ -18,28 +18,26 @@ public class Main {
         //sistema.listaUtilizadores.add(new Cliente ("Adriano", "rua x", "444545", "eeer@ggfg", "erd"));
 
         try {
-            if (ficheiroOb.abreLeitura ("FicheiroProjeto.dat")) {
+            if (ficheiroOb.abreLeitura("FicheiroProjeto.dat")) {
                 sistema = (Sistema) ficheiroOb.leObjecto();
             }
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             System.out.println("EXCEPCAO: " + e.getMessage());
         }
 
-        boolean a=true;
-        do{
+        boolean a = true;
+        do {
             System.out.println("1) ESCREVER OBJECTOS (LISTAS ETC) ");
             System.out.println("2) GRAVAR OBJECTOS");
             System.out.println("0) SAIR ");
             String opcao = sc.nextLine();
-            switch (opcao){
+            switch (opcao) {
                 ////COLOCAR AQUI TODAS OS ARRAYS LISTS////
                 case "1":
-                //sistema.listaComentarios.add(new Comentario("Excelente", 5, (Cliente) sistema.listaUtilizadores.get(2), (Restaurante)sistema.listaUtilizadores.get(1), 01,2, 2020 ));
-                   //sistema.listaUtilizadores.add(new Restaurante ("Xpto", "rua t", "4455555", "eee@hhh", "aaa","ert", 20, 10, 20, 11, 30, 15, 00, 17, 00, 23, 00));
-                  //  sistema.listaUtilizadores.add(new Cliente("Xico","Rua", "966", "ze@a.pt", "Zezeze", "111111"));
-                  sistema.cliente.listaReservas.add(new Take_Away("Zeca", "Tacho",2020, 7,5,18,30, 5));
-
+                    //sistema.listaComentarios.add(new Comentario("Excelente", 5, (Cliente) sistema.listaUtilizadores.get(2), (Restaurante)sistema.listaUtilizadores.get(1), 01,2, 2020 ));
+                    //sistema.listaUtilizadores.add(new Restaurante ("Xpto", "rua t", "4455555", "eee@hhh", "aaa","ert", 20, 10, 20, 11, 30, 15, 00, 17, 00, 23, 00));
+                     sistema.listaUtilizadores.add(new Cliente("Xico","Rua", "966", "ze@a.pt", "Zezeze", "111111"));
+                   // sistema.listaReservas.add(new Take_Away("Zeca", "Tacho", 2020, 7, 5, 18, 30, 5));
 
                     break;
                 case "2":
@@ -48,14 +46,15 @@ public class Main {
                         ficheiroOb.escreveObjecto(sistema);
                         ficheiroOb.fechaEscrita();
                         ficheiroOb.fechaLeitura();
+                    } catch (Exception e) {
                     }
-                    catch (Exception e){}
                     break;
                 case "0":
-                    a=false;
+                    a = false;
                     break;
             }
         }
+
         while (a);
         System.out.println("-----------------------------");
         System.out.println("Lista utilizadores: ");
@@ -65,7 +64,7 @@ public class Main {
         System.out.println(sistema.listaComentarios);
 
         System.out.println("---------------------------");
-        System.out.println("Lista Reservas: "+ sistema.cliente.listaReservas);
+         //System.out.println("Lista Reservas: " + sistema.listaReservas);
 
     }
 
