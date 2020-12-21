@@ -10,8 +10,9 @@ public class Sistema implements Serializable {
 
 
     private Utilizador utilizarAtivo;
+    protected Utilizador utilizador;
    // protected Utilizador utilizador;
-   ArrayList<Reserva> listaReservas = new ArrayList<>();
+  // ArrayList<Reserva> listaReservas = new ArrayList<>();
 
 
     public void utilizadorExiste(String username) {
