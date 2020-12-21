@@ -14,6 +14,7 @@ public class Comentario implements Serializable {
     private int mes;
     private int ano;
 
+
     public Comentario(String opniao, double pontuacao, Cliente cliente, Restaurante restaurante, int dia, int mes, int ano) {
         this.opniao = opniao;
         this.pontuacao = pontuacao;
@@ -32,5 +33,4 @@ public class Comentario implements Serializable {
                 ", data=" + data +
                 '}';
     }
-
 }
