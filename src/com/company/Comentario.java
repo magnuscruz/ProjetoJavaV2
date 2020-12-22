@@ -5,7 +5,7 @@ import org.w3c.dom.ls.LSOutput;
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-///aaaa
+
 
 public class Comentario implements Serializable {
     private String opniao;

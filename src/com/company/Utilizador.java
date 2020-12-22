@@ -4,9 +4,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public  class Utilizador implements Serializable {
-  //  private static int idd;
-   // private static int idRestaurante;
-  //  private static int idCliente;
+
+    Restaurante restaurante;
+    Cliente cliente;
 
     ArrayList<Comentario> listaComentarios = new ArrayList<>();
     ArrayList<Reserva> listaReservas = new ArrayList<>();
@@ -19,7 +19,10 @@ public  class Utilizador implements Serializable {
     protected String username;
     protected String password;
 
-    Utilizador(){}
+    Utilizador(){
+        this.restaurante = new Restaurante();
+        this.cliente = new Cliente();
+    }
 
     public Utilizador(String nome, String morada, String telefone, String email, String username, String password) {
 

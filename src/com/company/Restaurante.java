@@ -24,6 +24,7 @@ public class Restaurante extends Utilizador implements Serializable {
     private int horaFimJan;
     private int minFimJan;
 
+    Restaurante(){}
 
     public Restaurante(String nome, String morada, String telefone, String email, String username, String password, int lotacaoEsplanada, int lotacaoFum, int lotacaoNFum, int horaInicioAlm, int minInicioAlm, int horaFimAlm, int minFimAlm, int horaInicioJan, int minInicioJan, int horaFimJan, int minFimJan) {
         super(nome, morada, telefone, email, username,password);
@@ -57,4 +58,35 @@ public class Restaurante extends Utilizador implements Serializable {
         return "Nome: " + nome;
     }
 
+    public LocalTime getInicioHorarioAlm() {
+        return inicioHorarioAlm;
+    }
+
+    public void setInicioHorarioAlm(LocalTime inicioHorarioAlm) {
+        this.inicioHorarioAlm = inicioHorarioAlm;
+    }
+
+    public LocalTime getFimHorarioAlm() {
+        return fimHorarioAlm;
+    }
+
+    public void setFimHorarioAlm(LocalTime fimHorarioAlm) {
+        this.fimHorarioAlm = fimHorarioAlm;
+    }
+
+    public LocalTime getInicioHorarioJan() {
+        return inicioHorarioJan;
+    }
+
+    public void setInicioHorarioJan(LocalTime inicioHorarioJan) {
+        this.inicioHorarioJan = inicioHorarioJan;
+    }
+
+    public LocalTime getFimHorarioJan() {
+        return fimHorarioJan;
+    }
+
+    public void setFimHorarioJan(LocalTime fimHorarioJan) {
+        this.fimHorarioJan = fimHorarioJan;
+    }
 }
