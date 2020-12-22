@@ -18,7 +18,7 @@ public class Main {
         sistema.listaUtilizadores.add(new Cliente("Xico","Rua", "966", "ze@a.pt", "Zezeze", "111111"));
         sistema.listaUtilizadores.add(new Cliente("Xico2","Rua", "966", "ze@a.pt", "Zezeze", "111111"));
         sistema.listaUtilizadores.add(new Cliente("Xico3","Rua", "966", "ze@a.pt", "Zezeze", "111111"));
-
+        sistema.utilizador.listaComentarios.add(new Comentario("Excelente", 4,sistema.listaUtilizadores.get(3).getNome(), sistema.listaUtilizadores.get(0).getNome()));
         //   sistema.listaComentarios.add(new Comentario("Excelente", 5, (Cliente) sistema.listaUtilizadores.get(2), (Restaurante)sistema.listaUtilizadores.get(1), 01,2, 2020 ));
 //        sistema.utilizador.listaReservas.add(new Take_Away("Zeca", "Tacho", 2020, 7, 5, 18, 30, 5));
 
@@ -28,7 +28,7 @@ public class Main {
         System.out.println(sistema.listaUtilizadores);
         System.out.println("--------------------------");
         System.out.println("Lista Comentarios: ");
-        System.out.println(sistema.listaComentarios);
+        System.out.println(sistema.utilizador.listaComentarios);
         System.out.println("---------------------------");
        System.out.println("Lista de Reservas");
 //        System.out.println(sistema.utilizador.listaReservas);

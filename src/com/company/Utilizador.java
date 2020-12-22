@@ -3,7 +3,7 @@ package com.company;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public abstract class Utilizador implements Serializable {
+public  class Utilizador implements Serializable {
   //  private static int idd;
    // private static int idRestaurante;
   //  private static int idCliente;
@@ -19,6 +19,7 @@ public abstract class Utilizador implements Serializable {
     protected String username;
     protected String password;
 
+    Utilizador(){}
 
     public Utilizador(String nome, String morada, String telefone, String email, String username, String password) {
 
