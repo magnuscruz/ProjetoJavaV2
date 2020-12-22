@@ -11,7 +11,7 @@ public class Comentario implements Serializable {
     private double pontuacao;
     //private Cliente cliente;
    // private Restaurante restaurante;
-    private String cliente;
+    private String cliente;//Perceber se isto pode ser do tipo Cliente ou se tem de ser String
     private String restaurante;
     private GregorianCalendar dataHoje;
     int ano;
@@ -19,10 +19,7 @@ public class Comentario implements Serializable {
     int dia;
 
 
-
-
-    public Comentario(String opniao, double pontuacao, String cliente, String restaurante) {//Nao faz sentido o comentario pedir a data.
-        // ou fica a data do dia que foi feito, ou entao usa a da reserva!
+    public Comentario(String opniao, double pontuacao, String cliente, String restaurante) {
         this.opniao = opniao;
         this.pontuacao = pontuacao;
         this.cliente = cliente;
@@ -33,7 +30,6 @@ public class Comentario implements Serializable {
         this.mes = dataHoje.get((Calendar.MONTH));
         this.dia = dataHoje.get(Calendar.DAY_OF_MONTH);
     }
-
 
     @Override
     public String toString() {
