@@ -10,7 +10,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         Sistema sistema = new Sistema();
 
-        // Frame f = new Frame();
+         Frame f = new Frame();
         sistema.listaUtilizadores.add(new Restaurante("Tacho", "rua t", "4455555", "eee@hhh", "aaa", "ert", 20, 10, 20, 11, 30, 15, 00, 17, 00, 23, 00));
         sistema.listaUtilizadores.add(new Restaurante("Tacho2", "rua t", "4455555", "eee@hhh", "aaa", "ert", 20, 10, 20, 11, 30, 15, 00, 17, 00, 23, 00));
         sistema.listaUtilizadores.add(new Restaurante("Tacho3", "rua t", "4455555", "eee@hhh", "aaa", "ert", 20, 10, 20, 11, 30, 15, 00, 17, 00, 23, 00));
