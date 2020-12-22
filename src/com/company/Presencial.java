@@ -1,8 +1,6 @@
 package com.company;
 
 import java.io.Serializable;
-import java.time.LocalTime;
-import java.util.GregorianCalendar;
 
 public class Presencial extends Reserva implements Serializable {
     private int zona;

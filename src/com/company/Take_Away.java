@@ -1,9 +1,7 @@
 package com.company;
 
 import java.io.Serializable;
-import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.GregorianCalendar;
 
 public class Take_Away extends Reserva implements Serializable {
     private ArrayList<Prato> listaPratos;

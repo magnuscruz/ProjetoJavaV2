@@ -1,7 +1,6 @@
 package com.company;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
 public class Cliente extends Utilizador implements Serializable {
     private static int idCliente = 5000;

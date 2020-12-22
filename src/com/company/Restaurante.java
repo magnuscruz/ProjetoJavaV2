@@ -2,7 +2,6 @@ package com.company;
 
 import java.io.Serializable;
 import java.time.LocalTime;
-import java.util.GregorianCalendar;
 
 public class Restaurante extends Utilizador implements Serializable {
     private static int idRestaurante=1;

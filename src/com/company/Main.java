@@ -1,8 +1,5 @@
 package com.company;
 
-import GUI.Frame;
-
-import javax.swing.*;
 import java.util.Scanner;
 
 public class Main {
