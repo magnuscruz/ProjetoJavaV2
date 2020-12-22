@@ -5,6 +5,7 @@ import org.w3c.dom.ls.LSOutput;
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+///aaaa
 
 public class Comentario implements Serializable {
     private String opniao;
@@ -17,7 +18,6 @@ public class Comentario implements Serializable {
     int ano;
     int mes;
     int dia;
-
 
     public Comentario(String opniao, double pontuacao, String cliente, String restaurante) {
         this.opniao = opniao;
