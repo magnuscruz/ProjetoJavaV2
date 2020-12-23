@@ -2,6 +2,7 @@ package com.company;
 
 import java.io.Serializable;
 import java.time.LocalTime;
+import java.util.ArrayList;
 
 public class Restaurante extends Utilizador implements Serializable {
     private static int idRestaurante=1;
@@ -53,11 +54,9 @@ public class Restaurante extends Utilizador implements Serializable {
                 ", pontuacaoMedia=" + pontuacaoMedia +
                 "} ";
     }
-
-    public String toStringComentarios  (){
-        return "Nome: " + nome;
+    public ArrayList<Reserva> getListaReservas(){
+        return this.listaReservas;
     }
-
     public LocalTime getInicioHorarioAlm() {
         return inicioHorarioAlm;
     }

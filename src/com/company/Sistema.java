@@ -8,20 +8,6 @@ public class Sistema implements Serializable {
     public ArrayList<Utilizador> listaUtilizadores = new ArrayList<>();
     public ArrayList<Comentario> listaComentarios = new ArrayList<>();
     protected Utilizador utilizarAtivo;
-    protected Utilizador utilizador;
-
-
-
-
-  // ArrayList<Reserva> listaReservas = new ArrayList<>();// Se estiver aqui, se add algo ao array no main, nao da erro
-
-    Sistema(){
-        this.utilizador= new Utilizador();
-    }
-//    Sistema(Utilizador utilizador2){
-//        this.utilizador= utilizador2;
-//    }
-
 
     public void utilizadorExiste(String username) {
         boolean a = true;
@@ -37,4 +23,50 @@ public class Sistema implements Serializable {
         }
     }
 
+    public ArrayList <Restaurante> getListaRestaurantes (){
+        ArrayList<Restaurante> restaurantes = new ArrayList<>();
+        for (Utilizador u: listaUtilizadores) {
+            if (u instanceof Restaurante){
+                restaurantes.add((Restaurante) u);
+        }
+        }
+        return restaurantes;
+    }
+
+    public String login(String username, String pass){
+        /// percorrer lista de utilizadores ate encontrar client
+        // verificar password
+        if(username.equals("restaurante")){
+            Utilizador u = listaUtilizadores.get(1);
+
+        } else {
+
+            Utilizador u = listaUtilizadores.get(3);
+        }
+        // se login for valido
+       // this.utilizarAtivo = u;
+        return "";
+        // Se login invalido
+//        this.utilizarAtivo = null;
+//        return "Utilizador inválido";
+    }
+
+    private Utilizador getUtilizarAtivo (){
+
+        return this.utilizarAtivo;
+    }
+
+    public Cliente getClienteAtivo() {
+        if( getUtilizarAtivo() instanceof Cliente){
+            return (Cliente) getUtilizarAtivo();
+        }
+        return null;
+    }
+
+    public Restaurante getRestauranteAtivo() {
+        if( getUtilizarAtivo() instanceof Restaurante){
+            return (Restaurante) getUtilizarAtivo();
+        }
+        return null;
+    }
 }

@@ -2,6 +2,7 @@ package com.company;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 
 public class Take_Away extends Reserva implements Serializable {
     private ArrayList<Prato> listaPratos;
@@ -15,8 +16,8 @@ public class Take_Away extends Reserva implements Serializable {
 //        this.valorTotal = valorTotal;
 //    }
 
-
-    public Take_Away(String cliente, String restaurante, int ano, int mes, int dia, int hora, int minuto, int quantidade) {
+/////SO PARA TESTAR, TEM DE SER O DE CIMA O FINAL!////
+    public Take_Away(Cliente cliente, Restaurante restaurante, int ano, int mes, int dia, int hora, int minuto, int quantidade) {
         super(cliente, restaurante, ano, mes, dia, hora, minuto);
         this.quantidade = quantidade;
         this.valorTotal = valorTotal;
@@ -29,4 +30,5 @@ public class Take_Away extends Reserva implements Serializable {
                 ", valorTotal=" + valorTotal +
                 '}';
     }
+
 }

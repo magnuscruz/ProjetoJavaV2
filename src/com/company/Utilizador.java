@@ -3,13 +3,13 @@ package com.company;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public  class Utilizador implements Serializable {
+public class Utilizador implements Serializable {
 
     Restaurante restaurante;
     Cliente cliente;
 
-    ArrayList<Comentario> listaComentarios = new ArrayList<>();
-    ArrayList<Reserva> listaReservas = new ArrayList<>();
+    protected ArrayList<Comentario> listaComentarios = new ArrayList<>();
+    protected ArrayList<Reserva> listaReservas = new ArrayList<>();// cada utilizador vai ter a sua lista.
 
     protected int id;
     protected String nome;
@@ -19,10 +19,7 @@ public  class Utilizador implements Serializable {
     protected String username;
     protected String password;
 
-    Utilizador(){
-        this.restaurante = new Restaurante();
-        this.cliente = new Cliente();
-    }
+    Utilizador(){ }
 
     public Utilizador(String nome, String morada, String telefone, String email, String username, String password) {
 
