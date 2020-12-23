@@ -32,7 +32,7 @@ public class Main {
 
 //       Utilizador u = sistema.listaUtilizadores.get(3);
 //               if (u instanceof Cliente) {
-//                   sistema.utilizador.listaReservas.add(new Take_Away((Cliente) sistema.listaUtilizadores.get(3), , 2020, 7, 5, 18, 30, 5));
+//                   sistema.utilizador.listaReservas.add(new TakeAway((Cliente) sistema.listaUtilizadores.get(3), , 2020, 7, 5, 18, 30, 5));
 //               }else {
 //                   System.out.println("nao é um cliente");
 //               }
