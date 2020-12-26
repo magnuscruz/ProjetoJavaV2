@@ -25,7 +25,7 @@ public class Main {
        // sistema.utilizador.listaComentarios.add(new Comentario("Excelente", 4, sistema.listaUtilizadores.get(3).getNome(), sistema.listaUtilizadores.get(0).getNome()));
 
 
-        String resultado = sistema.login("cliente","xpto");
+        String resultado = sistema.loginTeste("cliente","xpto");
 
         if (resultado.length()==0){
             // criar janel de login com sucesso
