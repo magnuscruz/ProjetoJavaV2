@@ -23,48 +23,69 @@ public class Sistema implements Serializable {
         }
     }
 
-    public ArrayList <Restaurante> getListaRestaurantes (){
+    public ArrayList<Restaurante> getListaRestaurantes() {
         ArrayList<Restaurante> restaurantes = new ArrayList<>();
-        for (Utilizador u: listaUtilizadores) {
-            if (u instanceof Restaurante){
+        for (Utilizador u : listaUtilizadores) {
+            if (u instanceof Restaurante) {
                 restaurantes.add((Restaurante) u);
-        }
+            }
         }
         return restaurantes;
     }
 
-    public String login(String username, String pass){
-        /// percorrer lista de utilizadores ate encontrar client
+    public String loginTeste(String username, String pass) {
+        /// percorrer lista de utilizadores ate encontrar cliente
         // verificar password
-        if(username.equals("restaurante")){
+        if (username.equals("restaurante")) {
             Utilizador u = listaUtilizadores.get(1);
 
         } else {
-
             Utilizador u = listaUtilizadores.get(3);
         }
         // se login for valido
-       // this.utilizarAtivo = u;
+        // this.utilizarAtivo = u;
         return "";
         // Se login invalido
 //        this.utilizarAtivo = null;
 //        return "Utilizador inválido";
     }
 
-    private Utilizador getUtilizarAtivo (){
+    public String login2(String username, String pass) {
+        boolean valido = false;
+        for (int i = 0; i < listaUtilizadores.size(); i++) {
+            if (username.equals(listaUtilizadores.get(i).getUsername()) && pass.equals(listaUtilizadores.get(i).getPassword())) {
+                if (listaUtilizadores.get(i) instanceof Restaurante) {
+                    Utilizador u = listaUtilizadores.get(i);
+                    this.utilizarAtivo = u;
+                    valido = true;
+                } else {
+                    Utilizador u = listaUtilizadores.get(i);
+                    this.utilizarAtivo = u;
+                    valido = true;
+                }
+            } else {
+                System.out.println("Utilizador nao existe ou pass incorrecta");
+            }
+        }
+        if (valido) {
+            return "";//Para na consola da interface, saber que tudo correu bem
+        } else return "Login invalido";
+    }
+
+    private Utilizador getUtilizarAtivo() {
 
         return this.utilizarAtivo;
     }
 
     public Cliente getClienteAtivo() {
-        if( getUtilizarAtivo() instanceof Cliente){
+        if (getUtilizarAtivo() instanceof Cliente) {
             return (Cliente) getUtilizarAtivo();
         }
         return null;
     }
 
     public Restaurante getRestauranteAtivo() {
-        if( getUtilizarAtivo() instanceof Restaurante){
+        if (getUtilizarAtivo() instanceof Restaurante) {
             return (Restaurante) getUtilizarAtivo();
         }
         return null;

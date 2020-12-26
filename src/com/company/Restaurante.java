@@ -11,81 +11,104 @@ public class Restaurante extends Utilizador implements Serializable {
     private int lotacaoEsplanada;
     private int lotacaoFum;
     private int lotacaoNFum;
-    private LocalTime inicioHorarioAlm;
-    private LocalTime fimHorarioAlm;
-    private LocalTime inicioHorarioJan;
-    private LocalTime fimHorarioJan;
+    private LocalTime inicioAlm;
+    private LocalTime fimAlm;
+    private LocalTime inicioJan;
+    private LocalTime fimJan;
     private double pontuacaoMedia;
-    private int horaInicioAlm;
-    private int minInicioAlm;
-    private int horaFimAlm;
-    private int minFimAlm;
-    private int horaInicioJan;
-    private int minInicioJan;
-    private int horaFimJan;
-    private int minFimJan;
+
 
     Restaurante(){}
 
-    public Restaurante(String nome, String morada, String telefone, String email, String username, String password, int lotacaoEsplanada, int lotacaoFum, int lotacaoNFum, int horaInicioAlm, int minInicioAlm, int horaFimAlm, int minFimAlm, int horaInicioJan, int minInicioJan, int horaFimJan, int minFimJan) {
+    public Restaurante(String nome, String morada, String telefone, String email, String username, String password, int lotacaoEsplanada, int lotacaoFum, int lotacaoNFum, LocalTime inicioAlm, LocalTime fimAlm, LocalTime inicioJan, LocalTime fimJan) {
         super(nome, morada, telefone, email, username,password);
         this.id = idRestaurante++;
         this.lotacaoEsplanada = lotacaoEsplanada;
         this.lotacaoFum = lotacaoFum;
         this.lotacaoNFum = lotacaoNFum;
-        this.inicioHorarioAlm = LocalTime.of(horaInicioAlm, minInicioAlm);
-        this.fimHorarioAlm = LocalTime.of(horaFimAlm, minFimAlm);
-        this.inicioHorarioJan = LocalTime.of(horaInicioJan, minInicioJan);
-        this.fimHorarioJan = LocalTime.of(horaFimJan, minFimJan);
+        this.inicioAlm =inicioAlm;
+        this.fimAlm = fimAlm;
+        this.inicioJan = inicioJan;
+        this.fimJan = fimJan;
+//        this.inicioHorarioAlm = LocalTime.of(horaInicioAlm, minInicioAlm);
+//        this.fimHorarioAlm = LocalTime.of(horaFimAlm, minFimAlm);
+//        this.inicioHorarioJan = LocalTime.of(horaInicioJan, minInicioJan);
+//        this.fimHorarioJan = LocalTime.of(horaFimJan, minFimJan);
         //this.pontuacaoMedio = pontuacao;
 
     }
 
     @Override
     public String toString() {
-        return "\nRestaurante: " +  super.toString() +
+        return "\nRestaurante{" + super.toString() +
                 "lotacaoEsplanada=" + lotacaoEsplanada +
                 ", lotacaoFum=" + lotacaoFum +
                 ", lotacaoNFum=" + lotacaoNFum +
-                ", inicioHorarioAlm=" + inicioHorarioAlm +
-                ", fimHorarioAlm=" + fimHorarioAlm +
-                ", inicioHorarioJan=" + inicioHorarioJan +
-                ", fimHorarioJan=" + fimHorarioJan +
+                ", inicioAlm=" + inicioAlm +
+                ", fimAlm=" + fimAlm +
+                ", inicioJan=" + inicioJan +
+                ", fimJan=" + fimJan +
                 ", pontuacaoMedia=" + pontuacaoMedia +
-                "} ";
+                '}';
     }
+
     public ArrayList<Reserva> getListaReservas(){
         return this.listaReservas;
     }
-    public LocalTime getInicioHorarioAlm() {
-        return inicioHorarioAlm;
+
+    public int getLotacaoEsplanada() {
+        return lotacaoEsplanada;
     }
 
-    public void setInicioHorarioAlm(LocalTime inicioHorarioAlm) {
-        this.inicioHorarioAlm = inicioHorarioAlm;
+    public void setLotacaoEsplanada(int lotacaoEsplanada) {
+        this.lotacaoEsplanada = lotacaoEsplanada;
     }
 
-    public LocalTime getFimHorarioAlm() {
-        return fimHorarioAlm;
+    public int getLotacaoFum() {
+        return lotacaoFum;
     }
 
-    public void setFimHorarioAlm(LocalTime fimHorarioAlm) {
-        this.fimHorarioAlm = fimHorarioAlm;
+    public void setLotacaoFum(int lotacaoFum) {
+        this.lotacaoFum = lotacaoFum;
     }
 
-    public LocalTime getInicioHorarioJan() {
-        return inicioHorarioJan;
+    public int getLotacaoNFum() {
+        return lotacaoNFum;
     }
 
-    public void setInicioHorarioJan(LocalTime inicioHorarioJan) {
-        this.inicioHorarioJan = inicioHorarioJan;
+    public void setLotacaoNFum(int lotacaoNFum) {
+        this.lotacaoNFum = lotacaoNFum;
     }
 
-    public LocalTime getFimHorarioJan() {
-        return fimHorarioJan;
+    public LocalTime getInicioAlm() {
+        return inicioAlm;
     }
 
-    public void setFimHorarioJan(LocalTime fimHorarioJan) {
-        this.fimHorarioJan = fimHorarioJan;
+    public void setInicioAlm(LocalTime inicioAlm) {
+        this.inicioAlm = inicioAlm;
+    }
+
+    public LocalTime getFimAlm() {
+        return fimAlm;
+    }
+
+    public void setFimAlm(LocalTime fimAlm) {
+        this.fimAlm = fimAlm;
+    }
+
+    public LocalTime getInicioJan() {
+        return inicioJan;
+    }
+
+    public void setInicioJan(LocalTime inicioJan) {
+        this.inicioJan = inicioJan;
+    }
+
+    public LocalTime getFimJan() {
+        return fimJan;
+    }
+
+    public void setFimJan(LocalTime fimJan) {
+        this.fimJan = fimJan;
     }
 }

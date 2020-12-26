@@ -22,7 +22,6 @@ public class Utilizador implements Serializable {
     Utilizador(){ }
 
     public Utilizador(String nome, String morada, String telefone, String email, String username, String password) {
-
         this.nome = nome;
         this.morada = morada;
         this.telefone = telefone;
@@ -44,31 +43,83 @@ public class Utilizador implements Serializable {
                 '}';
     }
 
-    public String getUsername() {
-        return username;
+    public Restaurante getRestaurante() {
+        return restaurante;
     }
 
-    public String getPassword() {
-        return password;
+    public void setRestaurante(Restaurante restaurante) {
+        this.restaurante = restaurante;
     }
 
-    public int getId() {
-        return id;
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public ArrayList<Comentario> getListaComentarios() {
+        return listaComentarios;
+    }
+
+    public void setListaComentarios(ArrayList<Comentario> listaComentarios) {
+        this.listaComentarios = listaComentarios;
+    }
+
+    public ArrayList<Reserva> getListaReservas() {
+        return listaReservas;
+    }
+
+    public void setListaReservas(ArrayList<Reserva> listaReservas) {
+        this.listaReservas = listaReservas;
     }
 
     public String getNome() {
         return nome;
     }
 
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
     public String getMorada() {
         return morada;
+    }
+
+    public void setMorada(String morada) {
+        this.morada = morada;
     }
 
     public String getTelefone() {
         return telefone;
     }
 
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
     public String getEmail() {
         return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

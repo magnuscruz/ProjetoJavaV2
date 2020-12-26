@@ -12,15 +12,14 @@ public abstract class  Reserva implements Serializable {
     protected Restaurante restaurante;
     protected GregorianCalendar data;
     protected LocalTime horario;
-    protected int hora;
-    protected int minuto;
 
 
-    public Reserva(Cliente cliente, Restaurante restaurante,  int ano, int mes, int dia, int hora, int minuto) {
+
+    public Reserva(Cliente cliente, Restaurante restaurante,GregorianCalendar  data, LocalTime horario ) {
         this.cliente = cliente;
         this.restaurante = restaurante;
-        this.data = new GregorianCalendar(ano, (mes - 1), dia);
-        this.horario = LocalTime.of(hora,minuto);
+        this.data = data;
+        this.horario = horario;
     }
 
     @Override

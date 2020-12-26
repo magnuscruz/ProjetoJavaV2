@@ -2,7 +2,10 @@ package com.company;
 
 import GUI.Frame;
 
+import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.Scanner;
 
 public class Main {
@@ -13,13 +16,14 @@ public class Main {
 
         // Frame f = new Frame();
 
-        sistema.listaUtilizadores.add(new Restaurante("Tacho", "rua t", "4455555", "eee@hhh", "aaa", "ert", 20, 10, 20, 11, 30, 15, 00, 17, 00, 23, 00));
-        sistema.listaUtilizadores.add(new Restaurante("Tacho2", "rua t", "4455555", "eee@hhh", "aaa", "ert", 20, 10, 20, 11, 30, 15, 00, 17, 00, 23, 00));
-        sistema.listaUtilizadores.add(new Restaurante("Tacho3", "rua t", "4455555", "eee@hhh", "aaa", "ert", 20, 10, 20, 11, 30, 15, 00, 17, 00, 23, 00));
+//        sistema.listaUtilizadores.add(new Restaurante("Tacho", "rua t", "4455555", "eee@hhh", "aaa", "ert", 20, 10, 20, 11, 30, 15, 00, 17, 00, 23, 00));
+//        sistema.listaUtilizadores.add(new Restaurante("Tacho2", "rua t", "4455555", "eee@hhh", "aaa", "ert", 20, 10, 20, 11, 30, 15, 00, 17, 00, 23, 00));
+//        sistema.listaUtilizadores.add(new Restaurante("Tacho3", "rua t", "4455555", "eee@hhh", "aaa", "ert", 20, 10, 20, 11, 30, 15, 00, 17, 00, 23, 00));
         sistema.listaUtilizadores.add(new Cliente("Xico", "Rua", "966", "ze@a.pt", "Zezeze", "111111"));
         sistema.listaUtilizadores.add(new Cliente("Xico2", "Rua", "966", "ze@a.pt", "Zezeze", "111111"));
         sistema.listaUtilizadores.add(new Cliente("Xico3", "Rua", "966", "ze@a.pt", "Zezeze", "111111"));
        // sistema.utilizador.listaComentarios.add(new Comentario("Excelente", 4, sistema.listaUtilizadores.get(3).getNome(), sistema.listaUtilizadores.get(0).getNome()));
+
 
         String resultado = sistema.login("cliente","xpto");
 
@@ -37,8 +41,9 @@ public class Main {
 //                   System.out.println("nao é um cliente");
 //               }
 
-       // if (sistema.getClienteAtivo()!=null){
+        if (sistema.getClienteAtivo()!=null){
          ArrayList<Reserva> listaReservaC = sistema.getClienteAtivo().getListaReservas();
+        }
 //            String resultadoo = sistema.login("joao","xpto");
 //            if (resultado.length()==0){
 //                // criar janel de login com sucesso
