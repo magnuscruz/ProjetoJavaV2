@@ -33,7 +33,7 @@ public class Sistema implements Serializable {
             Utilizador u = listaUtilizadores.get(1);
 
         } else {
-            Utilizador u = listaUtilizadores.get(3);
+            Utilizador u = listaUtilizadores.get(2);
         }
         // se login for valido
         // this.utilizarAtivo = u;
@@ -65,17 +65,17 @@ public class Sistema implements Serializable {
         } else return "Login invalido";
     }
 
-    public boolean emailUnico(String email) {
-        Boolean unico = false;
+    private boolean emailUnico(String email) {
+        Boolean unico = true;
         for (int i = 0; i < listaUtilizadores.size(); i++) {
             if (email.equalsIgnoreCase(listaUtilizadores.get(i).getEmail())) {
-                unico = true;
+                unico = false;
             }
         }
         return unico;
     }
 
-    public boolean validarEmail(String email) {
+    private boolean validarEmail(String email) {
         boolean mailValido = false;
         if (email != null && email.length() > 0) {
             String expression = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
@@ -88,23 +88,22 @@ public class Sistema implements Serializable {
         return mailValido;
     }
 
-    public boolean usernameUnico(String username) {
-        boolean unico = false;
+    private boolean usernameUnico(String username) {
+        boolean unico = true;
 
         for (int i = 0; i < listaUtilizadores.size(); i++) {
             if (username.equalsIgnoreCase(listaUtilizadores.get(i).getUsername())) {
-                unico = true;
+                unico = false;
             }
         }
         return unico;
     }
 
-    public boolean confirmarPass(String pass1, String pass2) {
+    private boolean confirmarPass(String pass1, String pass2) {
         boolean correta = false;
         if (pass1.equals(pass2)) {
             correta = true;
-        } else {
-            System.out.println("Passwords nao sao iguais");
+            return correta;
         }
         return correta;
     }

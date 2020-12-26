@@ -31,7 +31,7 @@ public class Cliente extends Utilizador implements Serializable {
     public String criarReservaPresencial(Restaurante r, GregorianCalendar data, LocalTime hora) {
         // verificar se restaurante esta aberto senão return false
         int  ano = data.get(Calendar.YEAR);
-        Presencial p = new Presencial(this,r,ano,5,1,5,3, 3,5);
+        Presencial p = new Presencial(this,r,data,hora,1,5);
         this.listaReservas.add(p);//adicionamos a lista de reservas do Cliente em especifico
         r.listaReservas.add(p);// adicionamos a lista de reservas do Restaurante em especifico
         // Atencao! Quando criar um metodo para apagar reserva, tenho de apagar nos dois sitios!
@@ -39,6 +39,17 @@ public class Cliente extends Utilizador implements Serializable {
         System.out.println("Criar reserva presencial: "+ data + hora);
         return "";
     }
+
+    public void criarComentario (Cliente c,Restaurante r,String comentario, int pontuacao){
+
+        for (int i = 0; i < listaReservas.size(); i++) {
+
+        }
+    }
+
+
+
+
 
     public ArrayList<Reserva> getListaReservas (){// cada cliente tem as suas proprias reservas
         return this.listaReservas;
