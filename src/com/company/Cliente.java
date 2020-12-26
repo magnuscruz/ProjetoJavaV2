@@ -18,10 +18,10 @@ public class Cliente extends Utilizador implements Serializable {
     public boolean restauranteAberto(int hora, int minuto) {
         boolean aberto = false;
         LocalTime horaEscolhida = LocalTime.of(hora, minuto);
-        LocalTime aberturaAlm = restaurante.getInicioHorarioAlm();
-        LocalTime fechoAlm = restaurante.getFimHorarioAlm();
-        LocalTime aberturaJan = restaurante.getInicioHorarioJan();
-        LocalTime fechoJan = restaurante.getFimHorarioJan();
+        LocalTime aberturaAlm = restaurante.getInicioAlm();
+        LocalTime fechoAlm = restaurante.getFimAlm();
+        LocalTime aberturaJan = restaurante.getInicioJan();
+        LocalTime fechoJan = restaurante.getFimJan();
         if (horaEscolhida.isBefore(aberturaAlm) && horaEscolhida.isAfter(fechoAlm) || horaEscolhida.isBefore(aberturaJan) && horaEscolhida.isAfter(fechoJan)) {
             aberto = true;
         }

@@ -65,41 +65,14 @@ public class Sistema implements Serializable {
         } else return "Login invalido";
     }
 
-    public void criarRestaurante(String nome, String morada, String telefone, String email, String username, String password, String confirmarPass, int lotacaoEsplanada, int lotacaoFum, int lotacaoNFum, LocalTime inicioAlm, LocalTime fimAlm, LocalTime inicioJan, LocalTime fimJan) {
-        Boolean mailValido = validarEmail(email);
-        Boolean userUnico = usernameUnico(username);
-        Boolean passIgual = confirmarPass(password, confirmarPass);
-//Se der para mostrar as mensagens atraves do interface, é mellhor assim do que como esta em baixo.
-//        if (userUnico && passIgual && mailValido) {
-//            r = new Restaurante(nome, morada, telefone, email, username, password, lotacaoEsplanada, lotacaoFum, lotacaoNFum, inicioAlm, fimAlm, inicioJan, fimJan);
-//            listaUtilizadores.add(r);
-//        }
-        if (mailValido) {
-            if (userUnico) {
-                if (passIgual) {
-                   Restaurante r = new Restaurante(nome, morada, telefone, email, username, password, lotacaoEsplanada, lotacaoFum, lotacaoNFum, inicioAlm, fimAlm, inicioJan, fimJan);
-                    listaUtilizadores.add(r);
-                    System.out.println("Restaurante criado");
-                } else System.out.println("Passwords nao sao iguais");
-            } else System.out.println("Username indisponivel");
-        } else System.out.println("Email nao é valido");
-
-    }
-
-    public void criarCliente(String nome, String morada, String telefone, String email, String username, String password, String confirmarPass) {
-        Boolean mailValido = validarEmail(email);
-        Boolean userUnico = usernameUnico(username);
-        Boolean passIgual = confirmarPass(password, confirmarPass);
-
-        if (mailValido) {
-            if (userUnico) {
-                if (passIgual) {
-                    Cliente c = new Cliente(nome, morada, telefone, email,username,password);
-                    listaUtilizadores.add(c);
-                    System.out.println("Cliente criado");
-                } else System.out.println("Passwords nao sao iguais");
-            } else System.out.println("Username indisponivel");
-        } else System.out.println("Email nao é valido");
+    public boolean emailUnico(String email) {
+        Boolean unico = false;
+        for (int i = 0; i < listaUtilizadores.size(); i++) {
+            if (email.equalsIgnoreCase(listaUtilizadores.get(i).getEmail())) {
+                unico = true;
+            }
+        }
+        return unico;
     }
 
     public boolean validarEmail(String email) {
@@ -134,6 +107,51 @@ public class Sistema implements Serializable {
             System.out.println("Passwords nao sao iguais");
         }
         return correta;
+    }
+
+    public void criarRestaurante(String nome, String morada, String telefone, String email, String username, String password, String confirmarPass, int lotacaoEsplanada, int lotacaoFum, int lotacaoNFum, LocalTime inicioAlm, LocalTime fimAlm, LocalTime inicioJan, LocalTime fimJan) {
+        Boolean mailUnico = emailUnico(email);
+        Boolean mailValido = validarEmail(email);
+        Boolean userUnico = usernameUnico(username);
+        Boolean passIgual = confirmarPass(password, confirmarPass);
+
+//Se der para mostrar as mensagens atraves do interface, é mellhor assim do que como esta em baixo.
+//        if (mailUnico && userUnico && passIgual && mailValido) {
+//            r = new Restaurante(nome, morada, telefone, email, username, password, lotacaoEsplanada, lotacaoFum, lotacaoNFum, inicioAlm, fimAlm, inicioJan, fimJan);
+//            listaUtilizadores.add(r);
+//        }
+
+        if (mailUnico) {
+            if (mailValido) {
+                if (userUnico) {
+                    if (passIgual) {
+                        Restaurante r = new Restaurante(nome, morada, telefone, email, username, password, lotacaoEsplanada, lotacaoFum, lotacaoNFum, inicioAlm, fimAlm, inicioJan, fimJan);
+                        listaUtilizadores.add(r);
+                        System.out.println("Restaurante criado");
+                    } else System.out.println("Passwords nao sao iguais");
+                } else System.out.println("Username indisponivel");
+            } else System.out.println("Email nao é valido");
+        } else System.out.println("Email ja esta registado");
+
+    }
+
+    public void criarCliente(String nome, String morada, String telefone, String email, String username, String password, String confirmarPass) {
+        Boolean mailUnico = emailUnico(email);
+        Boolean mailValido = validarEmail(email);
+        Boolean userUnico = usernameUnico(username);
+        Boolean passIgual = confirmarPass(password, confirmarPass);
+
+        if (mailUnico) {
+            if (mailValido) {
+                if (userUnico) {
+                    if (passIgual) {
+                        Cliente c = new Cliente(nome, morada, telefone, email, username, password);
+                        listaUtilizadores.add(c);
+                        System.out.println("Cliente criado");
+                    } else System.out.println("Passwords nao sao iguais");
+                } else System.out.println("Username indisponivel");
+            } else System.out.println("Email nao é valido");
+        } else System.out.println("Email ja esta registado");
     }
 
     public ArrayList<Restaurante> getListaRestaurantes() {
