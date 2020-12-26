@@ -23,7 +23,6 @@ public class Main {
         sistema.listaUtilizadores.add(new Cliente("Xico2", "Rua", "966", "ze@a.pt", "Zezeze", "111111"));
         sistema.listaUtilizadores.add(new Cliente("Xico3", "Rua", "966", "ze@a.pt", "Zezeze", "111111"));
        // sistema.utilizador.listaComentarios.add(new Comentario("Excelente", 4, sistema.listaUtilizadores.get(3).getNome(), sistema.listaUtilizadores.get(0).getNome()));
-
         sistema.criarCliente("Ze", "Rua", "9999", "zeca@gmail.com", "CAO", "1q2w", "kkkk");
         System.out.println("FIM");
         String resultado = sistema.loginTeste("cliente","xpto");

@@ -4,30 +4,51 @@ import java.io.Serializable;
 import java.time.LocalTime;
 import java.util.GregorianCalendar;
 
-public abstract class  Reserva implements Serializable {
+public abstract class Reserva implements Serializable {
 
-//    protected String cliente;
-//    protected String restaurante;
-     protected Cliente cliente;
+
+    protected Cliente cliente;
     protected Restaurante restaurante;
     protected GregorianCalendar data;
     protected LocalTime horario;
+    protected Boolean status;
 
 
-
-    public Reserva(Cliente cliente, Restaurante restaurante,GregorianCalendar  data, LocalTime horario ) {
+    public Reserva(Cliente cliente, Restaurante restaurante, GregorianCalendar data, LocalTime horario) {
         this.cliente = cliente;
         this.restaurante = restaurante;
         this.data = data;
         this.horario = horario;
+        this.status = true;
     }
+
 
     @Override
     public String toString() {
-        return  "cliente=" + cliente +
+        return "cliente=" + cliente +
                 ", restaurante=" + restaurante +
-                ", data=" + (data.get(GregorianCalendar.YEAR)+ "/" + (data.get(GregorianCalendar.MONTH )+1)+ "/" + data.get(GregorianCalendar.DAY_OF_MONTH))+
+                ", data=" + (data.get(GregorianCalendar.YEAR) + "/" + (data.get(GregorianCalendar.MONTH) + 1) + "/" + data.get(GregorianCalendar.DAY_OF_MONTH)) +
                 ", horario=" + horario +
                 '}';
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public Restaurante getRestaurante() {
+        return restaurante;
+    }
+
+    public GregorianCalendar getData() {
+        return data;
+    }
+
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
     }
 }

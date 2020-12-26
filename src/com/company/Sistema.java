@@ -153,6 +153,31 @@ public class Sistema implements Serializable {
         } else System.out.println("Email ja esta registado");
     }
 
+    public void atualizarDadosCliente (String nome, String morada, String telefone, String email, String username, String password, String novaPass,String confirmarNovaPass){
+
+        Boolean mailUnico = emailUnico(email);
+        Boolean mailValido = validarEmail(email);
+        Boolean userUnico = usernameUnico(username);
+        Boolean passIgual = confirmarPass(novaPass, confirmarNovaPass);
+
+        if (mailUnico) {
+            if (mailValido) {
+                if (userUnico) {
+                    if (passIgual) {
+                        for (int i = 0; i < listaUtilizadores.size(); i++) {
+                            if (listaUtilizadores.get(i) instanceof Cliente && listaUtilizadores.get(i).equals(this)){//Funcionara???
+                                listaUtilizadores.get(i).setNome(nome);
+                            }
+                        }
+                        //Cliente c = new Cliente(nome, morada, telefone, email, username, password);
+
+                        System.out.println("Dados atualizados");
+                    } else System.out.println("Passwords nao sao iguais");
+                } else System.out.println("Username indisponivel");
+            } else System.out.println("Email nao é valido");
+        } else System.out.println("Email ja esta registado");
+    }
+
     public ArrayList<Restaurante> getListaRestaurantes() {
         ArrayList<Restaurante> restaurantes = new ArrayList<>();
         for (Utilizador u : listaUtilizadores) {
@@ -180,5 +205,13 @@ public class Sistema implements Serializable {
             return (Restaurante) getUtilizarAtivo();
         }
         return null;
+    }
+
+    public ArrayList<Utilizador> getListaUtilizadores() {
+        return listaUtilizadores;
+    }
+
+    public ArrayList<Comentario> getListaComentarios() {
+        return listaComentarios;
     }
 }

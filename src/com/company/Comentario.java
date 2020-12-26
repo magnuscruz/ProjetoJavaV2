@@ -8,22 +8,22 @@ import java.util.GregorianCalendar;
 
 
 public class Comentario implements Serializable {
-    private String opniao;
+    private String opiniao;
     private double pontuacao;
-    //private Cliente cliente;
-   // private Restaurante restaurante;
-    private String cliente;//Perceber se isto pode ser do tipo Cliente ou se tem de ser String
-    private String restaurante;
+    private Cliente cliente;
+    private Restaurante restaurante;
     private GregorianCalendar dataHoje;
+    private Boolean status;
     int ano;
     int mes;
     int dia;
 
-    public Comentario(String opniao, double pontuacao, String cliente, String restaurante) {
-        this.opniao = opniao;
+    public Comentario(String opiniao, double pontuacao, Cliente cliente, Restaurante restaurante) {
+        this.opiniao = opiniao;
         this.pontuacao = pontuacao;
         this.cliente = cliente;
         this.restaurante = restaurante;
+        this.status = true;
 
         Calendar dataHoje = Calendar.getInstance();//Automaticamente fica a data do dia que foi feito o Comentario!
         this.ano = dataHoje.get(Calendar.YEAR);
@@ -34,11 +34,27 @@ public class Comentario implements Serializable {
     @Override
     public String toString() {
         return "Comentario{" +
-                "descricao='" + opniao + '\'' +
+                "descricao='" + opiniao + '\'' +
                 ", pontuacao=" + pontuacao +
                 ", cliente=" + cliente +
                 ", restaurante=" + restaurante +
-                ", data=" +  dia +"/" + (mes+1) + "/" + ano +
+                ", data=" + dia + "/" + (mes + 1) + "/" + ano +
                 '}';
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public Restaurante getRestaurante() {
+        return restaurante;
+    }
+
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
     }
 }
