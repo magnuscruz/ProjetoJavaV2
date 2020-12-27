@@ -66,16 +66,26 @@ public class Cliente extends Utilizador implements Serializable {
     }
 
     public void editarComentario(String opiniao, double pontuacao) {
-        getListaComentarios();//Nao tenho a certeza se assim apresenta a lista de reservas efetuadas pelo Cliente
-        for (int i = 0; i < this.listaComentarios.size(); i++) {
+        for (int i = 0; i < getListaComentarios().size(); i++) {
+            if (getListaComentarios().get(i).getCliente().equals(this)){
+                if (opiniao!=null){
+                    getListaComentarios().get(i).setOpiniao(opiniao);
+                }
+                if (pontuacao>0){
+                    getListaComentarios().get(i).setPontuacao(pontuacao);
+                }
+            }
+        }
 
         }
-    }
 
     public void apagarComentario() {
-        getListaComentarios();
 
-        //getListaComentarios().get(i).setStatus(false);// Creio que a solucao mais simples deve ser algo do genero :X
+        for (int i = 0; i < getListaComentarios().size(); i++) {
+            if (getListaComentarios().get(i).getCliente().equals(this)){
+                getListaComentarios().get(i).setStatus(false);
+            }
+        }
     }
 
     public void criarReservaPresencial(Cliente cliente, Restaurante restaurante, GregorianCalendar data, LocalTime horario, int numeroLugares, int zona) {

@@ -65,9 +65,8 @@ public class Main {
 //           System.out.println("Fechado");
 //       } else System.out.println("Aberto");
 
-//        System.out.println("-----------------------------");
-//        System.out.println("Lista utilizadores: ");
-//        System.out.println(sistema.listaUtilizadores);
+//        System.out.println("-----------------------------");System.out.println("Lista utilizadores: ");
+        System.out.println(sistema.listaUtilizadores);
 //        System.out.println("--------------------------");
         System.out.println("Lista Comentarios: ");
      //   System.out.println(sistema.utilizador.listaComentarios);

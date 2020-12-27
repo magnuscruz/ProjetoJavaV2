@@ -7,7 +7,6 @@ import java.util.ArrayList;
 public class Restaurante extends Utilizador implements Serializable {
     private static int idRestaurante=1;
 
-
     private int lotacaoEsplanada;
     private int lotacaoFum;
     private int lotacaoNFum;
@@ -16,9 +15,7 @@ public class Restaurante extends Utilizador implements Serializable {
     private LocalTime inicioJan;
     private LocalTime fimJan;
     private double pontuacaoMedia;
-
-
-    Restaurante(){}
+    private Ementa ementa;
 
     public Restaurante(String nome, String morada, String telefone, String email, String username, String password, int lotacaoEsplanada, int lotacaoFum, int lotacaoNFum, LocalTime inicioAlm, LocalTime fimAlm, LocalTime inicioJan, LocalTime fimJan) {
         super(nome, morada, telefone, email, username,password);
@@ -30,11 +27,13 @@ public class Restaurante extends Utilizador implements Serializable {
         this.fimAlm = fimAlm;
         this.inicioJan = inicioJan;
         this.fimJan = fimJan;
+        this.pontuacaoMedia = getPontuacaoMedia();//VERIFICAR SE METODO FUNCIONA
+        this.ementa = getEmenta();
+
 //        this.inicioHorarioAlm = LocalTime.of(horaInicioAlm, minInicioAlm);
 //        this.fimHorarioAlm = LocalTime.of(horaFimAlm, minFimAlm);
 //        this.inicioHorarioJan = LocalTime.of(horaInicioJan, minInicioJan);
 //        this.fimHorarioJan = LocalTime.of(horaFimJan, minFimJan);
-        //this.pontuacaoMedio = pontuacao;
 
     }
 
@@ -50,6 +49,15 @@ public class Restaurante extends Utilizador implements Serializable {
                 ", fimJan=" + fimJan +
                 ", pontuacaoMedia=" + pontuacaoMedia +
                 '}';
+    }
+
+    public Ementa getEmenta() {
+        return ementa;
+    }
+
+    public void setEmenta(Ementa ementa) {
+
+        this.ementa = ementa;
     }
 
     public ArrayList<Reserva> getListaReservas(){
@@ -111,4 +119,18 @@ public class Restaurante extends Utilizador implements Serializable {
     public void setFimJan(LocalTime fimJan) {
         this.fimJan = fimJan;
     }
+
+    public double getPontuacaoMedia() {
+        double count=0;
+        double totalPontuacao = 0;
+        for (int i = 0; i < listaComentarios.size(); i++) {
+            if (listaComentarios.get(i).getRestaurante().equals(this)){
+                count++;
+                totalPontuacao += listaComentarios.get(i).getPontuacao();
+            }
+        }
+        return pontuacaoMedia = totalPontuacao/count;
+    }
+
+
 }

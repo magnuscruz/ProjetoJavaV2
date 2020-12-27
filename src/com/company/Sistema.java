@@ -213,6 +213,10 @@ public class Sistema implements Serializable {
         } else System.out.println("Email ja esta registado");
     }
 
+    public void removerCliente (String username){
+
+    }
+
     public boolean validarMinMenorMax(int valorMin, int valorMax) {
         boolean menor = false;
         if (valorMin < valorMax) {
@@ -248,7 +252,7 @@ public class Sistema implements Serializable {
         if (validarMinMenorMax(valorMin, valorMax)){
             for (int i = 0; i < listaUtilizadores.size(); i++) {
                 if (listaUtilizadores.get(i) instanceof Restaurante ){
-                    if (((Restaurante) listaUtilizadores.get(i)).getPontuacaoMedia() > valorMin && ((Restaurante) listaUtilizadores.get(i)).getPontuacaoMedia() < valorMax){
+                    if (((Restaurante) listaUtilizadores.get(i)).getPontuacaoMedia() >= valorMin && ((Restaurante) listaUtilizadores.get(i)).getPontuacaoMedia() <= valorMax){
                         listaUtilizadores.get(i);
                     }
                 }

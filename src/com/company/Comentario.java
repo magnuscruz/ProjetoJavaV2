@@ -65,4 +65,12 @@ public class Comentario implements Serializable {
     public double getPontuacao() {
         return pontuacao;
     }
+
+    public void setOpiniao(String opiniao) {
+        this.opiniao = opiniao;
+    }
+
+    public void setPontuacao(double pontuacao) {
+        this.pontuacao = pontuacao;
+    }
 }
