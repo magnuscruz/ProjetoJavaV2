@@ -78,6 +78,21 @@ public class Cliente extends Utilizador implements Serializable {
         //getListaComentarios().get(i).setStatus(false);// Creio que a solucao mais simples deve ser algo do genero :X
     }
 
+    public void criarReservaPresencial(Cliente cliente, Restaurante restaurante, GregorianCalendar data, LocalTime horario, int numeroLugares, int zona) {
+        Presencial p = new Presencial(cliente, restaurante, data, horario, numeroLugares, zona);
+        listaReservas.add(p);
+    }
+
+    public void criarReservaTakeAway (Cliente cliente, Restaurante restaurante, GregorianCalendar data, LocalTime horario, int quantidade){
+        TakeAway t = new TakeAway(cliente, restaurante,data,horario,quantidade );
+        listaReservas.add(t);
+    }
+
+    public void cancelarReserva (){
+        getListaReservas();
+        //listaReservas.get(0).setStatus(false);// Algo do genero!
+    }
+
 
     @Override
     public String toString() {

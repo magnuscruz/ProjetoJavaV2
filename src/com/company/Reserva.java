@@ -10,15 +10,15 @@ public abstract class Reserva implements Serializable {
     protected Cliente cliente;
     protected Restaurante restaurante;
     protected GregorianCalendar data;
-    protected LocalTime horario;
+    protected LocalTime hora;
     protected Boolean status;
 
 
-    public Reserva(Cliente cliente, Restaurante restaurante, GregorianCalendar data, LocalTime horario) {
+    public Reserva(Cliente cliente, Restaurante restaurante, GregorianCalendar data, LocalTime hora) {
         this.cliente = cliente;
         this.restaurante = restaurante;
         this.data = data;
-        this.horario = horario;
+        this.hora = hora;
         this.status = true;
     }
 
@@ -28,7 +28,7 @@ public abstract class Reserva implements Serializable {
         return "cliente=" + cliente +
                 ", restaurante=" + restaurante +
                 ", data=" + (data.get(GregorianCalendar.YEAR) + "/" + (data.get(GregorianCalendar.MONTH) + 1) + "/" + data.get(GregorianCalendar.DAY_OF_MONTH)) +
-                ", horario=" + horario +
+                ", hora=" + hora +
                 '}';
     }
 

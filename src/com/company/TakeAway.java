@@ -10,22 +10,21 @@ public class TakeAway extends Reserva implements Serializable {
     private int quantidade;
     private double valorTotal;
 
-
-
-//    public TakeAway(Cliente cliente, Restaurante restaurante, GregorianCalendar data, LocalTime horario , ArrayList<Prato> listaPratos, int quantidade, double valorTotal) {
-//        super(cliente, restaurante, data, hora, minuto);
-//        this.listaPratos = listaPratos;
+//    public TakeAway(Cliente cliente, Restaurante restaurante, GregorianCalendar data, LocalTime hora, int quantidade) {
+//        super(cliente, restaurante, data, hora);
 //        this.quantidade = quantidade;
-//        this.valorTotal = valorTotal;
+//        //this.valorTotal = //Colocar Metodo!
 //    }
 
-/////SO PARA TESTAR, TEM DE SER O DE CIMA O FINAL!////
-public TakeAway(Cliente cliente, Restaurante restaurante, GregorianCalendar data, LocalTime horario, int quantidade, int valorTotal) {
-    super(cliente, restaurante, data, horario);
+
+///SO PARA TESTAR, TEM DE SER O DE CIMA O FINAL!////
+public TakeAway(Cliente cliente, Restaurante restaurante, GregorianCalendar data, LocalTime hora, int quantidade) {
+    super(cliente, restaurante, data, hora);
     this.quantidade= quantidade;
     this.valorTotal = getValorTotal(); //FAZER METODO PARA CALcular o total a pagar! Preco vs qt,  tem é de aceder ao ArrayPratos
 
 }
+
 
     @Override
     public String toString() {

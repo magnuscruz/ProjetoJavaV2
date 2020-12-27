@@ -3,6 +3,7 @@ package com.company;
 import java.io.Serializable;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -153,16 +154,14 @@ public class Sistema implements Serializable {
         } else System.out.println("Email ja esta registado");
     }
 
-    public void atualizarDadosCliente (String nome, String morada, String telefone, String email, String username, String password, String novaPass,String confirmarNovaPass){
+    public void atualizarDadosCliente (String nome, String morada, String telefone, String email, String password, String novaPass,String confirmarNovaPass){
 
         Boolean mailUnico = emailUnico(email);
         Boolean mailValido = validarEmail(email);
-        Boolean userUnico = usernameUnico(username);
         Boolean passIgual = confirmarPass(novaPass, confirmarNovaPass);
 
         if (mailUnico) {
             if (mailValido) {
-                if (userUnico) {
                     if (passIgual) {
                         for (int i = 0; i < listaUtilizadores.size(); i++) {
                             if (listaUtilizadores.get(i) instanceof Cliente && listaUtilizadores.get(i).equals(this)){//Funcionara???
@@ -170,10 +169,26 @@ public class Sistema implements Serializable {
                             }
                         }
                         //Cliente c = new Cliente(nome, morada, telefone, email, username, password);
-
+                        // NAO PODE ser new, tenho de atualizar o anterior!
                         System.out.println("Dados atualizados");
                     } else System.out.println("Passwords nao sao iguais");
-                } else System.out.println("Username indisponivel");
+            } else System.out.println("Email nao é valido");
+        } else System.out.println("Email ja esta registado");
+    }
+
+    public void atualizarDadosRestaurante (String nome, String morada, String telefone, String email, String password,String novaPass, String confirmarNovaPass, int lotacaoEsplanada, int lotacaoFum, int lotacaoNFum, LocalTime inicioAlm, LocalTime fimAlm, LocalTime inicioJan, LocalTime fimJan){
+        Boolean mailUnico = emailUnico(email);
+        Boolean mailValido = validarEmail(email);
+        Boolean passIgual = confirmarPass(novaPass, confirmarNovaPass);
+
+        if (mailUnico) {
+            if (mailValido) {
+                    if (passIgual) {
+                      //  Restaurante r = new Restaurante(nome, morada, telefone, email, username, password, lotacaoEsplanada, lotacaoFum, lotacaoNFum, inicioAlm, fimAlm, inicioJan, fimJan);
+                        //listaUtilizadores.add(r);
+                        //Nao pode ser new Restaurante, porque nesse caso o ID ia ser alterado! Tenho de alterar o existente!!
+                        System.out.println("Restaurante criado");
+                    } else System.out.println("Passwords nao sao iguais");
             } else System.out.println("Email nao é valido");
         } else System.out.println("Email ja esta registado");
     }
