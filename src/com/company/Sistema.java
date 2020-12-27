@@ -13,7 +13,6 @@ public class Sistema implements Serializable {
     public ArrayList<Comentario> listaComentarios = new ArrayList<>();
     protected Utilizador utilizarAtivo;
 
-
     public ArrayList<Restaurante> getListaRestaurantes() {
         ArrayList<Restaurante> restaurantes = new ArrayList<>();
         for (Utilizador u : listaUtilizadores) {
@@ -25,7 +24,6 @@ public class Sistema implements Serializable {
     }
 
     private Utilizador getUtilizarAtivo() {
-
         return this.utilizarAtivo;
     }
 
@@ -215,6 +213,14 @@ public class Sistema implements Serializable {
         } else System.out.println("Email ja esta registado");
     }
 
+    public boolean validarMinMenorMax(int valorMin, int valorMax) {
+        boolean menor = false;
+        if (valorMin < valorMax) {
+            menor = true;
+        }
+        return menor;
+    }
+
     public void consultarRestaurantePorValores(int valorMin, int valorMax) {
         if (validarMinMenorMax(valorMin, valorMax)){
 
@@ -233,18 +239,27 @@ public class Sistema implements Serializable {
 
         for (int i = 0; i < listaUtilizadores.size(); i++) {
             if (listaUtilizadores.get(i) instanceof Restaurante && listaUtilizadores.get(i).getMorada().equalsIgnoreCase(cidade)){
-
+                    listaUtilizadores.get(i);
             }
         }
     }
 
-
-    public boolean validarMinMenorMax(int valorMin, int valorMax) {
-        boolean menor = false;
-        if (valorMin < valorMax) {
-            menor = true;
+    public void consultarRestaurantePorPontuacao (int valorMin, int valorMax){
+        if (validarMinMenorMax(valorMin, valorMax)){
+            for (int i = 0; i < listaUtilizadores.size(); i++) {
+                if (listaUtilizadores.get(i) instanceof Restaurante ){
+                    if (((Restaurante) listaUtilizadores.get(i)).getPontuacaoMedia() > valorMin && ((Restaurante) listaUtilizadores.get(i)).getPontuacaoMedia() < valorMax){
+                        listaUtilizadores.get(i);
+                    }
+                }
+            }
         }
-        return menor;
+        else System.out.println("Pontuacao minima nao é menor que a maxima");
     }
+
+    public double getPontuacaoMediaProprioRestaurante (Restaurante restaurante){
+    return restaurante.getPontuacaoMedia();
+    }
+
 }
 

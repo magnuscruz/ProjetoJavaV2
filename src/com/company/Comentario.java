@@ -57,4 +57,12 @@ public class Comentario implements Serializable {
     public void setStatus(Boolean status) {
         this.status = status;
     }
+
+    public String getOpiniao() {
+        return opiniao;
+    }
+
+    public double getPontuacao() {
+        return pontuacao;
+    }
 }
