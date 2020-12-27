@@ -13,6 +13,44 @@ public class Sistema implements Serializable {
     public ArrayList<Comentario> listaComentarios = new ArrayList<>();
     protected Utilizador utilizarAtivo;
 
+
+    public ArrayList<Restaurante> getListaRestaurantes() {
+        ArrayList<Restaurante> restaurantes = new ArrayList<>();
+        for (Utilizador u : listaUtilizadores) {
+            if (u instanceof Restaurante) {
+                restaurantes.add((Restaurante) u);
+            }
+        }
+        return restaurantes;
+    }
+
+    private Utilizador getUtilizarAtivo() {
+
+        return this.utilizarAtivo;
+    }
+
+    public Cliente getClienteAtivo() {
+        if (getUtilizarAtivo() instanceof Cliente) {
+            return (Cliente) getUtilizarAtivo();
+        }
+        return null;
+    }
+
+    public Restaurante getRestauranteAtivo() {
+        if (getUtilizarAtivo() instanceof Restaurante) {
+            return (Restaurante) getUtilizarAtivo();
+        }
+        return null;
+    }
+
+    public ArrayList<Utilizador> getListaUtilizadores() {
+        return listaUtilizadores;
+    }
+
+    public ArrayList<Comentario> getListaComentarios() {
+        return listaComentarios;
+    }
+
     public void utilizadorExiste(String username) {
         boolean existe = false;
         for (int i = 0; i < listaUtilizadores.size(); i++) {
@@ -110,21 +148,16 @@ public class Sistema implements Serializable {
     }
 
     public void criarRestaurante(String nome, String morada, String telefone, String email, String username, String password, String confirmarPass, int lotacaoEsplanada, int lotacaoFum, int lotacaoNFum, LocalTime inicioAlm, LocalTime fimAlm, LocalTime inicioJan, LocalTime fimJan) {
-        Boolean mailUnico = emailUnico(email);
-        Boolean mailValido = validarEmail(email);
-        Boolean userUnico = usernameUnico(username);
-        Boolean passIgual = confirmarPass(password, confirmarPass);
-
 //Se der para mostrar as mensagens atraves do interface, é mellhor assim do que como esta em baixo.
 //        if (mailUnico && userUnico && passIgual && mailValido) {
 //            r = new Restaurante(nome, morada, telefone, email, username, password, lotacaoEsplanada, lotacaoFum, lotacaoNFum, inicioAlm, fimAlm, inicioJan, fimJan);
 //            listaUtilizadores.add(r);
 //        }
 
-        if (mailUnico) {
-            if (mailValido) {
-                if (userUnico) {
-                    if (passIgual) {
+        if (emailUnico(email)) {
+            if (validarEmail(email)) {
+                if (usernameUnico(username)) {
+                    if (confirmarPass(password, confirmarPass)) {
                         Restaurante r = new Restaurante(nome, morada, telefone, email, username, password, lotacaoEsplanada, lotacaoFum, lotacaoNFum, inicioAlm, fimAlm, inicioJan, fimJan);
                         listaUtilizadores.add(r);
                         System.out.println("Restaurante criado");
@@ -136,15 +169,11 @@ public class Sistema implements Serializable {
     }
 
     public void criarCliente(String nome, String morada, String telefone, String email, String username, String password, String confirmarPass) {
-        Boolean mailUnico = emailUnico(email);
-        Boolean mailValido = validarEmail(email);
-        Boolean userUnico = usernameUnico(username);
-        Boolean passIgual = confirmarPass(password, confirmarPass);
 
-        if (mailUnico) {
-            if (mailValido) {
-                if (userUnico) {
-                    if (passIgual) {
+        if (emailUnico(email)) {
+            if (validarEmail(email)) {
+                if (usernameUnico(username)) {
+                    if (confirmarPass(password, confirmarPass)) {
                         Cliente c = new Cliente(nome, morada, telefone, email, username, password);
                         listaUtilizadores.add(c);
                         System.out.println("Cliente criado");
@@ -154,79 +183,68 @@ public class Sistema implements Serializable {
         } else System.out.println("Email ja esta registado");
     }
 
-    public void atualizarDadosCliente (String nome, String morada, String telefone, String email, String password, String novaPass,String confirmarNovaPass){
+    public void atualizarDadosCliente(String nome, String morada, String telefone, String email, String password, String novaPass, String confirmarNovaPass) {
 
-        Boolean mailUnico = emailUnico(email);
-        Boolean mailValido = validarEmail(email);
-        Boolean passIgual = confirmarPass(novaPass, confirmarNovaPass);
-
-        if (mailUnico) {
-            if (mailValido) {
-                    if (passIgual) {
-                        for (int i = 0; i < listaUtilizadores.size(); i++) {
-                            if (listaUtilizadores.get(i) instanceof Cliente && listaUtilizadores.get(i).equals(this)){//Funcionara???
-                                listaUtilizadores.get(i).setNome(nome);
-                            }
+        if (emailUnico(email)) {
+            if (validarEmail(email)) {
+                if (confirmarPass(novaPass, confirmarNovaPass)) {
+                    for (int i = 0; i < listaUtilizadores.size(); i++) {
+                        if (listaUtilizadores.get(i) instanceof Cliente && listaUtilizadores.get(i).equals(this)) {//Funcionara???
+                            listaUtilizadores.get(i).setNome(nome);
                         }
-                        //Cliente c = new Cliente(nome, morada, telefone, email, username, password);
-                        // NAO PODE ser new, tenho de atualizar o anterior!
-                        System.out.println("Dados atualizados");
-                    } else System.out.println("Passwords nao sao iguais");
+                    }
+                    //Cliente c = new Cliente(nome, morada, telefone, email, username, password);
+                    // NAO PODE ser new, tenho de atualizar o anterior!
+                    System.out.println("Dados atualizados");
+                } else System.out.println("Passwords nao sao iguais");
             } else System.out.println("Email nao é valido");
         } else System.out.println("Email ja esta registado");
     }
 
-    public void atualizarDadosRestaurante (String nome, String morada, String telefone, String email, String password,String novaPass, String confirmarNovaPass, int lotacaoEsplanada, int lotacaoFum, int lotacaoNFum, LocalTime inicioAlm, LocalTime fimAlm, LocalTime inicioJan, LocalTime fimJan){
-        Boolean mailUnico = emailUnico(email);
-        Boolean mailValido = validarEmail(email);
-        Boolean passIgual = confirmarPass(novaPass, confirmarNovaPass);
+    public void atualizarDadosRestaurante(String nome, String morada, String telefone, String email, String password, String novaPass, String confirmarNovaPass, int lotacaoEsplanada, int lotacaoFum, int lotacaoNFum, LocalTime inicioAlm, LocalTime fimAlm, LocalTime inicioJan, LocalTime fimJan) {
 
-        if (mailUnico) {
-            if (mailValido) {
-                    if (passIgual) {
-                      //  Restaurante r = new Restaurante(nome, morada, telefone, email, username, password, lotacaoEsplanada, lotacaoFum, lotacaoNFum, inicioAlm, fimAlm, inicioJan, fimJan);
-                        //listaUtilizadores.add(r);
-                        //Nao pode ser new Restaurante, porque nesse caso o ID ia ser alterado! Tenho de alterar o existente!!
-                        System.out.println("Restaurante criado");
-                    } else System.out.println("Passwords nao sao iguais");
+        if (emailUnico(email)) {
+            if (validarEmail(email)) {
+                if (confirmarPass(novaPass, confirmarNovaPass)) {
+                    //  Restaurante r = new Restaurante(nome, morada, telefone, email, username, password, lotacaoEsplanada, lotacaoFum, lotacaoNFum, inicioAlm, fimAlm, inicioJan, fimJan);
+                    //listaUtilizadores.add(r);
+                    //Nao pode ser new Restaurante, porque nesse caso o ID ia ser alterado! Tenho de alterar o existente!!
+                    System.out.println("Restaurante criado");
+                } else System.out.println("Passwords nao sao iguais");
             } else System.out.println("Email nao é valido");
         } else System.out.println("Email ja esta registado");
     }
 
-    public ArrayList<Restaurante> getListaRestaurantes() {
-        ArrayList<Restaurante> restaurantes = new ArrayList<>();
-        for (Utilizador u : listaUtilizadores) {
-            if (u instanceof Restaurante) {
-                restaurantes.add((Restaurante) u);
+    public void consultarRestaurantePorValores(int valorMin, int valorMax) {
+        if (validarMinMenorMax(valorMin, valorMax)){
+
+        }
+        else System.out.println("Valor minimo inserido nao é menor que o valor maximo");
+    }
+
+    public void consultarRestaurantePorHorario (){
+
+    }
+
+    public void consultarRestaurantePorLotacao (){
+    }
+
+    public void consultarRestaurantePorCidade (String cidade){
+
+        for (int i = 0; i < listaUtilizadores.size(); i++) {
+            if (listaUtilizadores.get(i) instanceof Restaurante && listaUtilizadores.get(i).getMorada().equalsIgnoreCase(cidade)){
+
             }
         }
-        return restaurantes;
     }
 
-    private Utilizador getUtilizarAtivo() {
 
-        return this.utilizarAtivo;
-    }
-
-    public Cliente getClienteAtivo() {
-        if (getUtilizarAtivo() instanceof Cliente) {
-            return (Cliente) getUtilizarAtivo();
+    public boolean validarMinMenorMax(int valorMin, int valorMax) {
+        boolean menor = false;
+        if (valorMin < valorMax) {
+            menor = true;
         }
-        return null;
-    }
-
-    public Restaurante getRestauranteAtivo() {
-        if (getUtilizarAtivo() instanceof Restaurante) {
-            return (Restaurante) getUtilizarAtivo();
-        }
-        return null;
-    }
-
-    public ArrayList<Utilizador> getListaUtilizadores() {
-        return listaUtilizadores;
-    }
-
-    public ArrayList<Comentario> getListaComentarios() {
-        return listaComentarios;
+        return menor;
     }
 }
+

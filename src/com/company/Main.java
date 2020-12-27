@@ -16,8 +16,8 @@ public class Main {
 
         // Frame f = new Frame();
 
-//        sistema.listaUtilizadores.add(new Restaurante("Tacho", "rua t", "4455555", "eee@hhh", "aaa", "ert", 20, 10, 20, 11, 30, 15, 00, 17, 00, 23, 00));
-//        sistema.listaUtilizadores.add(new Restaurante("Tacho2", "rua t", "4455555", "eee@hhh", "aaa", "ert", 20, 10, 20, 11, 30, 15, 00, 17, 00, 23, 00));
+       // sistema.listaUtilizadores.add(new Restaurante("Tacho", "rua t", "4455555", "aaaa@aa.pt", "res1", "pass",10,10,10, 1011, 10,10,10 ));
+      // sistema.listaUtilizadores.add(new Restaurante("Tacho2", "rua t", "4455555", "bbbbb.aa@aaa.com", "res2", "pass", 20, 10, 20, 11, 30, 15, 00, 17, 00, 23, 00));
 //        sistema.listaUtilizadores.add(new Restaurante("Tacho3", "rua t", "4455555", "eee@hhh", "aaa", "ert", 20, 10, 20, 11, 30, 15, 00, 17, 00, 23, 00));
         sistema.listaUtilizadores.add(new Cliente("Xico", "Rua", "966", "ze@a.pt", "Zezeze", "111111"));
         sistema.listaUtilizadores.add(new Cliente("Xico2", "Rua", "966", "ze@a.pt", "Zezeze", "111111"));
