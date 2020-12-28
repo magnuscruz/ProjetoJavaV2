@@ -17,8 +17,8 @@ public class Restaurante extends Utilizador implements Serializable {
     private double pontuacaoMedia;
     private Ementa ementa;
 
-    public Restaurante(String nome, String morada, String telefone, String email, String username, String password, int lotacaoEsplanada, int lotacaoFum, int lotacaoNFum, LocalTime inicioAlm, LocalTime fimAlm, LocalTime inicioJan, LocalTime fimJan) {
-        super(nome, morada, telefone, email, username,password);
+    public Restaurante(String nome, String morada, String telefone, String email, String username, String password,String confirmarPass, int lotacaoEsplanada, int lotacaoFum, int lotacaoNFum, LocalTime inicioAlm, LocalTime fimAlm, LocalTime inicioJan, LocalTime fimJan) {
+        super(nome, morada, telefone, email, username,password, confirmarPass);
         this.id = idRestaurante++;
         this.lotacaoEsplanada = lotacaoEsplanada;
         this.lotacaoFum = lotacaoFum;
@@ -123,10 +123,10 @@ public class Restaurante extends Utilizador implements Serializable {
     public double getPontuacaoMedia() {
         double count=0;
         double totalPontuacao = 0;
-        for (int i = 0; i < listaComentarios.size(); i++) {
-            if (listaComentarios.get(i).getRestaurante().equals(this)){
+        for (int i = 0; i < getListaComentarios().size(); i++) {
+            if (getListaComentarios().get(i).getRestaurante().equals(this)){
                 count++;
-                totalPontuacao += listaComentarios.get(i).getPontuacao();
+                totalPontuacao += getListaComentarios().get(i).getPontuacao();
             }
         }
         return pontuacaoMedia = totalPontuacao/count;

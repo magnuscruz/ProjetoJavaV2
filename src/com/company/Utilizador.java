@@ -18,17 +18,19 @@ public class Utilizador implements Serializable {
     protected String email;
     protected String username;
     protected String password;
+    protected String confirmarPass;
     protected boolean status;
 
     Utilizador(){ }
 
-    public Utilizador(String nome, String morada, String telefone, String email, String username, String password) {
+    public Utilizador(String nome, String morada, String telefone, String email, String username, String password,String confirmarPass) {
         this.nome = nome;
         this.morada = morada;
         this.telefone = telefone;
         this.email = email;
         this.username = username;
         this.password = password;
+        this.confirmarPass = confirmarPass;
     }
 
     @Override

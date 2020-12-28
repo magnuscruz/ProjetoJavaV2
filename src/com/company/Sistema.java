@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
 public class Sistema implements Serializable {
     private ArrayList<Utilizador> listaUtilizadores = new ArrayList<>();
     private ArrayList<Comentario> listaComentarios = new ArrayList<>();
-    pri Utilizador utilizarAtivo;
+    private Utilizador utilizarAtivo;
 
     public ArrayList<Restaurante> getListaRestaurantes() {
         ArrayList<Restaurante> restaurantes = new ArrayList<>();
@@ -162,7 +162,7 @@ public class Sistema implements Serializable {
             if (validarEmail(email)) {
                 if (usernameUnico(username)) {
                     if (confirmarPass(password, confirmarPass)) {
-                        Restaurante r = new Restaurante(nome, morada, telefone, email, username, password, lotacaoEsplanada, lotacaoFum, lotacaoNFum, inicioAlm, fimAlm, inicioJan, fimJan);
+                        Restaurante r = new Restaurante(nome, morada, telefone, email, username, password, confirmarPass,lotacaoEsplanada, lotacaoFum, lotacaoNFum, inicioAlm, fimAlm, inicioJan, fimJan);
                         listaUtilizadores.add(r);
                         System.out.println("Restaurante criado");
                     } else System.out.println("Passwords nao sao iguais");
@@ -177,7 +177,7 @@ public class Sistema implements Serializable {
             if (validarEmail(email)) {
                 if (usernameUnico(username)) {
                     if (confirmarPass(password, confirmarPass)) {
-                        Cliente c = new Cliente(nome, morada, telefone, email, username, password);
+                        Cliente c = new Cliente(nome, morada, telefone, email, username, password, confirmarPass);
                         listaUtilizadores.add(c);
                         System.out.println("Cliente criado");
                     } else System.out.println("Passwords nao sao iguais");
