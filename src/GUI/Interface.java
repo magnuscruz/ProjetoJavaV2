@@ -702,3 +702,164 @@ public class Interface extends JFrame {
         });
     }
 
+    ///////////////////MENU RESTAURANTE - ATUALIZAR DADOS /////////////////////////
+    private void construirPanelMRestAtDados (Interface janela, Container contentor, JPanel loginSuperPanel, JPanel mRestAtDadosSuperPanel) {
+
+
+        /////SUBPAINEIS//////
+        JPanel norteMRestAtDadosSubPanel = new JPanel();
+        norteMRestAtDadosSubPanel.setLayout(new BorderLayout());
+        JPanel centroMRestAtDadosSubPanel = new JPanel();
+        JPanel sulMRestAtDadosSubPanel = new JPanel();
+
+        JLabel atDadosRestLabel = new JLabel("ATUALIZAR DADOS");
+        JLabel nomeAtDadosRestLabel = new JLabel("Nome");
+        JLabel emailAtDadosRestLabel = new JLabel("E-mail");
+        JLabel moradaAtDadosRestLabel = new JLabel("Morada");
+        JLabel telemovelAtDadosRestLabel = new JLabel("Telemóvel");
+///////////////////////
+        JLabel lotacaoAtDadosRestLabel = new JLabel("Lotação:");
+        JLabel esplanadaAtDadosRestLabel = new JLabel("Esplanada");
+        JLabel zonaInteriorAtDadosRestLabel = new JLabel("Zona Interior:");
+        JLabel zonaInteriorNFumAtDadosRestLabel = new JLabel("Ñ Fumadores");
+        JLabel zonaInteriorFumAtDadosRestLabel = new JLabel("Fumadores");
+        JLabel horariosAtDadosRestLabel = new JLabel("Horários:");
+        JLabel horariosAlmocoAtDadosRestLabel = new JLabel("Almoço:");
+        JLabel horarioAlmocoInicioAtDadosRestLabel = new JLabel("Início");
+        JLabel horarioAlmocoFimAtDadosRestLabel = new JLabel("Fim");
+        JLabel horariosJantarAtDadosRestLabel = new JLabel("Jantar:");
+        JLabel horarioJantarInicioAtDadosRestLabel = new JLabel("Início");
+        JLabel horarioJantarFimAtDadosRestLabel = new JLabel("Fim");
+        JLabel usernameAtDadosRestLabel = new JLabel("Username");
+        JLabel passwordAtDadosRestLabel = new JLabel("Password: ");
+        JLabel confirmarPasswordAtDadosRestLabel = new JLabel("Confirmar password: ");
+
+        JTextField nomeAtDadosRestText = new JTextField(18);
+        nomeAtDadosRestText.setBorder(BorderFactory.createEmptyBorder(3, 3, 3, 3));
+        JTextField emailAtDadosRestText = new JTextField(18);
+        emailAtDadosRestText.setBorder(BorderFactory.createEmptyBorder(3, 3, 3, 3));
+        JTextField moradaAtDadosRestText = new JTextField(15);
+        moradaAtDadosRestText.setBorder(BorderFactory.createEmptyBorder(3, 3, 3, 3));
+        JTextField telemovelAtDadosRestText = new JTextField(5);
+        telemovelAtDadosRestText.setBorder(BorderFactory.createEmptyBorder(3, 3, 3, 3));
+
+        //JTextField lotacaoAtDadosRestText = new JTextField(5);
+        JTextField esplanadaAtDadosRestText = new JTextField(3);
+        esplanadaAtDadosRestText.setBorder(BorderFactory.createEmptyBorder(3, 3, 3, 3));
+        JTextField zonaInteriorNFumAtDadosRestText = new JTextField(3);
+        zonaInteriorNFumAtDadosRestText.setBorder(BorderFactory.createEmptyBorder(3, 3, 3, 3));
+        JTextField zonaInteriorFumAtDadosRestText = new JTextField(3);
+        zonaInteriorFumAtDadosRestText.setBorder(BorderFactory.createEmptyBorder(3, 3, 3, 3));
+        JTextField horarioAlmocoInicioAtDadosRestText = new JTextField(3);
+        horarioAlmocoInicioAtDadosRestText.setBorder(BorderFactory.createEmptyBorder(3, 3, 3, 3));
+        JTextField horarioAlmocoFimAtDadosRestText = new JTextField(3);
+        horarioAlmocoFimAtDadosRestText.setBorder(BorderFactory.createEmptyBorder(3, 3, 3, 3));
+        JTextField horarioJantarInicioAtDadosRestText = new JTextField(3);
+        horarioJantarInicioAtDadosRestText.setBorder(BorderFactory.createEmptyBorder(3, 3, 3, 3));
+        JTextField horarioJantarFimAtDadosRestText = new JTextField(3);
+        horarioJantarFimAtDadosRestText.setBorder(BorderFactory.createEmptyBorder(3, 3, 3, 3));
+        ///////
+        JTextField usernameAtDadosRestText = new JTextField(20);
+        usernameAtDadosRestText.setBorder(BorderFactory.createEmptyBorder(3, 3, 3, 3));
+
+        JPasswordField passwordAtDadosRestField = new JPasswordField(15);
+        passwordAtDadosRestField.setBorder(BorderFactory.createEmptyBorder(3, 3, 3, 3));
+        JPasswordField confirmarPasswordAtDadosRestField = new JPasswordField(15);
+        confirmarPasswordAtDadosRestField.setBorder(BorderFactory.createEmptyBorder(3, 3, 3, 3));
+
+        JButton ptEnAtDadosRestButton = new JButton("PT/EN");
+        JButton voltarMenuRestAtDadosRestButton = new JButton("MENU RESTAURANTE");
+        JButton atDadosRestButton = new JButton("ATUALIZAR");
+
+        mRestAtDadosSuperPanel.add(norteMRestAtDadosSubPanel, "North");
+        mRestAtDadosSuperPanel.add(centroMRestAtDadosSubPanel, "Center");
+        mRestAtDadosSuperPanel.add(sulMRestAtDadosSubPanel, "South");
+
+        JPanel norteAtDadosRestSSPanel = new JPanel();
+        norteAtDadosRestSSPanel.setLayout(new FlowLayout());
+        norteAtDadosRestSSPanel.add(atDadosRestLabel);
+        norteMRestAtDadosSubPanel.add(norteAtDadosRestSSPanel, BorderLayout.CENTER);
+        norteMRestAtDadosSubPanel.add(ptEnAtDadosRestButton, BorderLayout.EAST);
+
+        JPanel centroAtDadosRestSSPanelForm1 = new JPanel();
+        centroAtDadosRestSSPanelForm1.setLayout(new FlowLayout());
+        centroMRestAtDadosSubPanel.add(centroAtDadosRestSSPanelForm1);
+
+        JPanel centroAtDadosRestSSPanelForm2 = new JPanel();
+        centroAtDadosRestSSPanelForm2.setLayout(new FlowLayout());
+        centroMRestAtDadosSubPanel.add(centroAtDadosRestSSPanelForm2, BorderLayout.CENTER);
+
+        JPanel centroAtDadosRestSSPanelForm3 = new JPanel();
+        //centroAtDadosRestSSPanelForm3.setLayout(new FlowLayout());
+        centroMRestAtDadosSubPanel.add(centroAtDadosRestSSPanelForm3, BorderLayout.CENTER);
+
+        JPanel centroAtDadosRestSSPanelForm4 = new JPanel();
+        centroAtDadosRestSSPanelForm4.setLayout(new FlowLayout());
+        centroMRestAtDadosSubPanel.add(centroAtDadosRestSSPanelForm4, BorderLayout.CENTER);
+
+        JPanel centroAtDadosRestSSPanelForm5 = new JPanel();
+        centroAtDadosRestSSPanelForm5.setLayout(new FlowLayout());
+        centroMRestAtDadosSubPanel.add(centroAtDadosRestSSPanelForm5, BorderLayout.CENTER);
+
+        JPanel centroAtDadosRestSSPanelForm6 = new JPanel();
+        centroAtDadosRestSSPanelForm6.setLayout(new FlowLayout());
+        centroMRestAtDadosSubPanel.add(centroAtDadosRestSSPanelForm6, BorderLayout.CENTER);
+
+        centroAtDadosRestSSPanelForm1.add(nomeAtDadosRestLabel);
+        centroAtDadosRestSSPanelForm1.add(nomeAtDadosRestText);
+        centroAtDadosRestSSPanelForm1.add(emailAtDadosRestLabel);
+        centroAtDadosRestSSPanelForm1.add(emailAtDadosRestText);
+
+        centroAtDadosRestSSPanelForm2.add(moradaAtDadosRestLabel);
+        centroAtDadosRestSSPanelForm2.add(moradaAtDadosRestText);
+        centroAtDadosRestSSPanelForm2.add(telemovelAtDadosRestLabel);
+        centroAtDadosRestSSPanelForm2.add(telemovelAtDadosRestText);
+
+        centroAtDadosRestSSPanelForm3.add(lotacaoAtDadosRestLabel);
+        centroAtDadosRestSSPanelForm3.add(esplanadaAtDadosRestLabel);
+        centroAtDadosRestSSPanelForm3.add(esplanadaAtDadosRestText);
+        centroAtDadosRestSSPanelForm3.add(zonaInteriorAtDadosRestLabel);
+        centroAtDadosRestSSPanelForm3.add(zonaInteriorNFumAtDadosRestLabel);
+        centroAtDadosRestSSPanelForm3.add(zonaInteriorNFumAtDadosRestText);
+        centroAtDadosRestSSPanelForm3.add(zonaInteriorFumAtDadosRestLabel);
+        centroAtDadosRestSSPanelForm3.add(zonaInteriorFumAtDadosRestText);
+
+
+        centroAtDadosRestSSPanelForm4.add(horariosAtDadosRestLabel);
+        centroAtDadosRestSSPanelForm4.add(horariosAlmocoAtDadosRestLabel);
+        centroAtDadosRestSSPanelForm4.add(horarioAlmocoInicioAtDadosRestLabel);
+        centroAtDadosRestSSPanelForm4.add(horarioAlmocoInicioAtDadosRestText);
+        centroAtDadosRestSSPanelForm4.add(horarioAlmocoFimAtDadosRestLabel);
+        centroAtDadosRestSSPanelForm4.add(horarioAlmocoFimAtDadosRestText);
+        centroAtDadosRestSSPanelForm4.add(horariosJantarAtDadosRestLabel);
+        centroAtDadosRestSSPanelForm4.add(horarioJantarInicioAtDadosRestLabel);
+        centroAtDadosRestSSPanelForm4.add(horarioJantarInicioAtDadosRestText);
+        centroAtDadosRestSSPanelForm4.add(horarioJantarFimAtDadosRestLabel);
+        centroAtDadosRestSSPanelForm4.add(horarioJantarFimAtDadosRestText);
+
+        centroAtDadosRestSSPanelForm5.add(usernameAtDadosRestLabel);
+        centroAtDadosRestSSPanelForm5.add(usernameAtDadosRestText);
+
+        centroAtDadosRestSSPanelForm6.add(passwordAtDadosRestLabel);
+        centroAtDadosRestSSPanelForm6.add(passwordAtDadosRestField);
+        centroAtDadosRestSSPanelForm6.add(confirmarPasswordAtDadosRestLabel);
+        centroAtDadosRestSSPanelForm6.add(confirmarPasswordAtDadosRestField);
+
+        sulMRestAtDadosSubPanel.setLayout(new FlowLayout());
+        sulMRestAtDadosSubPanel.add(voltarMenuRestAtDadosRestButton);
+        sulMRestAtDadosSubPanel.add(atDadosRestButton);
+
+        voltarMenuRestAtDadosRestButton.addActionListener(e -> {
+            CardLayout cl = (CardLayout) contentor.getLayout();
+            cl.show(contentor, MENURESTAURANTE_CARD);
+            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+        });
+
+        atDadosRestButton.addActionListener(a -> {
+            CardLayout cl = (CardLayout) contentor.getLayout();
+            cl.show(contentor, MENURESTAURANTE_CARD);
+            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+
+        });
+
+    }
