@@ -863,3 +863,67 @@ public class Interface extends JFrame {
         });
 
     }
+
+    //////MENU RESTAURANTE – RESERVAS//////////
+    private void construirPanelMRestReservas (Interface janela, Container contentor, JPanel loginSuperPanel, JPanel mRestReservasSuperPanel) {
+
+
+        /////SUBPAINEIS//////
+        JPanel norteMRestReservasSubPanel = new JPanel();
+        norteMRestReservasSubPanel.setLayout(new BorderLayout());
+        JPanel centroMRestReservasSubPanel = new JPanel();
+        JPanel sulMRestReservasSubPanel = new JPanel();
+
+        JLabel mRestReservasLabel = new JLabel("RESERVAS");
+        JLabel filtrarMRestReservasLabel = new JLabel("Filtrar Reservas");
+
+        JComboBox tiposFiltrosMRestReservasLabel = new JComboBox();
+        tiposFiltrosMRestReservasLabel.addItem("Data");
+        tiposFiltrosMRestReservasLabel.addItem("Tipo: Presencial");
+        tiposFiltrosMRestReservasLabel.addItem("Tipo: Take-Away");
+        tiposFiltrosMRestReservasLabel.addItem("Valores");
+        tiposFiltrosMRestReservasLabel.addItem("Cliente");
+
+
+        JButton ptEnMRestReservasButton = new JButton("PT/EN");
+        JButton voltarMRestReservasButton = new JButton("MENU RESTAURANTE");
+        JButton okMRestReservasButton = new JButton("OK");
+
+        mRestReservasSuperPanel.add(norteMRestReservasSubPanel, "North");
+        mRestReservasSuperPanel.add(centroMRestReservasSubPanel, "Center");
+        mRestReservasSuperPanel.add(sulMRestReservasSubPanel, "South");
+
+        JPanel norteMRestReservasSSPanel = new JPanel();
+        norteMRestReservasSSPanel.setLayout(new FlowLayout());
+        norteMRestReservasSSPanel.add(mRestReservasLabel);
+        norteMRestReservasSubPanel.add(norteMRestReservasSSPanel, BorderLayout.CENTER);
+        norteMRestReservasSubPanel.add(ptEnMRestReservasButton, BorderLayout.EAST);
+
+
+        JPanel centroMRestReservasSSPanel = new JPanel();
+        centroMRestReservasSSPanel.setLayout(new GridLayout(12, 2));
+        centroMRestReservasSubPanel.add(centroMRestReservasSSPanel);
+        centroMRestReservasSSPanel.add(filtrarMRestReservasLabel);
+        centroMRestReservasSSPanel.add(tiposFiltrosMRestReservasLabel);
+
+        sulMRestReservasSubPanel.setLayout(new FlowLayout());
+        sulMRestReservasSubPanel.add(voltarMRestReservasButton);
+        sulMRestReservasSubPanel.add(okMRestReservasButton);
+
+        voltarMRestReservasButton.addActionListener(a -> {
+            CardLayout cl = (CardLayout) contentor.getLayout();
+            cl.show(contentor, MENURESTAURANTE_CARD);
+            this.setSize(500, 300);
+
+        });
+
+        okMRestReservasButton.addActionListener(e -> {
+            CardLayout cl = (CardLayout) contentor.getLayout();
+            cl.show(contentor, LOGIN_CARD);
+            this.setSize(500, 180);
+        });
+
+
+        this.setVisible(true);
+    }
+}
