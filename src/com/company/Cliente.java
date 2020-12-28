@@ -14,7 +14,6 @@ public class Cliente extends Utilizador implements Serializable {
         super(nome, morada, telefone, email, username, password);
         this.id = idCliente++;
         this.status = true;
-
     }
 
     public boolean restauranteAberto(int hora, int minuto) {
@@ -26,12 +25,12 @@ public class Cliente extends Utilizador implements Serializable {
         LocalTime fechoJan = restaurante.getFimJan();
         if (horaEscolhida.isBefore(aberturaAlm) && horaEscolhida.isAfter(fechoAlm) || horaEscolhida.isBefore(aberturaJan) && horaEscolhida.isAfter(fechoJan)) {
             aberto = true;
-        }
+        } else System.out.println("Fechado as: "+ hora + "/" + minuto);
         return aberto;
     }
 
     public ArrayList<Reserva> getListaReservas() {// cada cliente tem as suas proprias reservas
-        return this.listaReservas;
+        return this.getListaReservas();
     }
 
     public String criarReservaPresencial(Restaurante r, GregorianCalendar data, LocalTime hora, int zona, int numLugares) {

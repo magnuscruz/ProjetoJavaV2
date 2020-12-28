@@ -61,7 +61,7 @@ public class Restaurante extends Utilizador implements Serializable {
     }
 
     public ArrayList<Reserva> getListaReservas(){
-        return this.listaReservas;
+        return getListaReservas();
     }
 
     public int getLotacaoEsplanada() {
@@ -131,6 +131,8 @@ public class Restaurante extends Utilizador implements Serializable {
         }
         return pontuacaoMedia = totalPontuacao/count;
     }
+
+
 
 
 }

@@ -28,6 +28,8 @@ public class Main {
         sistema.listaUtilizadores.add(new Cliente("cli3", "RuaC3", "963", "mailR3@gmail.com", "userC3", "pass"));
         sistema.criarCliente("Adriano", "Sesamo", "966", "adriano_t@out.com", "adriano", "pass", "pass");
 
+
+
         System.out.println("LISTA UTILIZADORES");
         System.out.println(sistema.listaUtilizadores);
         System.out.println("---------------------");
