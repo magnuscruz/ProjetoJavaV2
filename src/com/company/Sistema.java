@@ -9,9 +9,9 @@ import java.util.regex.Pattern;
 
 
 public class Sistema implements Serializable {
-    protected ArrayList<Utilizador> listaUtilizadores = new ArrayList<>();
-    protected ArrayList<Comentario> listaComentarios = new ArrayList<>();
-    protected Utilizador utilizarAtivo;
+    private ArrayList<Utilizador> listaUtilizadores = new ArrayList<>();
+    private ArrayList<Comentario> listaComentarios = new ArrayList<>();
+    pri Utilizador utilizarAtivo;
 
     public ArrayList<Restaurante> getListaRestaurantes() {
         ArrayList<Restaurante> restaurantes = new ArrayList<>();
@@ -24,9 +24,9 @@ public class Sistema implements Serializable {
     }
 
     public void adicionarComentarioCliente(Cliente cl, String opiniao, double pontuacao, Restaurante restaurante){
-        Comentario coment = cl.criarComentario(opiniao, pontuacao, restaurante);
-        if (coment!=null){
-            listaComentarios.add(coment);
+        Comentario comentario = cl.criarComentario(opiniao, pontuacao, restaurante);
+        if (comentario!=null){
+            listaComentarios.add(comentario);
         }
     }
 
@@ -169,7 +169,6 @@ public class Sistema implements Serializable {
                 } else System.out.println("Username indisponivel");
             } else System.out.println("Email nao é valido");
         } else System.out.println("Email ja esta registado");
-
     }
 
     public void criarCliente(String nome, String morada, String telefone, String email, String username, String password, String confirmarPass) {

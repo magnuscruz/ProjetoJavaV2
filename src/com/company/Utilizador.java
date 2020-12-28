@@ -8,8 +8,8 @@ public class Utilizador implements Serializable {
     Restaurante restaurante;
     Cliente cliente;
 
-    protected ArrayList<Comentario> listaComentarios = new ArrayList<>();
-    protected ArrayList<Reserva> listaReservas = new ArrayList<>();// cada utilizador vai ter a sua lista.
+    private ArrayList<Comentario> listaComentarios = new ArrayList<>();
+    private ArrayList<Reserva> listaReservas = new ArrayList<>();// cada utilizador vai ter a sua lista.
 
     protected int id;
     protected String nome;
