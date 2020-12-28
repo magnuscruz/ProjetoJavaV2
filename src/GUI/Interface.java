@@ -566,3 +566,75 @@ public class Interface extends JFrame {
 
         });
     }
+
+    ///////////MENU RESTAURANTE - ADICIONAR PRATO//////////////////////
+    private void construirPanelMRestAdPrato(Interface janela, Container contentor, JPanel loginSuperPanel, JPanel mRestAdPratoSuperPanel) {
+
+
+        /////SUBPAINEIS//////
+        JPanel norteAdPratoSubPanel = new JPanel();
+        norteAdPratoSubPanel.setLayout(new BorderLayout());
+        JPanel centroAdPratoSubPanel = new JPanel();
+        JPanel sulAdPratoSubPanel = new JPanel();
+
+        JLabel adPratoLabel = new JLabel("ADICIONAR PRATO");
+        JLabel nomePratoLabel = new JLabel("Nome Prato");
+        JLabel descricaoPratoLabel = new JLabel("Descrição");
+        JLabel precoPratoLabel = new JLabel("Preço");
+
+        JTextField nomePratoText = new JTextField(20);
+        JTextField descricaoPratoText = new JTextField(20);
+        JTextField precoPratoText = new JTextField(10);
+
+
+        JButton ptEnAdPratoButton = new JButton("PT/EN");
+        JButton voltarMenuRestAdPratoButton = new JButton("MENU RESTAURANTE");
+        JButton confirmarAdPratoButton = new JButton("CONFIRMAR");
+
+
+        JComboBox tipoPratoAd = new JComboBox();
+        tipoPratoAd.addItem("Carta");
+        tipoPratoAd.addItem("Prato do dia");
+
+
+        mRestAdPratoSuperPanel.add(norteAdPratoSubPanel, "North");
+        mRestAdPratoSuperPanel.add(centroAdPratoSubPanel, "Center");
+        mRestAdPratoSuperPanel.add(sulAdPratoSubPanel, "South");
+
+        JPanel norteAdPratoSSPanel = new JPanel();
+        norteAdPratoSSPanel.setLayout(new FlowLayout());
+        norteAdPratoSSPanel.add(adPratoLabel);
+        norteAdPratoSubPanel.add(norteAdPratoSSPanel, BorderLayout.CENTER);
+        norteAdPratoSubPanel.add(ptEnAdPratoButton, BorderLayout.EAST);
+
+        JPanel centroAdPratoSSPanelForm = new JPanel();
+        centroAdPratoSSPanelForm.setLayout(new GridLayout(5, 2));
+        centroAdPratoSubPanel.add(centroAdPratoSSPanelForm);
+        centroAdPratoSubPanel.add(tipoPratoAd);
+        centroAdPratoSSPanelForm.add(nomePratoLabel);
+        centroAdPratoSSPanelForm.add(nomePratoText);
+        centroAdPratoSSPanelForm.add(descricaoPratoLabel);
+        centroAdPratoSSPanelForm.add(descricaoPratoText);
+        centroAdPratoSSPanelForm.add(precoPratoLabel);
+        centroAdPratoSSPanelForm.add(precoPratoText);
+
+        sulAdPratoSubPanel.setLayout(new FlowLayout());
+        sulAdPratoSubPanel.add(voltarMenuRestAdPratoButton);
+        sulAdPratoSubPanel.add(confirmarAdPratoButton);
+
+
+        voltarMenuRestAdPratoButton.addActionListener(a -> {
+            CardLayout cl = (CardLayout) contentor.getLayout();
+            cl.show(contentor, MENURESTAURANTE_CARD);
+            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+
+        });
+
+        confirmarAdPratoButton.addActionListener(a -> {
+            CardLayout cl = (CardLayout) contentor.getLayout();
+            cl.show(contentor, MENURESTAURANTE_CARD);
+            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+
+        });
+
+    }
