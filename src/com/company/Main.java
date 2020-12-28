@@ -24,6 +24,7 @@ public class Main {
         sistema.listaUtilizadores.add(new Cliente("cli1", "RuaC1", "961", "mailR1@gmail.com", "userC1", "pass"));
         sistema.listaUtilizadores.add(new Cliente("cli2", "RuaC2", "962", "mailR2@gmail.com", "userC2", "pass"));
         sistema.listaUtilizadores.add(new Cliente("cli3", "RuaC3", "963", "mailR3@gmail.com", "userC3", "pass"));
+        sistema.criarCliente("Adriano", "Sesamo", "966", "adriano_t@out.com", "adriano", "pass", "pass");
 
         System.out.println("LISTA UTILIZADORES");
         System.out.println(sistema.listaUtilizadores);
@@ -32,6 +33,7 @@ public class Main {
         System.out.println("LISTA UTILIZADORES C STATUS TRUE");
         sistema.listaUtilizadores.get(1).setStatus(false);
         sistema.listaUtilizadores.get(4).setStatus(false);
+
 //A forma de imprimir todos, excepto o que teem status false, sem ser com ciclo for??
         for (int i = 0; i < sistema.listaUtilizadores.size(); i++) {
             if (sistema.listaUtilizadores.get(i).getStatus()==true){
@@ -40,12 +42,12 @@ public class Main {
         }
         System.out.println("--------------------------------");
 
-        System.out.println("LOGIN");
-        String resultado = sistema.login2("userR1","pass");
-        System.out.println(sistema.login2("userR1","pass"));
-        System.out.println("--------------------");
-
-        System.out.println("CRIAR RESERVAS");
+        ///NAO FUNCIONA O CRIAR RESERVA///
+//
+//        System.out.println("CRIAR RESERVAS");
+//        sistema.getClienteAtivo().criarReservaPresencial(new Presencial(sistema.getClienteAtivo(),(Restaurante) sistema.listaUtilizadores.get(1),new GregorianCalendar(2020,10,10),LocalTime.of(21,00),1,5));
+//        System.out.println(sistema.getClienteAtivo().listaReservas);
+//        System.out.println("---------------------");
 
 
         System.out.println("LISTACOMENTARIOS");
