@@ -10,8 +10,8 @@ public class Cliente extends Utilizador implements Serializable {
     private static int idCliente = 5000;
     Restaurante restaurante;
 
-    public Cliente(String nome, String morada, String telefone, String email, String username, String password) {
-        super(nome, morada, telefone, email, username, password);
+    public Cliente(String nome, String morada, String telefone, String email, String username, String password,String confirmarPass) {
+        super(nome, morada, telefone, email, username, password, confirmarPass);
         this.id = idCliente++;
         this.status = true;
     }
@@ -37,8 +37,8 @@ public class Cliente extends Utilizador implements Serializable {
         // verificar se restaurante esta aberto senão return false
         int ano = data.get(Calendar.YEAR);
         Presencial p = new Presencial(this, r, data, hora, zona, numLugares);
-        this.listaReservas.add(p);//adicionamos a lista de reservas do Cliente em especifico
-        r.listaReservas.add(p);// adicionamos a lista de reservas do Restaurante em especifico
+        this.getListaReservas().add(p);//adicionamos a lista de reservas do Cliente em especifico
+        r.getListaReservas().add(p);// adicionamos a lista de reservas do Restaurante em especifico
         // Atencao! Quando criar um metodo para apagar reserva, tenho de apagar nos dois sitios!
         //Normalmente nao se apagam, deve-se colocar um boolean e dizer que ja nao esta ativa.
         System.out.println("Criar reserva presencial: " + data + hora);
@@ -48,22 +48,22 @@ public class Cliente extends Utilizador implements Serializable {
     public Comentario criarComentario(String opiniao, double pontuacao, Restaurante restaurante) {
 
         LocalTime diaHoje = LocalTime.now();
-        for (int i = 0; i < this.listaReservas.size(); i++) {
-            if (this.listaReservas.get(i).getData().before(diaHoje))//So quero as reservas com data anterior ao dia de hoje, assim nao permite
+        for (int i = 0; i < this.getListaReservas().size(); i++) {
+            if (this.getListaReservas().get(i).getData().before(diaHoje))//So quero as reservas com data anterior ao dia de hoje, assim nao permite
                 // comentar reservas que ainda nao aconteceram
-                this.listaReservas.get(i).getRestaurante();
+                this.getListaReservas().get(i).getRestaurante();
             // Se tiver mais de um, tem de escolher que restaurante quer
             Comentario comentario = new Comentario(opiniao, pontuacao, this, restaurante);
-            listaComentarios.add(comentario);
+            getListaComentarios().add(comentario);
             return comentario;
         }
         return null;
     }
 
     public void getListaComentariosClienteX(String nomeCliente) {
-        for (int i = 0; i < listaComentarios.size(); i++) {
-            if (nomeCliente.equalsIgnoreCase(listaComentarios.get(i).getCliente().getNome())) {
-                listaComentarios.get(i);
+        for (int i = 0; i < getListaComentarios().size(); i++) {
+            if (nomeCliente.equalsIgnoreCase(getListaComentarios().get(i).getCliente().getNome())) {
+                getListaComentarios().get(i);
             }
         }
     }
@@ -93,12 +93,12 @@ public class Cliente extends Utilizador implements Serializable {
 
     public void criarReservaPresencial(Cliente cliente, Restaurante restaurante, GregorianCalendar data, LocalTime horario, int numeroLugares, int zona) {
         Presencial p = new Presencial(cliente, restaurante, data, horario, numeroLugares, zona);
-        listaReservas.add(p);
+        getListaReservas().add(p);
     }
 
     public void criarReservaTakeAway (Cliente cliente, Restaurante restaurante, GregorianCalendar data, LocalTime horario, int quantidade){
         TakeAway t = new TakeAway(cliente, restaurante,data,horario,quantidade );
-        listaReservas.add(t);
+        getListaReservas().add(t);
     }
 
     public void cancelarReserva (){
