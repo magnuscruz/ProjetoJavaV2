@@ -2,6 +2,7 @@ package com.company;
 
 import GUI.Frame;
 
+
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -16,22 +17,50 @@ public class Main {
 
         // Frame f = new Frame();
 
-        //sistema.listaUtilizadores.add(new Restaurante("Tacho", "rua t", "4455555", "aaaa@aa.pt", "res1", "pass",10,10,10, 1011, 10,10,10 ));
-      // sistema.listaUtilizadores.add(new Restaurante("Tacho2", "rua t", "4455555", "bbbbb.aa@aaa.com", "res2", "pass", 20, 10, 20, 11, 30, 15, 00, 17, 00, 23, 00));
-//        sistema.listaUtilizadores.add(new Restaurante("Tacho3", "rua t", "4455555", "eee@hhh", "aaa", "ert", 20, 10, 20, 11, 30, 15, 00, 17, 00, 23, 00));
-        sistema.listaUtilizadores.add(new Cliente("Xico", "Rua", "966", "ze@a.pt", "Zezeze", "111111"));
-        sistema.listaUtilizadores.add(new Cliente("Xico2", "Rua", "966", "ze@a.pt", "Zezeze", "111111"));
-        sistema.listaUtilizadores.add(new Cliente("Xico3", "Rua", "966", "ze@a.pt", "Zezeze", "111111"));
-       // sistema.utilizador.listaComentarios.add(new Comentario("Excelente", 4, sistema.listaUtilizadores.get(3).getNome(), sistema.listaUtilizadores.get(0).getNome()));
-        sistema.criarCliente("Ze", "Rua", "9999", "zeca@gmail.com", "CAO", "1q2w", "kkkk");
-        System.out.println("FIM");
-        String resultado = sistema.loginTeste("cliente","xpto");
+        sistema.listaUtilizadores.add(new Restaurante("Rest1", "ruaR1", "921", "mail1@a.pt", "userR1", "pass",10,10,10, LocalTime.of(11,30),LocalTime.of(15,00),LocalTime.of(18,30), LocalTime.of(22,00) ));
+        sistema.listaUtilizadores.add(new Restaurante("Rest2", "ruaR2", "912", "mail2@a.pt", "userR2", "pass",20,20,20, LocalTime.of(11,30),LocalTime.of(15,00),LocalTime.of(18,30), LocalTime.of(22,00) ));
+        sistema.listaUtilizadores.add(new Restaurante("Rest3", "ruaR3", "9133", "mail3@aa.com", "userR3", "pass",30,30,30, LocalTime.of(11,30),LocalTime.of(15,00),LocalTime.of(18,30), LocalTime.of(22,00) ));
 
-        if (resultado.length()==0){
-            // criar janel de login com sucesso
-        } else {
-            // criar janela com mensagem de erro
+        sistema.listaUtilizadores.add(new Cliente("cli1", "RuaC1", "961", "mailR1@gmail.com", "userC1", "pass"));
+        sistema.listaUtilizadores.add(new Cliente("cli2", "RuaC2", "962", "mailR2@gmail.com", "userC2", "pass"));
+        sistema.listaUtilizadores.add(new Cliente("cli3", "RuaC3", "963", "mailR3@gmail.com", "userC3", "pass"));
+
+        System.out.println("LISTA UTILIZADORES");
+        System.out.println(sistema.listaUtilizadores);
+        System.out.println("---------------------");
+
+        System.out.println("LISTA UTILIZADORES C STATUS TRUE");
+
+        System.out.println("--------------------------------");
+
+        System.out.println("LOGIN");
+        String resultado = sistema.login2("userR1","pass");
+        System.out.println(sistema.login2("userR1","pass"));
+        System.out.println("--------------------");
+
+        System.out.println("CRIAR RESERVAS");
+
+
+        System.out.println("LISTACOMENTARIOS");
+        sistema.listaComentarios.add(new Comentario("Excelente", 4, (Cliente) sistema.listaUtilizadores.get(3),(Restaurante) sistema.listaUtilizadores.get(0)));
+        sistema.listaComentarios.add(new Comentario("Horrivel", 4, (Cliente) sistema.listaUtilizadores.get(3),(Restaurante) sistema.listaUtilizadores.get(2)));
+        System.out.println(sistema.listaComentarios);
+        System.out.println("----------------------");
+
+
+        //Neste ciclo, só vai buscar os comentarios de restaurante X, esta é feito à PEDREIRO!
+        for (int i = 0; i < sistema.listaComentarios.size(); i++) {
+            if (sistema.listaComentarios.get(i).getRestaurante().equals(sistema.listaUtilizadores.get(0))){
+                System.out.println(sistema.listaComentarios.get(i));
+            }
         }
+
+        //ESTA PARTE É PARA COLOCAR NA INTERFACE
+//        if (resultado.length()==0){
+//            // criar janel de login com sucesso
+//        } else {
+//            // criar janela com mensagem de erro
+//        }
 
 //       Utilizador u = sistema.listaUtilizadores.get(3);
 //               if (u instanceof Cliente) {
@@ -40,6 +69,8 @@ public class Main {
 //                   System.out.println("nao é um cliente");
 //               }
 
+
+        System.out.println("LISTA RESERVAS");
         if (sistema.getClienteAtivo()!=null){
          ArrayList<Reserva> listaReservaC = sistema.getClienteAtivo().getListaReservas();
 
@@ -64,15 +95,6 @@ public class Main {
 //       if ( sistema.cliente.restauranteAberto(16,00)){
 //           System.out.println("Fechado");
 //       } else System.out.println("Aberto");
-
-//        System.out.println("-----------------------------");System.out.println("Lista utilizadores: ");
-        System.out.println(sistema.listaUtilizadores);
-//        System.out.println("--------------------------");
-        System.out.println("Lista Comentarios: ");
-     //   System.out.println(sistema.utilizador.listaComentarios);
-//        System.out.println("---------------------------");
-        System.out.println("Lista de Reservas");
-       // System.out.println(sistema.utilizador.listaReservas);
 
 
 

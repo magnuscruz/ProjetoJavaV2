@@ -11,7 +11,7 @@ public abstract class Reserva implements Serializable {
     protected Restaurante restaurante;
     protected GregorianCalendar data;
     protected LocalTime hora;
-    protected Boolean status;
+    protected boolean status;
 
 
     public Reserva(Cliente cliente, Restaurante restaurante, GregorianCalendar data, LocalTime hora) {
@@ -44,7 +44,7 @@ public abstract class Reserva implements Serializable {
         return data;
     }
 
-    public Boolean getStatus() {
+    public boolean getStatus() {
         return status;
     }
 

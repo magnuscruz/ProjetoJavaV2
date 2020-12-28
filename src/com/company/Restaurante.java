@@ -120,6 +120,8 @@ public class Restaurante extends Utilizador implements Serializable {
         this.fimJan = fimJan;
     }
 
+
+
     public double getPontuacaoMedia() {
         double count=0;
         double totalPontuacao = 0;

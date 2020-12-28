@@ -33,8 +33,7 @@ public class Comentario implements Serializable {
 
     @Override
     public String toString() {
-        return "Comentario{" +
-                "descricao='" + opiniao + '\'' +
+        return "\ndescricao='" + opiniao + '\'' +
                 ", pontuacao=" + pontuacao +
                 ", cliente=" + cliente +
                 ", restaurante=" + restaurante +

@@ -18,6 +18,7 @@ public class Utilizador implements Serializable {
     protected String email;
     protected String username;
     protected String password;
+    protected boolean status;
 
     Utilizador(){ }
 
@@ -28,7 +29,7 @@ public class Utilizador implements Serializable {
         this.email = email;
         this.username = username;
         this.password = password;
-
+        this.status = true;
     }
 
 

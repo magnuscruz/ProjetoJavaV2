@@ -85,20 +85,19 @@ public class Sistema implements Serializable {
         for (int i = 0; i < listaUtilizadores.size(); i++) {
             if (username.equals(listaUtilizadores.get(i).getUsername()) && pass.equals(listaUtilizadores.get(i).getPassword())) {
                 if (listaUtilizadores.get(i) instanceof Restaurante) {
-                    Utilizador u = listaUtilizadores.get(i);
-                    this.utilizarAtivo = u;
+                  //  Utilizador u = listaUtilizadores.get(i);
+                    this.utilizarAtivo = listaUtilizadores.get(i);
+                   // this.utilizarAtivo = u;
                     valido = true;
                 } else {
                     Utilizador u = listaUtilizadores.get(i);
                     this.utilizarAtivo = u;
                     valido = true;
                 }
-            } else {
-                System.out.println("Utilizador nao existe ou pass incorrecta");
             }
         }
         if (valido) {
-            return "";//Para na consola da interface, saber que tudo correu bem
+            return "Login efetuado com sucesso";//Para na consola da interface, saber que tudo correu bem
         } else return "Login invalido";
     }
 

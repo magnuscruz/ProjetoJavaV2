@@ -58,4 +58,6 @@ public TakeAway(Cliente cliente, Restaurante restaurante, GregorianCalendar data
     public void setListaPratos(ArrayList<Prato> listaPratos) {
         this.listaPratos = listaPratos;
     }
+
+
 }
