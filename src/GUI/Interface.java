@@ -302,5 +302,173 @@ public class Interface extends JFrame {
         });
 
     }
+    ////////////////////NOVO RESTAURANTE/////////////////////////
+    private void construirPanelRestaurante(Interface janela, Container contentor, JPanel loginSuperPanel, JPanel registarNovoRestauranteSuperPanel) {
+
+
+        /////SUBPAINEIS//////
+        JPanel norteNovoRestauranteSubPanel = new JPanel();
+        norteNovoRestauranteSubPanel.setLayout(new BorderLayout());
+        JPanel centroNovoRestauranteSubPanel = new JPanel();
+        centroNovoRestauranteSubPanel.setLayout(new FlowLayout());
+        JPanel sulNovoRestauranteSubPanel = new JPanel();
+
+        JLabel registarNovoRestauranteLabel = new JLabel("NOVO RESTAURANTE");
+        JLabel nomeRestauranteLabel = new JLabel("Nome");
+        JLabel emailRestauranteLabel = new JLabel("E-mail");
+        JLabel moradaRestauranteLabel = new JLabel("Morada");
+        JLabel telemovelRestauranteLabel = new JLabel("Telemóvel");
+///////////////////////
+        JLabel lotacaoRestauranteLabel = new JLabel("Lotação:");
+        JLabel esplanadaRestauranteLabel = new JLabel("Esplanada");
+        JLabel zonaInteriorLabel = new JLabel("Zona Interior:");
+        JLabel zonaInteriorNFumRestauranteLabel = new JLabel("Ñ Fumadores");
+        JLabel zonaInteriorFumRestauranteLabel = new JLabel("Fumadores");
+        JLabel horariosRestauranteLabel = new JLabel("Horários:");
+        JLabel horariosAlmocoRestauranteLabel = new JLabel("Almoço:");
+        JLabel horarioAlmocoInicioRestauranteLabel = new JLabel("Início");
+        JLabel horarioAlmocoFimRestauranteLabel = new JLabel("Fim");
+        JLabel horariosJantarRestauranteLabel = new JLabel("Jantar:");
+        JLabel horarioJantarInicioRestauranteLabel = new JLabel("Início");
+        JLabel horarioJantarFimRestauranteLabel = new JLabel("Fim");
+//////////////////////////////////
+
+
+        JLabel usernameRestauranteLabel = new JLabel("Username");
+        JLabel passwordRestauranteLabel = new JLabel("Password ");
+        JLabel confirmarPasswordRestauranteLabel = new JLabel("Confirmar password ");
+
+        JTextField nomeRestauranteText = new JTextField(18);
+        nomeRestauranteText.setBorder(BorderFactory.createEmptyBorder(3, 3, 3, 3));
+        JTextField emailRestauranteText = new JTextField(18);
+        emailRestauranteText.setBorder(BorderFactory.createEmptyBorder(3, 3, 3, 3));
+        JTextField moradaRestauranteText = new JTextField(15);
+        moradaRestauranteText.setBorder(BorderFactory.createEmptyBorder(3, 3, 3, 3));
+        JTextField telemovelRestauranteText = new JTextField(5);
+        telemovelRestauranteText.setBorder(BorderFactory.createEmptyBorder(3, 3, 3, 3));
+        ////////
+        JTextField esplanadaRestauranteText = new JTextField(3);
+        esplanadaRestauranteText.setBorder(BorderFactory.createEmptyBorder(3, 3, 3, 3));
+        JTextField zonaInteriorNFumRestauranteText = new JTextField(3);
+        zonaInteriorNFumRestauranteText.setBorder(BorderFactory.createEmptyBorder(3, 3, 3, 3));
+        JTextField zonaInteriorFumRestauranteText = new JTextField(3);
+        zonaInteriorFumRestauranteText.setBorder(BorderFactory.createEmptyBorder(3, 3, 3, 3));
+        JTextField horarioAlmocoInicioRestauranteText = new JTextField(3);
+        horarioAlmocoInicioRestauranteText.setBorder(BorderFactory.createEmptyBorder(3, 3, 3, 3));
+        JTextField horarioAlmocoFimRestauranteText = new JTextField(3);
+        horarioAlmocoFimRestauranteText.setBorder(BorderFactory.createEmptyBorder(3, 3, 3, 3));
+        JTextField horarioJantarInicioRestauranteText = new JTextField(3);
+        horarioJantarInicioRestauranteText.setBorder(BorderFactory.createEmptyBorder(3, 3, 3, 3));
+        JTextField horarioJantarFimRestauranteText = new JTextField(3);
+        horarioJantarFimRestauranteText.setBorder(BorderFactory.createEmptyBorder(3, 3, 3, 3));
+        ///////
+        JTextField usernameRestauranteText = new JTextField(20);
+        usernameRestauranteText.setBorder(BorderFactory.createEmptyBorder(3, 3, 3, 3));
+
+        JPasswordField passwordRestauranteField = new JPasswordField(15);
+        passwordRestauranteField.setBorder(BorderFactory.createEmptyBorder(3, 3, 3, 3));
+        JPasswordField confirmarPasswordRestauranteField = new JPasswordField(15);
+        confirmarPasswordRestauranteField.setBorder(BorderFactory.createEmptyBorder(3, 3, 3, 3));
+
+        JButton ptEnNovoRestauranteButton = new JButton("PT/EN");
+        JButton cancelarRestauranteButton = new JButton("CANCELAR");
+        JButton registarRestauranteButton = new JButton("REGISTAR");
+
+        registarNovoRestauranteSuperPanel.add(norteNovoRestauranteSubPanel, "North");
+        registarNovoRestauranteSuperPanel.add(centroNovoRestauranteSubPanel, "Center");
+        registarNovoRestauranteSuperPanel.add(sulNovoRestauranteSubPanel, "South");
+
+//        JPanel norteSupMRestSubPanel = new JPanel();
+//        norteSupMRestSubPanel.setLayout(new FlowLayout());
+//        norteNovoRestauranteSubPanel.add(norteSupMRestSubPanel, BorderLayout.CENTER);
+//        norteSupMRestSubPanel.add(registarNovoRestauranteLabel);
+//        norteNovoRestauranteSubPanel.add(ptEnNovoRestauranteButton, BorderLayout.EAST);
+
+        JPanel norteNovoRestSSPanel = new JPanel();
+        norteNovoRestSSPanel.setLayout(new FlowLayout());
+        norteNovoRestSSPanel.add(registarNovoRestauranteLabel);
+        norteNovoRestauranteSubPanel.add(norteNovoRestSSPanel, BorderLayout.CENTER);
+        norteNovoRestauranteSubPanel.add(ptEnNovoRestauranteButton, BorderLayout.EAST);
+
+        JPanel centroNovoRestSSPanelForm1 = new JPanel();
+        centroNovoRestSSPanelForm1.setLayout(new FlowLayout());
+        centroNovoRestauranteSubPanel.add(centroNovoRestSSPanelForm1);
+        JPanel centroNovoRestSSPanelForm2 = new JPanel();
+        centroNovoRestSSPanelForm2.setLayout(new FlowLayout());
+        centroNovoRestauranteSubPanel.add(centroNovoRestSSPanelForm2, BorderLayout.CENTER);
+        JPanel centroNovoRestSSPanelForm3 = new JPanel();
+        //centroNovoRestSSPanelForm3.setLayout(new FlowLayout());
+        centroNovoRestauranteSubPanel.add(centroNovoRestSSPanelForm3, BorderLayout.CENTER);
+
+        JPanel centroNovoRestSSPanelForm4 = new JPanel();
+        centroNovoRestSSPanelForm4.setLayout(new FlowLayout());
+        centroNovoRestauranteSubPanel.add(centroNovoRestSSPanelForm4, BorderLayout.CENTER);
+
+        JPanel centroNovoRestSSPanelForm5 = new JPanel();
+        centroNovoRestSSPanelForm5.setLayout(new FlowLayout());
+        centroNovoRestauranteSubPanel.add(centroNovoRestSSPanelForm5, BorderLayout.CENTER);
+
+        JPanel centroNovoRestSSPanelForm6 = new JPanel();
+        centroNovoRestSSPanelForm6.setLayout(new FlowLayout());
+        centroNovoRestauranteSubPanel.add(centroNovoRestSSPanelForm6, BorderLayout.CENTER);
+
+        centroNovoRestSSPanelForm1.add(nomeRestauranteLabel);
+        centroNovoRestSSPanelForm1.add(nomeRestauranteText);
+        centroNovoRestSSPanelForm1.add(emailRestauranteLabel);
+        centroNovoRestSSPanelForm1.add(emailRestauranteText);
+        centroNovoRestSSPanelForm2.add(moradaRestauranteLabel);
+        centroNovoRestSSPanelForm2.add(moradaRestauranteText);
+        centroNovoRestSSPanelForm2.add(telemovelRestauranteLabel);
+        centroNovoRestSSPanelForm2.add(telemovelRestauranteText);
+        /////
+        centroNovoRestSSPanelForm3.add(lotacaoRestauranteLabel);
+        centroNovoRestSSPanelForm3.add(esplanadaRestauranteLabel);
+        centroNovoRestSSPanelForm3.add(esplanadaRestauranteText);
+        centroNovoRestSSPanelForm3.add(zonaInteriorLabel);
+        centroNovoRestSSPanelForm3.add(zonaInteriorNFumRestauranteLabel);
+        centroNovoRestSSPanelForm3.add(zonaInteriorNFumRestauranteText);
+        centroNovoRestSSPanelForm3.add(zonaInteriorFumRestauranteLabel);
+        centroNovoRestSSPanelForm3.add(zonaInteriorFumRestauranteText);
+
+        centroNovoRestSSPanelForm4.add(horariosRestauranteLabel);
+        centroNovoRestSSPanelForm4.add(horariosAlmocoRestauranteLabel);
+        centroNovoRestSSPanelForm4.add(horarioAlmocoInicioRestauranteLabel);
+        centroNovoRestSSPanelForm4.add(horarioAlmocoInicioRestauranteText);
+        centroNovoRestSSPanelForm4.add(horarioAlmocoFimRestauranteLabel);
+        centroNovoRestSSPanelForm4.add(horarioAlmocoFimRestauranteText);
+        centroNovoRestSSPanelForm4.add(horariosJantarRestauranteLabel);
+        centroNovoRestSSPanelForm4.add(horarioJantarInicioRestauranteLabel);
+        centroNovoRestSSPanelForm4.add(horarioJantarInicioRestauranteText);
+        centroNovoRestSSPanelForm4.add(horarioJantarFimRestauranteLabel);
+        centroNovoRestSSPanelForm4.add(horarioJantarFimRestauranteText);
+
+        //
+        centroNovoRestSSPanelForm5.add(usernameRestauranteLabel);
+        centroNovoRestSSPanelForm5.add(usernameRestauranteText);
+
+        centroNovoRestSSPanelForm6.add(passwordRestauranteLabel);
+        centroNovoRestSSPanelForm6.add(passwordRestauranteField);
+        centroNovoRestSSPanelForm6.add(confirmarPasswordRestauranteLabel);
+        centroNovoRestSSPanelForm6.add(confirmarPasswordRestauranteField);
+
+
+        sulNovoRestauranteSubPanel.setLayout(new FlowLayout());
+        sulNovoRestauranteSubPanel.add(cancelarRestauranteButton);
+        sulNovoRestauranteSubPanel.add(registarRestauranteButton);
+
+        cancelarRestauranteButton.addActionListener(e -> {
+            CardLayout cl = (CardLayout) contentor.getLayout();
+            cl.show(contentor, LOGIN_CARD);
+            this.setSize(500, 180);
+        });
+
+        registarRestauranteButton.addActionListener(a -> {
+            CardLayout cl = (CardLayout) contentor.getLayout();
+            cl.show(contentor, MENURESTAURANTE_CARD);
+            this.setSize(500, 300);
+
+        });
+    }
+
 
 
