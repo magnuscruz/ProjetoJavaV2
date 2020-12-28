@@ -470,5 +470,99 @@ public class Interface extends JFrame {
         });
     }
 
+    //////MENU RESTAURANTE////////
+    private void construirPanelMRest(Container contentor, JPanel loginSuperPanel, JPanel menuRestauranteSuperPanel) {
+
+        /////SUBPAINEIS//////
+        JPanel norteMenuRestauranteSubPanel = new JPanel();
+        norteMenuRestauranteSubPanel.setLayout(new BorderLayout());
+        JPanel centroMenuRestauranteSubPanel = new JPanel();
+        JPanel sulMenuRestauranteSubPanel = new JPanel();
+
+        JLabel registarNovoRestauranteLabel = new JLabel("MENU RESTAURANTE");
+
+        JButton ptEnMenuRestauranteButton = new JButton("PT/EN");
+        ////
+        JButton mRestAdicionarPratoButton = new JButton("ADICIONAR PRATO");
+        JButton mRestAtualizarPratoDiaButton = new JButton("ATUALIZAR PRATO DO DIA");
+        JButton mRestAtualizarDadosButton = new JButton("ATUALIZAR DADOS");
+        JButton mRestReservasButton = new JButton("RESERVAS");
+        JButton consultarComentarios = new JButton("CONSULTAR COMENTÁRIOS");
+        JButton responderComentarios = new JButton("RESPONDER COMENTÁRIOS");
+        JButton pontuacaoMedia = new JButton("PONTUAÇÃO MÉDIA");
 
 
+        ///
+        //JButton cancelarMenuRestauranteButton = new JButton("CANCELAR");
+        JButton sairMenuRestauranteButton = new JButton("SAIR");
+
+        menuRestauranteSuperPanel.add(norteMenuRestauranteSubPanel, "North");
+        menuRestauranteSuperPanel.add(centroMenuRestauranteSubPanel, "Center");
+        menuRestauranteSuperPanel.add(sulMenuRestauranteSubPanel, "South");
+
+        JPanel norteMenuRestauranteSSPanel = new JPanel();
+        norteMenuRestauranteSSPanel.setLayout(new FlowLayout());
+        norteMenuRestauranteSSPanel.add(registarNovoRestauranteLabel);
+        norteMenuRestauranteSubPanel.add(norteMenuRestauranteSSPanel, BorderLayout.CENTER);
+        norteMenuRestauranteSubPanel.add(ptEnMenuRestauranteButton, BorderLayout.EAST);
+
+        JPanel centroNovoRestauranteSSPanelForm = new JPanel();
+        centroNovoRestauranteSSPanelForm.setLayout(new GridLayout(7, 1));
+        centroMenuRestauranteSubPanel.add(centroNovoRestauranteSSPanelForm);
+        centroNovoRestauranteSSPanelForm.add(mRestAdicionarPratoButton);
+        centroNovoRestauranteSSPanelForm.add(mRestAtualizarPratoDiaButton);
+        centroNovoRestauranteSSPanelForm.add(mRestAtualizarDadosButton);
+        centroNovoRestauranteSSPanelForm.add(mRestReservasButton);
+        centroNovoRestauranteSSPanelForm.add(consultarComentarios);
+        centroNovoRestauranteSSPanelForm.add(responderComentarios);
+        centroNovoRestauranteSSPanelForm.add(pontuacaoMedia);
+
+        sulMenuRestauranteSubPanel.setLayout(new FlowLayout());
+        //sulMenuRestauranteSubPanel.add(cancelarMenuRestauranteButton);
+        sulMenuRestauranteSubPanel.add(sairMenuRestauranteButton);
+
+//        cancelarMenuRestauranteButton.addActionListener(a -> {
+//           CardLayout cl = (CardLayout) contentor.getLayout();
+//           cl.show(contentor, LOGIN_CARD);
+//            this.setSize(500, 300);
+//
+//       });
+        mRestAdicionarPratoButton.addActionListener(a -> {
+            CardLayout cl = (CardLayout) contentor.getLayout();
+            cl.show(contentor, MRESTADICIONARPRATO_CARD);
+            this.setSize(LARGURA_LOGIN, ALTURA_LOGIN);
+
+        });
+
+        mRestAtualizarPratoDiaButton.addActionListener(a -> {
+            CardLayout cl = (CardLayout) contentor.getLayout();
+            cl.show(contentor, MRESTATUALIZARPRATO_CARD);
+            this.setSize(LARGURA_LOGIN, ALTURA_LOGIN);
+
+        });
+
+        mRestReservasButton.addActionListener(a -> {
+            CardLayout cl = (CardLayout) contentor.getLayout();
+            cl.show(contentor, MRESTRESERVSUPERPANEL_CARD);
+            this.setSize(LARGURA_PADRAO, 350);
+
+        });
+
+        mRestAtualizarDadosButton.addActionListener(a -> {
+            CardLayout cl = (CardLayout) contentor.getLayout();
+            cl.show(contentor, MRESTATUALIZARDADOS_CARD);
+            this.setSize(LARGURA_PADRAO, 350);
+
+
+
+
+        });
+
+
+        sairMenuRestauranteButton.addActionListener(a -> {
+            CardLayout cl = (CardLayout) contentor.getLayout();
+            cl.show(contentor, RESTAURANTE_CARD);
+            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+
+        });
+    }
