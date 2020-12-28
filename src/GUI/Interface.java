@@ -157,4 +157,84 @@ public class Interface extends JFrame {
             // no actionlistener)
         });
     }
+    ////////////////////NOVO CLIENTE/////////////////////////
+    private void construirPanelCliente(Interface janela, Container contentor, JPanel loginSuperPanel, JPanel registarNovoClienteSuperPanel) {
+
+
+        /////SUBPAINEIS//////
+        JPanel norteNovoClienteSubPanel = new JPanel();
+        norteNovoClienteSubPanel.setLayout(new BorderLayout());
+        JPanel centroNovoClienteSubPanel = new JPanel();
+        JPanel sulNovoClienteSubPanel = new JPanel();
+
+        JLabel registarNovoClienteLabel = new JLabel("NOVO CLIENTE");
+        JLabel nomeClienteLabel = new JLabel("Nome");
+        JLabel emailClienteLabel = new JLabel("E-mail");
+        JLabel moradaClienteLabel = new JLabel("Morada");
+        JLabel telemovelClienteLabel = new JLabel("Telemóvel");
+        JLabel usernameClienteLabel = new JLabel("Username");
+        JLabel passwordClienteLabel = new JLabel("Password: ");
+        JLabel confirmarPasswordClienteLabel = new JLabel("Confirmar password: ");
+
+        JTextField nomeClienteText = new JTextField(20);
+        JTextField emailClienteText = new JTextField(20);
+        JTextField moradaClienteText = new JTextField(20);
+        JTextField telemovelClienteText = new JTextField(20);
+        JTextField usernameClienteText = new JTextField(20);
+
+        JPasswordField passwordClienteField = new JPasswordField(20);
+        JPasswordField confirmarPassawordClienteField = new JPasswordField(20);
+
+        JButton ptEnNovoClienteButton = new JButton("PT/EN");
+        JButton cancelarClienteButton = new JButton("CANCELAR");
+        JButton registarClienteButton = new JButton("REGISTAR");
+
+
+        registarNovoClienteSuperPanel.add(norteNovoClienteSubPanel, "North");
+        registarNovoClienteSuperPanel.add(centroNovoClienteSubPanel, "Center");
+        registarNovoClienteSuperPanel.add(sulNovoClienteSubPanel, "South");
+
+        JPanel norteNovoClienteSSPanel = new JPanel();
+        norteNovoClienteSSPanel.setLayout(new FlowLayout());
+        norteNovoClienteSSPanel.add(registarNovoClienteLabel);
+        norteNovoClienteSubPanel.add(norteNovoClienteSSPanel, BorderLayout.CENTER);
+        norteNovoClienteSubPanel.add(ptEnNovoClienteButton, BorderLayout.EAST);
+
+        JPanel centroNovoClienteSSPanelForm = new JPanel();
+        centroNovoClienteSSPanelForm.setLayout(new GridLayout(7, 2));
+        centroNovoClienteSubPanel.add(centroNovoClienteSSPanelForm);
+        centroNovoClienteSSPanelForm.add(nomeClienteLabel);
+        centroNovoClienteSSPanelForm.add(nomeClienteText);
+        centroNovoClienteSSPanelForm.add(emailClienteLabel);
+        centroNovoClienteSSPanelForm.add(emailClienteText);
+        centroNovoClienteSSPanelForm.add(moradaClienteLabel);
+        centroNovoClienteSSPanelForm.add(moradaClienteText);
+        centroNovoClienteSSPanelForm.add(telemovelClienteLabel);
+        centroNovoClienteSSPanelForm.add(telemovelClienteText);
+        centroNovoClienteSSPanelForm.add(usernameClienteLabel);
+        centroNovoClienteSSPanelForm.add(usernameClienteText);
+        centroNovoClienteSSPanelForm.add(passwordClienteLabel);
+        centroNovoClienteSSPanelForm.add(passwordClienteField);
+        centroNovoClienteSSPanelForm.add(confirmarPasswordClienteLabel);
+        centroNovoClienteSSPanelForm.add(confirmarPassawordClienteField);
+
+        sulNovoClienteSubPanel.setLayout(new FlowLayout());
+        sulNovoClienteSubPanel.add(cancelarClienteButton);
+        sulNovoClienteSubPanel.add(registarClienteButton);
+
+
+        registarClienteButton.addActionListener(a -> {
+            CardLayout cl = (CardLayout) contentor.getLayout();
+            cl.show(contentor, MENUCLIENTE_CARD);
+            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+
+        });
+
+        cancelarClienteButton.addActionListener(a -> {
+            CardLayout cl = (CardLayout) contentor.getLayout();
+            cl.show(contentor, LOGIN_CARD);
+            this.setSize(LARGURA_LOGIN, ALTURA_LOGIN);
+
+        });
+    }
 
