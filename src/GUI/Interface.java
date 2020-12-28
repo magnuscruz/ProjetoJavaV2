@@ -238,3 +238,69 @@ public class Interface extends JFrame {
         });
     }
 
+    ////// MENU CLIENTE//////////
+    private void construirPanelMenuCliente(Interface janela, Container contentor, JPanel loginSuperPanel, JPanel menuClienteSuperPanel) {
+
+        /////SUBPAINEIS//////
+        JPanel norteMenuClienteSubPanel = new JPanel();
+        norteMenuClienteSubPanel.setLayout(new BorderLayout());
+        JPanel centroMenuClienteSubPanel = new JPanel();
+        JPanel sulMenuClienteSubPanel = new JPanel();
+
+        JLabel registarNovoClienteLabel = new JLabel("MENU CLIENTE");
+
+        JButton ptEnMenuClienteButton = new JButton("PT/EN");
+        ////
+        JButton consultarRest = new JButton("CONSULTAR RESTAURANTES");
+        JButton comentarios = new JButton("COMENTÁRIOS");
+        JButton histResComPon = new JButton("HISTÓRICO DE RESERVAS/COMENTAR E PONTUAR");
+        JButton fazerReservas = new JButton("FAZER RESERVAS");
+        JButton cancelarReserva = new JButton("CANCELAR RESERVA");
+        JButton atualDados = new JButton("ATUALIZAR DADOS");
+
+        ///
+        //JButton cancelarMenuClienteButton = new JButton("CANCELAR");
+        JButton sairMenuClienteButton = new JButton("SAIR");
+
+        menuClienteSuperPanel.add(norteMenuClienteSubPanel, "North");
+        menuClienteSuperPanel.add(centroMenuClienteSubPanel, "Center");
+        menuClienteSuperPanel.add(sulMenuClienteSubPanel, "South");
+
+        JPanel norteClienteSubPanel = new JPanel();
+        norteClienteSubPanel.setLayout(new FlowLayout());
+        norteClienteSubPanel.add(registarNovoClienteLabel);
+        norteMenuClienteSubPanel.add(norteClienteSubPanel, BorderLayout.CENTER);
+        norteMenuClienteSubPanel.add(ptEnMenuClienteButton, BorderLayout.EAST);
+
+        JPanel centroNovoClienteSSPanelForm = new JPanel();
+        centroNovoClienteSSPanelForm.setLayout(new GridLayout(7, 1));
+        centroMenuClienteSubPanel.add(centroNovoClienteSSPanelForm);
+        centroNovoClienteSSPanelForm.add(consultarRest);
+        centroNovoClienteSSPanelForm.add(comentarios);
+        centroNovoClienteSSPanelForm.add(histResComPon);
+        centroNovoClienteSSPanelForm.add(fazerReservas);
+        centroNovoClienteSSPanelForm.add(cancelarReserva);
+        centroNovoClienteSSPanelForm.add(atualDados);
+
+
+        sulMenuClienteSubPanel.setLayout(new FlowLayout());
+        //sulMenuClienteSubPanel.add(cancelarMenuClienteButton);
+        sulMenuClienteSubPanel.add(sairMenuClienteButton);
+
+//        cancelarMenuClienteButton.addActionListener(a -> {
+//            CardLayout cl = (CardLayout) contentor.getLayout();
+//            cl.show(contentor, CLIENTE_CARD);
+//            this.setSize(500, 300);
+//
+//        });
+
+        sairMenuClienteButton.addActionListener(a -> {
+            CardLayout cl = (CardLayout) contentor.getLayout();
+            cl.show(contentor, LOGIN_CARD);
+            this.setSize(400, 180);
+
+        });
+
+    }
+
+
