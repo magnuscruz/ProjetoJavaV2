@@ -15,6 +15,8 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         Sistema sistema = new Sistema();
 
+        sistema.getRestauranteAtivo().getEmenta().adicionarPratoACarta("sardinhas","assadas",12.2);
+
         // Frame f = new Frame();
 
         sistema.listaUtilizadores.add(new Restaurante("Rest1", "ruaR1", "921", "mail1@a.pt", "userR1", "pass",10,10,10, LocalTime.of(11,30),LocalTime.of(15,00),LocalTime.of(18,30), LocalTime.of(22,00) ));
@@ -44,15 +46,22 @@ public class Main {
 
         ///NAO FUNCIONA O CRIAR RESERVA///
 //
-//        System.out.println("CRIAR RESERVAS");
-//        sistema.getClienteAtivo().criarReservaPresencial(new Presencial(sistema.getClienteAtivo(),(Restaurante) sistema.listaUtilizadores.get(1),new GregorianCalendar(2020,10,10),LocalTime.of(21,00),1,5));
-//        System.out.println(sistema.getClienteAtivo().listaReservas);
-//        System.out.println("---------------------");
+            System.out.println("CRIAR RESERVAS");
+        sistema.getClienteAtivo().criarReservaPresencial(
+                (Restaurante) sistema.listaUtilizadores.get(1), new GregorianCalendar(2020,10,10),LocalTime.of(21,00),1,5);
+        System.out.println(sistema.getClienteAtivo().listaReservas);
+        System.out.println("---------------------");
 
 
         System.out.println("LISTACOMENTARIOS");
-        sistema.listaComentarios.add(new Comentario("Excelente", 4, (Cliente) sistema.listaUtilizadores.get(3),(Restaurante) sistema.listaUtilizadores.get(0)));
-        sistema.listaComentarios.add(new Comentario("Horrivel", 4, (Cliente) sistema.listaUtilizadores.get(3),(Restaurante) sistema.listaUtilizadores.get(2)));
+        sistema.adicionarComentarioCliente(sistema.getClienteAtivo(),
+                "Excelente", 4,
+                (Restaurante) sistema.listaUtilizadores.get(0));
+        sistema.adicionarComentarioCliente(sistema.getClienteAtivo(),
+                "Horrivel", 4,
+                (Restaurante) sistema.listaUtilizadores.get(2));
+
+ //       sistema.listaComentarios.add(new Comentario("Horrivel", 4, (Cliente) sistema.listaUtilizadores.get(3),(Restaurante) sistema.listaUtilizadores.get(2)));
         System.out.println(sistema.listaComentarios);
         System.out.println("----------------------");
 

@@ -9,8 +9,8 @@ import java.util.regex.Pattern;
 
 
 public class Sistema implements Serializable {
-    public ArrayList<Utilizador> listaUtilizadores = new ArrayList<>();
-    public ArrayList<Comentario> listaComentarios = new ArrayList<>();
+    protected ArrayList<Utilizador> listaUtilizadores = new ArrayList<>();
+    protected ArrayList<Comentario> listaComentarios = new ArrayList<>();
     protected Utilizador utilizarAtivo;
 
     public ArrayList<Restaurante> getListaRestaurantes() {
@@ -21,6 +21,13 @@ public class Sistema implements Serializable {
             }
         }
         return restaurantes;
+    }
+
+    public void adicionarComentarioCliente(Cliente cl, String opiniao, double pontuacao, Restaurante restaurante){
+        Comentario coment = cl.criarComentario(opiniao, pontuacao, restaurante);
+        if (coment!=null){
+            listaComentarios.add(coment);
+        }
     }
 
     private Utilizador getUtilizarAtivo() {

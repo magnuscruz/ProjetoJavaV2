@@ -8,6 +8,11 @@ public class Ementa implements Serializable {
     private ArrayList<Prato> carta;
     private ArrayList<Prato> pratosDia;
 
+    public Ementa(){
+        carta = new ArrayList<Prato>();
+        pratosDia = new ArrayList<Prato>();
+    }
+
     public Ementa(ArrayList<Prato> carta, ArrayList<Prato> pratosDia) {
         this.carta = carta;
         this.pratosDia = pratosDia;

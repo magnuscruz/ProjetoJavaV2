@@ -34,10 +34,10 @@ public class Cliente extends Utilizador implements Serializable {
         return this.listaReservas;
     }
 
-    public String criarReservaPresencial(Restaurante r, GregorianCalendar data, LocalTime hora) {
+    public String criarReservaPresencial(Restaurante r, GregorianCalendar data, LocalTime hora, int zona, int numLugares) {
         // verificar se restaurante esta aberto senão return false
         int ano = data.get(Calendar.YEAR);
-        Presencial p = new Presencial(this, r, data, hora, 1, 5);
+        Presencial p = new Presencial(this, r, data, hora, zona, numLugares);
         this.listaReservas.add(p);//adicionamos a lista de reservas do Cliente em especifico
         r.listaReservas.add(p);// adicionamos a lista de reservas do Restaurante em especifico
         // Atencao! Quando criar um metodo para apagar reserva, tenho de apagar nos dois sitios!
@@ -46,7 +46,7 @@ public class Cliente extends Utilizador implements Serializable {
         return "";
     }
 
-    public void criarComentario(String opiniao, double pontuacao, Restaurante restaurante) {
+    public Comentario criarComentario(String opiniao, double pontuacao, Restaurante restaurante) {
 
         LocalTime diaHoje = LocalTime.now();
         for (int i = 0; i < this.listaReservas.size(); i++) {
@@ -56,7 +56,9 @@ public class Cliente extends Utilizador implements Serializable {
             // Se tiver mais de um, tem de escolher que restaurante quer
             Comentario comentario = new Comentario(opiniao, pontuacao, this, restaurante);
             listaComentarios.add(comentario);
+            return comentario;
         }
+        return null;
     }
 
     public void getListaComentariosClienteX(String nomeCliente) {
