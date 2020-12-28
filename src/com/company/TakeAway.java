@@ -14,6 +14,7 @@ public class TakeAway extends Reserva implements Serializable {
 //        super(cliente, restaurante, data, hora);
 //        this.quantidade = quantidade;
 //        //this.valorTotal = //Colocar Metodo!
+    // this.status = true;
 //    }
 
 
@@ -22,7 +23,7 @@ public TakeAway(Cliente cliente, Restaurante restaurante, GregorianCalendar data
     super(cliente, restaurante, data, hora);
     this.quantidade= quantidade;
     this.valorTotal = getValorTotal(); //FAZER METODO PARA CALcular o total a pagar! Preco vs qt,  tem é de aceder ao ArrayPratos
-
+    this.status = true;
 }
 
 

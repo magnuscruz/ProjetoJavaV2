@@ -12,6 +12,7 @@ public class Presencial extends Reserva implements Serializable {
         super(cliente, restaurante, data, hora);
         this.zona = zona;
         this.numeroLugares = numeroLugares;
+        this.status = true;
     }
 
     @Override

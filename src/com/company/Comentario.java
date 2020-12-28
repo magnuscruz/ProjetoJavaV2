@@ -13,7 +13,7 @@ public class Comentario implements Serializable {
     private Cliente cliente;
     private Restaurante restaurante;
     private GregorianCalendar dataHoje;
-    private Boolean status;
+    private boolean status;
     int ano;
     int mes;
     int dia;

@@ -13,6 +13,8 @@ public class Cliente extends Utilizador implements Serializable {
     public Cliente(String nome, String morada, String telefone, String email, String username, String password) {
         super(nome, morada, telefone, email, username, password);
         this.id = idCliente++;
+        this.status = true;
+
     }
 
     public boolean restauranteAberto(int hora, int minuto) {

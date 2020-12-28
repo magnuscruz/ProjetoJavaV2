@@ -29,11 +29,7 @@ public class Utilizador implements Serializable {
         this.email = email;
         this.username = username;
         this.password = password;
-        this.status = true;
     }
-
-
-
 
     @Override
     public String toString() {
@@ -43,7 +39,6 @@ public class Utilizador implements Serializable {
                 ", telefone='" + telefone + '\'' +
                 ", email='" + email + '\'' +
                 ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
                 '}';
     }
 
@@ -125,5 +120,13 @@ public class Utilizador implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 }

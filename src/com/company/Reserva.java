@@ -19,7 +19,6 @@ public abstract class Reserva implements Serializable {
         this.restaurante = restaurante;
         this.data = data;
         this.hora = hora;
-        this.status = true;
     }
 
 

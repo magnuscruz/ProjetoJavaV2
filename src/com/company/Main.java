@@ -30,7 +30,14 @@ public class Main {
         System.out.println("---------------------");
 
         System.out.println("LISTA UTILIZADORES C STATUS TRUE");
-
+        sistema.listaUtilizadores.get(1).setStatus(false);
+        sistema.listaUtilizadores.get(4).setStatus(false);
+//A forma de imprimir todos, excepto o que teem status false, sem ser com ciclo for??
+        for (int i = 0; i < sistema.listaUtilizadores.size(); i++) {
+            if (sistema.listaUtilizadores.get(i).getStatus()==true){
+                System.out.println(sistema.listaUtilizadores.get(i));
+            }
+        }
         System.out.println("--------------------------------");
 
         System.out.println("LOGIN");

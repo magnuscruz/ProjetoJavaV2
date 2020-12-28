@@ -29,6 +29,7 @@ public class Restaurante extends Utilizador implements Serializable {
         this.fimJan = fimJan;
         this.pontuacaoMedia = getPontuacaoMedia();//VERIFICAR SE METODO FUNCIONA
         this.ementa = getEmenta();
+        this.status = true;
 
 //        this.inicioHorarioAlm = LocalTime.of(horaInicioAlm, minInicioAlm);
 //        this.fimHorarioAlm = LocalTime.of(horaFimAlm, minFimAlm);
