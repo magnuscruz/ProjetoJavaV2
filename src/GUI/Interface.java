@@ -1,0 +1,160 @@
+package GUI;
+
+import java.awt.*;
+
+import javax.swing.*;
+
+public class Interface extends JFrame {
+    private static final String RESTAURANTE_CARD = "RESTAURANTE";
+    private static final String CLIENTE_CARD = "CLIENTE";
+    private static final String LOGIN_CARD = "LOGIN";
+    private static final String MENUCLIENTE_CARD = "MENU CLIENTE";
+    private static final String MENURESTAURANTE_CARD = "MENU RESTAURANTE";
+    private static final String MRESTADICIONARPRATO_CARD = "ADICIONAR PRATO";
+    private static final String MRESTATUALIZARPRATO_CARD = "ATUALIZAR PRATO";
+    private static final String MRESTATUALIZARDADOS_CARD = "ATUALIZAR DADOS";
+    private static final String MRESTRESERVSUPERPANEL_CARD = "RESERVAS";
+    private static final int LARGURA_LOGIN = 400;
+    private static final int ALTURA_LOGIN = 180;
+    private static final int LARGURA_PADRAO = 500;
+    private static final int ALTURA_PADRAO = 300;
+
+
+    public Interface() {
+        ImageIcon logo = new ImageIcon("logo3.png");
+        this.setIconImage(logo.getImage());
+        this.setTitle("RESERVAS DE RESTAURANTES");
+        this.setSize(LARGURA_LOGIN, ALTURA_LOGIN);
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        Container contentor = this.getContentPane();
+        contentor.setLayout(new CardLayout());
+
+        /////// SUPERPAINEIS////////
+        JPanel loginSuperPanel = new JPanel();
+        loginSuperPanel.setLayout(new BorderLayout());
+        JPanel registarNovoClienteSuperPanel = new JPanel();
+        registarNovoClienteSuperPanel.setLayout(new BorderLayout());
+        JPanel registarNovoRestSuperPanel = new JPanel();
+        registarNovoRestSuperPanel.setLayout(new BorderLayout());
+        JPanel menuClienteSuperPanel = new JPanel();
+        menuClienteSuperPanel.setLayout(new BorderLayout());
+        JPanel mRestSuperPanel = new JPanel();
+        mRestSuperPanel.setLayout(new BorderLayout());
+        JPanel mRestAdPratoSuperPanel = new JPanel();
+        mRestAdPratoSuperPanel.setLayout(new BorderLayout());
+        JPanel mRestAtPratoDiaSuperPanel = new JPanel();
+        mRestAtPratoDiaSuperPanel.setLayout(new BorderLayout());
+        JPanel mRestAtDadosSuperPanel = new JPanel();
+        mRestAtDadosSuperPanel.setLayout(new BorderLayout());
+        JPanel mRestReservasSuperPanel = new JPanel();
+        mRestReservasSuperPanel.setLayout(new BorderLayout());
+
+        construirPanelLogin(this, contentor, loginSuperPanel);
+
+        construirPanelCliente(this, contentor, loginSuperPanel, registarNovoClienteSuperPanel);
+
+        construirPanelRestaurante(this, contentor, loginSuperPanel, registarNovoRestSuperPanel);
+
+        construirPanelMenuCliente(this, contentor, loginSuperPanel, menuClienteSuperPanel);
+
+        ////PROBLEMA - não aceita this
+        construirPanelMRest(contentor, loginSuperPanel, mRestSuperPanel);
+
+        construirPanelMRestAdPrato(this, contentor, loginSuperPanel, mRestAdPratoSuperPanel);
+
+        construirPanelMRestAtPratoDia(this, contentor, loginSuperPanel, mRestAtPratoDiaSuperPanel);
+
+        construirPanelMRestAtDados (this, contentor, loginSuperPanel, mRestAtDadosSuperPanel);
+
+        construirPanelMRestReservas (this, contentor, loginSuperPanel, mRestReservasSuperPanel);
+
+        contentor.add(loginSuperPanel, LOGIN_CARD);
+        contentor.add(registarNovoClienteSuperPanel, CLIENTE_CARD);
+        contentor.add(registarNovoRestSuperPanel, RESTAURANTE_CARD);
+        contentor.add(menuClienteSuperPanel, MENUCLIENTE_CARD);
+        contentor.add(mRestSuperPanel, MENURESTAURANTE_CARD);
+        contentor.add(mRestAdPratoSuperPanel, MRESTADICIONARPRATO_CARD);
+        contentor.add(mRestAtPratoDiaSuperPanel, MRESTATUALIZARPRATO_CARD);
+        contentor.add(mRestAtDadosSuperPanel, MRESTATUALIZARDADOS_CARD);
+        contentor.add(mRestReservasSuperPanel, MRESTRESERVSUPERPANEL_CARD);
+
+
+    }
+
+
+    private void construirPanelLogin(Interface janela, Container contentor, JPanel loginSuperPanel) {
+        ////Criação dos subpaineis norte, centro e sul
+        JPanel norteLoginSubPanel = new JPanel();
+        JPanel centroLoginSubPanel = new JPanel();
+        JPanel sulLoginSubPanel = new JPanel();
+
+        JButton ptEnLoginButton = new JButton("PT/EN");
+        ptEnLoginButton.setSize(15, 5);
+        JButton loginButton = new JButton(LOGIN_CARD);
+        loginButton.setSize(15, 5);
+        JButton clienteNovoButton = new JLinkButton("Novo Cliente");
+        JButton restauranteNovoButton = new JLinkButton("Novo Restaurante");
+
+        JLabel titleLoginLabel = new JLabel("LOGIN");
+        JLabel usernameLoginLabel = new JLabel("Username:");
+        JLabel passwordLoginLabel = new JLabel("Password:");
+
+        JTextField usernameLoginText = new JTextField(20);
+
+        JPasswordField passwordLoginField = new JPasswordField(20);
+
+///Layout dos subPaineis north, centro e south
+        norteLoginSubPanel.setLayout(new BorderLayout());
+        centroLoginSubPanel.setLayout(new BorderLayout());
+        sulLoginSubPanel.setLayout(new BorderLayout());
+
+//Adicionar subPaineis no superpainel Login
+        loginSuperPanel.add(norteLoginSubPanel, BorderLayout.NORTH);
+        loginSuperPanel.add(centroLoginSubPanel, BorderLayout.CENTER);
+        loginSuperPanel.add(sulLoginSubPanel, BorderLayout.SOUTH);
+
+/// Criação dos subpaineis nos subpaineis norte, centro e sul
+        JPanel norteLoginSSPanelTitle = new JPanel();
+        JPanel centroLoginSSPanelForm = new JPanel();
+        JPanel centroLoginSSPanelButton = new JPanel();
+        JPanel sulLoginSSPanelLinks = new JPanel();
+
+//Layout dos subpaineis dos subpaineis norte, centro e sul
+        norteLoginSubPanel.add(norteLoginSSPanelTitle, BorderLayout.CENTER);
+        norteLoginSubPanel.add(ptEnLoginButton, BorderLayout.EAST);
+        norteLoginSSPanelTitle.setLayout(new FlowLayout());
+        norteLoginSSPanelTitle.add(titleLoginLabel);
+
+        centroLoginSubPanel.add(centroLoginSSPanelForm, BorderLayout.NORTH);
+        centroLoginSSPanelForm.setLayout(new GridLayout(2, 2));
+        centroLoginSSPanelForm.add(usernameLoginLabel);
+        centroLoginSSPanelForm.add(usernameLoginText);
+        centroLoginSSPanelForm.add(passwordLoginLabel);
+        centroLoginSSPanelForm.add(passwordLoginField);
+        centroLoginSubPanel.add(centroLoginSSPanelButton, BorderLayout.SOUTH);
+        centroLoginSSPanelButton.setLayout(new FlowLayout());
+        centroLoginSSPanelButton.add(loginButton);
+
+        sulLoginSubPanel.add(sulLoginSSPanelLinks);
+        sulLoginSSPanelLinks.setLayout(new BorderLayout());
+        sulLoginSSPanelLinks.add(clienteNovoButton, BorderLayout.EAST);
+        sulLoginSSPanelLinks.add(restauranteNovoButton, BorderLayout.WEST);
+
+
+        clienteNovoButton.addActionListener(a -> {
+            CardLayout cl = (CardLayout) contentor.getLayout();
+            cl.show(contentor, CLIENTE_CARD);
+            janela.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            // passar por parâmetro no construtor (fica como referência pq qdo precisarmos
+            // no actionlistener)
+        });
+
+        restauranteNovoButton.addActionListener(a -> {
+            CardLayout cl = (CardLayout) contentor.getLayout();
+            cl.show(contentor, RESTAURANTE_CARD);
+            janela.setSize(LARGURA_PADRAO, 350);
+            // passar por parâmetro no construtor (fica como referência pq qdo precisarmos
+            // no actionlistener)
+        });
+    }
+
