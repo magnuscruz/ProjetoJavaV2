@@ -865,7 +865,7 @@ public class Interface extends JFrame {
     }
 
     //////MENU RESTAURANTE – RESERVAS//////////
-    private void construirPanelMRestReservas (Interface janela, Container contentor, JPanel loginSuperPanel, JPanel mRestReservasSuperPanel) {
+    private void construirPanelMRestReservas(Interface janela, Container contentor, JPanel loginSuperPanel, JPanel mRestReservasSuperPanel) {
 
 
         /////SUBPAINEIS//////
@@ -874,16 +874,18 @@ public class Interface extends JFrame {
         JPanel centroMRestReservasSubPanel = new JPanel();
         JPanel sulMRestReservasSubPanel = new JPanel();
 
-        JLabel mRestReservasLabel = new JLabel("RESERVAS");
-        JLabel filtrarMRestReservasLabel = new JLabel("Filtrar Reservas");
+        JLabel mRestReservasLabel = new JLabel("HISTÓRICO DE RESERVAS");
 
-        JComboBox tiposFiltrosMRestReservasLabel = new JComboBox();
-        tiposFiltrosMRestReservasLabel.addItem("Data");
-        tiposFiltrosMRestReservasLabel.addItem("Tipo: Presencial");
-        tiposFiltrosMRestReservasLabel.addItem("Tipo: Take-Away");
-        tiposFiltrosMRestReservasLabel.addItem("Valores");
-        tiposFiltrosMRestReservasLabel.addItem("Cliente");
+        JRadioButton filtrarIntervDatasmRestResRButton = new JRadioButton("Intervalo de datas");
+        JRadioButton filtrarTipomRestResRButton = new JRadioButton("Tipo (Presencial ou Take-Away)");
+        JRadioButton filtrarIntervValmRestResRButton = new JRadioButton("Intervalo de Valores");
+        JRadioButton filtrarClientemRestResRButton = new JRadioButton("Cliente");
 
+        ButtonGroup group = new ButtonGroup();
+        group.add(filtrarIntervDatasmRestResRButton);
+        group.add(filtrarTipomRestResRButton);
+        group.add(filtrarIntervValmRestResRButton);
+        group.add(filtrarClientemRestResRButton);
 
         JButton ptEnMRestReservasButton = new JButton("PT/EN");
         JButton voltarMRestReservasButton = new JButton("MENU RESTAURANTE");
@@ -899,16 +901,18 @@ public class Interface extends JFrame {
         norteMRestReservasSubPanel.add(norteMRestReservasSSPanel, BorderLayout.CENTER);
         norteMRestReservasSubPanel.add(ptEnMRestReservasButton, BorderLayout.EAST);
 
-
         JPanel centroMRestReservasSSPanel = new JPanel();
         centroMRestReservasSSPanel.setLayout(new GridLayout(12, 2));
         centroMRestReservasSubPanel.add(centroMRestReservasSSPanel);
-        centroMRestReservasSSPanel.add(filtrarMRestReservasLabel);
-        centroMRestReservasSSPanel.add(tiposFiltrosMRestReservasLabel);
+        centroMRestReservasSSPanel.add(filtrarIntervDatasmRestResRButton);
+        centroMRestReservasSSPanel.add(filtrarTipomRestResRButton);
+        centroMRestReservasSSPanel.add(filtrarIntervValmRestResRButton);
+        centroMRestReservasSSPanel.add(filtrarClientemRestResRButton);
 
         sulMRestReservasSubPanel.setLayout(new FlowLayout());
         sulMRestReservasSubPanel.add(voltarMRestReservasButton);
         sulMRestReservasSubPanel.add(okMRestReservasButton);
+
 
         voltarMRestReservasButton.addActionListener(a -> {
             CardLayout cl = (CardLayout) contentor.getLayout();
