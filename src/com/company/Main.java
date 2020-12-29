@@ -1,8 +1,7 @@
 package com.company;
 
-import GUI.Frame;
 
-
+import java.awt.*;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -16,7 +15,7 @@ public class Main {
         Sistema sistema = new Sistema();
 
 
-        // Frame f = new Frame();
+        //Frame f = new Frame();
 
 
         sistema.criarRestaurante("Rest1", "ruaR1", "921", "mail1@a.pt", "userR1", "pass", "pass", 10, 10, 10, LocalTime.of(11, 30), LocalTime.of(15, 00), LocalTime.of(18, 30), LocalTime.of(22, 00));
@@ -60,9 +59,10 @@ public class Main {
 
 
         System.out.println("LISTACOMENTARIOS");
-        sistema.adicionarComentarioCliente(sistema.getClienteAtivo(),
-                "Excelente", 4,
-                (Restaurante) sistema.getListaUtilizadores().get(0));
+
+//        sistema.adicionarComentarioCliente(sistema.getClienteAtivo(),
+//                "Excelente", 4,
+//                (Restaurante) sistema.getListaUtilizadores().get(0));
         sistema.adicionarComentarioCliente(sistema.getClienteAtivo(),
                 "Horrivel", 4,
                 (Restaurante) sistema.getListaUtilizadores().get(2));

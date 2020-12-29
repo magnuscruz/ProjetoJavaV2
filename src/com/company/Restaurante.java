@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class Restaurante extends Utilizador implements Serializable {
     private static int idRestaurante=1;
-
+    private String cidade;
     private int lotacaoEsplanada;
     private int lotacaoFum;
     private int lotacaoNFum;
@@ -17,9 +17,10 @@ public class Restaurante extends Utilizador implements Serializable {
     private double pontuacaoMedia;
     private Ementa ementa;
 
-    public Restaurante(String nome, String morada, String telefone, String email, String username, String password,String confirmarPass, int lotacaoEsplanada, int lotacaoFum, int lotacaoNFum, LocalTime inicioAlm, LocalTime fimAlm, LocalTime inicioJan, LocalTime fimJan) {
+    public Restaurante(String nome, String morada,String cidade, String telefone, String email, String username, String password,String confirmarPass, int lotacaoEsplanada, int lotacaoFum, int lotacaoNFum, LocalTime inicioAlm, LocalTime fimAlm, LocalTime inicioJan, LocalTime fimJan) {
         super(nome, morada, telefone, email, username,password, confirmarPass);
         this.id = idRestaurante++;
+        this.cidade = cidade;
         this.lotacaoEsplanada = lotacaoEsplanada;
         this.lotacaoFum = lotacaoFum;
         this.lotacaoNFum = lotacaoNFum;
@@ -62,6 +63,14 @@ public class Restaurante extends Utilizador implements Serializable {
 
     public ArrayList<Reserva> getListaReservas(){
         return getListaReservas();
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
     }
 
     public int getLotacaoEsplanada() {

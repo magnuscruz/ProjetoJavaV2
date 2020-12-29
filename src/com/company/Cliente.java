@@ -49,13 +49,14 @@ public class Cliente extends Utilizador implements Serializable {
 
         LocalTime diaHoje = LocalTime.now();
         for (int i = 0; i < this.getListaReservas().size(); i++) {
-            if (this.getListaReservas().get(i).getData().before(diaHoje))//So quero as reservas com data anterior ao dia de hoje, assim nao permite
+            if (this.getListaReservas().get(i).getData().before(diaHoje)) {//So quero as reservas com data anterior ao dia de hoje, assim nao permite
                 // comentar reservas que ainda nao aconteceram
                 this.getListaReservas().get(i).getRestaurante();
-            // Se tiver mais de um, tem de escolher que restaurante quer
-            Comentario comentario = new Comentario(opiniao, pontuacao, this, restaurante);
-            getListaComentarios().add(comentario);
-            return comentario;
+                // Se tiver mais de um, tem de escolher que restaurante quer
+                Comentario comentario = new Comentario(opiniao, pontuacao, this, restaurante);
+                getListaComentarios().add(comentario);
+                return comentario;
+            }
         }
         return null;
     }
