@@ -151,7 +151,7 @@ public class Sistema implements Serializable {
         return correta;
     }
 
-    public void criarRestaurante(String nome, String morada, String telefone, String email, String username, String password, String confirmarPass, int lotacaoEsplanada, int lotacaoFum, int lotacaoNFum, LocalTime inicioAlm, LocalTime fimAlm, LocalTime inicioJan, LocalTime fimJan) {
+    public void criarRestaurante(String nome, String morada,String cidade, String telefone, String email, String username, String password, String confirmarPass, int lotacaoEsplanada, int lotacaoFum, int lotacaoNFum, LocalTime inicioAlm, LocalTime fimAlm, LocalTime inicioJan, LocalTime fimJan) {
 //Se der para mostrar as mensagens atraves do interface, é mellhor assim do que como esta em baixo.
 //        if (mailUnico && userUnico && passIgual && mailValido) {
 //            r = new Restaurante(nome, morada, telefone, email, username, password, lotacaoEsplanada, lotacaoFum, lotacaoNFum, inicioAlm, fimAlm, inicioJan, fimJan);
@@ -162,7 +162,7 @@ public class Sistema implements Serializable {
             if (validarEmail(email)) {
                 if (usernameUnico(username)) {
                     if (confirmarPass(password, confirmarPass)) {
-                        Restaurante r = new Restaurante(nome, morada, telefone, email, username, password, confirmarPass,lotacaoEsplanada, lotacaoFum, lotacaoNFum, inicioAlm, fimAlm, inicioJan, fimJan);
+                        Restaurante r = new Restaurante(nome, morada,cidade, telefone, email, username, password, confirmarPass,lotacaoEsplanada, lotacaoFum, lotacaoNFum, inicioAlm, fimAlm, inicioJan, fimJan);
                         listaUtilizadores.add(r);
                         System.out.println("Restaurante criado");
                     } else System.out.println("Passwords nao sao iguais");

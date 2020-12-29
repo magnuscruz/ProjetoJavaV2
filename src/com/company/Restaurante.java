@@ -42,7 +42,8 @@ public class Restaurante extends Utilizador implements Serializable {
     @Override
     public String toString() {
         return "\nRestaurante{" + super.toString() +
-                "lotacaoEsplanada=" + lotacaoEsplanada +
+                "cidade: "+ cidade +
+                ", lotacaoEsplanada=" + lotacaoEsplanada +
                 ", lotacaoFum=" + lotacaoFum +
                 ", lotacaoNFum=" + lotacaoNFum +
                 ", inicioAlm=" + inicioAlm +

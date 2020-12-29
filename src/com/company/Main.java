@@ -18,9 +18,9 @@ public class Main {
         //Frame f = new Frame();
 
 
-        sistema.criarRestaurante("Rest1", "ruaR1", "921", "mail1@a.pt", "userR1", "pass", "pass", 10, 10, 10, LocalTime.of(11, 30), LocalTime.of(15, 00), LocalTime.of(18, 30), LocalTime.of(22, 00));
-        sistema.criarRestaurante("Rest2", "ruaR2", "912", "mail2@a.pt", "userR2", "pass", "pass", 20, 20, 20, LocalTime.of(11, 30), LocalTime.of(15, 00), LocalTime.of(18, 30), LocalTime.of(22, 00));
-        sistema.criarRestaurante("Rest3", "ruaR3", "9133", "mail3@aa.com", "userR3", "pass", "pass", 30, 30, 30, LocalTime.of(11, 30), LocalTime.of(15, 00), LocalTime.of(18, 30), LocalTime.of(22, 00));
+        sistema.criarRestaurante("Rest1", "ruaR1","Lisboa", "921", "mail1@a.pt", "userR1", "pass", "pass", 10, 10, 10, LocalTime.of(11, 30), LocalTime.of(15, 00), LocalTime.of(18, 30), LocalTime.of(22, 00));
+        sistema.criarRestaurante("Rest2", "ruaR2", "Coimbra","912", "mail2@a.pt", "userR2", "pass", "pass", 20, 20, 20, LocalTime.of(11, 30), LocalTime.of(15, 00), LocalTime.of(18, 30), LocalTime.of(22, 00));
+        sistema.criarRestaurante("Rest3", "ruaR3", "Porto","9133", "mail3@aa.com", "userR3", "pass", "pass", 30, 30, 30, LocalTime.of(11, 30), LocalTime.of(15, 00), LocalTime.of(18, 30), LocalTime.of(22, 00));
 
         sistema.getListaRestaurantes().get(0).getEmenta().adicionarPratoACarta("sardinhas", "assadas", 12.2);
 
