@@ -243,6 +243,20 @@ public class Sistema implements Serializable {
 
     public void removerCliente(String username) {
 
+        for (Utilizador u : getListaUtilizadores()){
+            if (u instanceof Cliente && u.getUsername().equalsIgnoreCase(username)){
+                u.setStatus(false);
+            }
+        }
+    }
+
+    public void removerRestaurante(String username) {
+
+        for (Utilizador u : getListaUtilizadores()){
+            if (u instanceof Restaurante && u.getUsername().equalsIgnoreCase(username)){
+                u.setStatus(false);
+            }
+        }
     }
 
     public boolean validarMinMenorMax(int valorMin, int valorMax) {
@@ -261,7 +275,11 @@ public class Sistema implements Serializable {
         ArrayList<Restaurante> restaurantesPorValores = new ArrayList<>();
 
         if (validarMinMenorMax(valorMin, valorMax)) {
-
+            for (Restaurante r : getListaRestaurantes()){
+                if (r.getPontuacaoMedia() >= valorMin && r.getPontuacaoMedia() <= valorMax){
+                    restaurantesPorValores.add(r);
+                }
+            }
         } else System.out.println("Valor minimo inserido nao é menor que o valor maximo");
 
         return restaurantesPorValores;

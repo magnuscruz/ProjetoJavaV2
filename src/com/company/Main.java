@@ -15,21 +15,23 @@ public class Main {
         Sistema sistema = new Sistema();
         //Frame f = new Frame();
 
-        sistema.criarRestaurante("Rest1", "ruaR1", "Lisboa", "921", "mail1@a.pt", "userR1", "pass", "pass", 10, 10, 10, LocalTime.of(11, 30), LocalTime.of(15, 00), LocalTime.of(18, 30), LocalTime.of(22, 00));
-        sistema.criarRestaurante("Rest2", "ruaR2", "Coimbra", "912", "mail2@a.pt", "userR2", "pass", "pass", 20, 20, 20, LocalTime.of(11, 30), LocalTime.of(15, 00), LocalTime.of(18, 30), LocalTime.of(22, 00));
+        sistema.criarRestaurante("Rest1", "ruaR2", "Coimbra", "912", "mail1@a.pt", "userR1", "pass", "pass", 20, 20, 20, LocalTime.of(11, 30), LocalTime.of(15, 00), LocalTime.of(18, 30), LocalTime.of(22, 00));
+        sistema.criarRestaurante("Rest2", "ruaR2", "Porto", "913", "mail2@a.pt", "userR2", "pass", "pass", 20, 20, 20, LocalTime.of(11, 30), LocalTime.of(15, 00), LocalTime.of(18, 30), LocalTime.of(22, 00));
         sistema.criarRestaurante("Rest3", "ruaR3", "Lisboa", "9133", "mail3@aa.com", "userR3", "pass", "pass", 30, 30, 30, LocalTime.of(11, 30), LocalTime.of(15, 00), LocalTime.of(18, 30), LocalTime.of(22, 00));
-     //   sistema.getListaUtilizadores().get(0).setStatus(false);
 
-        System.out.println(sistema.consultarRestaurantePorCidade("lisboa"));
-
-        sistema.getListaRestaurantes().get(1).getEmenta().adicionarPratoACarta("sardinhas", "assadas", 20);
-
-
-        sistema.getListaRestaurantes().get(1).getEmenta().adicionarPratoAPratosDia("bitoque", "arroz e batatas", 10);
-        double a =sistema.getListaRestaurantes().get(1).getPrecoMedio();
-        System.out.println("AAAAAAAAAAAAAAA");
-        System.out.println(a);
+        sistema.getListaRestaurantes().get(0).getEmenta().adicionarPratoACarta("sardinhas", "assadas", 20);
         sistema.getListaRestaurantes().get(0).getEmenta().adicionarPratoAPratosDia("bitoque", "arroz e batatas", 10);
+        sistema.getListaRestaurantes().get(1).getEmenta().adicionarPratoAPratosDia("bitoque", "arroz e batatas", 50);
+        sistema.getListaRestaurantes().get(1).getEmenta().adicionarPratoAPratosDia("bitoque", "arroz e batatas", 70);
+
+        System.out.println("RESTAURANTES PRECO MEDIO");
+        // todo aqui o metodo fazer preco medio de Restaurante funciona...
+        System.out.println(sistema.getListaRestaurantes().get(0).precoMedioRestaurante());
+        System.out.println(sistema.getListaRestaurantes().get(1).precoMedioRestaurante());
+        System.out.println("-------------------------------------------------------");
+        System.out.println("RESTAURANTES POR FILTROS");
+        System.out.println(sistema.consultarRestaurantePorValores(10,20));
+        System.out.println("-------------------------------------------------------------");
 
         sistema.criarCliente("cli1", "RuaC1", "961", "mailR1@gmail.com", "userC1", "pass", "pass");
         sistema.criarCliente("cli2", "RuaC2", "962", "mailR2@gmail.com", "userC2", "pass", "pass");

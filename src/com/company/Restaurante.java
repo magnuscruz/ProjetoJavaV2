@@ -5,7 +5,7 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 
 public class Restaurante extends Utilizador implements Serializable {
-    private static int idRestaurante=1;
+    private static int idRestaurante = 1;
     private String cidade;
     private int lotacaoEsplanada;
     private int lotacaoFum;
@@ -18,21 +18,27 @@ public class Restaurante extends Utilizador implements Serializable {
     private double pontuacaoMedia;
     private Ementa ementa;
 
-    public Restaurante(String nome, String morada,String cidade, String telefone, String email, String username, String password,String confirmarPass, int lotacaoEsplanada, int lotacaoFum, int lotacaoNFum, LocalTime inicioAlm, LocalTime fimAlm, LocalTime inicioJan, LocalTime fimJan) {
-        super(nome, morada, telefone, email, username,password, confirmarPass);
+    public Restaurante(String nome, String morada, String cidade, String telefone, String email, String username, String password, String confirmarPass, int lotacaoEsplanada, int lotacaoFum, int lotacaoNFum, LocalTime inicioAlm, LocalTime fimAlm, LocalTime inicioJan, LocalTime fimJan) {
+        super(nome, morada, telefone, email, username, password, confirmarPass);
         this.id = idRestaurante++;
         this.cidade = cidade;
         this.lotacaoEsplanada = lotacaoEsplanada;
         this.lotacaoFum = lotacaoFum;
         this.lotacaoNFum = lotacaoNFum;
-        this.inicioAlm =inicioAlm;
+        this.inicioAlm = inicioAlm;
         this.fimAlm = fimAlm;
         this.inicioJan = inicioJan;
         this.fimJan = fimJan;
 
-        this.pontuacaoMedia = getPontuacaoMedia();//VERIFICAR SE METODO FUNCIONA
+        //todo se eu chamar o metodo funciona, mas se quiser usar dentro de um metodo ou
+        // no toString de Restaurante, aparece NaN
+        this.pontuacaoMedia = getPontuacaoMedia();
         this.ementa = new Ementa();
-        this.precoMedio = ementa.precoMedioRestaurante();
+
+        //todo alternativa 1 para fazer preco medio restaurante
+        //this.precoMedio = getPrecoMedio();
+
+        this.precoMedio = precoMedioRestaurante();
         this.status = true;
 
 //        this.inicioHorarioAlm = LocalTime.of(horaInicioAlm, minInicioAlm);
@@ -45,7 +51,7 @@ public class Restaurante extends Utilizador implements Serializable {
     @Override
     public String toString() {
         return "\nRestaurante{" + super.toString() +
-                "cidade: "+ cidade +
+                "cidade: " + cidade +
                 ", lotacaoEsplanada=" + lotacaoEsplanada +
                 ", lotacaoFum=" + lotacaoFum +
                 ", lotacaoNFum=" + lotacaoNFum +
@@ -55,6 +61,7 @@ public class Restaurante extends Utilizador implements Serializable {
                 ", fimJan=" + fimJan +
                 ", ementa=" + ementa +
                 ", pontuacaoMedia=" + pontuacaoMedia +
+                ", precoMedio=" + precoMedio +
                 '}';
     }
 
@@ -66,7 +73,7 @@ public class Restaurante extends Utilizador implements Serializable {
         this.ementa = ementa;
     }
 
-    public ArrayList<Reserva> getListaReservas(){
+    public ArrayList<Reserva> getListaReservas() {
         return getListaReservas();
     }
 
@@ -135,21 +142,39 @@ public class Restaurante extends Utilizador implements Serializable {
     }
 
     public double getPontuacaoMedia() {
-        double count=0;
+        double count = 0;
         double totalPontuacao = 0;
-        for (Comentario u: getListaComentarios()){
-            if (u.equals(this)){
+        for (Comentario u : getListaComentarios()) {
+            if (u.equals(this)) {
                 count++;
                 totalPontuacao += u.getPontuacao();
             }
         }
-        return pontuacaoMedia = totalPontuacao/count;
+        return pontuacaoMedia = totalPontuacao / count;
     }
 
-  public double getPrecoMedio (){
-       return ementa.precoMedioRestaurante();
-  }
+    // todo alternativa 1 para fazer preco medio de Restaurante
+//    public double getPrecoMedio() {
+//        return ementa.precoMedioRestaurante();
+//    }
 
 
+//todo alternativa 2 para fazer preco medio de Restaurante
+    public double precoMedioRestaurante(){
+        double countCarta = 0;
+        double countDia = 0;
+        double precoTotalCarta = 0;
+        double precoTotalDia = 0;
 
+        for (Prato p : getEmenta().getCarta()){
+            precoTotalCarta += p.getPreco();
+            countCarta++;
+        }
+
+        for ( Prato p : getEmenta().getPratosDia()){
+            precoTotalDia +=p.getPreco();
+            countDia++;
+        }
+        return (precoTotalCarta + precoTotalDia) / (countCarta + countDia);
+    }
 }
