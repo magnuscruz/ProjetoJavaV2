@@ -137,10 +137,10 @@ public class Restaurante extends Utilizador implements Serializable {
     public double getPontuacaoMedia() {
         double count=0;
         double totalPontuacao = 0;
-        for (int i = 0; i < getListaComentarios().size(); i++) {
-            if (getListaComentarios().get(i).getRestaurante().equals(this)){
+        for (Comentario u: getListaComentarios()){
+            if (u.equals(this)){
                 count++;
-                totalPontuacao += getListaComentarios().get(i).getPontuacao();
+                totalPontuacao += u.getPontuacao();
             }
         }
         return pontuacaoMedia = totalPontuacao/count;
