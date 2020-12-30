@@ -157,6 +157,28 @@ public class Sistema implements Serializable {
         return correta;
     }
 
+    //todo Muito basico, só valida se foram introduzidos 9 numeros
+    private boolean validarTelefone(String num) {
+        int count = 0;
+        char[] c;
+        boolean a = false;
+        c = num.toCharArray();
+
+        for (int i = 0; i < c.length; i++) {
+            if (Character.isDigit(c[i])) {
+                count++;
+                a = true;
+            } else {
+                a = false;
+                break; }
+        }
+        if (a && count == 9) {
+        } else {
+            a = false;
+        }
+        return a;
+    }
+
     public void criarRestaurante(String nome, String morada, String cidade, String telefone, String email, String username, String password, String confirmarPass, int lotacaoEsplanada, int lotacaoFum, int lotacaoNFum, LocalTime inicioAlm, LocalTime fimAlm, LocalTime inicioJan, LocalTime fimJan) {
 
         if (emailUnico(email)) {
@@ -247,12 +269,12 @@ public class Sistema implements Serializable {
 
     public ArrayList<Restaurante> consultarRestaurantePorHorario() {
         ArrayList<Restaurante> restaurantesPorHorario = new ArrayList<>();
-return  restaurantesPorHorario;
+        return restaurantesPorHorario;
     }
 
     public ArrayList<Restaurante> consultarRestaurantePorLotacao() {
         ArrayList<Restaurante> restaurantesPorLotacao = new ArrayList<>();
-return restaurantesPorLotacao;
+        return restaurantesPorLotacao;
     }
 
     public ArrayList<Restaurante> consultarRestaurantePorCidade(String cidade) {
@@ -268,15 +290,14 @@ return restaurantesPorLotacao;
     public ArrayList<Restaurante> consultarRestaurantePorPontuacao(int valorMin, int valorMax) {
         ArrayList<Restaurante> restaurantesPorPontuacao = new ArrayList<>();
         if (validarMinMenorMax(valorMin, valorMax)) {
-            for (Restaurante r : getListaRestaurantes()){
-                if (r.getPontuacaoMedia() >= valorMin && r.getPontuacaoMedia() <= valorMax){
+            for (Restaurante r : getListaRestaurantes()) {
+                if (r.getPontuacaoMedia() >= valorMin && r.getPontuacaoMedia() <= valorMax) {
                     restaurantesPorPontuacao.add(r);
                 }
             }
         } else System.out.println("Pontuacao minima nao é menor que a maxima");
         return restaurantesPorPontuacao;
     }
-
 
 
 }
