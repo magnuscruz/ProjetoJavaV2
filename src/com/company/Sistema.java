@@ -40,7 +40,7 @@ public class Sistema implements Serializable {
         ArrayList<Restaurante> listaRestaurantes = new ArrayList<>();
         for (Utilizador u : listaUtilizadores) {
             if (u.getStatus() && u instanceof Restaurante) {
-                    listaRestaurantes.add((Restaurante) u);
+                listaRestaurantes.add((Restaurante) u);
             }
         }
         return listaRestaurantes;
@@ -72,10 +72,10 @@ public class Sistema implements Serializable {
 
     public void utilizadorExiste(String username) {
         boolean existe = false;
-        for (int i = 0; i < listaUtilizadores.size(); i++) {
-            if (username.equalsIgnoreCase(listaUtilizadores.get(i).getUsername())) {
-                String nomeClasse = listaUtilizadores.get(i).getClass().getSimpleName();//// Imprime o nome da Classe. Tem é de se associar a uma variavel
-                System.out.println("Utilizador com o username: " + listaUtilizadores.get(i).getUsername() + " é do tipo: " + nomeClasse);
+        for (Utilizador u : listaUtilizadores) {
+            if (username.equalsIgnoreCase(u.getUsername())) {
+                String nomeClasse = u.getClass().getSimpleName();// Imprime o nome da Classe. Tem é de se associar a uma variavel
+                System.out.println("Utilizador com o username: " + u.getUsername() + "é do tipo: " + nomeClasse);
                 existe = true;
             }
         }
@@ -86,18 +86,27 @@ public class Sistema implements Serializable {
 
     public String login(String username, String pass) {
         boolean valido = false;
-        for (int i = 0; i < listaUtilizadores.size(); i++) {
-            if (username.equals(listaUtilizadores.get(i).getUsername()) && pass.equals(listaUtilizadores.get(i).getPassword())) {
-                if (listaUtilizadores.get(i) instanceof Restaurante) {
-                    //  Utilizador u = listaUtilizadores.get(i);
-                    this.utilizarAtivo = listaUtilizadores.get(i);
-                    // this.utilizarAtivo = u;
-                    valido = true;
-                } else {
-                    Utilizador u = listaUtilizadores.get(i);
-                    this.utilizarAtivo = u;
-                    valido = true;
-                }
+        //NAO Percebi o porque do instanceof, creio que isso é feito quando faco o getutilizadorativo
+
+//        for (int i = 0; i < listaUtilizadores.size(); i++) {
+//            if (username.equals(listaUtilizadores.get(i).getUsername()) && pass.equals(listaUtilizadores.get(i).getPassword())) {
+//                if (listaUtilizadores.get(i) instanceof Restaurante) {
+//                    //  Utilizador u = listaUtilizadores.get(i);
+//                    this.utilizarAtivo = listaUtilizadores.get(i);
+//                    // this.utilizarAtivo = u;
+//                    valido = true;
+//                } else {
+//                    Utilizador u = listaUtilizadores.get(i);
+//                    this.utilizarAtivo = u;
+//                    valido = true;
+//                }
+//            }
+//        }
+
+        for (Utilizador u : listaUtilizadores) {
+            if (username.equals(u.getUsername()) && pass.equals(u.getPassword())) {
+                this.utilizarAtivo = u;
+                valido = true;
             }
         }
         if (valido) {
@@ -106,9 +115,9 @@ public class Sistema implements Serializable {
     }
 
     private boolean emailUnico(String email) {
-        Boolean unico = true;
-        for (int i = 0; i < listaUtilizadores.size(); i++) {
-            if (email.equalsIgnoreCase(listaUtilizadores.get(i).getEmail())) {
+        boolean unico = true;
+        for (Utilizador s : listaUtilizadores) {
+            if (email.equalsIgnoreCase(s.getEmail())) {
                 unico = false;
             }
         }
@@ -149,11 +158,6 @@ public class Sistema implements Serializable {
     }
 
     public void criarRestaurante(String nome, String morada, String cidade, String telefone, String email, String username, String password, String confirmarPass, int lotacaoEsplanada, int lotacaoFum, int lotacaoNFum, LocalTime inicioAlm, LocalTime fimAlm, LocalTime inicioJan, LocalTime fimJan) {
-//Se der para mostrar as mensagens atraves do interface, é mellhor assim do que como esta em baixo.
-//        if (mailUnico && userUnico && passIgual && mailValido) {
-//            r = new Restaurante(nome, morada, telefone, email, username, password, lotacaoEsplanada, lotacaoFum, lotacaoNFum, inicioAlm, fimAlm, inicioJan, fimJan);
-//            listaUtilizadores.add(r);
-//        }
 
         if (emailUnico(email)) {
             if (validarEmail(email)) {
@@ -188,9 +192,9 @@ public class Sistema implements Serializable {
         if (emailUnico(email)) {
             if (validarEmail(email)) {
                 if (confirmarPass(novaPass, confirmarNovaPass)) {
-                    for (int i = 0; i < listaUtilizadores.size(); i++) {
-                        if (listaUtilizadores.get(i) instanceof Cliente && listaUtilizadores.get(i).equals(this)) {//Funcionara???
-                            listaUtilizadores.get(i).setNome(nome);
+                    for (Utilizador u : listaUtilizadores) {
+                        if (u instanceof Cliente && u.equals(this)) {//Funcionara??
+                            u.setNome(nome);
                         }
                     }
                     //Cliente c = new Cliente(nome, morada, telefone, email, username, password);
@@ -227,43 +231,53 @@ public class Sistema implements Serializable {
         return menor;
     }
 
-    public void consultarRestaurantePorValores(int valorMin, int valorMax) {
-        if (validarMinMenorMax(valorMin, valorMax)) {
-
-        } else System.out.println("Valor minimo inserido nao é menor que o valor maximo");
-    }
-
-    public void consultarRestaurantePorHorario() {
-
-    }
-
-    public void consultarRestaurantePorLotacao() {
-    }
-
-    public void consultarRestaurantePorCidade(String cidade) {
-
-        for (int i = 0; i < listaUtilizadores.size(); i++) {
-            if (listaUtilizadores.get(i) instanceof Restaurante && listaUtilizadores.get(i).getMorada().equalsIgnoreCase(cidade)) {
-                listaUtilizadores.get(i);
-            }
-        }
-    }
-
-    public void consultarRestaurantePorPontuacao(int valorMin, int valorMax) {
-        if (validarMinMenorMax(valorMin, valorMax)) {
-            for (int i = 0; i < listaUtilizadores.size(); i++) {
-                if (listaUtilizadores.get(i) instanceof Restaurante) {
-                    if (((Restaurante) listaUtilizadores.get(i)).getPontuacaoMedia() >= valorMin && ((Restaurante) listaUtilizadores.get(i)).getPontuacaoMedia() <= valorMax) {
-                        listaUtilizadores.get(i);
-                    }
-                }
-            }
-        } else System.out.println("Pontuacao minima nao é menor que a maxima");
-    }
-
     public double getPontuacaoMediaProprioRestaurante(Restaurante restaurante) {
         return restaurante.getPontuacaoMedia();
     }
+
+    public ArrayList<Restaurante> consultarRestaurantePorValores(int valorMin, int valorMax) {
+        ArrayList<Restaurante> restaurantesPorValores = new ArrayList<>();
+
+        if (validarMinMenorMax(valorMin, valorMax)) {
+
+        } else System.out.println("Valor minimo inserido nao é menor que o valor maximo");
+
+        return restaurantesPorValores;
+    }
+
+    public ArrayList<Restaurante> consultarRestaurantePorHorario() {
+        ArrayList<Restaurante> restaurantesPorHorario = new ArrayList<>();
+return  restaurantesPorHorario;
+    }
+
+    public ArrayList<Restaurante> consultarRestaurantePorLotacao() {
+        ArrayList<Restaurante> restaurantesPorLotacao = new ArrayList<>();
+return restaurantesPorLotacao;
+    }
+
+    public ArrayList<Restaurante> consultarRestaurantePorCidade(String cidade) {
+        ArrayList<Restaurante> restaurantesPorCidade = new ArrayList<>();
+        for (Restaurante u : getListaRestaurantes()) {
+            if (u.getCidade().equalsIgnoreCase(cidade)) {
+                restaurantesPorCidade.add(u);
+            }
+        }
+        return restaurantesPorCidade;
+    }
+
+    public ArrayList<Restaurante> consultarRestaurantePorPontuacao(int valorMin, int valorMax) {
+        ArrayList<Restaurante> restaurantesPorPontuacao = new ArrayList<>();
+        if (validarMinMenorMax(valorMin, valorMax)) {
+            for (Restaurante r : getListaRestaurantes()){
+                if (r.getPontuacaoMedia() >= valorMin && r.getPontuacaoMedia() <= valorMax){
+                    restaurantesPorPontuacao.add(r);
+                }
+            }
+        } else System.out.println("Pontuacao minima nao é menor que a maxima");
+        return restaurantesPorPontuacao;
+    }
+
+
 
 }
 
