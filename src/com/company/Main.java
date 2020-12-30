@@ -13,25 +13,18 @@ public class Main {
     public static void main(String[] args) throws Exception, ClassNotFoundException {
         Scanner sc = new Scanner(System.in);
         Sistema sistema = new Sistema();
-
-
         //Frame f = new Frame();
 
+        sistema.criarRestaurante("Rest1", "ruaR1", "Lisboa", "921", "mail1@a.pt", "userR1", "pass", "pass", 10, 10, 10, LocalTime.of(11, 30), LocalTime.of(15, 00), LocalTime.of(18, 30), LocalTime.of(22, 00));
+        sistema.criarRestaurante("Rest2", "ruaR2", "Coimbra", "912", "mail2@a.pt", "userR2", "pass", "pass", 20, 20, 20, LocalTime.of(11, 30), LocalTime.of(15, 00), LocalTime.of(18, 30), LocalTime.of(22, 00));
+        sistema.criarRestaurante("Rest3", "ruaR3", "Porto", "9133", "mail3@aa.com", "userR3", "pass", "pass", 30, 30, 30, LocalTime.of(11, 30), LocalTime.of(15, 00), LocalTime.of(18, 30), LocalTime.of(22, 00));
+        sistema.getListaUtilizadores().get(0).setStatus(false);
 
-        sistema.criarRestaurante("Rest1", "ruaR1","Lisboa", "921", "mail1@a.pt", "userR1", "pass", "pass", 10, 10, 10, LocalTime.of(11, 30), LocalTime.of(15, 00), LocalTime.of(18, 30), LocalTime.of(22, 00));
-        sistema.criarRestaurante("Rest2", "ruaR2", "Coimbra","912", "mail2@a.pt", "userR2", "pass", "pass", 20, 20, 20, LocalTime.of(11, 30), LocalTime.of(15, 00), LocalTime.of(18, 30), LocalTime.of(22, 00));
-        sistema.criarRestaurante("Rest3", "ruaR3", "Porto","9133", "mail3@aa.com", "userR3", "pass", "pass", 30, 30, 30, LocalTime.of(11, 30), LocalTime.of(15, 00), LocalTime.of(18, 30), LocalTime.of(22, 00));
-
-        sistema.getListaRestaurantes().get(0).getEmenta().adicionarPratoACarta("sardinhas", "assadas", 12.2);
-
+        //sistema.getListaRestaurantes().get(0).getEmenta().adicionarPratoACarta("sardinhas", "assadas", 12.2);
 
         sistema.criarCliente("cli1", "RuaC1", "961", "mailR1@gmail.com", "userC1", "pass", "pass");
         sistema.criarCliente("cli2", "RuaC2", "962", "mailR2@gmail.com", "userC2", "pass", "pass");
         sistema.criarCliente("cli3", "RuaC3", "963", "mailR3@gmail.com", "userC3", "pass", "pass");
-
-
-        sistema.criarCliente("Adriano", "Sesamo", "966", "adriano_t@out.com", "adriano", "pass", "pass");
-
 
         System.out.println("LISTA UTILIZADORES");
         System.out.println(sistema.getListaUtilizadores());
@@ -40,10 +33,6 @@ public class Main {
         System.out.println("LISTA RESTAURANTES");
         System.out.println(sistema.getListaRestaurantes());
         System.out.println("---------------------");
-
-        System.out.println("LISTA UTILIZADORES C STATUS TRUE");
-        sistema.getListaUtilizadores().get(1).setStatus(false);
-        sistema.getListaUtilizadores().get(4).setStatus(false);
 
 //A forma de imprimir todos, excepto o que teem status false, sem ser com ciclo for??
         for (int i = 0; i < sistema.getListaUtilizadores().size(); i++) {
@@ -58,7 +47,7 @@ public class Main {
         System.out.println("CRIAR RESERVAS");
 //        sistema.getClienteAtivo().criarReservaPresencial(
 //                (Restaurante) sistema.getListaUtilizadores().get(1), new GregorianCalendar(2020, 10, 10), LocalTime.of(21, 00), 1, 5);
-      //  System.out.println(sistema.getClienteAtivo().getListaReservas());
+        //  System.out.println(sistema.getClienteAtivo().getListaReservas());
         System.out.println("---------------------");
 
 

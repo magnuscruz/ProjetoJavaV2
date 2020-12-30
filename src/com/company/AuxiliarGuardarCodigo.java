@@ -52,4 +52,11 @@ FicheiroDeObjectos ficheiroOb = new FicheiroDeObjectos();
 
                 while (a);
  */
+
 ///////////////FIM 1 /////////////////////////////////////////////////////////
+////////////////IMPRIMIR RESTAURANTES OU COMENTARIOS SO COM STATUS TRUE//////
+/*
+    System.out.println("LISTA UTILIZADORES C STATUS TRUE");
+            sistema.getListaUtilizadores().get(1).setStatus(false);
+            sistema.getListaUtilizadores().get(4).setStatus(false);
+   */
