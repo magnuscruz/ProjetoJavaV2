@@ -42,13 +42,13 @@ public class Ementa implements Serializable {
         double precoTotalCarta = 0;
         double precoTotalDia = 0;
 
-        for (int i = 0; i < getCarta().size(); i++) {
-            precoTotalCarta += getCarta().get(i).getPreco();
+        for (Prato p : getCarta()){
+            precoTotalCarta += p.getPreco();
             countCarta++;
         }
 
-        for (int i = 0; i < getPratosDia().size(); i++) {
-            precoTotalDia += getPratosDia().get(i).getPreco();
+        for ( Prato p : getPratosDia()){
+            precoTotalDia +=p.getPreco();
             countDia++;
         }
         return (precoTotalCarta + precoTotalDia) / (countCarta + countDia);

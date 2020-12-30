@@ -23,7 +23,12 @@ public class Main {
         System.out.println(sistema.consultarRestaurantePorCidade("lisboa"));
 
         sistema.getListaRestaurantes().get(1).getEmenta().adicionarPratoACarta("sardinhas", "assadas", 20);
+
+
         sistema.getListaRestaurantes().get(1).getEmenta().adicionarPratoAPratosDia("bitoque", "arroz e batatas", 10);
+        double a =sistema.getListaRestaurantes().get(1).getPrecoMedio();
+        System.out.println("AAAAAAAAAAAAAAA");
+        System.out.println(a);
         sistema.getListaRestaurantes().get(0).getEmenta().adicionarPratoAPratosDia("bitoque", "arroz e batatas", 10);
 
         sistema.criarCliente("cli1", "RuaC1", "961", "mailR1@gmail.com", "userC1", "pass", "pass");

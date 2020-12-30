@@ -52,13 +52,12 @@ public TakeAway(Cliente cliente, Restaurante restaurante, GregorianCalendar data
 
     }
 
-    public ArrayList<Prato> getListaPratos() {
-        return listaPratos;
-    }
-
     public void setListaPratos(ArrayList<Prato> listaPratos) {
         this.listaPratos = listaPratos;
     }
 
+    public ArrayList<Prato> getListaPratos() {
+        return listaPratos;
+    }
 
 }
