@@ -62,7 +62,6 @@ public class Sistema implements Serializable {
         return listaComentarios;
     }
 
-
     public void adicionarComentarioCliente(Cliente cliente, String opiniao, double pontuacao, Restaurante restaurante) {
         Comentario comentario = cliente.criarComentario(opiniao, pontuacao, restaurante);
         // Comentario comentario = new Comentario(opiniao, pontuacao,getClienteAtivo(), restaurante);

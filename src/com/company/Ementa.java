@@ -36,6 +36,25 @@ public class Ementa implements Serializable {
         return pratosDia;
     }
 
+    public double precoMedioRestaurante(){
+        double countCarta = 0;
+        double countDia = 0;
+        double precoTotalCarta = 0;
+        double precoTotalDia = 0;
+
+        for (int i = 0; i < getCarta().size(); i++) {
+            precoTotalCarta += getCarta().get(i).getPreco();
+            countCarta++;
+        }
+
+        for (int i = 0; i < getPratosDia().size(); i++) {
+            precoTotalDia += getPratosDia().get(i).getPreco();
+            countDia++;
+        }
+        return (precoTotalCarta + precoTotalDia) / (countCarta + countDia);
+    }
+
+
     @Override
     public String toString() {
         return "Ementa{" +

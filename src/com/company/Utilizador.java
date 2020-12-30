@@ -131,4 +131,6 @@ public class Utilizador implements Serializable {
     public void setStatus(boolean status) {
         this.status = status;
     }
+
+
 }
