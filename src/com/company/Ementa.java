@@ -36,5 +36,11 @@ public class Ementa implements Serializable {
         return pratosDia;
     }
 
-
+    @Override
+    public String toString() {
+        return "Ementa{" +
+                "carta=" + carta +
+                ", pratosDia=" + pratosDia +
+                '}';
+    }
 }

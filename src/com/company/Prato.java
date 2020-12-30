@@ -10,4 +10,13 @@ public class Prato {
         this.descricao = descricao;
         this.preco = preco;
     }
+
+    @Override
+    public String toString() {
+        return
+                "nome='" + nome + '\'' +
+                ", descricao='" + descricao + '\'' +
+                ", preco=" + preco +
+                '}';
+    }
 }

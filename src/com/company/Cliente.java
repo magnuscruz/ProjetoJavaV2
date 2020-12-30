@@ -10,7 +10,7 @@ public class Cliente extends Utilizador implements Serializable {
     private static int idCliente = 5000;
     Restaurante restaurante;
 
-    public Cliente(String nome, String morada, String telefone, String email, String username, String password,String confirmarPass) {
+    public Cliente(String nome, String morada, String telefone, String email, String username, String password, String confirmarPass) {
         super(nome, morada, telefone, email, username, password, confirmarPass);
         this.id = idCliente++;
         this.status = true;
@@ -25,7 +25,7 @@ public class Cliente extends Utilizador implements Serializable {
         LocalTime fechoJan = restaurante.getFimJan();
         if (horaEscolhida.isBefore(aberturaAlm) && horaEscolhida.isAfter(fechoAlm) || horaEscolhida.isBefore(aberturaJan) && horaEscolhida.isAfter(fechoJan)) {
             aberto = true;
-        } else System.out.println("Fechado as: "+ hora + "/" + minuto);
+        } else System.out.println("Fechado as: " + hora + "/" + minuto);
         return aberto;
     }
 
@@ -45,20 +45,33 @@ public class Cliente extends Utilizador implements Serializable {
         return "";
     }
 
-    public Comentario criarComentario(String opiniao, double pontuacao, Restaurante restaurante) {
+//    public void criarReservaPresencial(Cliente cliente, Restaurante restaurante, GregorianCalendar data, LocalTime horario, int numeroLugares, int zona) {
+//        Presencial p = new Presencial(cliente, restaurante, data, horario, numeroLugares, zona);
+//        getListaReservas().add(p);
+//    }
 
-        LocalTime diaHoje = LocalTime.now();
+
+    public Comentario criarComentarioORIGINAL(String opiniao, double pontuacao, Restaurante restaurante) {
+        Calendar diaHoje = Calendar.getInstance();
         for (int i = 0; i < this.getListaReservas().size(); i++) {
             if (this.getListaReservas().get(i).getData().before(diaHoje)) {//So quero as reservas com data anterior ao dia de hoje, assim nao permite
                 // comentar reservas que ainda nao aconteceram
-                this.getListaReservas().get(i).getRestaurante();
+                restaurante = this.getListaReservas().get(i).getRestaurante();
                 // Se tiver mais de um, tem de escolher que restaurante quer
                 Comentario comentario = new Comentario(opiniao, pontuacao, this, restaurante);
                 getListaComentarios().add(comentario);
                 return comentario;
             }
+            else System.out.println("Nao pode comentar um restaurante que ainda nao experimentou");
         }
         return null;
+    }
+
+    //TESTE, TIREI A DATA E OBRIGATORIEDADE DE JA TER RESERVA PARA EVITAR ERROS
+    public Comentario criarComentario (String opiniao, double pontuacao, Restaurante restaurante){
+                Comentario comentario = new Comentario(opiniao, pontuacao, this, restaurante);
+                getListaComentarios().add(comentario);
+                return comentario;
     }
 
     public void getListaComentariosClienteX(String nomeCliente) {
@@ -71,38 +84,34 @@ public class Cliente extends Utilizador implements Serializable {
 
     public void editarComentario(String opiniao, double pontuacao) {
         for (int i = 0; i < getListaComentarios().size(); i++) {
-            if (getListaComentarios().get(i).getCliente().equals(this)){
-                if (opiniao!=null){
+            if (getListaComentarios().get(i).getCliente().equals(this)) {
+                if (opiniao != null) {
                     getListaComentarios().get(i).setOpiniao(opiniao);
                 }
-                if (pontuacao>0){
+                if (pontuacao > 0) {
                     getListaComentarios().get(i).setPontuacao(pontuacao);
                 }
             }
         }
 
-        }
+    }
 
     public void apagarComentario() {
 
         for (int i = 0; i < getListaComentarios().size(); i++) {
-            if (getListaComentarios().get(i).getCliente().equals(this)){
+            if (getListaComentarios().get(i).getCliente().equals(this)) {
                 getListaComentarios().get(i).setStatus(false);
             }
         }
     }
 
-    public void criarReservaPresencial(Cliente cliente, Restaurante restaurante, GregorianCalendar data, LocalTime horario, int numeroLugares, int zona) {
-        Presencial p = new Presencial(cliente, restaurante, data, horario, numeroLugares, zona);
-        getListaReservas().add(p);
-    }
 
-    public void criarReservaTakeAway (Cliente cliente, Restaurante restaurante, GregorianCalendar data, LocalTime horario, int quantidade){
-        TakeAway t = new TakeAway(cliente, restaurante,data,horario,quantidade );
+    public void criarReservaTakeAway(Cliente cliente, Restaurante restaurante, GregorianCalendar data, LocalTime horario, int quantidade) {
+        TakeAway t = new TakeAway(cliente, restaurante, data, horario, quantidade);
         getListaReservas().add(t);
     }
 
-    public void cancelarReserva (){
+    public void cancelarReserva() {
         getListaReservas();
         //listaReservas.get(0).setStatus(false);// Algo do genero!
     }

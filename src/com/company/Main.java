@@ -18,36 +18,32 @@ public class Main {
         sistema.criarRestaurante("Rest1", "ruaR1", "Lisboa", "921", "mail1@a.pt", "userR1", "pass", "pass", 10, 10, 10, LocalTime.of(11, 30), LocalTime.of(15, 00), LocalTime.of(18, 30), LocalTime.of(22, 00));
         sistema.criarRestaurante("Rest2", "ruaR2", "Coimbra", "912", "mail2@a.pt", "userR2", "pass", "pass", 20, 20, 20, LocalTime.of(11, 30), LocalTime.of(15, 00), LocalTime.of(18, 30), LocalTime.of(22, 00));
         sistema.criarRestaurante("Rest3", "ruaR3", "Porto", "9133", "mail3@aa.com", "userR3", "pass", "pass", 30, 30, 30, LocalTime.of(11, 30), LocalTime.of(15, 00), LocalTime.of(18, 30), LocalTime.of(22, 00));
-        sistema.getListaUtilizadores().get(0).setStatus(false);
+     //   sistema.getListaUtilizadores().get(0).setStatus(false);
 
-        //sistema.getListaRestaurantes().get(0).getEmenta().adicionarPratoACarta("sardinhas", "assadas", 12.2);
+        sistema.getListaRestaurantes().get(1).getEmenta().adicionarPratoACarta("sardinhas", "assadas", 12.2);
 
         sistema.criarCliente("cli1", "RuaC1", "961", "mailR1@gmail.com", "userC1", "pass", "pass");
         sistema.criarCliente("cli2", "RuaC2", "962", "mailR2@gmail.com", "userC2", "pass", "pass");
         sistema.criarCliente("cli3", "RuaC3", "963", "mailR3@gmail.com", "userC3", "pass", "pass");
 
-        System.out.println("LISTA UTILIZADORES");
-        System.out.println(sistema.getListaUtilizadores());
-        System.out.println("---------------------");
 
+
+//        System.out.println("RESERVA");
+//        System.out.println(sistema.getListaClientes().get(0).getListaReservas());
+//        System.out.println("-----------------------------------------------------");
+
+       sistema.adicionarComentarioCliente(sistema.getListaClientes().get(0), "Excelente", 5,sistema.getListaRestaurantes().get(1));
+
+//        System.out.println("LISTA COMENTARIOS");
+//        System.out.println(sistema.getListaClientes().get(0).getListaComentarios());
+//        System.out.println("--------------------------------");
+
+//        System.out.println("LISTA UTILIZADORES");
+//        System.out.println(sistema.getListaUtilizadores());
+//        System.out.println("---------------------");
+//
         System.out.println("LISTA RESTAURANTES");
         System.out.println(sistema.getListaRestaurantes());
-        System.out.println("---------------------");
-
-//A forma de imprimir todos, excepto o que teem status false, sem ser com ciclo for??
-        for (int i = 0; i < sistema.getListaUtilizadores().size(); i++) {
-            if (sistema.getListaUtilizadores().get(i).getStatus() == true) {
-                System.out.println(sistema.getListaUtilizadores().get(i));
-            }
-        }
-        System.out.println("--------------------------------");
-
-        ///NAO FUNCIONA O CRIAR RESERVA///
-//
-        System.out.println("CRIAR RESERVAS");
-//        sistema.getClienteAtivo().criarReservaPresencial(
-//                (Restaurante) sistema.getListaUtilizadores().get(1), new GregorianCalendar(2020, 10, 10), LocalTime.of(21, 00), 1, 5);
-        //  System.out.println(sistema.getClienteAtivo().getListaReservas());
         System.out.println("---------------------");
 
 
@@ -72,13 +68,6 @@ public class Main {
             }
         }
 
-        //ESTA PARTE É PARA COLOCAR NA INTERFACE
-//        if (resultado.length()==0){
-//            // criar janel de login com sucesso
-//        } else {
-//            // criar janela com mensagem de erro
-//        }
-
 //       Utilizador u = sistema.listaUtilizadores.get(3);
 //               if (u instanceof Cliente) {
 //                   sistema.utilizador.listaReservas.add(new TakeAway((Cliente) sistema.listaUtilizadores.get(3), , 2020, 7, 5, 18, 30, 5));
@@ -93,13 +82,6 @@ public class Main {
 
         }
 
-
-//            String resultadoo = sistema.login("joao","xpto");
-//            if (resultado.length()==0){
-//                // criar janel de login com sucesso
-//            } else {
-//                // criar janela com mensagem de erro
-//            }
 
         // ArrayList<Reserva> listaReservaR = sistema.getRestauranteAtivo().getListaReservas();
         //   }

@@ -3,6 +3,24 @@ package com.company;
 
 public class AuxiliarGuardarCodigo {
 }
+//ERROS PEDIR AJUDA//
+//1 ERRO//
+/*
+        sistema.getListaClientes().get(0).criarReservaPresencial(sistema.getListaRestaurantes().get(0),
+                new GregorianCalendar(2020,0,10), LocalTime.of(13,30),
+                1,5);
+
+ */
+//2 ERRO//
+/*
+
+
+
+ */
+
+
+
+
 ///////////// NO MAIN, A PARTE DE GUARDAR OBJECTOS! COM O SWITCH, PARA NAO GUARDAR SEMPRE////
 
 /*
@@ -55,6 +73,8 @@ FicheiroDeObjectos ficheiroOb = new FicheiroDeObjectos();
 
 ///////////////FIM 1 /////////////////////////////////////////////////////////
 ////////////////IMPRIMIR RESTAURANTES OU COMENTARIOS SO COM STATUS TRUE//////
+// Modo é arquaico, encontrei uma maneira mais pratica e eficaz de o fazer, ver nos metodos getRestaurante
+//e getCliente
 /*
     System.out.println("LISTA UTILIZADORES C STATUS TRUE");
             sistema.getListaUtilizadores().get(1).setStatus(false);

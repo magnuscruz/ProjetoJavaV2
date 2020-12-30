@@ -50,6 +50,7 @@ public class Restaurante extends Utilizador implements Serializable {
                 ", fimAlm=" + fimAlm +
                 ", inicioJan=" + inicioJan +
                 ", fimJan=" + fimJan +
+                ", ementa=" + ementa +
                 ", pontuacaoMedia=" + pontuacaoMedia +
                 '}';
     }
