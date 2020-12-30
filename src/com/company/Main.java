@@ -37,6 +37,10 @@ public class Main {
         System.out.println(sistema.getListaUtilizadores());
         System.out.println("---------------------");
 
+        System.out.println("LISTA RESTAURANTES");
+        System.out.println(sistema.getListaRestaurantes());
+        System.out.println("---------------------");
+
         System.out.println("LISTA UTILIZADORES C STATUS TRUE");
         sistema.getListaUtilizadores().get(1).setStatus(false);
         sistema.getListaUtilizadores().get(4).setStatus(false);

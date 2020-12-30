@@ -14,17 +14,31 @@ public class Sistema implements Serializable {
     private Utilizador utilizarAtivo;
 
     public ArrayList<Restaurante> getListaRestaurantes() {
-        ArrayList<Restaurante> restaurantes = new ArrayList<>();
+        ArrayList<Restaurante> listaRestaurantes = new ArrayList<>();
+
         for (Utilizador u : listaUtilizadores) {
             if (u instanceof Restaurante) {
-                restaurantes.add((Restaurante) u);
+                listaRestaurantes.add((Restaurante) u);
             }
         }
-        return restaurantes;
+        return listaRestaurantes;
+    }
+
+    public ArrayList <Cliente> getListaClientes(){
+        ArrayList <Cliente> listaClientes = new ArrayList<>();
+
+        for (Utilizador u : listaUtilizadores) {
+            if ( u instanceof Cliente){
+                listaClientes.add((Cliente) u);
+            }
+        }
+        return listaClientes;
+
     }
 
     public void adicionarComentarioCliente(Cliente cliente, String opiniao, double pontuacao, Restaurante restaurante){
-        Comentario comentario = cliente.criarComentario(opiniao, pontuacao, restaurante);
+         Comentario comentario = cliente.criarComentario(opiniao, pontuacao, restaurante);
+       // Comentario comentario = new Comentario(opiniao, pontuacao,getClienteAtivo(), restaurante);
         if (comentario!=null){
             listaComentarios.add(comentario);
         }
