@@ -50,61 +50,66 @@ public class Cliente extends Utilizador implements Serializable {
 //        getListaReservas().add(p);
 //    }
 
-
+//todo falta, alem de nao funcionar esta muito incompleto, eu assumo que o primeiro restaurante que apanhar com reserva, faz ai o comentario...
+    //todo falta, mesmo a questao da data, nao deixa comentar no proprio dia... verificar se coloco tambem hora exata que fez reserva, tem de ser depois
     public Comentario criarComentarioORIGINAL(String opiniao, double pontuacao, Restaurante restaurante) {
         Calendar diaHoje = Calendar.getInstance();
-        for (int i = 0; i < this.getListaReservas().size(); i++) {
-            if (this.getListaReservas().get(i).getData().before(diaHoje)) {//So quero as reservas com data anterior ao dia de hoje, assim nao permite
-                // comentar reservas que ainda nao aconteceram
-                restaurante = this.getListaReservas().get(i).getRestaurante();
-                // Se tiver mais de um, tem de escolher que restaurante quer
+        for (Reserva r : this.getListaReservas()){
+            if (r.getData().before(diaHoje)){
+                restaurante = r.getRestaurante();
                 Comentario comentario = new Comentario(opiniao, pontuacao, this, restaurante);
                 getListaComentarios().add(comentario);
                 return comentario;
             }
-            else System.out.println("Nao pode comentar um restaurante que ainda nao experimentou");
+            else System.out.println("Nao pode comentar um restaurante que ainda nao frequentou");
         }
         return null;
     }
 
-    //TESTE, TIREI A DATA E OBRIGATORIEDADE DE JA TER RESERVA PARA EVITAR ERROS
+    //todo falta - TESTE, TIREI A DATA E OBRIGATORIEDADE DE JA TER RESERVA PARA EVITAR ERROS
     public Comentario criarComentario (String opiniao, double pontuacao, Restaurante restaurante){
                 Comentario comentario = new Comentario(opiniao, pontuacao, this, restaurante);
                 getListaComentarios().add(comentario);
                 return comentario;
     }
 
-    public void getListaComentariosClienteX(String nomeCliente) {
-        for (int i = 0; i < getListaComentarios().size(); i++) {
-            if (nomeCliente.equalsIgnoreCase(getListaComentarios().get(i).getCliente().getNome())) {
-                getListaComentarios().get(i);
+    public ArrayList<Comentario> getListaComentariosClienteX(String nomeCliente) {
+        ArrayList <Comentario> listaComentariosClienteX = new ArrayList<>();
+        for (Comentario c : getListaComentarios()){
+            if (c.getCliente().getNome().equalsIgnoreCase(nomeCliente)){
+                listaComentariosClienteX.add(c);
             }
         }
+        if (listaComentariosClienteX.equals(null)){
+            System.out.println("Cliente "+ nomeCliente + " ,nao tem comentarios feitos");
+            return null;
+        }
+        return listaComentariosClienteX;
     }
 
-    public void editarComentario(String opiniao, double pontuacao) {
-        for (int i = 0; i < getListaComentarios().size(); i++) {
-            if (getListaComentarios().get(i).getCliente().equals(this)) {
-                if (opiniao != null) {
-                    getListaComentarios().get(i).setOpiniao(opiniao);
+
+//todo falta - verificar pk, a questao da pontuacao depende do valor introduzido na interface... porque ele nao escreve, mas escolhe uma das opcoes
+    public void editarComentario(String opiniao, int pontuacao) {
+        for ( Comentario c : getListaComentarios()){
+            if (c.getCliente().equals(this)){
+                if (opiniao != null){
+                    c.setOpiniao(opiniao);
                 }
-                if (pontuacao > 0) {
-                    getListaComentarios().get(i).setPontuacao(pontuacao);
+                if (pontuacao <0){
+                    c.setPontuacao(pontuacao);
                 }
             }
         }
-
     }
 
-    public void apagarComentario() {
-
-        for (int i = 0; i < getListaComentarios().size(); i++) {
-            if (getListaComentarios().get(i).getCliente().equals(this)) {
-                getListaComentarios().get(i).setStatus(false);
+    //todo falta - caso tenho mais de um comentario no mesmo restaurante vai eliminar todos...
+    public void apagarComentario(Restaurante restaurante) {
+        for (Comentario c : getListaComentarios()){
+            if (c.equals(this) && c.getRestaurante().equals(restaurante)){
+                c.setStatus(false);
             }
         }
     }
-
 
     public void criarReservaTakeAway(Cliente cliente, Restaurante restaurante, GregorianCalendar data, LocalTime horario, int quantidade) {
         TakeAway t = new TakeAway(cliente, restaurante, data, horario, quantidade);
