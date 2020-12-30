@@ -80,3 +80,24 @@ FicheiroDeObjectos ficheiroOb = new FicheiroDeObjectos();
             sistema.getListaUtilizadores().get(1).setStatus(false);
             sistema.getListaUtilizadores().get(4).setStatus(false);
    */
+
+
+///////////LOGIN TESTE///////////
+/*
+    public String loginTeste(String username, String pass) {
+        /// percorrer lista de utilizadores ate encontrar cliente
+        // verificar password
+        if (username.equals("restaurante")) {
+            Utilizador u = listaUtilizadores.get(1);
+
+        } else {
+            Utilizador u = listaUtilizadores.get(2);
+        }
+        // se login for valido
+        // this.utilizarAtivo = u;
+        return "";
+        // Se login invalido
+//        this.utilizarAtivo = null;
+//        return "Utilizador inválido";
+    }
+ */

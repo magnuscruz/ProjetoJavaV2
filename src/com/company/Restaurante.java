@@ -14,6 +14,7 @@ public class Restaurante extends Utilizador implements Serializable {
     private LocalTime fimAlm;
     private LocalTime inicioJan;
     private LocalTime fimJan;
+    private double precoMedioRestaurante;
     private double pontuacaoMedia;
     private Ementa ementa;
 
@@ -28,6 +29,8 @@ public class Restaurante extends Utilizador implements Serializable {
         this.fimAlm = fimAlm;
         this.inicioJan = inicioJan;
         this.fimJan = fimJan;
+
+        this.precoMedioRestaurante = ;
         this.pontuacaoMedia = getPontuacaoMedia();//VERIFICAR SE METODO FUNCIONA
         this.ementa = new Ementa();
         this.status = true;
@@ -143,6 +146,13 @@ public class Restaurante extends Utilizador implements Serializable {
         return pontuacaoMedia = totalPontuacao/count;
     }
 
+    public double getPrecoMedioRestaurante(){
+        double count = 0;
+        double precoTotal = 0;
+
+        for ()
+
+    }
 
 
 

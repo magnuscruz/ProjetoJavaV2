@@ -13,6 +13,28 @@ public class Sistema implements Serializable {
     private ArrayList<Comentario> listaComentarios = new ArrayList<>();
     private Utilizador utilizarAtivo;
 
+    private Utilizador getUtilizarAtivo() {
+        return this.utilizarAtivo;
+    }
+
+    public Cliente getClienteAtivo() {
+        if (getUtilizarAtivo() instanceof Cliente) {
+            return (Cliente) getUtilizarAtivo();
+        }
+        return null;
+    }
+
+    public Restaurante getRestauranteAtivo() {
+        if (getUtilizarAtivo() instanceof Restaurante) {
+            return (Restaurante) getUtilizarAtivo();
+        }
+        return null;
+    }
+
+    public ArrayList<Utilizador> getListaUtilizadores() {
+        return listaUtilizadores;
+    }
+
     public ArrayList<Restaurante> getListaRestaurantes() {
         //SO APARECEM OS RESTAURANTES COM STATUS =  TRUE!!
         ArrayList<Restaurante> listaRestaurantes = new ArrayList<>();
@@ -36,38 +58,17 @@ public class Sistema implements Serializable {
         return listaClientes;
     }
 
+    public ArrayList<Comentario> getListaComentarios() {
+        return listaComentarios;
+    }
+
+
     public void adicionarComentarioCliente(Cliente cliente, String opiniao, double pontuacao, Restaurante restaurante) {
         Comentario comentario = cliente.criarComentario(opiniao, pontuacao, restaurante);
         // Comentario comentario = new Comentario(opiniao, pontuacao,getClienteAtivo(), restaurante);
         if (comentario != null) {
             listaComentarios.add(comentario);
         }
-    }
-
-    private Utilizador getUtilizarAtivo() {
-        return this.utilizarAtivo;
-    }
-
-    public Cliente getClienteAtivo() {
-        if (getUtilizarAtivo() instanceof Cliente) {
-            return (Cliente) getUtilizarAtivo();
-        }
-        return null;
-    }
-
-    public Restaurante getRestauranteAtivo() {
-        if (getUtilizarAtivo() instanceof Restaurante) {
-            return (Restaurante) getUtilizarAtivo();
-        }
-        return null;
-    }
-
-    public ArrayList<Utilizador> getListaUtilizadores() {
-        return listaUtilizadores;
-    }
-
-    public ArrayList<Comentario> getListaComentarios() {
-        return listaComentarios;
     }
 
     public void utilizadorExiste(String username) {
@@ -84,24 +85,7 @@ public class Sistema implements Serializable {
         }
     }
 
-    public String loginTeste(String username, String pass) {
-        /// percorrer lista de utilizadores ate encontrar cliente
-        // verificar password
-        if (username.equals("restaurante")) {
-            Utilizador u = listaUtilizadores.get(1);
-
-        } else {
-            Utilizador u = listaUtilizadores.get(2);
-        }
-        // se login for valido
-        // this.utilizarAtivo = u;
-        return "";
-        // Se login invalido
-//        this.utilizarAtivo = null;
-//        return "Utilizador inválido";
-    }
-
-    public String login2(String username, String pass) {
+    public String login(String username, String pass) {
         boolean valido = false;
         for (int i = 0; i < listaUtilizadores.size(); i++) {
             if (username.equals(listaUtilizadores.get(i).getUsername()) && pass.equals(listaUtilizadores.get(i).getPassword())) {
