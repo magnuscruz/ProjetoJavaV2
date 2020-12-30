@@ -25,7 +25,7 @@ public class Ementa implements Serializable {
 
     public void adicionarPratoAPratosDia(String nome, String descricao, double preco) {
         Prato p = new Prato(nome, descricao, preco);
-        carta.add(p);
+        pratosDia.add(p);
     }
 
     public ArrayList<Prato> getCarta() {

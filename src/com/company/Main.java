@@ -21,10 +21,15 @@ public class Main {
      //   sistema.getListaUtilizadores().get(0).setStatus(false);
 
         sistema.getListaRestaurantes().get(1).getEmenta().adicionarPratoACarta("sardinhas", "assadas", 12.2);
+        sistema.getListaRestaurantes().get(0).getEmenta().adicionarPratoAPratosDia("bitoque", "arroz e batatas", 10);
 
         sistema.criarCliente("cli1", "RuaC1", "961", "mailR1@gmail.com", "userC1", "pass", "pass");
         sistema.criarCliente("cli2", "RuaC2", "962", "mailR2@gmail.com", "userC2", "pass", "pass");
         sistema.criarCliente("cli3", "RuaC3", "963", "mailR3@gmail.com", "userC3", "pass", "pass");
+
+        System.out.println("LISTA RESTAURANTES");
+        System.out.println(sistema.getListaRestaurantes());
+        System.out.println("---------------------");
 
 
 
@@ -32,7 +37,7 @@ public class Main {
 //        System.out.println(sistema.getListaClientes().get(0).getListaReservas());
 //        System.out.println("-----------------------------------------------------");
 
-       sistema.adicionarComentarioCliente(sistema.getListaClientes().get(0), "Excelente", 5,sistema.getListaRestaurantes().get(1));
+     //  sistema.adicionarComentarioCliente(sistema.getListaClientes().get(0), "Excelente", 5,sistema.getListaRestaurantes().get(1));
 
 //        System.out.println("LISTA COMENTARIOS");
 //        System.out.println(sistema.getListaClientes().get(0).getListaComentarios());
@@ -42,9 +47,6 @@ public class Main {
 //        System.out.println(sistema.getListaUtilizadores());
 //        System.out.println("---------------------");
 //
-        System.out.println("LISTA RESTAURANTES");
-        System.out.println(sistema.getListaRestaurantes());
-        System.out.println("---------------------");
 
 
         System.out.println("LISTACOMENTARIOS");
