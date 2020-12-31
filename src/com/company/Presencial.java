@@ -11,7 +11,7 @@ public class Presencial extends Reserva implements Serializable {
     public Presencial(Cliente cliente, Restaurante restaurante, GregorianCalendar data, LocalTime hora, int zona, int numeroLugares) {
         super(cliente, restaurante, data, hora);
        // this.zona = zona;
-        this.zona = restaurante.zona(zona);
+        this.zona = restaurante.zona(zona,numeroLugares);
         this.numeroLugares = numeroLugares;
         this.status = true;
     }
@@ -22,5 +22,13 @@ public class Presencial extends Reserva implements Serializable {
                 "zona=" + zona +
                 ", numeroLugares=" + numeroLugares +
                 '}';
+    }
+
+    public int getZona() {
+        return zona;
+    }
+
+    public void setZona(int zona) {
+        this.zona = zona;
     }
 }

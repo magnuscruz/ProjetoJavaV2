@@ -1,7 +1,11 @@
+/*
+
+
 package com.company.gui;
 
 import com.company.Sistema;
 import com.company.gui.util.DateLabelFormatter;
+
 import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
@@ -1449,6 +1453,14 @@ public class Interface extends JFrame {
      * @param resource a resource bundle to convert.
      * @return Properties a properties version of the resource bundle.
      */
+
+
+////////COMENTEI AQUI NOVAMENTE////////////////////
+/*
+
+
+
+
     private static Properties convertResourceBundleToProperties(ResourceBundle resource) {
         Properties properties = new Properties();
         Enumeration<String> keys = resource.getKeys();
@@ -2397,3 +2409,5 @@ public class Interface extends JFrame {
     }
 
 }
+
+ */

@@ -42,33 +42,44 @@ public class Restaurante extends Utilizador implements Serializable {
         this.status = true;
     }
 
-    public int zona(int num) {
-        switch (num) {
-            case 1:
-                if ((lotacaoEsplanada = lotacaoEsplanada - num) < 0) {
-                    System.out.println("Erro - lugares disponiveis esplanda: " + lotacaoEsplanada);
-                    break;
-                } else {
-                    System.out.println("Reservado!");
-                    return num;
-                }
-            case 2:
-                if ((lotacaoFum = lotacaoEsplanada - num) < 0) {
-                    System.out.println("Erro - lugares disponiveis nao fumadores: " + lotacaoNFum);
-                    break;
-                } else {
-                    System.out.println("Reservado!");
-                    return num;
-                }
-            case 3:
+//todo NAO FIZ COMMIT
+    public int zona(int zona, int num) {
+        //Indice returns: 0 - Sem disponibilidade | 1 - Reserva Confirmada Esplanada | 2 - NFum | 3 - Fum|
 
-                if ((lotacaoFum = lotacaoFum - num) < 0) {
-                    System.out.println("Erro - lugares disponiveis fumadores: " + lotacaoFum);
-                    break;
+        int disponibilidade = 0;
+        switch (zona) {
+            case 1:
+                disponibilidade = lotacaoEsplanada - num;
+                if (disponibilidade < 0) {
+                    System.out.println("Erro - lugares disponiveis esplanada: " + lotacaoEsplanada);
                 } else {
+                    lotacaoEsplanada = disponibilidade;
                     System.out.println("Reservado!");
-                    return num;
+                    return zona;
                 }
+                break;
+            case 2:
+                disponibilidade = lotacaoNFum - num;
+                if (disponibilidade < 0) {
+                    System.out.println("Erro - lugares disponiveis nao fumadores: " + lotacaoNFum);
+
+                } else {
+                    lotacaoNFum = disponibilidade;
+                    System.out.println("Reservado!");
+                    return zona;
+                }
+                break;
+            case 3:
+                disponibilidade = lotacaoFum - num;
+                if (disponibilidade < 0) {
+                    System.out.println("Erro - lugares disponiveis fumadores: " + lotacaoFum);
+
+                } else {
+                    lotacaoFum = disponibilidade;
+                    System.out.println("Reservado!");
+                    return zona;
+                }
+                break;
         }
         return 0;
     }
