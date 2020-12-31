@@ -1,4 +1,4 @@
-package GUI;
+package com.company.gui;
 
 import javax.swing.*;
 import javax.swing.plaf.ComponentUI;
