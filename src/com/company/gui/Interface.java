@@ -1,5 +1,6 @@
 package com.company.gui;
 
+import com.company.Sistema;
 import com.company.gui.util.DateLabelFormatter;
 import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
@@ -44,11 +45,22 @@ public class Interface extends JFrame {
     private static final int ALTURA_PADRAO = 300;
     private boolean passwordValido;
     private boolean confirmarPasswordValido;
+    private Sistema sistema = new Sistema();
+    private MaskFormatter mascaraTelemovel;
 
 
     public Interface() {
+
+        try {
+            mascaraTelemovel = new MaskFormatter("#########");
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
         ImageIcon logo = new ImageIcon("logo3.png");
         this.setIconImage(logo.getImage());
+
+
         this.setTitle("RESERVAS DE RESTAURANTES");
         this.setSize(LARGURA_LOGIN, ALTURA_LOGIN);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -270,7 +282,8 @@ public class Interface extends JFrame {
         JTextField emailClienteText = new JTextField(20);
         //emailClienteText.setBorder(BorderFactory.createLineBorder(Color.black, 1));
         JTextField moradaClienteText = new JTextField(20);
-        JTextField telemovelClienteText = new JTextField(20);
+        JTextField telemovelClienteText = new JFormattedTextField(mascaraTelemovel);
+        telemovelClienteText.setColumns(20);
         JTextField usernameClienteText = new JTextField(20);
 
         JPasswordField passwordClienteField = new JPasswordField(20);
@@ -756,7 +769,8 @@ public class Interface extends JFrame {
         moradaRestauranteText.setBorder(BorderFactory.createEmptyBorder(3, 3, 3, 3));
         JTextField cidadeRestauranteText = new JTextField(15);
         cidadeRestauranteText.setBorder(BorderFactory.createEmptyBorder(3, 3, 3, 3));
-        JTextField telemovelRestauranteText = new JTextField(8);
+        JTextField telemovelRestauranteText = new JFormattedTextField(mascaraTelemovel);
+        telemovelRestauranteText.setColumns(8);
         telemovelRestauranteText.setBorder(BorderFactory.createEmptyBorder(3, 3, 3, 3));
         ////////
         JTextField esplanadaRestauranteText = new JTextField(3);
@@ -1162,7 +1176,8 @@ public class Interface extends JFrame {
         moradaAtDadosRestText.setBorder(BorderFactory.createEmptyBorder(3, 3, 3, 3));
         JTextField cidadeAtDadosRestText = new JTextField(15);
         cidadeAtDadosRestText.setBorder(BorderFactory.createEmptyBorder(3, 3, 3, 3));
-        JTextField telemovelAtDadosRestText = new JTextField(8);
+        JTextField telemovelAtDadosRestText = new JFormattedTextField(mascaraTelemovel);
+        telemovelAtDadosRestText.setColumns(8);
         telemovelAtDadosRestText.setBorder(BorderFactory.createEmptyBorder(3, 3, 3, 3));
 
         //JTextField lotacaoAtDadosRestText = new JTextField(5);
@@ -1850,7 +1865,8 @@ public class Interface extends JFrame {
         nomeCliMCliText.setMargin(new Insets(3, 3, 3, 3));
         JTextField emailCliMCliText = new JTextField(20);
         JTextField moradaCliMCliText = new JTextField(20);
-        JTextField telemovelCliMCliText = new JTextField(20);
+        JTextField telemovelCliMCliText = new JFormattedTextField(mascaraTelemovel);
+        telemovelCliMCliText.setColumns(20);
         JTextField usernameCliMCliText = new JTextField(20);
 
         JPasswordField passwordCliMCliField = new JPasswordField(20);
@@ -1886,22 +1902,6 @@ public class Interface extends JFrame {
         JButton ptEnAtDadosMCliButton = new JButton("PT/EN");
         JButton voltarCliMCliButton = new JButton("MENU CLIENTE");
         JButton actualizarCliMCliButton = new JButton("ACTUALIZAR");
-        actualizarCliMCliButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(!passwordValido){
-                    JOptionPane.showMessageDialog(((Component) e.getSource()).getParent(),"Password Inválido!");
-                    passwordCliMCliField.requestFocus();
-                    return;
-                }
-                if(!confirmarPasswordValido) {
-                    JOptionPane.showMessageDialog(((Component) e.getSource()).getParent(), "Password Inválido!");
-                    confirmarPassawordCliMCliField.requestFocus();
-                    return;
-                }
-
-            }
-        });
 
         mCliAtDadosSuperPanel.add(norteAtDadosMCliSubPanel, "North");
         mCliAtDadosSuperPanel.add(centroAtDadosMCliSubPanel, "Center");
@@ -1935,13 +1935,26 @@ public class Interface extends JFrame {
         sulAtDadosMCliSubPanel.add(voltarCliMCliButton);
         sulAtDadosMCliSubPanel.add(actualizarCliMCliButton);
 
-
         actualizarCliMCliButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MENUCLIENTE_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            if(!passwordValido){
+                JOptionPane.showMessageDialog(((Component) a.getSource()).getParent(),"Password Inválido: deve conter o mínimo de 6 caracteres!");
+                passwordCliMCliField.requestFocus();
+                return;
+            }
+            if(!confirmarPasswordValido) {
+                JOptionPane.showMessageDialog(((Component) a.getSource()).getParent(), "Password Inválido: deve ser igual password!");
+                confirmarPassawordCliMCliField.requestFocus();
+                return;
+            }
+            //TODO faz-se necessário atualizar  método atualizarDados Cliente, retirando o password e criar um novo metodo para atualização de password
+            sistema.atualizarDadosCliente(nomeCliMCliText.getText(),
+                    moradaCliMCliText.getText(),
+                    telemovelCliMCliText.getText(),
+                    emailCliMCliText.getText(),
+                    passwordCliMCliField.getPassword().toString(),
+                    confirmarPassawordCliMCliField.getPassword().toString(),
+                    confirmarPassawordCliMCliField.getPassword().toString());
         });
-
         voltarCliMCliButton.addActionListener(a -> {
             CardLayout cl = (CardLayout) contentor.getLayout();
             cl.show(contentor, MENUCLIENTE_CARD);
