@@ -287,17 +287,8 @@ public class Sistema implements Serializable {
         return restaurantesPorValores;
     }
 
-    public ArrayList<Restaurante> consultarRestaurantePorHorario() {
-        ArrayList<Restaurante> restaurantesPorHorario = new ArrayList<>();
-        return restaurantesPorHorario;
-    }
-
-    public ArrayList<Restaurante> consultarRestaurantePorLotacao() {
-        ArrayList<Restaurante> restaurantesPorLotacao = new ArrayList<>();
-        return restaurantesPorLotacao;
-    }
-
     public ArrayList<Restaurante> consultarRestaurantePorCidade(String cidade) {
+
         ArrayList<Restaurante> restaurantesPorCidade = new ArrayList<>();
         for (Restaurante u : getListaRestaurantes()) {
             if (u.getCidade().equalsIgnoreCase(cidade)) {
@@ -308,6 +299,7 @@ public class Sistema implements Serializable {
     }
 
     public ArrayList<Restaurante> consultarRestaurantePorPontuacao(int valorMin, int valorMax) {
+
         ArrayList<Restaurante> restaurantesPorPontuacao = new ArrayList<>();
         if (validarMinMenorMax(valorMin, valorMax)) {
             for (Restaurante r : getListaRestaurantes()) {
@@ -317,6 +309,24 @@ public class Sistema implements Serializable {
             }
         } else System.out.println("Pontuacao minima nao é menor que a maxima");
         return restaurantesPorPontuacao;
+    }
+
+    //todo Testar, nao sei se funciona
+    public ArrayList<Restaurante> consultarRestaurantePorHorario(LocalTime hora) {
+
+        ArrayList<Restaurante> restaurantesPorHorario = new ArrayList<>();
+
+        for (Restaurante r : getListaRestaurantes()){
+            if (r.cliente.restauranteAberto(r,hora)!=0){
+                restaurantesPorHorario.add(r);
+            }
+        }
+        return restaurantesPorHorario;
+    }
+
+    public ArrayList<Restaurante> consultarRestaurantePorLugaresDisponiveis() {
+        ArrayList<Restaurante> restaurantesPorLotacao = new ArrayList<>();
+        return restaurantesPorLotacao;
     }
 
 

@@ -17,7 +17,7 @@ public class Cliente extends Utilizador implements Serializable {
     }
 
     //todo NAO FIZ COMMIT
-    public int restauranteAberto(LocalTime hora) {
+    public int restauranteAberto(Restaurante restaurante, LocalTime hora) {
         // Indice dos returns possiveis: 0 - fechado | 1 - aberto Almoco | 2 - aberto Jantar//
 
         //LocalTime horaEscolhida = LocalTime.of(hora, minuto);// Como tinha anteriormente, mudei por causa dos parametros do metodo, nao testei
@@ -49,20 +49,20 @@ public class Cliente extends Utilizador implements Serializable {
         return dataValida;
     }
 
-    public int criarReservaPresencial(Restaurante r, GregorianCalendar data, LocalTime hora, int zona, int numLugares) {
+    public int criarReservaPresencial(Restaurante restaurante, GregorianCalendar data, LocalTime hora, int zona, int numLugares) {
 //Indice dos returns: 0 - Restaurante fechado! | 1 - Reservado almoco | 2 - Reservado jantar | 3 - sem lugadores disponiveis
 
         int ano = data.get(Calendar.YEAR);
-        switch (restauranteAberto(hora)) //LIMITE-SE A VERIFICAR SE A HORA ESCOLHIDA BATE CERTO COM HORARIO DE ALMOCO (1) OU JANTAR (2)
+        switch (restauranteAberto(restaurante,hora)) //LIMITE-SE A VERIFICAR SE A HORA ESCOLHIDA BATE CERTO COM HORARIO DE ALMOCO (1) OU JANTAR (2)
         {
             //ALMOCO
             case 1 : switch (zona){
                 case 1:
             }
 
-                    Presencial p = new Presencial(this, r, data, hora, zona, numLugares);
+                    Presencial p = new Presencial(this, restaurante, data, hora, zona, numLugares);
                     this.getListaReservas().add(p);//adicionamos a lista de reservas do Cliente em especifico
-                    r.getListaReservas().add(p);// adicionamos a lista de reservas do Restaurante em especifico
+                    restaurante.getListaReservas().add(p);// adicionamos a lista de reservas do Restaurante em especifico
                     // Atencao! Quando criar um metodo para apagar reserva, tenho de apagar nos dois sitios!
                     //Normalmente nao se apagam, deve-se colocar um boolean e dizer que ja nao esta ativa.
                     System.out.println("Criar reserva presencial: " + data + hora);
