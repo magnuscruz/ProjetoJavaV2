@@ -50,6 +50,8 @@ public class Cliente extends Utilizador implements Serializable {
 //        getListaReservas().add(p);
 //    }
 
+
+
 //todo falta, alem de nao funcionar esta muito incompleto, eu assumo que o primeiro restaurante que apanhar com reserva, faz ai o comentario...
     //todo falta, mesmo a questao da data, nao deixa comentar no proprio dia... verificar se coloco tambem hora exata que fez reserva, tem de ser depois
     public Comentario criarComentarioORIGINAL(String opiniao, double pontuacao, Restaurante restaurante) {

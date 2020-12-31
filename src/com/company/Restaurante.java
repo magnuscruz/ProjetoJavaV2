@@ -8,8 +8,8 @@ public class Restaurante extends Utilizador implements Serializable {
     private static int idRestaurante = 1;
     private String cidade;
     private int lotacaoEsplanada;
-    private int lotacaoFum;
     private int lotacaoNFum;
+    private int lotacaoFum;
     private LocalTime inicioAlm;
     private LocalTime fimAlm;
     private LocalTime inicioJan;
@@ -38,14 +38,39 @@ public class Restaurante extends Utilizador implements Serializable {
         //todo alternativa 1 para fazer preco medio restaurante
         //this.precoMedio = getPrecoMedio();
 
-        this.precoMedio = precoMedioRestaurante();
+        this.precoMedio = getPrecoMedioRestaurante();
         this.status = true;
+    }
 
-//        this.inicioHorarioAlm = LocalTime.of(horaInicioAlm, minInicioAlm);
-//        this.fimHorarioAlm = LocalTime.of(horaFimAlm, minFimAlm);
-//        this.inicioHorarioJan = LocalTime.of(horaInicioJan, minInicioJan);
-//        this.fimHorarioJan = LocalTime.of(horaFimJan, minFimJan);
+    public int zona(int num) {
+        switch (num) {
+            case 1:
+                if ((lotacaoEsplanada = lotacaoEsplanada - num) < 0) {
+                    System.out.println("Erro - lugares disponiveis esplanda: " + lotacaoEsplanada);
+                    break;
+                } else {
+                    System.out.println("Reservado!");
+                    return num;
+                }
+            case 2:
+                if ((lotacaoFum = lotacaoEsplanada - num) < 0) {
+                    System.out.println("Erro - lugares disponiveis nao fumadores: " + lotacaoNFum);
+                    break;
+                } else {
+                    System.out.println("Reservado!");
+                    return num;
+                }
+            case 3:
 
+                if ((lotacaoFum = lotacaoFum - num) < 0) {
+                    System.out.println("Erro - lugares disponiveis fumadores: " + lotacaoFum);
+                    break;
+                } else {
+                    System.out.println("Reservado!");
+                    return num;
+                }
+        }
+        return 0;
     }
 
     @Override
@@ -158,23 +183,26 @@ public class Restaurante extends Utilizador implements Serializable {
 //        return ementa.precoMedioRestaurante();
 //    }
 
-
-//todo alternativa 2 para fazer preco medio de Restaurante
-    public double precoMedioRestaurante(){
+    //todo alternativa 2 para fazer preco medio de Restaurante
+    public double getPrecoMedioRestaurante() {
         double countCarta = 0;
         double countDia = 0;
         double precoTotalCarta = 0;
         double precoTotalDia = 0;
 
-        for (Prato p : getEmenta().getCarta()){
+        for (Prato p : getEmenta().getCarta()) {
             precoTotalCarta += p.getPreco();
             countCarta++;
         }
 
-        for ( Prato p : getEmenta().getPratosDia()){
-            precoTotalDia +=p.getPreco();
+        for (Prato p : getEmenta().getPratosDia()) {
+            precoTotalDia += p.getPreco();
             countDia++;
         }
+        //todo em vez do output ser NaN é 0...
+//       if ((precoTotalCarta+precoTotalDia)==0){
+//            return  0;
+//       }
         return (precoTotalCarta + precoTotalDia) / (countCarta + countDia);
     }
 }

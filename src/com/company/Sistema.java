@@ -62,6 +62,7 @@ public class Sistema implements Serializable {
         return listaComentarios;
     }
 
+    //todo nao esta a funcionar
     public void adicionarComentarioCliente(Cliente cliente, String opiniao, double pontuacao, Restaurante restaurante) {
         Comentario comentario = cliente.criarComentario(opiniao, pontuacao, restaurante);
         // Comentario comentario = new Comentario(opiniao, pontuacao,getClienteAtivo(), restaurante);
@@ -170,7 +171,8 @@ public class Sistema implements Serializable {
                 a = true;
             } else {
                 a = false;
-                break; }
+                break;
+            }
         }
         if (a && count == 9) {
         } else {
