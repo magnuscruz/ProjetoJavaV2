@@ -17,8 +17,7 @@ public class Main {
 
         sistema.criarRestaurante("Rest1", "ruaR2", "Coimbra", "912", "MAIL1@a.pt", "userR1", "pass", "pass", 20, 20, 20, LocalTime.of(11, 30), LocalTime.of(15, 00), LocalTime.of(18, 30), LocalTime.of(22, 00));
         sistema.criarCliente("cli1", "RuaC1", "961", "mailR1@gmail.com", "userC1", "pass", "pass");
-
-
+        sistema.login("userC1", "pass");
 
 
         // sistema.criarRestaurante("Rest2", "ruaR2", "Porto", "913", "mail2@a.pt", "userR2", "pass", "pass", 20, 20, 20, LocalTime.of(11, 30), LocalTime.of(15, 00), LocalTime.of(18, 30), LocalTime.of(22, 00));
@@ -44,33 +43,13 @@ public class Main {
         // System.out.println("---------------------");
 
         //todo, criar ReservaPresencial - n funciona
-        sistema.login("userC1","pass");
-        sistema.getClienteAtivo().criarReservaPresencial(sistema.getListaRestaurantes().get(0), new GregorianCalendar(2021,1,5),
-                LocalTime.of(13,0), 1,20);
-
-
+//        sistema.login("userC1","pass");
+//        sistema.getClienteAtivo().criarReservaPresencial(sistema.getListaRestaurantes().get(0), new GregorianCalendar(2021,1,5),
+//                LocalTime.of(13,0), 1,20);
 
 //        System.out.println("RESERVA");
 //       System.out.println(sistema.getListaClientes().get(0).getListaReservas());
 //       System.out.println("-----------------------------------------------------");
-
-        //  sistema.adicionarComentarioCliente(sistema.getListaClientes().get(0), "Excelente", 5,sistema.getListaRestaurantes().get(1));
-
-//        System.out.println("LISTA COMENTARIOS");
-//        System.out.println(sistema.getListaClientes().get(0).getListaComentarios());
-//        System.out.println("--------------------------------");
-
-//        System.out.println("LISTACOMENTARIOS");
-//        sistema.adicionarComentarioCliente(sistema.getClienteAtivo(),
-//                "Excelente", 4,
-//                (Restaurante) sistema.getListaUtilizadores().get(0));
-//        sistema.adicionarComentarioCliente(sistema.getClienteAtivo(),
-//                "Horrivel", 4,
-//                (Restaurante) sistema.getListaUtilizadores().get(2));
-
-        //       sistema.listaComentarios.add(new Comentario("Horrivel", 4, (Cliente) sistema.listaUtilizadores.get(3),(Restaurante) sistema.listaUtilizadores.get(2)));
-//        System.out.println(sistema.getListaComentarios());
-//        System.out.println("----------------------");
 
 
 //       Utilizador u = sistema.listaUtilizadores.get(3);

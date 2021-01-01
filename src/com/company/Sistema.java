@@ -62,7 +62,6 @@ public class Sistema implements Serializable {
         return listaComentarios;
     }
 
-    //todo nao esta a funcionar
     public void adicionarComentarioCliente(Cliente cliente, String opiniao, double pontuacao, Restaurante restaurante) {
         Comentario comentario = cliente.criarComentario(opiniao, pontuacao, restaurante);
         // Comentario comentario = new Comentario(opiniao, pontuacao,getClienteAtivo(), restaurante);
@@ -87,22 +86,6 @@ public class Sistema implements Serializable {
 
     public String login(String username, String pass) {
         boolean valido = false;
-        //NAO Percebi o porque do instanceof, creio que isso é feito quando faco o getutilizadorativo
-
-//        for (int i = 0; i < listaUtilizadores.size(); i++) {
-//            if (username.equals(listaUtilizadores.get(i).getUsername()) && pass.equals(listaUtilizadores.get(i).getPassword())) {
-//                if (listaUtilizadores.get(i) instanceof Restaurante) {
-//                    //  Utilizador u = listaUtilizadores.get(i);
-//                    this.utilizarAtivo = listaUtilizadores.get(i);
-//                    // this.utilizarAtivo = u;
-//                    valido = true;
-//                } else {
-//                    Utilizador u = listaUtilizadores.get(i);
-//                    this.utilizarAtivo = u;
-//                    valido = true;
-//                }
-//            }
-//        }
 
         for (Utilizador u : listaUtilizadores) {
             if (username.equals(u.getUsername()) && pass.equals(u.getPassword())) {
@@ -328,7 +311,6 @@ public class Sistema implements Serializable {
         ArrayList<Restaurante> restaurantesPorLotacao = new ArrayList<>();
         return restaurantesPorLotacao;
     }
-
 
 }
 

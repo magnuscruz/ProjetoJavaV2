@@ -49,6 +49,7 @@ public class Cliente extends Utilizador implements Serializable {
         return dataValida;
     }
 
+    //todo IMCOMPLETO!!! associar cada reserva a 1 dia e almoco ou jantar.
     public int criarReservaPresencial(Restaurante restaurante, GregorianCalendar data, LocalTime hora, int zona, int numLugares) {
 //Indice dos returns: 0 - Restaurante fechado! | 1 - Reservado almoco | 2 - Reservado jantar | 3 - sem lugadores disponiveis
 
@@ -59,7 +60,6 @@ public class Cliente extends Utilizador implements Serializable {
             case 1 : switch (zona){
                 case 1:
             }
-
                     Presencial p = new Presencial(this, restaurante, data, hora, zona, numLugares);
                     this.getListaReservas().add(p);//adicionamos a lista de reservas do Cliente em especifico
                     restaurante.getListaReservas().add(p);// adicionamos a lista de reservas do Restaurante em especifico
@@ -92,8 +92,7 @@ return 0;
         getListaReservas().add(t);
     }
 
-    //todo falta, alem de nao funcionar esta muito incompleto, eu assumo que o primeiro restaurante que apanhar com reserva, faz ai o comentario...
-    //todo falta, mesmo a questao da data, nao deixa comentar no proprio dia... verificar se coloco tambem hora exata que fez reserva, tem de ser depois
+   //todo  (prof nao) incompleto
     public Comentario criarComentarioORIGINAL(String opiniao, double pontuacao, Restaurante restaurante) {
         Calendar diaHoje = Calendar.getInstance();
         for (Reserva r : this.getListaReservas()) {
@@ -106,8 +105,7 @@ return 0;
         }
         return null;
     }
-
-    //todo falta - TESTE, TIREI A DATA E OBRIGATORIEDADE DE JA TER RESERVA PARA EVITAR ERROS
+    //todo (prof nao) este criarComentario funciona, mas ver o de cima, é o original!//Nao esquecer como reserva nao funciona, nao da p testar 100%
     public Comentario criarComentario(String opiniao, double pontuacao, Restaurante restaurante) {
         Comentario comentario = new Comentario(opiniao, pontuacao, this, restaurante);
         getListaComentarios().add(comentario);
@@ -128,15 +126,14 @@ return 0;
         return listaComentariosClienteX;
     }
 
-
-    //todo falta - verificar pk, a questao da pontuacao depende do valor introduzido na interface... porque ele nao escreve, mas escolhe uma das opcoes
     public void editarComentario(String opiniao, int pontuacao) {
+        // Confirmar que tipo de campo é que recebemos da interface, se é int ou string ou outra coisa qualquer...
         for (Comentario c : getListaComentarios()) {
             if (c.getCliente().equals(this)) {
                 if (opiniao != null) {
                     c.setOpiniao(opiniao);
                 }
-                if (pontuacao < 0) {
+                if (pontuacao <= 0 ) {
                     c.setPontuacao(pontuacao);
                 }
             }
