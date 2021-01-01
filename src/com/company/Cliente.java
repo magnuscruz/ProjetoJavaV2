@@ -68,7 +68,6 @@ public class Cliente extends Utilizador implements Serializable {
                     return 1;
 
 
-
             //JANTAR
             case 3: {
                 return 2;

@@ -143,13 +143,24 @@ public class Sistema implements Serializable {
 
     //todo caso a hora seja depois das 24 da uma excecao. coloco esse controlo de excecao neste metodo ou dentro do criarRestaurante?
     //ESTA MUITO INCOMPLETO!!!
-    private boolean validarHorario (LocalTime inicioAlm){
-      boolean valido = true;
+    private boolean validarHorario(LocalTime inicioAlm) {
+        boolean valido = true;
 
-        if (inicioAlm.getHour() >23 || inicioAlm.getMinute() >59){
+        if (inicioAlm.getHour() > 23 || inicioAlm.getMinute() > 59) {
             valido = false;
         }
         return valido;
+    }
+
+    private boolean telefoneUnico(String telefone) {
+        boolean unico = true;
+
+        for (Utilizador u : listaUtilizadores) {
+            if (u.getStatus() && u.getTelefone().equals(telefone)) {
+                unico = false;
+            }
+        }
+        return unico;
     }
 
     //todo Muito basico, só valida se foram introduzidos 9 numeros
@@ -175,54 +186,79 @@ public class Sistema implements Serializable {
         return a;
     }
 
+
     public void criarRestaurante(String nome, String morada, String cidade, String telefone, String email, String username, String password, String confirmarPass, int lotacaoEsplanada, int lotacaoFum, int lotacaoNFum, LocalTime inicioAlm, LocalTime fimAlm, LocalTime inicioJan, LocalTime fimJan) {
 
-        if (emailUnico(email)) {
-            if (validarEmail(email)) {
-                if (usernameUnico(username)) {
-                    if (confirmarPass(password, confirmarPass)) {
-                        if (validarHorario(inicioAlm)){
-                        Restaurante r = new Restaurante(nome, morada, cidade, telefone, email, username, password, confirmarPass, lotacaoEsplanada, lotacaoFum, lotacaoNFum, inicioAlm, fimAlm, inicioJan, fimJan);
-                        listaUtilizadores.add(r);
-                        System.out.println("Restaurante criado");
-                        } else System.out.println("Horario invalido");
-                    } else System.out.println("Passwords nao sao iguais");
-                } else System.out.println("Username indisponivel");
-            } else System.out.println("Email nao é valido");
-        } else System.out.println("Email ja esta registado");
+        if (telefoneUnico(telefone)) {
+            if (validarTelefone(telefone)) {
+                if (emailUnico(email)) {
+                    if (validarEmail(email)) {
+                        if (usernameUnico(username)) {
+                            if (confirmarPass(password, confirmarPass)) {
+                                if (validarHorario(inicioAlm)) {
+                                    Restaurante r = new Restaurante(nome, morada, cidade, telefone, email, username, password, confirmarPass, lotacaoEsplanada, lotacaoFum, lotacaoNFum, inicioAlm, fimAlm, inicioJan, fimJan);
+                                    listaUtilizadores.add(r);
+                                    System.out.println("Restaurante criado");
+                                } else System.out.println("Horario invalido");
+                            } else System.out.println("Passwords nao sao iguais");
+                        } else System.out.println("Username indisponivel");
+                    } else System.out.println("Email nao é valido");
+                } else System.out.println("Email ja esta registado");
+            } else System.out.println("Telefone invalido");
+        }else System.out.println("Telefone ja esta registado");
     }
 
     public void criarCliente(String nome, String morada, String telefone, String email, String username, String password, String confirmarPass) {
 
-        if (emailUnico(email)) {
-            if (validarEmail(email)) {
-                if (usernameUnico(username)) {
-                    if (confirmarPass(password, confirmarPass)) {
-                        Cliente c = new Cliente(nome, morada, telefone, email, username, password, confirmarPass);
-                        listaUtilizadores.add(c);
-                        System.out.println("Cliente criado");
-                    } else System.out.println("Passwords nao sao iguais");
-                } else System.out.println("Username indisponivel");
-            } else System.out.println("Email nao é valido");
-        } else System.out.println("Email ja esta registado");
+        if (telefoneUnico(telefone)) {
+            if (validarTelefone(telefone)) {
+                if (emailUnico(email)) {
+                    if (validarEmail(email)) {
+                        if (usernameUnico(username)) {
+                            if (confirmarPass(password, confirmarPass)) {
+                                Cliente c = new Cliente(nome, morada, telefone, email, username, password, confirmarPass);
+                                listaUtilizadores.add(c);
+                                System.out.println("Cliente criado");
+                            } else System.out.println("Passwords nao sao iguais");
+                        } else System.out.println("Username indisponivel");
+                    } else System.out.println("Email nao é valido");
+                } else System.out.println("Email ja esta registado");
+            } else System.out.println("Telemovel nao é valido");
+        } else System.out.println("Telemovel ja registado");
     }
 
+    //todo (Opiniao PROF) Esta demasiado deselegante ou é aceitavel?
     public void atualizarDadosCliente(String nome, String morada, String telefone, String email, String password, String novaPass, String confirmarNovaPass) {
 
-        if (emailUnico(email)) {
-            if (validarEmail(email)) {
-                if (confirmarPass(novaPass, confirmarNovaPass)) {
-                    for (Utilizador u : listaUtilizadores) {
-                        if (u instanceof Cliente && u.equals(this)) {//Funcionara??
-                            u.setNome(nome);
-                        }
-                    }
-                    //Cliente c = new Cliente(nome, morada, telefone, email, username, password);
-                    // NAO PODE ser new, tenho de atualizar o anterior!
-                    System.out.println("Dados atualizados");
-                } else System.out.println("Passwords nao sao iguais");
-            } else System.out.println("Email nao é valido");
-        } else System.out.println("Email ja esta registado");
+        if (nome != "") {
+            getClienteAtivo().setNome(nome);
+        }
+        if (morada != "") {
+            getClienteAtivo().setMorada(morada);
+        }
+        if (telefone != "") {
+            if (validarTelefone(telefone)) {
+                getClienteAtivo().setTelefone(telefone);
+            } else System.out.println("telemovel nao é valido");
+        }
+
+        if (email != "") {
+            if (emailUnico(email)) {
+                if (validarEmail(email)) {
+                    getClienteAtivo().setEmail(email);
+                } else System.out.println("Email nao é valido");
+            } else System.out.println("Email ja esta registado");
+        }
+
+        if (password != "") {
+            if (novaPass != "") {
+                if (confirmarNovaPass != "") {
+                    if (confirmarPass(novaPass, confirmarNovaPass)) {
+                        getClienteAtivo().setPassword(novaPass);
+                    } else System.out.println("Passwords nao sao iguais");
+                }
+            }
+        }
     }
 
     public void atualizarDadosRestaurante(String nome, String morada, String telefone, String email, String password, String novaPass, String confirmarNovaPass, int lotacaoEsplanada, int lotacaoFum, int lotacaoNFum, LocalTime inicioAlm, LocalTime fimAlm, LocalTime inicioJan, LocalTime fimJan) {
@@ -241,8 +277,8 @@ public class Sistema implements Serializable {
 
     public void removerCliente(String username) {
 
-        for (Utilizador u : getListaUtilizadores()){
-            if (u instanceof Cliente && u.getUsername().equalsIgnoreCase(username)){
+        for (Utilizador u : getListaUtilizadores()) {
+            if (u instanceof Cliente && u.getUsername().equalsIgnoreCase(username)) {
                 u.setStatus(false);
             }
         }
@@ -250,8 +286,8 @@ public class Sistema implements Serializable {
 
     public void removerRestaurante(String username) {
 
-        for (Utilizador u : getListaUtilizadores()){
-            if (u instanceof Restaurante && u.getUsername().equalsIgnoreCase(username)){
+        for (Utilizador u : getListaUtilizadores()) {
+            if (u instanceof Restaurante && u.getUsername().equalsIgnoreCase(username)) {
                 u.setStatus(false);
             }
         }
@@ -273,8 +309,8 @@ public class Sistema implements Serializable {
         ArrayList<Restaurante> restaurantesPorValores = new ArrayList<>();
 
         if (validarMinMenorMax(valorMin, valorMax)) {
-            for (Restaurante r : getListaRestaurantes()){
-                if (r.getPontuacaoMedia() >= valorMin && r.getPontuacaoMedia() <= valorMax){
+            for (Restaurante r : getListaRestaurantes()) {
+                if (r.getPontuacaoMedia() >= valorMin && r.getPontuacaoMedia() <= valorMax) {
                     restaurantesPorValores.add(r);
                 }
             }
@@ -311,8 +347,8 @@ public class Sistema implements Serializable {
 
         ArrayList<Restaurante> restaurantesPorHorario = new ArrayList<>();
 
-        for (Restaurante r : getListaRestaurantes()){
-            if (getClienteAtivo().restauranteAberto(r,hora)!=0){
+        for (Restaurante r : getListaRestaurantes()) {
+            if (getClienteAtivo().restauranteAberto(r, hora) != 0) {
                 restaurantesPorHorario.add(r);
             }
         }
