@@ -16,8 +16,15 @@ public class Main {
 
 
         sistema.criarRestaurante("Rest1", "ruaR2", "Coimbra", "912", "MAIL1@a.pt", "userR1", "pass", "pass", 20, 20, 20, LocalTime.of(11, 30), LocalTime.of(15, 00), LocalTime.of(18, 30), LocalTime.of(22, 00));
+        sistema.criarRestaurante("Rest2", "ruaR2", "Coimbra", "912", "MAIL2@a.pt", "userR2", "pass", "pass", 20, 20, 20, LocalTime.of(12, 30), LocalTime.of(15, 00), LocalTime.of(20, 30), LocalTime.of(23, 00));
+//        sistema.criarRestaurante("Rest3", "ruaR2", "Coimbra", "912", "MAIL3@a.pt", "userR3", "pass", "pass", 20, 20, 20, LocalTime.of(13, 30), LocalTime.of(15, 00), LocalTime.of(21, 30), LocalTime.of(24, 00));
+
         sistema.criarCliente("cli1", "RuaC1", "961", "mailR1@gmail.com", "userC1", "pass", "pass");
-        sistema.login("userC1", "pass");
+        sistema.login("userC1","pass");
+
+        System.out.println("Restaurantes Abertos");
+        System.out.println(sistema.consultarRestaurantePorHorario(LocalTime.of(12,31)));
+        System.out.println("----------------------");
 
 
         // sistema.criarRestaurante("Rest2", "ruaR2", "Porto", "913", "mail2@a.pt", "userR2", "pass", "pass", 20, 20, 20, LocalTime.of(11, 30), LocalTime.of(15, 00), LocalTime.of(18, 30), LocalTime.of(22, 00));

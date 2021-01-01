@@ -294,13 +294,12 @@ public class Sistema implements Serializable {
         return restaurantesPorPontuacao;
     }
 
-    //todo Testar, nao sei se funciona
     public ArrayList<Restaurante> consultarRestaurantePorHorario(LocalTime hora) {
 
         ArrayList<Restaurante> restaurantesPorHorario = new ArrayList<>();
 
         for (Restaurante r : getListaRestaurantes()){
-            if (r.cliente.restauranteAberto(r,hora)!=0){
+            if (getClienteAtivo().restauranteAberto(r,hora)!=0){
                 restaurantesPorHorario.add(r);
             }
         }
@@ -311,6 +310,5 @@ public class Sistema implements Serializable {
         ArrayList<Restaurante> restaurantesPorLotacao = new ArrayList<>();
         return restaurantesPorLotacao;
     }
-
 }
 

@@ -15,8 +15,7 @@ public class Cliente extends Utilizador implements Serializable {
         this.id = idCliente++;
         this.status = true;
     }
-
-    //todo NAO FIZ COMMIT
+    
     public int restauranteAberto(Restaurante restaurante, LocalTime hora) {
         // Indice dos returns possiveis: 0 - fechado | 1 - aberto Almoco | 2 - aberto Jantar//
 
@@ -49,7 +48,7 @@ public class Cliente extends Utilizador implements Serializable {
         return dataValida;
     }
 
-    //todo IMCOMPLETO!!! associar cada reserva a 1 dia e almoco ou jantar.
+    //todo INCOMPLETO!!! associar cada reserva a 1 dia e almoco ou jantar.
     public int criarReservaPresencial(Restaurante restaurante, GregorianCalendar data, LocalTime hora, int zona, int numLugares) {
 //Indice dos returns: 0 - Restaurante fechado! | 1 - Reservado almoco | 2 - Reservado jantar | 3 - sem lugadores disponiveis
 
@@ -81,6 +80,8 @@ public class Cliente extends Utilizador implements Serializable {
         }
 return 0;
     }
+
+
 
 //    public void criarReservaPresencial(Cliente cliente, Restaurante restaurante, GregorianCalendar data, LocalTime horario, int numeroLugares, int zona) {
 //        Presencial p = new Presencial(cliente, restaurante, data, horario, numeroLugares, zona);
