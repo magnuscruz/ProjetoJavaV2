@@ -19,23 +19,25 @@ public class Main {
         sistema.criarRestaurante("Rest2", "ruaR2", "Coimbra", "961876454", "MAIL2@a.pt", "userR2", "pass", "pass", 20, 20, 20, LocalTime.of(12, 30), LocalTime.of(15, 00), LocalTime.of(20, 30), LocalTime.of(23, 59));
         sistema.criarRestaurante("Rest3", "ruaR2", "Coimbra", "961876455", "MAIL3@a.pt", "userR3", "pass", "pass", 20, 20, 20, LocalTime.of(13, 30), LocalTime.of(15, 00), LocalTime.of(21, 30), LocalTime.of(23, 59));
 
-
         sistema.criarCliente("cli1", "RuaC1", "961876457", "mailR1@gmail.com", "userC1", "pass", "pass");
-        sistema.login("userC1","pass");
-        sistema.atualizarDadosCliente("","RUA","91","adada","","aaa", "");
+        sistema.login("userC1", "pass");
+        sistema.atualizarDadosCliente("", "RUA", "91", "adada", "", "aaa", "");
 
         System.out.println("RESTAURANTES");
         System.out.println(sistema.getListaRestaurantes());
         System.out.println("----------------");
 
-        sistema.login("userR1","pass");
-        sistema.atualizarDadosRestaurante("TACHO","","", "","","","",10,
-                10,10, null,null,null,null);
+        sistema.login("userR1", "pass");
+        System.out.println("Lotacao disponivel");
+        double a = sistema.lotacaoTotalDisponivel();
+        System.out.println(a);
+        System.out.println("-----------------------");
+        sistema.atualizarDadosRestaurante("TACHO", "", "", "", "", "", "", 10,
+                10, 10, null, null, null, null);
 
         System.out.println("Restaurantes depois de editados");
         System.out.println(sistema.getListaRestaurantes());
         System.out.println("----------------");
-
 
 
         // sistema.criarRestaurante("Rest2", "ruaR2", "Porto", "913", "mail2@a.pt", "userR2", "pass", "pass", 20, 20, 20, LocalTime.of(11, 30), LocalTime.of(15, 00), LocalTime.of(18, 30), LocalTime.of(22, 00));

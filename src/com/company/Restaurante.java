@@ -42,7 +42,8 @@ public class Restaurante extends Utilizador implements Serializable {
         this.status = true;
     }
 
-//todo NAO FIZ COMMIT
+
+
     public int zona(int zona, int num) {
         //Indice returns: 0 - Sem disponibilidade | 1 - Reserva Confirmada Esplanada | 2 - NFum | 3 - Fum|
 
@@ -83,6 +84,8 @@ public class Restaurante extends Utilizador implements Serializable {
         }
         return 0;
     }
+
+
 
     @Override
     public String toString() {

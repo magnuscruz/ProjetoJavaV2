@@ -421,5 +421,10 @@ public class Sistema implements Serializable {
         ArrayList<Restaurante> restaurantesPorLotacao = new ArrayList<>();
         return restaurantesPorLotacao;
     }
+
+    public double lotacaoTotalDisponivel (){
+        return (getRestauranteAtivo().getLotacaoEsplanada()+ getRestauranteAtivo().getLotacaoFum()+ getRestauranteAtivo().getLotacaoNFum());
+    }
+
 }
 
