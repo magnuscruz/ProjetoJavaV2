@@ -19,13 +19,11 @@ public class Main {
         sistema.criarRestaurante("Rest2", "ruaR2", "Coimbra", "961876454", "MAIL2@a.pt", "userR2", "pass", "pass", 20, 20, 20, LocalTime.of(12, 30), LocalTime.of(15, 00), LocalTime.of(20, 30), LocalTime.of(23, 59));
         sistema.criarRestaurante("Rest3", "ruaR2", "Coimbra", "961876455", "MAIL3@a.pt", "userR3", "pass", "pass", 20, 20, 20, LocalTime.of(13, 30), LocalTime.of(15, 00), LocalTime.of(21, 30), LocalTime.of(23, 59));
 
+
         sistema.criarCliente("cli1", "RuaC1", "961876457", "mailR1@gmail.com", "userC1", "pass", "pass");
         sistema.login("userC1", "pass");
         sistema.atualizarDadosCliente("", "RUA", "91", "adada", "", "aaa", "");
 
-        System.out.println("RESTAURANTES");
-        System.out.println(sistema.getListaRestaurantes());
-        System.out.println("----------------");
 
         sistema.login("userR1", "pass");
         System.out.println("Lotacao disponivel");
@@ -47,6 +45,11 @@ public class Main {
 //        System.out.println("RESTAURANTES PRECO MEDIO");
         sistema.getListaRestaurantes().get(0).getEmenta().adicionarPratoACarta("sardinhas", "assadas", 20);
         sistema.getListaRestaurantes().get(0).getEmenta().adicionarPratoAPratosDia("bitoque", "arroz e batatas", 10);
+
+        System.out.println("RESTAURANTES");
+        System.out.println(sistema.getListaRestaurantes());
+        System.out.println("----------------");
+
 //        System.out.println(sistema.getListaRestaurantes().get(0).getPrecoMedioRestaurante());//ESTE FUNCIONA!
 //        System.out.println("-------------------------------------------------------");
 

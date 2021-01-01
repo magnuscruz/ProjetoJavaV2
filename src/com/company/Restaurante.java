@@ -14,8 +14,8 @@ public class Restaurante extends Utilizador implements Serializable {
     private LocalTime fimAlm;
     private LocalTime inicioJan;
     private LocalTime fimJan;
-    private double precoMedio;
-    private double pontuacaoMedia;
+   // private double precoMedio;
+   // private double pontuacaoMedia;
     private Ementa ementa;
 
     public Restaurante(String nome, String morada, String cidade, String telefone, String email, String username, String password, String confirmarPass, int lotacaoEsplanada, int lotacaoFum, int lotacaoNFum, LocalTime inicioAlm, LocalTime fimAlm, LocalTime inicioJan, LocalTime fimJan) {
@@ -32,13 +32,13 @@ public class Restaurante extends Utilizador implements Serializable {
 
         //todo se eu chamar o metodo funciona, mas se quiser usar dentro de um metodo ou
         // no toString de Restaurante, aparece NaN
-        this.pontuacaoMedia = getPontuacaoMedia();
+       // this.pontuacaoMedia = getPontuacaoMedia();
         this.ementa = new Ementa();
 
         //todo alternativa 1 para fazer preco medio restaurante
         //this.precoMedio = getPrecoMedio();
 
-        this.precoMedio = getPrecoMedioRestaurante();
+        //this.precoMedio = getPrecoMedioRestaurante();
         this.status = true;
     }
 
@@ -85,8 +85,6 @@ public class Restaurante extends Utilizador implements Serializable {
         return 0;
     }
 
-
-
     @Override
     public String toString() {
         return "\nRestaurante{" + super.toString() +
@@ -99,8 +97,8 @@ public class Restaurante extends Utilizador implements Serializable {
                 ", inicioJan=" + inicioJan +
                 ", fimJan=" + fimJan +
                 ", ementa=" + ementa +
-                ", pontuacaoMedia=" + pontuacaoMedia +
-                ", precoMedio=" + precoMedio +
+                ", pontuacaoMedia=" + getPontuacaoMedia() +
+                ", precoMedio=" + getPrecoMedioRestaurante() +
                 '}';
     }
 
@@ -180,24 +178,24 @@ public class Restaurante extends Utilizador implements Serializable {
         this.fimJan = fimJan;
     }
 
+    //todo da NaN - getPrecoMedio tambem dava, mas eliminei o atributo e só coloquei o metodo na toString
     public double getPontuacaoMedia() {
         double count = 0;
         double totalPontuacao = 0;
+        double media = 0;
         for (Comentario u : getListaComentarios()) {
             if (u.equals(this)) {
                 count++;
                 totalPontuacao += u.getPontuacao();
             }
         }
-        return pontuacaoMedia = totalPontuacao / count;
+        media = totalPontuacao/count;
+        if (media ==0){
+            return  0;
+        }
+        return media;
     }
 
-    // todo alternativa 1 para fazer preco medio de Restaurante
-//    public double getPrecoMedio() {
-//        return ementa.precoMedioRestaurante();
-//    }
-
-    //todo alternativa 2 para fazer preco medio de Restaurante
     public double getPrecoMedioRestaurante() {
         double countCarta = 0;
         double countDia = 0;
@@ -213,10 +211,10 @@ public class Restaurante extends Utilizador implements Serializable {
             precoTotalDia += p.getPreco();
             countDia++;
         }
-        //todo em vez do output ser NaN é 0...
-//       if ((precoTotalCarta+precoTotalDia)==0){
-//            return  0;
-//       }
+
+       if ((precoTotalCarta+precoTotalDia)==0){
+            return  0;
+       }
         return (precoTotalCarta + precoTotalDia) / (countCarta + countDia);
     }
 }
