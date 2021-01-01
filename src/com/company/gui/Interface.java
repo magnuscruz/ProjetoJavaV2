@@ -25,8 +25,6 @@ public class Interface extends JFrame {
     private static final String RESTAURANTE_CARD = "RESTAURANTE";
     private static final String CLIENTE_CARD = "CLIENTE";
     private static final String MENUCLIENTE_CARD = "MENU CLIENTE";
-    private static final String MCLIREST_CARD = "MENU CLIENTE - CONSULTAR RESTAURANTES";
-    private static final String MCLICOMENTARIOS_CARD = "MENU CLIENTE - COMENTÁRIOS";
     private static final String MCLIATDADOS_CARD = "MENU CLIENTE - ACTUALIZAR DADOS";
     private static final String MCLIHISRES_CARD = "MENU CLIENTE - HISTÓRICO DE RESERVAS";
     private static final String MCLIMRESCOMPONTRESE_CARD = "MENU CLIENTE - HISTÓRICO DE RESERVAS: COMENTAR";
@@ -93,10 +91,6 @@ public class Interface extends JFrame {
         registarNovoRestSuperPanel.setLayout(new BorderLayout());
         JPanel mCliSuperPanel = new JPanel();
         mCliSuperPanel.setLayout(new BorderLayout());
-        JPanel mCliRestSuperPanel = new JPanel();
-        mCliRestSuperPanel.setLayout(new BorderLayout());
-        JPanel mCliComentariosSuperPanel = new JPanel();
-        mCliComentariosSuperPanel.setLayout(new BorderLayout());
         JPanel mCliAtDadosSuperPanel = new JPanel();
         mCliAtDadosSuperPanel.setLayout(new BorderLayout());
         JPanel mCliHistResSuperPanel = new JPanel();
@@ -176,10 +170,6 @@ public class Interface extends JFrame {
 
         construirPanelMRestComentarios(this, contentor, loginSuperPanel, mRestComentariosSuperPanel);
 
-        //construirPanelMCliRestaurantes(this, contentor, loginSuperPanel, mCliRestSuperPanel);
-
-        //construirPanelMCliComentarios(this, contentor, loginSuperPanel, mCliComentariosSuperPanel);
-
         construirPanelMCliAtDados(this, contentor, loginSuperPanel, mCliAtDadosSuperPanel);
 
         construirPanelMCliHistRes(this, contentor, loginSuperPanel, mCliHistResSuperPanel);
@@ -227,8 +217,6 @@ public class Interface extends JFrame {
         contentor.add(mRestAtDadosSuperPanel, MRESTACTUALIZARDADOS_CARD);
         contentor.add(mRestReservasSuperPanel, MRESTRESERV_CARD);
         contentor.add(mRestComentariosSuperPanel, MRESTCOMENTARIOS_CARD);
-        contentor.add(mCliRestSuperPanel, MCLIREST_CARD);
-        contentor.add(mCliComentariosSuperPanel, MCLICOMENTARIOS_CARD);
         contentor.add(mCliAtDadosSuperPanel, MCLIATDADOS_CARD);
         contentor.add(mCliHistResSuperPanel, MCLIHISRES_CARD);
         contentor.add(mCliResActSuperPanel, MCLIRESACT_CARD);
@@ -2347,7 +2335,7 @@ public class Interface extends JFrame {
     }
 
 
-    //todo ver como criar o apagar e editar comentário na seleção da tabela e ver a questão do OK
+    //TODO ver como criar o apagar e editar comentário na seleção da tabela e ver a questão do OK
 //////MENU CLIENTE – CONSULTAR COMENTÁRIOS MENU//////////
 
     private void construirPanelMCliMCom(Interface janela, Container contentor, JPanel
