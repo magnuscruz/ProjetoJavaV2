@@ -2330,131 +2330,558 @@
 //
 //
 //    //todo ver como criar o apagar e editar comentário na seleção da tabela e ver a questão do OK
-//    //////MENU CLIENTE – CONSULTAR COMENTÁRIOS MENU//////////
+////////MENU CLIENTE – CONSULTAR COMENTÁRIOS MENU//////////
 //
-//    private void construirPanelMCliComentarios(Interface janela, Container contentor, JPanel
-//            loginSuperPanel, JPanel mCliComSuperPanel) {
+//private void construirPanelMCliMCom(Interface janela, Container contentor, JPanel
+//        loginSuperPanel, JPanel MCliMComSuperPanel) {
+//
+//
+//    /////SUBPAINEIS//////
+//    JPanel norteMCliMComSubPanel = new JPanel();
+//    norteMCliMComSubPanel.setLayout(new BorderLayout());
+//    JPanel centroMCliMComSubPanel = new JPanel();
+//    JPanel sulMCliMComSubPanel = new JPanel();
+//
+//    JLabel mCliMComLabel = new JLabel("MENU CLIENTE - CONSULTAR COMENTÁRIOS:");
+//
+//    JRadioButton mCliMComFPPRButton = new JRadioButton("PRÓPRIOS");
+//JRadioButton mCliMComFCliRButton = new JRadioButton("CLIENTE ESPECÍFICO");
+//JRadioButton mCliMComFRestRButton = new JRadioButton("RESTAURANTE ESPECÍFICO");
+//JRadioButton mCliMComFIDRButton = new JRadioButton("INTERVALO DE DATAS");
+//
+//
+//
+//
+//        ButtonGroup group = new ButtonGroup();
+//       group.add(mCliMComFPPRButton);
+//        group.add(mCliMComFCliRButton);
+//group.add (mCliMComFRestRButton);
+//group.add (mCliMComFIDRButton);
+//
+//
+//    //JTextField mCliMComFCliText = new JTextField(17);
+//    //JTextField mCliFComRestText = new JTextField(17);
+//
+//
+//JButton ptEnMCliMComButton = new JButton("PT/EN");
+//    JButton voltarMCliMComButton = new JButton("MENU CLIENTE");
+//    //JButton okMCliMComButton = new JButton("OK");
+//
+//    mCliMComSuperPanel.add(norteMCliMComSubPanel, "North");
+//    mCliMComSuperPanel.add(centroMCliMComSubPanel, "Center");
+//    mCliMComSuperPanel.add(sulMCliMComSubPanel, "South");
+//
+//    JPanel norteMCliMComSSPanel = new JPanel();
+//    norteMCliMComSSPanel.setLayout(new FlowLayout());
+//    norteMCliMComSSPanel.add(mCliMComLabel);
+//    norteMCliMComSubPanel.add(norteMCliMComSSPanel, BorderLayout.CENTER);
+//    norteMCliMComSubPanel.add(ptEnMCliMComButton, BorderLayout.EAST);
+//
+//    JPanel centroMCliMComSSPanel = new JPanel();
+//    centroMCliMComSSPanel.setLayout(new FlowLayout());
+//    centroMCliMComSubPanel.add(centroMCliMComSSPanel, BorderLayout.WEST);
+//
+//    JPanel centroMCliMComSSPanel1 = new JPanel();
+//    centroMCliMComSSPanel1.setLayout(new FlowLayout());
+//    centroMCliMComSubPanel.add(centroMCliMComSSPanel1, BorderLayout.WEST);
+//
+//    JPanel centroMCliMComSSPanel2 = new JPanel();
+//    centroMCliMComSSPanel2.setLayout(new FlowLayout());
+//    centroMCliMComSubPanel.add(centroMCliMComSSPanel2, BorderLayout.WEST);
+//
+//    JPanel centroMCliMComSSPanel3 = new JPanel();
+//    centroMCliMComSSPanel3.setLayout(new FlowLayout());
+//    centroMCliMComSubPanel.add(centroMCliMComSSPanel3, BorderLayout.WEST);
+//
+//    JPanel centroMCliMComSSPanel4 = new JPanel();
+//    centroMCliMComSSPanel4.setLayout(new FlowLayout());
+//    centroMCliMComSubPanel.add(centroMCliMComSSPanel4, BorderLayout.CENTER);
+//
+//
+//centroMCliMComSSPanel.add(mCliMComFPPRButton);
+//centroMCliMComSSPanel.add(mCliMComFCliRButton);
+//centroMCliMComSSPanel.add(mCliMComFRestRButton);
+//centroMCliMComSSPanel.add(mCliMComFIDRButton);
+//
+//        sulMCliMComSubPanel.setLayout(new FlowLayout());
+//    sulMCliMComSubPanel.add(voltarMCliMComButton);
+//    //sulMCliMComSubPanel.add(okMCliMComButton);
+//
+//mCliMComFPPRButton.addActionListener(a -> {
+//        CardLayout cl = (CardLayout) contentor.getLayout();
+//        cl.show(contentor, MENUCLIENTE_CARD);
+//        this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+//    });
+//
+//mCliMComFCliRButton.addActionListener(a -> {
+//        CardLayout cl = (CardLayout) contentor.getLayout();
+//        cl.show(contentor, MENUCLIENTE_CARD);
+//        this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+//    });
+//
+//mCliMComFRestRButton.addActionListener(a -> {
+//        CardLayout cl = (CardLayout) contentor.getLayout();
+//        cl.show(contentor, MENUCLIENTE_CARD);
+//        this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+//    });
+//
+//mCliMComFIDRButton.addActionListener(a -> {
+//        CardLayout cl = (CardLayout) contentor.getLayout();
+//        cl.show(contentor, MENUCLIENTE_CARD);
+//        this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+//    });
+//
+//
+//    voltarMCliMComButton.addActionListener(a -> {
+//        CardLayout cl = (CardLayout) contentor.getLayout();
+//        cl.show(contentor, MENUCLIENTE_CARD);
+//        this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+//
+//    });
+//
+//sobras
+//centroMCliMComSSPanel.add(mCliMComLabel);
+//    centroMCliMComSSPanel.add(tabelaMCliFCom);
+//
+//    centroMCliMComSSPanel1.add(mCliFComCliLabel);
+//    centroMCliMComSSPanel1.add(mCliFComCliText);
+//
+//    centroMCliMComSSPanel1.add(mCliFComRestLabel);
+//    centroMCliMComSSPanel1.add(mCliFComRestText);
+//
+//    centroMCliMComSSPanel2.add(mCliFComDatasLabel);
+//    centroMCliMComSSPanel3.add(mCliMComLabel);
+//    centroMCliMComSSPanel3.add(datePicker4);
+//    centroMCliMComSSPanel3.add(mCliMComAteLabel);
+//    centroMCliMComSSPanel3.add(datePicker5);
+//
+//
+//   //todo ver os encaminhamentos para responder comentário
+//    okMCliMComButton.addActionListener(e -> {
+//        CardLayout cl = (CardLayout) contentor.getLayout();
+//        cl.show(contentor, LOGIN_CARD);
+//        this.setSize(500, 180);
+//    });
+//
+//}
+
+//////MENU CLIENTE – CONSULTAR COMENTÁRIOS – COMENTÁRIOS PRÓPRIOS//////////
+//
+//private void construirPanelMCliMComFPP(Interface janela, Container contentor, JPanel
+//        loginSuperPanel, JPanel MCliMComFPPSuperPanel){
 //
 //
 //        /////SUBPAINEIS//////
-//        JPanel norteMCliComSubPanel = new JPanel();
-//        norteMCliComSubPanel.setLayout(new BorderLayout());
-//        JPanel centroMCliComSubPanel = new JPanel();
-//        JPanel sulMCliComSubPanel = new JPanel();
+//        JPanel norteMCliMComFPPSubPanel=new JPanel();
+//        norteMCliMComFPPSubPanel.setLayout(new BorderLayout());
+//        JPanel centroMCliMComFPPSubPanel=new JPanel();
+//        JPanel sulMCliMComFPPSubPanel=new JPanel();
 //
-//        JLabel mCliFilComLabel = new JLabel("MENU CLIENTE - CONSULTAR COMENTÁRIOS:");
+//        JLabel mCliMComsFPPLabel=new JLabel("MENU CLIENTE - CONSULTAR:");
+//        JLabel mCliMComFPPLabel=new JLabel("COMENTÁRIOS PRÓPRIOS");
 //
-//        JLabel mCliFComLabel = new JLabel("PRÓPRIOS");
-//        JLabel mCliFComCliLabel = new JLabel("CLIENTE");
-//        JLabel mCliFComRestLabel = new JLabel("RESTAURANTE");
-//        JLabel mCliFComDatasLabel = new JLabel("INTERVALO DATAS");
-//        JLabel mCliFComDataILabel = new JLabel("De");
-//        JLabel mCliFComDataFLabel = new JLabel("Até");
+//        JLabel idMCliMComFPPLabel=new JLabel();
 //
-////todo faltou visualizar
-//        String[] nomeColunasMCliCom = new String[]{
-//                "ID", "DATA", "RESTAURNATE"
+//        String[]idMCliMComFPPCBox={"","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"};
+////        JComboBox arrayIdMCliMComFPP CBox = new JComboBox(idMCliMComFPPCBox);
+//
+////todo faltou visualizar – aumentar tamanho da coluna e tornar possível seleção para visualizar, editar e cancelar
+//        String[]nomeColunasMCliMComFPP=new String[]{
+//        "ID","DATA","RESTAURNATE"
 //        };
 //
-//        Object[][] data = new Object[][]{
-//                {"ID", "DATA", "RESTAURANTE"},
-//                {1, "dd/MM/yyy", "A"},
-//                {2, "dd/MM/yyy", "B"},
-//                {3, "dd/MM/yyy", "C"},
+//        Object[][]dadosMCliMComFPP=new Object[][]{
+//        {"ID","DATA","RESTAURANTE"},
+//        {1,"dd/MM/yyy","A"},
+//        {2,"dd/MM/yyy","B"},
+//        {3,"dd/MM/yyy","C"},
 //        };
 //        //criação da tabela
-//        JTable tabelaMCliFCom = new JTable(data, nomeColunasMCliCom);
+//        JTable tabelaMCliMComFPP=new JTable(dados,nomeColunasMCliResAct);
 //
-//        //JPopupMenu popupMenu = new JPopupMenu();
-//        //JMenuItem menuItemAdd = new JMenuItem("Responder");
+//        JRadioButton apagarMCliMComFPPButton=new JRadioButton("APAGAR");
+//        JRadioButton editarMCliMComFPPButton=new JRadioButton("EDITAR");
+//        JRadioButton visualizarMCliMComFPPButton=new JRadioButton("VISUALIZAR");
 //
-//        JTextField mCliFComCliText = new JTextField(17);
-//        JTextField mCliFComRestText = new JTextField(17);
+//        ButtonGroup group=new ButtonGroup();
+//        group.add(visualizarMCliMComFPPButton);
+//        group.add(editarMCliMComFPPButton);
+//        group.add(apagarMCliMComFPPButton);
+//
+//
+//        JButton ptEnMCliMComFPPButton=new JButton("PT/EN");
+//        JButton voltarMCliMComFPPButton=new JButton("MENU CLIENTE");
+//        JButton retornarMCliMComFPPButton=new JButton("VOLTAR");
+//
+//        mCliMComFPPSuperPanel.add(norteMCliMComSubPanel,"North");
+//        mCliMComFPPSuperPanel.add(centroMCliMComSubPanel,"Center");
+//        mCliMComFPPSuperPanel.add(sulMCliMComSubPanel,"South");
+//
+//        JPanel norteMCliMComFPPSSPanel=new JPanel();
+//        norteMCliMComFPPSSPanel.setLayout(new FlowLayout());
+//        norteMCliMComFPPSSPanel.add(mCliMComsFPPLabel);
+//        norteMCliMComFPPSubPanel.add(norteMCliMComFPPSSPanel,BorderLayout.CENTER);
+//        norteMCliMComFPPSubPanel.add(ptEnMCliMComButton,BorderLayout.EAST);
+//
+//        JPanel centroMCliMComFPPSSPanel=new JPanel();
+//        centroMCliMComFPPSSPanel.setLayout(new FlowLayout());
+//        centroMCliMComFPPSubPanel.add(centroMCliMComFPPSSPanel,BorderLayout.WEST);
+//
+//        JPanel centroMCliMComFPPSSPanel1=new JPanel();
+//        centroMCliMComFPPSSPanel1.setLayout(new FlowLayout());
+//        centroMCliMComFPPSubPanel.add(centroMCliMComFPPSSPanel1,BorderLayout.WEST);
+//
+//        JPanel centroMCliMComFPPSSPanel2=new JPanel();
+//        centroMCliMComFPPSSPanel2.setLayout(new FlowLayout());
+//        centroMCliMComFPPSubPanel.add(centroMCliMComFPPSSPanel2,BorderLayout.WEST);
+//
+//        JPanel centroMCliMComFPPSSPanel3=new JPanel();
+//        centroMCliMComFPPSSPanel3.setLayout(new FlowLayout());
+//        centroMCliMComFPPSubPanel.add(centroMCliMComFPPSSPanel3,BorderLayout.WEST);
+//
+//        JPanel centroMCliMComFPPSSPanel4=new JPanel();
+//        centroMCliMComFPPSSPanel4.setLayout(new FlowLayout());
+//        centroMCliMComFPPSubPanel.add(centroMCliMComFPPSSPanel4,BorderLayout.CENTER);
+//
+//
+//        centroMCliMComFPPSSPanel.add(mCliMComFPPLabel);
+//        centroMCliMComFPPSSPanel.add(tabelaMCliMComFPP);
+//        centroMCliMComFPPSSPanel.add(idMCliMComFPPLabel);
+//        centroMCliMComFPPSSPanel.add(idMCliMComFPPCBox);
+//
+//        centroMCliMComFPPSSPanel.add(visualizarMCliMComFPPButton);
+//        centroMCliMComFPPSSPanel.add(editarMCliMComFPPButton);
+//        centroMCliMComFPPSSPanel.add(apagarMCliMComFPPButton);
+//
+//        sulMCliMComFPPSubPanel.setLayout(new FlowLayout());
+//        sulMCliMComFPPSubPanel.add(voltarMCliMComFPPButton);
+//        //sulMCliMComFPPSubPanel.add(retornarMCliMComFPPButton);
+//
+//        visualizarMCliMComFPPButton.addActionListener(a->{
+//        CardLayout cl=(CardLayout)contentor.getLayout();
+//        cl.show(contentor,MENUCLIENTE_CARD);
+//        this.setSize(LARGURA_PADRAO,ALTURA_PADRAO);
+//        });
+//        editarMCliMComFPPButton.addActionListener(a->{
+//        CardLayout cl=(CardLayout)contentor.getLayout();
+//        cl.show(contentor,MENUCLIENTE_CARD);
+//        this.setSize(LARGURA_PADRAO,ALTURA_PADRAO);
+//        });
+//
+//        apagarMCliMComFPPButton.addActionListener(a->{
+//        CardLayout cl=(CardLayout)contentor.getLayout();
+//        cl.show(contentor,MENUCLIENTE_CARD);
+//        this.setSize(LARGURA_PADRAO,ALTURA_PADRAO);
+//        });
+//
+//
+//        voltarMCliMComFPPButton.addActionListener(a->{
+//        CardLayout cl=(CardLayout)contentor.getLayout();
+//        cl.show(contentor,MENUCLIENTE_CARD);
+//        this.setSize(LARGURA_PADRAO,ALTURA_PADRAO);
+//        });
+//
+//        retornarMCliMComFPPButton.addActionListener(a->{
+//        CardLayout cl=(CardLayout)contentor.getLayout();
+//        cl.show(contentor,MENUCLIENTE_CARD);
+//        this.setSize(LARGURA_PADRAO,ALTURA_PADRAO);
+//        });
+//
+//
+//        }
+//
+////todo ver como criar o apagar e editar comentário na seleção da tabela e ver a questão do OK
+////////MENU CLIENTE – CONSULTAR COMENTÁRIOS – CLIENTE ESPECÍFICO//////////
+//
+//private void construirPanelMCliMComFCli (Interface janela, Container contentor, JPanel
+//        loginSuperPanel, JPanel MCliMComFCliSuperPanel) {
+//
+//        /////SUBPAINEIS//////
+//        JPanel norteMCliMComFCliSubPanel = new JPanel();
+//        norteMCliMComFCliSubPanel.setLayout(new BorderLayout());
+//        JPanel centroMCliMComFCliSubPanel = new JPanel();
+//        JPanel sulMCliMComFCliSubPanel = new JPanel();
+//
+//        JLabel mCliMComFCliLabel = new JLabel("MENU CLIENTE - CONSULTAR COMENTÁRIOS:");
+//        JLabel nomeMCliMComFCliLabel = new JLabel("NOME DO CLIENTE");
+//
+//        JTextField nomeMCliMComFCliText = new JTextField(20);
+//
+//
+//        JButton ptEnMCliMComFClinButton = new JButton("PT/EN");
+//        JButton voltarMCliMComFClinButton = new JButton("MENU CLIENTE");
+//        JButton retornarMCliMComFClinButton = new JButton("VOLTAR");
+//        JButton okMCliMComFClinButton = new JButton("OK");
+//
+//        mCliMComFClinSuperPanel.add(norteMCliMComFClinSubPanel, "North");
+//        mCliMComFClinSuperPanel.add(centroMCliMComFClinSubPanel, "Center");
+//        mCliMComFClinSuperPanel.add(sulMCliMComFClinSubPanel, "South");
+//
+//        JPanel norteMCliMComFClinSSPanel = new JPanel();
+//        norteMCliMComFClinSSPanel.setLayout(new FlowLayout());
+//        norteMCliMComFClinSSPanel.add(mCliMComFCliLabel);
+//        norteMCliMComFClinSubPanel.add(norteMCliMComFClinSSPanel, BorderLayout.CENTER);
+//        norteMCliMComFClinSubPanel.add(ptEnMCliMComFClinButton, BorderLayout.EAST);
+//
+//        JPanel centroMCliMComFClinSSPanel = new JPanel();
+//        centroMCliMComFClinSSPanel.setLayout(new FlowLayout());
+//        centroMCliMComFClinSubPanel.add(centroMCliMComFClinSSPanel, BorderLayout.WEST);
+//
+//        JPanel centroMCliMComFClinSSPanel1 = new JPanel();
+//        centroMCliMComFClinSSPanel1.setLayout(new FlowLayout());
+//        centroMCliMComFClinSubPanel.add(centroMCliMComFClinSSPanel1, BorderLayout.WEST);
+//
+//        JPanel centroMCliMComFClinSSPanel2 = new JPanel();
+//        centroMCliMComFClinSSPanel2.setLayout(new FlowLayout());
+//        centroMCliMComFClinSubPanel.add(centroMCliMComFClinSSPanel2, BorderLayout.WEST);
+//
+//        centroMCliMComFClinSubPanel.add(centroMCliMComFClinSSPanel4, BorderLayout.CENTER);
+//
+//
+//        centroMCliMComFClinSSPanel.add(nomeMCliMComFCliLabel);
+//        centroMCliMComFClinSSPanel.add(nomeMCliMComFCliText);
+//
+//        sulMCliMComFClinSubPanel.setLayout(new FlowLayout());
+//        sulMCliMComFClinSubPanel.add(voltarMCliMComFClinButton);
+//        sulMCliMComFClinSubPanel.add(retornarMCliMComFClinButton);
+//        sulMCliMComFClinSubPanel.add(oknarMCliMComFClinButton);
+//
+//        voltarMCliMComFClinButton.addActionListener(a -> {
+//        CardLayout cl = (CardLayout) contentor.getLayout();
+//        cl.show(contentor, MENUCLIENTE_CARD);
+//        this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+//
+//        });
+//        okMCliMComFClinButton.addActionListener(e -> {
+//        CardLayout cl = (CardLayout) contentor.getLayout();
+//        cl.show(contentor, LOGIN_CARD);
+//        this.setSize(500, 180);
+//        });
+//
+//        }
+//
+////todo ver como criar o apagar e editar comentário na seleção da tabela e ver a questão do OK
+////////MENU CLIENTE – CONSULTAR COMENTÁRIOS – CLIENTE ESPECÍFICO//////////
+//
+//private void construirPanelMCliMComFCli (Interface janela, Container contentor, JPanel
+//        loginSuperPanel, JPanel MCliMComFCliSuperPanel) {
+//
+//        /////SUBPAINEIS//////
+//        JPanel norteMCliMComFCliSubPanel = new JPanel();
+//        norteMCliMComFCliSubPanel.setLayout(new BorderLayout());
+//        JPanel centroMCliMComFCliSubPanel = new JPanel();
+//        JPanel sulMCliMComFCliSubPanel = new JPanel();
+//
+//        JLabel mCliMComFCliLabel = new JLabel("MENU CLIENTE - CONSULTAR COMENTÁRIOS:");
+//        JLabel nomeMCliMComFCliLabel = new JLabel("NOME DO CLIENTE");
+//
+//        JTextField nomeMCliMComFCliText = new JTextField(20);
+//
+//
+//        JButton ptEnMCliMComFClinButton = new JButton("PT/EN");
+//        JButton voltarMCliMComFClinButton = new JButton("MENU CLIENTE");
+//        JButton retornarMCliMComFClinButton = new JButton("VOLTAR");
+//        JButton okMCliMComFClinButton = new JButton("OK");
+//
+//        mCliMComFClinSuperPanel.add(norteMCliMComFClinSubPanel, "North");
+//        mCliMComFClinSuperPanel.add(centroMCliMComFClinSubPanel, "Center");
+//        mCliMComFClinSuperPanel.add(sulMCliMComFClinSubPanel, "South");
+//
+//        JPanel norteMCliMComFClinSSPanel = new JPanel();
+//        norteMCliMComFClinSSPanel.setLayout(new FlowLayout());
+//        norteMCliMComFClinSSPanel.add(mCliMComFCliLabel);
+//        norteMCliMComFClinSubPanel.add(norteMCliMComFClinSSPanel, BorderLayout.CENTER);
+//        norteMCliMComFClinSubPanel.add(ptEnMCliMComFClinButton, BorderLayout.EAST);
+//
+//        JPanel centroMCliMComFClinSSPanel = new JPanel();
+//        centroMCliMComFClinSSPanel.setLayout(new FlowLayout());
+//        centroMCliMComFClinSubPanel.add(centroMCliMComFClinSSPanel, BorderLayout.WEST);
+//
+//        JPanel centroMCliMComFClinSSPanel1 = new JPanel();
+//        centroMCliMComFClinSSPanel1.setLayout(new FlowLayout());
+//        centroMCliMComFClinSubPanel.add(centroMCliMComFClinSSPanel1, BorderLayout.WEST);
+//
+//        JPanel centroMCliMComFClinSSPanel2 = new JPanel();
+//        centroMCliMComFClinSSPanel2.setLayout(new FlowLayout());
+//        centroMCliMComFClinSubPanel.add(centroMCliMComFClinSSPanel2, BorderLayout.WEST);
+//
+//        centroMCliMComFClinSubPanel.add(centroMCliMComFClinSSPanel4, BorderLayout.CENTER);
+//
+//
+//        centroMCliMComFClinSSPanel.add(nomeMCliMComFCliLabel);
+//        centroMCliMComFClinSSPanel.add(nomeMCliMComFCliText);
+//
+//        sulMCliMComFClinSubPanel.setLayout(new FlowLayout());
+//        sulMCliMComFClinSubPanel.add(voltarMCliMComFClinButton);
+//        sulMCliMComFClinSubPanel.add(retornarMCliMComFClinButton);
+//        sulMCliMComFClinSubPanel.add(oknarMCliMComFClinButton);
+//
+//        voltarMCliMComFClinButton.addActionListener(a -> {
+//        CardLayout cl = (CardLayout) contentor.getLayout();
+//        cl.show(contentor, MENUCLIENTE_CARD);
+//        this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+//
+//        });
+//        okMCliMComFClinButton.addActionListener(e -> {
+//        CardLayout cl = (CardLayout) contentor.getLayout();
+//        cl.show(contentor, LOGIN_CARD);
+//        this.setSize(500, 180);
+//        });
+//
+//        }
+//
+////todo ver como criar o apagar e editar comentário na seleção da tabela e ver a questão do OK
+////////MENU CLIENTE – CONSULTAR COMENTÁRIOS - RESTAURANTES//////////
+//
+//private void construirPanelMCliMComFRest (Interface janela, Container contentor, JPanel
+//        loginSuperPanel, JPanel MCliMComFRestSuperPanel) {
+//
+//        /////SUBPAINEIS//////
+//        JPanel norteMCliMComFRestSubPanel = new JPanel();
+//        norteMCliMComFRestSubPanel.setLayout(new BorderLayout());
+//        JPanel centroMCliMComFRestSubPanel = new JPanel();
+//        JPanel sulMCliMComFRestSubPanel = new JPanel();
+//
+//        JLabel mCliMComFRestLabel = new JLabel("MENU CLIENTE - CONSULTAR COMENTÁRIOS:");
+//        JLabel nomeRestMCliMComFRestLabel = new JLabel("NOME DO RESTAURANTE");
+//
+//        JTextField nomeResMCliMComFRestText = new JTextField(20);
+//
+//
+//        JButton ptEnMCliMComFRestButton = new JButton("PT/EN");
+//        JButton voltarMCliMComFRestButton = new JButton("MENU CLIENTE");
+//        JButton retornarMCliMComFRestButton = new JButton("VOLTAR");
+//        JButton okMCliMComFRestButton = new JButton("OK");
+//
+//        mCliMComFRestnSuperPanel.add(norteMCliMComFRestnSubPanel, "North");
+//        mCliMComFRestSuperPanel.add(centroMCliMComFRestSubPanel, "Center");
+//        mCliMComFRestSuperPanel.add(sulMCliMComFRestSubPanel, "South");
+//
+//        JPanel norteMCliMComFRestSSPanel = new JPanel();
+//        norteMCliMComFRestSSPanel.setLayout(new FlowLayout());
+//        norteMCliMComFRestSSPanel.add(mCliMComFRestLabel);
+//        norteMCliMComFRestSubPanel.add(norteMCliMComFRestSSPanel, BorderLayout.CENTER);
+//        norteMCliMComFRestSubPanel.add(ptEnMCliMComFRestButton, BorderLayout.EAST);
+//
+//        JPanel centroMCliMComFRestSSPanel = new JPanel();
+//        centroMCliMComFRestSSPanel.setLayout(new FlowLayout());
+//        centroMCliMComFRestSubPanel.add(centroMCliMComFRestSSPanel, BorderLayout.WEST);
+//
+//        JPanel centroMCliMComFRestSSPanel1 = new JPanel();
+//        centroMCliMComFRestSSPanel1.setLayout(new FlowLayout());
+//        centroMCliMComFRestSubPanel.add(centroMCliMComFRestSSPanel1, BorderLayout.WEST);
+//
+//        JPanel centroMCliMComFRestSSPanel2 = new JPanel();
+//        centroMCliMComFRestSSPanel2.setLayout(new FlowLayout());
+//        centroMCliMComFRestSubPanel.add(centroMCliMComFRestSSPanel2, BorderLayout.WEST);
+//
+//        centroMCliMComFRestSubPanel.add(centroMCliMComFRestSSPanel4, BorderLayout.CENTER);
+//
+//
+//        centroMCliMComFRestSSPanel.add(nomeRestMCliMComFRestLabel);
+//        centroMCliMComFRestSSPanel.add(nomeRestMCliMComFRestText);
+//
+//        sulMCliMComFRestSubPanel.setLayout(new FlowLayout());
+//        sulMCliMComFRestSubPanel.add(voltarMCliMComFRestButton);
+//        sulMCliMComFRestSubPanel.add(okMCliMComFRestButton);
+//
+//        voltarMCliMComFRestButton.addActionListener(a -> {
+//        CardLayout cl = (CardLayout) contentor.getLayout();
+//        cl.show(contentor, MENUCLIENTE_CARD);
+//        this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+//
+//        });
+//        okMCliMComFRestButton.addActionListener(e -> {
+//        CardLayout cl = (CardLayout) contentor.getLayout();
+//        cl.show(contentor, LOGIN_CARD);
+//        this.setSize(500, 180);
+//        });
+//
+//        }
+//
+////////MENU CLIENTE – CONSULTAR COMENTÁRIOS - RESTAURANTES//////////
+//
+//private void construirPanelMCliMComFID (Interface janela, Container contentor, JPanel
+//        loginSuperPanel, JPanel MCliMComFIDSuperPanel) {
+//
+//        /////SUBPAINEIS//////
+//        JPanel norteMCliMComFIDSubPanel = new JPanel();
+//        norteMCliMComFIDSubPanel.setLayout(new BorderLayout());
+//        JPanel centroMCliMComFIDSubPanel = new JPanel();
+//        JPanel sulMCliMComFIDSubPanel = new JPanel();
+//
+//        JLabel mCliMComFIDLabel = new JLabel("MENU CLIENTE - CONSULTAR COMENTÁRIOS:");
+//        JLabel intervaloDatasMCliMComFIDLabel = new JLabel("INTERVALO DE DATAS");
+//        JLabel deMCliMComFIDLabel = new JLabel("De");
+//        JLabel ateMCliMComFIDLabel = new JLabel("Até");
+//
 //
 ////Adição do calendário
-//        UtilDateModel model4 = new UtilDateModel();
-//        UtilDateModel model5 = new UtilDateModel();
+//        UtilDateModel modelMCliMComFID1 = new UtilDateModel();
+//        UtilDateModel modelMCliMComFID2 = new UtilDateModel();
 //
 //        ResourceBundle b = ResourceBundle.getBundle("Text");
 //
 //        Properties p = convertResourceBundleToProperties(b);
-//        JDatePanelImpl datePanel3 = new JDatePanelImpl(model4, p);
-//        JDatePickerImpl datePicker4 = new JDatePickerImpl(datePanel3, new DateLabelFormatter());
-//        JDatePanelImpl datePanel4 = new JDatePanelImpl(model5, p);
-//        JDatePickerImpl datePicker5 = new JDatePickerImpl(datePanel4, new DateLabelFormatter());
+//        JDatePanelImpl datePanelMCliMComFID1 = new JDatePanelImpl(modelMCliMComFID1, p);
+//        JDatePickerImpl datePickerMCliMComFID2 = new JDatePickerImpl(datePanelMCliMComFID2, new DateLabelFormatter());
+//        JDatePanelImpl datePanelMCliMComFID2 = new JDatePanelImpl(modelMCliMComFID2, p);
+//        JDatePickerImpl datePickerMCliMComFID2 = new JDatePickerImpl(datePanelMCliMComFID2, new DateLabelFormatter());
+//
+//        JButton ptEnMCliMComFIDButton = new JButton("PT/EN");
+//        JButton voltarMCliMComFIDButton = new JButton("MENU CLIENTE");
+//        JButton retornarMCliMComFIDButton = new JButton("VOLTAR");
+//        JButton okMCliMComFIDButton = new JButton("OK");
+//
+//        mCliMComFIDnSuperPanel.add(norteMCliMComFIDnSubPanel, "North");
+//        mCliMComFIDSuperPanel.add(centroMCliMComFIDSubPanel, "Center");
+//        mCliMComFIDSuperPanel.add(sulMCliMComFIDSubPanel, "South");
+//
+//        JPanel norteMCliMComFIDSSPanel = new JPanel();
+//        norteMCliMComFIDSSPanel.setLayout(new FlowLayout());
+//        norteMCliMComFIDSSPanel.add(mCliMComFIDLabe);
+//        norteMCliMComFIDSubPanel.add(norteMCliMComFIDSSPanel, BorderLayout.CENTER);
+//        norteMCliMComFIDSubPanel.add(ptEnMCliMComFIDButton, BorderLayout.EAST);
+//
+//        JPanel centroMCliMComFIDSSPanel = new JPanel();
+//        centroMCliMComFIDSSPanel.setLayout(new FlowLayout());
+//        centroMCliMComFIDSubPanel.add(centroMCliMComFIDSSPanel, BorderLayout.WEST);
+//
+//        JPanel centroMCliMComFIDSSPanel1 = new JPanel();
+//        centroMCliMComFIDSSPanel1.setLayout(new FlowLayout());
+//        centroMCliMComFIDSubPanel.add(centroMCliMComFIDSSPanel1, BorderLayout.WEST);
+//
+//        JPanel centroMCliMComFIDSSPanel2 = new JPanel();
+//        centroMCliMComFIDSSPanel2.setLayout(new FlowLayout());
+//        centroMCliMComFIDSubPanel.add(centroMCliMComFIDSSPanel2, BorderLayout.WEST);
+//
+//        centroMCliMComFIDSubPanel.add(centroMCliMComFIDSSPanel4, BorderLayout.CENTER);
 //
 //
-//        JButton ptEnMCliRestButton = new JButton("PT/EN");
-//        JButton voltarMCliComButton = new JButton("MENU CLIENTE");
-//        JButton okMCliComButton = new JButton("OK");
+//        centroMCliMComFIDSSPanel.add(intervaloDatasMCliMComFIDLabel);
+//        centroMCliMComFIDSSPanel.add(deMCliMComFIDLabel);
+//        centroMCliMComFIDSSPanel.add(datePickerMCliMComFID1);
+//        centroMCliMComFIDSSPanel.add(ateMCliMComFIDLabel);
+//        centroMCliMComFIDSSPanel.add(datePickerMCliMComFID2);
 //
-//        mCliComSuperPanel.add(norteMCliComSubPanel, "North");
-//        mCliComSuperPanel.add(centroMCliComSubPanel, "Center");
-//        mCliComSuperPanel.add(sulMCliComSubPanel, "South");
+//        sulMCliMComFIDSubPanel.setLayout(new FlowLayout());
+//        sulMCliMComFIDSubPanel.add(voltarMCliMComFIDButton);
+//        sulMCliMComFIDSubPanel.add(okMCliMComFIDButton);
 //
-//        JPanel norteMCliComSSPanel = new JPanel();
-//        norteMCliComSSPanel.setLayout(new FlowLayout());
-//        norteMCliComSSPanel.add(mCliFilComLabel);
-//        norteMCliComSubPanel.add(norteMCliComSSPanel, BorderLayout.CENTER);
-//        norteMCliComSubPanel.add(ptEnMCliRestButton, BorderLayout.EAST);
-//
-//        JPanel centroMCliComSSPanel = new JPanel();
-//        centroMCliComSSPanel.setLayout(new FlowLayout());
-//        centroMCliComSubPanel.add(centroMCliComSSPanel, BorderLayout.WEST);
-//
-//        JPanel centroMCliComSSPanel1 = new JPanel();
-//        centroMCliComSSPanel1.setLayout(new FlowLayout());
-//        centroMCliComSubPanel.add(centroMCliComSSPanel1, BorderLayout.WEST);
-//
-//        JPanel centroMCliComSSPanel2 = new JPanel();
-//        centroMCliComSSPanel2.setLayout(new FlowLayout());
-//        centroMCliComSubPanel.add(centroMCliComSSPanel2, BorderLayout.WEST);
-//
-//        JPanel centroMCliComSSPanel3 = new JPanel();
-//        centroMCliComSSPanel3.setLayout(new FlowLayout());
-//        centroMCliComSubPanel.add(centroMCliComSSPanel3, BorderLayout.WEST);
-//
-//        JPanel centroMCliComSSPanel4 = new JPanel();
-//        centroMCliComSSPanel4.setLayout(new FlowLayout());
-//        centroMCliComSubPanel.add(centroMCliComSSPanel4, BorderLayout.CENTER);
-//
-//        centroMCliComSSPanel.add(mCliFComLabel);
-//        centroMCliComSSPanel.add(tabelaMCliFCom);
-//
-//        centroMCliComSSPanel1.add(mCliFComCliLabel);
-//        centroMCliComSSPanel1.add(mCliFComCliText);
-//
-//        centroMCliComSSPanel1.add(mCliFComRestLabel);
-//        centroMCliComSSPanel1.add(mCliFComRestText);
-//
-//        centroMCliComSSPanel2.add(mCliFComDatasLabel);
-//        centroMCliComSSPanel3.add(mCliFComDataILabel);
-//        centroMCliComSSPanel3.add(datePicker4);
-//        centroMCliComSSPanel3.add(mCliFComDataFLabel);
-//        centroMCliComSSPanel3.add(datePicker5);
-//
-//        sulMCliComSubPanel.setLayout(new FlowLayout());
-//        sulMCliComSubPanel.add(voltarMCliComButton);
-//        sulMCliComSubPanel.add(okMCliComButton);
-//
-//
-//        voltarMCliComButton.addActionListener(a -> {
-//            CardLayout cl = (CardLayout) contentor.getLayout();
-//            cl.show(contentor, MENUCLIENTE_CARD);
-//            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+//        voltarMCliMComFIDButton.addActionListener(a -> {
+//        CardLayout cl = (CardLayout) contentor.getLayout();
+//        cl.show(contentor, MENUCLIENTE_CARD);
+//        this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
 //
 //        });
-//
-//        //todo ver os encaminhamentos para responder comentário
-//        okMCliComButton.addActionListener(e -> {
-//            CardLayout cl = (CardLayout) contentor.getLayout();
-//            cl.show(contentor, LOGIN_CARD);
-//            this.setSize(500, 180);
+//        okMCliMComFIDButton.addActionListener(e -> {
+//        CardLayout cl = (CardLayout) contentor.getLayout();
+//        cl.show(contentor, LOGIN_CARD);
+//        this.setSize(500, 180);
 //        });
 //
-//    }
-//
-//
+//        }
+
 //    ////////////////////MENU CLIENTE - ACTUALIZAR DADOS /////////////////////////
 //    private void construirPanelMCliAtDados(Interface janela, Container contentor, JPanel
 //            loginSuperPanel, JPanel mCliAtDadosSuperPanel) {
