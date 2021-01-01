@@ -98,6 +98,21 @@ public class Sistema implements Serializable {
         } else return "Login invalido";
     }
 
+    public boolean validarString(String texto) {
+        boolean valido = false;
+
+        for (int i = 0; i < texto.length(); i++) {
+            Character caractere = texto.charAt(i);
+            if (Character.isAlphabetic(caractere)) {
+                valido = true;
+            } else {
+                valido = false;
+                break;
+            }
+        }
+        return valido;
+    }
+
     private boolean emailUnico(String email) {
         boolean unico = true;
         for (Utilizador s : listaUtilizadores) {
@@ -186,6 +201,14 @@ public class Sistema implements Serializable {
         return a;
     }
 
+    private boolean validarLotacao(int lot1, int lot2, int lot3) {
+        boolean validar = false;
+
+        if ((lot1 < 101 && lot1 >= 0) && (lot2 < 101 && lot2 >= 0) && (lot3 < 101 && lot3 >= 0)) {
+            validar = true;
+        }
+        return validar;
+    }
 
     public void criarRestaurante(String nome, String morada, String cidade, String telefone, String email, String username, String password, String confirmarPass, int lotacaoEsplanada, int lotacaoFum, int lotacaoNFum, LocalTime inicioAlm, LocalTime fimAlm, LocalTime inicioJan, LocalTime fimJan) {
 
@@ -195,17 +218,19 @@ public class Sistema implements Serializable {
                     if (validarEmail(email)) {
                         if (usernameUnico(username)) {
                             if (confirmarPass(password, confirmarPass)) {
-                                if (validarHorario(inicioAlm)) {
-                                    Restaurante r = new Restaurante(nome, morada, cidade, telefone, email, username, password, confirmarPass, lotacaoEsplanada, lotacaoFum, lotacaoNFum, inicioAlm, fimAlm, inicioJan, fimJan);
-                                    listaUtilizadores.add(r);
-                                    System.out.println("Restaurante criado");
-                                } else System.out.println("Horario invalido");
+                                if (validarLotacao(lotacaoEsplanada, lotacaoFum, lotacaoNFum)) {
+                                    if (validarHorario(inicioAlm)) {
+                                        Restaurante r = new Restaurante(nome, morada, cidade, telefone, email, username, password, confirmarPass, lotacaoEsplanada, lotacaoFum, lotacaoNFum, inicioAlm, fimAlm, inicioJan, fimJan);
+                                        listaUtilizadores.add(r);
+                                        System.out.println("Restaurante criado");
+                                    } else System.out.println("Horario invalido");
+                                } else System.out.println("Lotacao invalida");
                             } else System.out.println("Passwords nao sao iguais");
                         } else System.out.println("Username indisponivel");
                     } else System.out.println("Email nao é valido");
                 } else System.out.println("Email ja esta registado");
             } else System.out.println("Telefone invalido");
-        }else System.out.println("Telefone ja esta registado");
+        } else System.out.println("Telefone ja esta registado");
     }
 
     public void criarCliente(String nome, String morada, String telefone, String email, String username, String password, String confirmarPass) {
@@ -262,17 +287,54 @@ public class Sistema implements Serializable {
     }
 
     public void atualizarDadosRestaurante(String nome, String morada, String telefone, String email, String password, String novaPass, String confirmarNovaPass, int lotacaoEsplanada, int lotacaoFum, int lotacaoNFum, LocalTime inicioAlm, LocalTime fimAlm, LocalTime inicioJan, LocalTime fimJan) {
+//todo falta validar a lotacao, a questao de pedir variaveis int ou tudo String...
 
-        if (emailUnico(email)) {
-            if (validarEmail(email)) {
-                if (confirmarPass(novaPass, confirmarNovaPass)) {
-                    //  Restaurante r = new Restaurante(nome, morada, telefone, email, username, password, lotacaoEsplanada, lotacaoFum, lotacaoNFum, inicioAlm, fimAlm, inicioJan, fimJan);
-                    //listaUtilizadores.add(r);
-                    //Nao pode ser new Restaurante, porque nesse caso o ID ia ser alterado! Tenho de alterar o existente!!
-                    System.out.println("Restaurante criado");
-                } else System.out.println("Passwords nao sao iguais");
-            } else System.out.println("Email nao é valido");
-        } else System.out.println("Email ja esta registado");
+        if (nome != "") {
+            getRestauranteAtivo().setNome(nome);
+        }
+        if (morada != "") {
+            getRestauranteAtivo().setMorada(morada);
+        }
+        if (telefone != "") {
+            if (validarTelefone(telefone)) {
+                getRestauranteAtivo().setTelefone(telefone);
+            } else System.out.println("telemovel nao é valido");
+        }
+
+        if (email != "") {
+            if (emailUnico(email)) {
+                if (validarEmail(email)) {
+                    getRestauranteAtivo().setEmail(email);
+                } else System.out.println("Email nao é valido");
+            } else System.out.println("Email ja esta registado");
+        }
+
+        if (password != "") {
+            if (novaPass != "") {
+                if (confirmarNovaPass != "") {
+                    if (confirmarPass(novaPass, confirmarNovaPass)) {
+                        getRestauranteAtivo().setPassword(novaPass);
+                    } else System.out.println("Passwords nao sao iguais");
+                }
+            }
+        }
+
+        //  FALTA AQUI VALIDAR LOTACAO
+
+        if (inicioAlm != null){
+            getRestauranteAtivo().setInicioAlm(inicioAlm);
+        }
+        if (fimAlm != null){
+            getRestauranteAtivo().setFimAlm(fimAlm);
+        }
+        if (inicioJan != null){
+            getRestauranteAtivo().setInicioJan(inicioJan);
+        }
+        if (fimJan != null){
+            getRestauranteAtivo().setFimJan(fimJan);
+        }
+
+
     }
 
     public void removerCliente(String username) {
