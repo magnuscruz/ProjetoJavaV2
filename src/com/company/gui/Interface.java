@@ -1,4 +1,4 @@
-/*
+
 
 
 package com.company.gui;
@@ -1503,7 +1503,7 @@ public class Interface extends JFrame {
 
 
 ////////COMENTEI AQUI NOVAMENTE////////////////////
-/*
+
 
 
 
@@ -1600,13 +1600,13 @@ public class Interface extends JFrame {
         JLabel mCliMRestFOrdRestsLabel = new JLabel("MENU CLIENTE - PESQUISAR RESTAURANTES");
 
         JLabel fMCliMRestFOrdRestsLabel = new JLabel("FILTRAR:");
-        JButton fhoraFMCliMRestFOrdRestsButton = new JButton("HORA DE FUNCIONAMENTO:");
-        JButton fLotMCliMRestFOrdRestsButton = new JButton("LOTAÇÃO:");
-        JButton fCidCliMRestFOrdRestsButton = new JButton("CIDADE:");
+        JButton fhoraFMCliMRestFOrdRestsButton = new JButton("HORA DE FUNCIONAMENTO");
+        JButton fLotMCliMRestFOrdRestsButton = new JButton("LOTAÇÃO");
+        JButton fCidCliMRestFOrdRestsButton = new JButton("CIDADE");
 
         JLabel fOrdMCliMRestsFOrdRestLabel = new JLabel("FILTRAR/ORDENAR:");
-        JButton fOrdPontCliMRestFOrdRestsButton = new JButton("PONTUAÇÃO:");
-        JButton fOrdValoresMCliMRestFOrdRestsButton = new JButton("VALORES MÉDIOS DOS PRATOS:");
+        JButton fOrdPontCliMRestFOrdRestsButton = new JButton("PONTUAÇÃO");
+        JButton fOrdValoresMCliMRestFOrdRestsButton = new JButton("VALORES MÉDIOS DOS PRATOS");
 
         JButton ptEnMCliMRestFOrdRestsButton = new JButton("PT/EN");
         JButton voltarMCliMRestsFOrdRestButton = new JButton("MENU CLIENTE");
@@ -1686,15 +1686,15 @@ public class Interface extends JFrame {
         JLabel mCliMRestsFRestPontLabel = new JLabel("MENU CLIENTE - PESQUISAR RESTAURANTES");
         JLabel mCliMRestFRestPontLabel = new JLabel("PONTUAÇÃO");
 
-        JCheckBox umMCliMRestFRestPont = new JCheckBox("1");
+        JCheckBox umMCliMRestFRestPont = new JCheckBox("1 - Péssimo");
         umMCliMRestFRestPont.setMnemonic(KeyEvent.VK_C);
-        JCheckBox doisMCliMRestFRestPont = new JCheckBox("2");
+        JCheckBox doisMCliMRestFRestPont = new JCheckBox("2 - Ruim");
         doisMCliMRestFRestPont.setMnemonic(KeyEvent.VK_C);
-        JCheckBox tresMCliMRestFRestPont = new JCheckBox("3");
+        JCheckBox tresMCliMRestFRestPont = new JCheckBox("3 - Regular");
         tresMCliMRestFRestPont.setMnemonic(KeyEvent.VK_C);
-        JCheckBox quatroMCliMRestFRestPont = new JCheckBox("4");
+        JCheckBox quatroMCliMRestFRestPont = new JCheckBox("4 - Bom");
         quatroMCliMRestFRestPont.setMnemonic(KeyEvent.VK_C);
-        JCheckBox cincoMCliMRestFRestPont = new JCheckBox("5");
+        JCheckBox cincoMCliMRestFRestPont = new JCheckBox("5 - Muito Bom");
         cincoMCliMRestFRestPont.setMnemonic(KeyEvent.VK_C);
 
         JButton ptEnMCliMRestFRestPontButton = new JButton("PT/EN");
@@ -2330,7 +2330,7 @@ public class Interface extends JFrame {
 
 
     //todo ver como criar o apagar e editar comentário na seleção da tabela e ver a questão do OK
-    //////MENU CLIENTE – CONSULTAR COMENTÁRIOS//////////
+    //////MENU CLIENTE – CONSULTAR COMENTÁRIOS MENU//////////
 
     private void construirPanelMCliComentarios(Interface janela, Container contentor, JPanel
             loginSuperPanel, JPanel mCliComSuperPanel) {
@@ -2342,7 +2342,7 @@ public class Interface extends JFrame {
         JPanel centroMCliComSubPanel = new JPanel();
         JPanel sulMCliComSubPanel = new JPanel();
 
-        JLabel mCliFilComLabel = new JLabel("CONSULTAR COMENTÁRIOS:");
+        JLabel mCliFilComLabel = new JLabel("MENU CLIENTE - CONSULTAR COMENTÁRIOS:");
 
         JLabel mCliFComLabel = new JLabel("PRÓPRIOS");
         JLabel mCliFComCliLabel = new JLabel("CLIENTE");
@@ -2453,6 +2453,7 @@ public class Interface extends JFrame {
         });
 
     }
+
 
     ////////////////////MENU CLIENTE - ACTUALIZAR DADOS /////////////////////////
     private void construirPanelMCliAtDados(Interface janela, Container contentor, JPanel
@@ -2579,6 +2580,7 @@ public class Interface extends JFrame {
         });
     }
 // todo verificar os botões editar e apagar que estão em conflito com visualizar
+
     //////MENU CLIENTE – RESERVAS - ACTIVAS//////////
 
     private void construirPanelMCliResAct(Interface janela, Container contentor, JPanel
@@ -3018,5 +3020,3 @@ public class Interface extends JFrame {
     }
 
 }
-
- */
