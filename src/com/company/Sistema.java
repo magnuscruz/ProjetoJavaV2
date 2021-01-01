@@ -141,6 +141,17 @@ public class Sistema implements Serializable {
         return correta;
     }
 
+    //todo caso a hora seja depois das 24 da uma excecao. coloco esse controlo de excecao neste metodo ou dentro do criarRestaurante?
+    //ESTA MUITO INCOMPLETO!!!
+    private boolean validarHorario (LocalTime inicioAlm){
+      boolean valido = true;
+
+        if (inicioAlm.getHour() >23 || inicioAlm.getMinute() >59){
+            valido = false;
+        }
+        return valido;
+    }
+
     //todo Muito basico, só valida se foram introduzidos 9 numeros
     private boolean validarTelefone(String num) {
         int count = 0;
@@ -170,9 +181,11 @@ public class Sistema implements Serializable {
             if (validarEmail(email)) {
                 if (usernameUnico(username)) {
                     if (confirmarPass(password, confirmarPass)) {
+                        if (validarHorario(inicioAlm)){
                         Restaurante r = new Restaurante(nome, morada, cidade, telefone, email, username, password, confirmarPass, lotacaoEsplanada, lotacaoFum, lotacaoNFum, inicioAlm, fimAlm, inicioJan, fimJan);
                         listaUtilizadores.add(r);
                         System.out.println("Restaurante criado");
+                        } else System.out.println("Horario invalido");
                     } else System.out.println("Passwords nao sao iguais");
                 } else System.out.println("Username indisponivel");
             } else System.out.println("Email nao é valido");

@@ -15,7 +15,7 @@ public class Cliente extends Utilizador implements Serializable {
         this.id = idCliente++;
         this.status = true;
     }
-    
+
     public int restauranteAberto(Restaurante restaurante, LocalTime hora) {
         // Indice dos returns possiveis: 0 - fechado | 1 - aberto Almoco | 2 - aberto Jantar//
 
