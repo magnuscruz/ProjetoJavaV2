@@ -46,6 +46,8 @@ public class Interface extends JFrame {
     private static final String MCLIMCOMFCLI_CARD = "MENU CLIENTE – COMENTÁRIOS – FILTRAR POR CLIENTE";
     private static final String MCLIMCOMFREST_CARD = "MENU CLIENTE – COMENTÁRIOS - FILTRAR POR RESTAURANTE";
     private static final String MCLIMCOMFID_CARD = "MENU CLIENTE – COMENTÁRIOS – FILTRAR POR INTERVALO DE DATAS";
+    private static final String MRESTPMED_CARD = "MENU CLIENTE – PONTUAÇÃO MÉDIA";
+
 
 
     private static final String MENURESTAURANTE_CARD = "MENU RESTAURANTE";
@@ -147,7 +149,8 @@ public class Interface extends JFrame {
         mRestReservasSuperPanel.setLayout(new BorderLayout());
         JPanel mRestComentariosSuperPanel = new JPanel();
         mRestComentariosSuperPanel.setLayout(new BorderLayout());
-
+        JPanel mRestPMedSuperPanel = new JPanel();
+        mRestPMedSuperPanel.setLayout(new BorderLayout());
 
         construirPanelLogin(this, contentor, loginSuperPanel);
 
@@ -206,6 +209,7 @@ public class Interface extends JFrame {
         construirPanelMCliMComFCli(this, contentor, loginSuperPanel, mCliMComFCliSuperPanel);
         construirPanelMCliMComFRest(this, contentor, loginSuperPanel, mCliMComFRestSuperPanel);
         construirPanelMCliMComFID(this, contentor, loginSuperPanel, mCliMComFIDSuperPanel);
+        construirPanelMRestPMed(this, contentor, loginSuperPanel, mRestPMedSuperPanel);
 
         contentor.add(loginSuperPanel, LOGIN_CARD);
         contentor.add(regNovoCliSuperPanel, CLIENTE_CARD);
@@ -238,6 +242,7 @@ public class Interface extends JFrame {
         contentor.add(mCliMComFCliSuperPanel, MCLIMCOMFCLI_CARD);
         contentor.add(mCliMComFRestSuperPanel, MCLIMCOMFREST_CARD);
         contentor.add(mCliMComFIDSuperPanel, MCLIMCOMFID_CARD);
+        contentor.add(mRestPMedSuperPanel, MRESTPMED_CARD);
     }
 
 
@@ -982,7 +987,7 @@ public class Interface extends JFrame {
         JButton mRestActualizarDadosButton = new JButton("ACTUALIZAR DADOS");
         JButton mRestReservasButton = new JButton("RESERVAS");
         JButton mRestConsultarComentariosButton = new JButton("COMENTÁRIOS");
-        JButton pontuacaoMedia = new JButton("PONTUAÇÃO MÉDIA");
+        JButton mRestPMedButton = new JButton("PONTUAÇÃO MÉDIA");
 
 
         ///
@@ -999,15 +1004,15 @@ public class Interface extends JFrame {
         norteMenuRestauranteSubPanel.add(norteMenuRestauranteSSPanel, BorderLayout.CENTER);
         norteMenuRestauranteSubPanel.add(ptEnMenuRestauranteButton, BorderLayout.EAST);
 
-        JPanel centroNovoRestauranteSSPanelForm = new JPanel();
-        centroNovoRestauranteSSPanelForm.setLayout(new GridLayout(7, 1));
-        centroMenuRestauranteSubPanel.add(centroNovoRestauranteSSPanelForm);
-        centroNovoRestauranteSSPanelForm.add(mRestAdicionarPratoButton);
-        centroNovoRestauranteSSPanelForm.add(mRestActualizarPratoDiaButton);
-        centroNovoRestauranteSSPanelForm.add(mRestActualizarDadosButton);
-        centroNovoRestauranteSSPanelForm.add(mRestReservasButton);
-        centroNovoRestauranteSSPanelForm.add(mRestConsultarComentariosButton);
-        centroNovoRestauranteSSPanelForm.add(pontuacaoMedia);
+        JPanel centroNovoRestauranteSSPanel = new JPanel();
+        centroNovoRestauranteSSPanel.setLayout(new GridLayout(7, 1));
+        centroMenuRestauranteSubPanel.add(centroNovoRestauranteSSPanel);
+        centroNovoRestauranteSSPanel.add(mRestAdicionarPratoButton);
+        centroNovoRestauranteSSPanel.add(mRestActualizarPratoDiaButton);
+        centroNovoRestauranteSSPanel.add(mRestActualizarDadosButton);
+        centroNovoRestauranteSSPanel.add(mRestReservasButton);
+        centroNovoRestauranteSSPanel.add(mRestConsultarComentariosButton);
+        centroNovoRestauranteSSPanel.add(mRestPMedButton);
 
         sulMenuRestauranteSubPanel.setLayout(new FlowLayout());
         //sulMenuRestauranteSubPanel.add(cancelarMenuRestauranteButton);
@@ -1040,6 +1045,12 @@ public class Interface extends JFrame {
         mRestActualizarDadosButton.addActionListener(a -> {
             CardLayout cl = (CardLayout) contentor.getLayout();
             cl.show(contentor, MRESTACTUALIZARDADOS_CARD);
+            this.setSize(LARGURA_PADRAO, 350);
+        });
+
+        mRestPMedButton.addActionListener(a -> {
+            CardLayout cl = (CardLayout) contentor.getLayout();
+            cl.show(contentor, MRESTPMED_CARD);
             this.setSize(LARGURA_PADRAO, 350);
         });
 
@@ -1513,7 +1524,6 @@ public class Interface extends JFrame {
      */
 
 
-////////COMENTEI AQUI NOVAMENTE////////////////////
     private static Properties convertResourceBundleToProperties(ResourceBundle resource) {
         Properties properties = new Properties();
         Enumeration<String> keys = resource.getKeys();
@@ -1587,6 +1597,73 @@ public class Interface extends JFrame {
 
         //todo ver os encaminhamentos para responder comentário
         responderMRestComentariosButton.addActionListener(e -> {
+            CardLayout cl = (CardLayout) contentor.getLayout();
+            cl.show(contentor, LOGIN_CARD);
+            this.setSize(500, 180);
+        });
+
+    }
+
+    //////MENU RESTAURANTE – PONTUAÇÃO MÉDIA//////////
+    private void construirPanelMRestPMed(Interface janela, Container contentor, JPanel loginSuperPanel, JPanel mRestPMedSuperPanel) {
+
+
+        /////SUBPAINEIS//////
+        JPanel norteMRestPMedSubPanel = new JPanel();
+        norteMRestPMedSubPanel.setLayout(new BorderLayout());
+        JPanel centroMRestPMedSubPanel = new JPanel();
+        JPanel sulMRestPMedSubPanel = new JPanel();
+
+        JLabel mRestPMedLabel = new JLabel("PONTUAÇÃO MÉDIA");
+
+
+        String[] nomeColunasMRestPMed = new String[]{
+                "ID", "RESTAURANTE", "PONTUAÇÃO"
+        };
+
+        //todo exemplo a verificar
+        Object[][] dados = new Object[][]{
+                {"ID", "RESTAURANTE", "PONTUAÇÃO"},
+                {1, "A", 4.0},
+                {2, "B", 5.0},
+                {3, "C", 3.0},
+        };
+        //criação da tabela
+        JTable tabelaMRESTPMed = new JTable(dados, nomeColunasMRestPMed);
+
+        JButton ptEnMRestPMedButton = new JButton("PT/EN");
+        JButton voltarMRestPMedButton = new JButton("MENU RESTAURANTE");
+        JButton okMRestPMedButton = new JButton("OK");
+
+        mRestPMedSuperPanel.add(norteMRestPMedSubPanel, "North");
+        mRestPMedSuperPanel.add(centroMRestPMedSubPanel, "Center");
+        mRestPMedSuperPanel.add(sulMRestPMedSubPanel, "South");
+
+        JPanel norteMRestPMedSSPanel = new JPanel();
+        norteMRestPMedSSPanel.setLayout(new FlowLayout());
+        norteMRestPMedSSPanel.add(mRestPMedLabel);
+        norteMRestPMedSubPanel.add(norteMRestPMedSSPanel, BorderLayout.CENTER);
+        norteMRestPMedSubPanel.add(ptEnMRestPMedButton, BorderLayout.EAST);
+
+        JPanel centroMRestPMedSSPanel1 = new JPanel();
+        centroMRestPMedSSPanel1.setLayout(new FlowLayout());
+        centroMRestPMedSubPanel.add(centroMRestPMedSSPanel1, BorderLayout.WEST);
+
+        centroMRestPMedSSPanel1.add(tabelaMRESTPMed);
+
+        sulMRestPMedSubPanel.setLayout(new FlowLayout());
+        sulMRestPMedSubPanel.add(voltarMRestPMedButton);
+        sulMRestPMedSubPanel.add(okMRestPMedButton);
+
+        voltarMRestPMedButton.addActionListener(a -> {
+            CardLayout cl = (CardLayout) contentor.getLayout();
+            cl.show(contentor, MENURESTAURANTE_CARD);
+            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+
+        });
+
+        //todo ver os encaminhamentos para responder comentário
+        okMRestPMedButton.addActionListener(e -> {
             CardLayout cl = (CardLayout) contentor.getLayout();
             cl.show(contentor, LOGIN_CARD);
             this.setSize(500, 180);
@@ -1679,6 +1756,8 @@ public class Interface extends JFrame {
         });
     }
 
+
+    ////PAREI AQUI 1752
     //////MENU RESTAURANTE – RESTAURANTES – FILTRAR POR PONTUAÇÃO//////////
     private void construirPanelMCliMRestFRestPont(Interface janela, Container contentor, JPanel loginSuperPanel, JPanel mCliMRestFRestPontSuperPanel) {
 
