@@ -49,7 +49,6 @@ public class Interface extends JFrame {
     private static final String MRESTPMED_CARD = "MENU CLIENTE – PONTUAÇÃO MÉDIA";
 
 
-
     private static final String MENURESTAURANTE_CARD = "MENU RESTAURANTE";
     private static final String MRESTADICIONARPRATO_CARD = "ADICIONAR PRATO";
     private static final String MRESTACTUALIZARPRATO_CARD = "ACTUALIZAR PRATO DO DIA";
@@ -60,6 +59,7 @@ public class Interface extends JFrame {
     private static final int ALTURA_LOGIN = 180;
     private static final int LARGURA_PADRAO = 500;
     private static final int ALTURA_PADRAO = 300;
+    private boolean usernameValido;
     private boolean passwordValido;
     private boolean confirmarPasswordValido;
     private Sistema sistema;
@@ -256,10 +256,12 @@ public class Interface extends JFrame {
 
         JButton ptEnLoginButton = new JButton("PT/EN");
         ptEnLoginButton.setSize(15, 5);
-        JButton loginButton = new JButton(LOGIN_CARD);
+        JButton loginButton = new JButton("LOGIN");
         loginButton.setSize(15, 5);
         JButton clienteNovoButton = new JLinkButton("Novo Cliente");
         JButton restauranteNovoButton = new JLinkButton("Novo Restaurante");
+        //TODO TESTE - APAGAR DEPOIS
+        JButton gravarLoginButton = new JButton("GRAVAR");
 
         JLabel titleLoginLabel = new JLabel("LOGIN");
         JLabel usernameLoginLabel = new JLabel("Username");
@@ -269,23 +271,23 @@ public class Interface extends JFrame {
 
         JPasswordField passwordLoginField = new JPasswordField(20);
 
-///Layout dos subPaineis north, centro e south
+        ///Layout dos subPaineis north, centro e south
         norteLoginSubPanel.setLayout(new BorderLayout());
         centroLoginSubPanel.setLayout(new BorderLayout());
         sulLoginSubPanel.setLayout(new BorderLayout());
 
-//Adicionar subPaineis no superpainel Login
+        //Adicionar subPaineis no superpainel Login
         loginSuperPanel.add(norteLoginSubPanel, BorderLayout.NORTH);
         loginSuperPanel.add(centroLoginSubPanel, BorderLayout.CENTER);
         loginSuperPanel.add(sulLoginSubPanel, BorderLayout.SOUTH);
 
-/// Criação dos subpaineis nos subpaineis norte, centro e sul
+        /// Criação dos subpaineis nos subpaineis norte, centro e sul
         JPanel norteLoginSSPanelTitle = new JPanel();
         JPanel centroLoginSSPanelForm = new JPanel();
         JPanel centroLoginSSPanelButton = new JPanel();
         JPanel sulLoginSSPanelLinks = new JPanel();
 
-//Layout dos subpaineis dos subpaineis norte, centro e sul
+        //Layout dos subpaineis dos subpaineis norte, centro e sul
         norteLoginSubPanel.add(norteLoginSSPanelTitle, BorderLayout.CENTER);
         norteLoginSubPanel.add(ptEnLoginButton, BorderLayout.EAST);
         norteLoginSSPanelTitle.setLayout(new FlowLayout());
@@ -302,10 +304,39 @@ public class Interface extends JFrame {
         centroLoginSSPanelButton.add(loginButton);
 
         sulLoginSubPanel.add(sulLoginSSPanelLinks);
+        sulLoginSubPanel.add(sulLoginSSPanelLinks);
         sulLoginSSPanelLinks.setLayout(new BorderLayout());
         sulLoginSSPanelLinks.add(clienteNovoButton, BorderLayout.EAST);
+        sulLoginSSPanelLinks.add(gravarLoginButton, BorderLayout.CENTER);
         sulLoginSSPanelLinks.add(restauranteNovoButton, BorderLayout.WEST);
 
+        //TODO TESTE APAGAR DEPOIS
+        gravarLoginButton.addActionListener(a -> {
+            CardLayout cl = (CardLayout) contentor.getLayout();
+            cl.show(contentor, LOGIN_CARD);
+            janela.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            // passar por parâmetro no construtor (fica como referência pq qdo precisarmos
+            // no actionlistener)
+        });
+        loginButton.addActionListener(a -> {
+            if (!usernameValido) {
+                JOptionPane.showMessageDialog(((Component) a.getSource()).getParent(), "Username Inexistente!");
+                usernameLoginText.requestFocus();
+                return;
+            }
+            if (!passwordValido) {
+                JOptionPane.showMessageDialog(((Component) a.getSource()).getParent(), "Password Inválido!");
+                passwordLoginField.requestFocus();
+                return;
+            }
+        sistema.login(usernameLoginText.getText(),
+                passwordLoginField.getPassword().toString());
+    });
+//                addActionListener(a -> {
+//            CardLayout cl = (CardLayout) contentor.getLayout();
+//            cl.show(contentor, CLIENTE_CARD);
+//            janela.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+//        });
 
         clienteNovoButton.addActionListener(a -> {
             CardLayout cl = (CardLayout) contentor.getLayout();
@@ -1559,16 +1590,34 @@ public class Interface extends JFrame {
 
         //todo exemplo a verificar
         Object[][] dadosMRestComentariosCBox = new Object[][]{
-                {"ID","USERNAME", "COMENTÁRIO", "PONTUAÇÃO"},
-                {1,"Nuno", "Muito bom", 4.0},
-                {2,"Manuel", "Excelente", 5.0},
-                {3,"André", "Pouco espaço interno", 3.0},
+                {"ID", "USERNAME", "COMENTÁRIO", "PONTUAÇÃO"},
+                {1, null, null, null},
+                {2, "Manuel", "Excelente", 5.0},
+                {3, "André", "Pouco espaço interno", 3.0},
+                {4, null, null, null},
+                {5, null, null, null},
+                {6, null, null, null},
+                {7, null, null, null},
+                {8, null, null, null},
+                {9, null, null, null},
+                {10, null, null, null},
+                {11, null, null, null},
+                {12, null, null, null},
+                {13, null, null, null},
+                {14, null, null, null},
+                {15, null, null, null},
+                {16, null, null, null},
+                {17, null, null, null},
+                {18, null, null, null},
+                {19, null, null, null},
+                {20, null, null, null},
+                {21, null, null, null},
+                {22, null, null, null},
+
+
         };
         //criação da tabela
         JTable tabelaMRestComentarios = new JTable(dadosMRestComentariosCBox, nomeColunasMRestComentarios);
-
-//        JPopupMenu popupMenu = new JPopupMenu();
-//        JMenuItem menuItemAdd = new JMenuItem("Responder");
 
         JButton ptEnMRestReservasButton = new JButton("PT/EN");
         JButton voltarMRestComentariosButton = new JButton("MENU RESTAURANTE");
@@ -1593,6 +1642,7 @@ public class Interface extends JFrame {
         centroMRestComentariosSubPanel.add(centroMRestComentariosSSPanel1, BorderLayout.WEST);
 
         centroMRestComentariosSSPanel.add(tabelaMRestComentarios);
+        //centroMRestComentariosSSPanel.add(scrollPane);
         centroMRestComentariosSSPanel1.add(idMRestComentariosLabel);
         centroMRestComentariosSSPanel1.add(arrayIdMRestComentariosCBox);
 
@@ -2466,7 +2516,7 @@ public class Interface extends JFrame {
         norteMCliMComSubPanel.add(ptEnMCliMComButton, BorderLayout.EAST);
 
         JPanel centroMCliMComSSPanel = new JPanel();
-        centroMCliMComSSPanel.setLayout(new GridLayout(6,1));
+        centroMCliMComSSPanel.setLayout(new GridLayout(6, 1));
         centroMCliMComSubPanel.add(centroMCliMComSSPanel, BorderLayout.WEST);
 
         centroMCliMComSSPanel.add(mCliMComFPPRButton);
