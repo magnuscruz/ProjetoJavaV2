@@ -1546,21 +1546,24 @@ public class Interface extends JFrame {
         JPanel sulMRestComentariosSubPanel = new JPanel();
 
         JLabel mRestComentariosLabel = new JLabel("COMENTÁRIOS RECEBIDOS");
+        JLabel idMRestComentariosLabel = new JLabel("ID");
 
+        String[] idMRestComentariosCBox = {"", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"};
+        JComboBox arrayIdMRestComentariosCBox = new JComboBox(idMRestComentariosCBox);
 
         String[] nomeColunasMRestComentarios = new String[]{
-                "USERNAME", "COMENTÁRIO", "PONTUAÇÃO"
+                "ID", "USERNAME", "COMENTÁRIO", "PONTUAÇÃO"
         };
 
         //todo exemplo a verificar
-        Object[][] dados = new Object[][]{
-                {"USERNAME", "COMENTÁRIO", "PONTUAÇÃO"},
-                {"Nuno", "Muito bom", 4.0},
-                {"Manuel", "Excelente", 5.0},
-                {"André", "Pouco espaço interno", 3.0},
+        Object[][] dadosMRestComentariosCBox = new Object[][]{
+                {"ID","USERNAME", "COMENTÁRIO", "PONTUAÇÃO"},
+                {1,"Nuno", "Muito bom", 4.0},
+                {2,"Manuel", "Excelente", 5.0},
+                {3,"André", "Pouco espaço interno", 3.0},
         };
         //criação da tabela
-        JTable tabela = new JTable(dados, nomeColunasMRestComentarios);
+        JTable tabelaMRestComentarios = new JTable(dadosMRestComentariosCBox, nomeColunasMRestComentarios);
 
 //        JPopupMenu popupMenu = new JPopupMenu();
 //        JMenuItem menuItemAdd = new JMenuItem("Responder");
@@ -1579,9 +1582,17 @@ public class Interface extends JFrame {
         norteMRestComentariosSubPanel.add(norteMRestComentariosSSPanel, BorderLayout.CENTER);
         norteMRestComentariosSubPanel.add(ptEnMRestReservasButton, BorderLayout.EAST);
 
-        JPanel centroMRestReservasSSPanel1 = new JPanel();
-        centroMRestReservasSSPanel1.setLayout(new FlowLayout());
-        centroMRestComentariosSubPanel.add(tabela, BorderLayout.WEST);
+        JPanel centroMRestComentariosSSPanel = new JPanel();
+        centroMRestComentariosSSPanel.setLayout(new FlowLayout());
+        centroMRestComentariosSubPanel.add(centroMRestComentariosSSPanel, BorderLayout.WEST);
+
+        JPanel centroMRestComentariosSSPanel1 = new JPanel();
+        centroMRestComentariosSSPanel1.setLayout(new FlowLayout());
+        centroMRestComentariosSubPanel.add(centroMRestComentariosSSPanel1, BorderLayout.WEST);
+
+        centroMRestComentariosSSPanel.add(tabelaMRestComentarios);
+        centroMRestComentariosSSPanel1.add(idMRestComentariosLabel);
+        centroMRestComentariosSSPanel1.add(arrayIdMRestComentariosCBox);
 
         sulMRestComentariosSubPanel.setLayout(new FlowLayout());
         sulMRestComentariosSubPanel.add(voltarMRestComentariosButton);
