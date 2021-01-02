@@ -24,9 +24,8 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc1a7ff5-4773-4423-a8d5-04210f78b6a5" name="Default Changelist" comment="Feito Actionlistner do criar cliente">
+    <list default="true" id="fc1a7ff5-4773-4423-a8d5-04210f78b6a5" name="Default Changelist" comment="gravamos restaurantes e clientes em memória">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/gui/Interface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/gui/Interface.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -373,7 +372,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609616277296</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="gravamos restaurantes e clientes em memória">
+      <created>1609619230925</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1609619230925</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -392,7 +398,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Passando para o projeto as interfaces desenvolvidas a parte: Menu Cliente" />
     <MESSAGE value="Passando para o projeto as interfaces desenvolvidas a parte: Menu Restaurante" />
     <MESSAGE value="Passando para o projeto as interfaces desenvolvidas a parte: Menu  - Adicionar Prato" />
     <MESSAGE value="Passando para o projeto as interfaces desenvolvidas a parte: Menu  - Atualizar Prato do Dia" />
@@ -417,7 +422,8 @@
     <MESSAGE value="criei método login" />
     <MESSAGE value="Atualizações métodos e outras questões para o código rodar" />
     <MESSAGE value="Feito Actionlistner do criar cliente" />
-    <option name="LAST_COMMIT_MESSAGE" value="Feito Actionlistner do criar cliente" />
+    <MESSAGE value="gravamos restaurantes e clientes em memória" />
+    <option name="LAST_COMMIT_MESSAGE" value="gravamos restaurantes e clientes em memória" />
   </component>
   <component name="WindowStateProjectService">
     <state width="400" height="463" key="DebuggerActiveHint" timestamp="1609603731278">
@@ -460,14 +466,14 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="456" y="275" key="ReplaceDuplicatesPrompt/0.0.1280.680@0.0.1280.680" timestamp="1609605654701" />
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1609616307067">
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1609619255960">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1609616307067" />
-    <state x="458" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1609616282731">
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1609619255960" />
+    <state x="458" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1609619239720">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="458" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1609616282731" />
+    <state x="458" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1609619239720" />
     <state x="371" y="91" key="extract.method.dialog" timestamp="1609605513930">
       <screen x="0" y="0" width="1280" height="680" />
     </state>

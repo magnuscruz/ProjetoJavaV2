@@ -3049,7 +3049,7 @@ public class Interface extends JFrame {
         JLabel qtdePessoasMCliFResPLabel = new JLabel("QUANTIDADE DE PESSOAS");
         JLabel msgMCliFResPLabel = new JLabel("Contatar diretamente o restaurante no caso de reservas para mais de 20 pessoas");
 
-        String[] horaDeMCliFRes = {"", "11h", "11h30", "12h", "12h30", "13h", "13h30", "14h", "14h30", "15h", "15h30", "19h", "19h30", "20h", "20h30", "21h", "21h30", "22h", "22h30"};
+        String[] horaDeMCliFRes = {"", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00h", "14h30", "15h", "15h30", "19h", "19h30", "20h", "20h30", "21h", "21h30", "22h", "22h30"};
         JComboBox arrayHoraDeMCliFResPCBox = new JComboBox(horaDeMCliFRes);
 
         //todo verificar se não deve mesmo constar
