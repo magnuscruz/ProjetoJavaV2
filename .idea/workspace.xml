@@ -24,8 +24,13 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc1a7ff5-4773-4423-a8d5-04210f78b6a5" name="Default Changelist" comment="Inseri no git ficheiros do intellij">
+    <list default="true" id="fc1a7ff5-4773-4423-a8d5-04210f78b6a5" name="Default Changelist" comment="criei método login">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Text.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/Text.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Sistema.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Sistema.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/gui/Interface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/gui/Interface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/gui/util/DateLabelFormatter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/gui/util/DateLabelFormatter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,6 +60,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -349,7 +355,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609578976744</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="criei método login">
+      <created>1609600106189</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1609600106190</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -368,7 +381,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Autalizações em aula" />
     <MESSAGE value="Passando para o projeto as interfaces desenvolvidas a parte: Login" />
     <MESSAGE value="Passando para o projeto as interfaces desenvolvidas a parte: Novo Cliente" />
     <MESSAGE value="Passando para o projeto as interfaces desenvolvidas a parte: Menu Cliente" />
@@ -393,13 +405,66 @@
     <MESSAGE value="Criada interface menu rest pontuacao" />
     <MESSAGE value="Atualizado menu restaurante - comentarios" />
     <MESSAGE value="alterando configurações do gitignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="alterando configurações do gitignore" />
+    <MESSAGE value="criei método login" />
+    <option name="LAST_COMMIT_MESSAGE" value="criei método login" />
   </component>
   <component name="WindowStateProjectService">
+    <state width="400" height="463" key="DebuggerActiveHint" timestamp="1609603731278">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="400" height="463" key="DebuggerActiveHint/0.0.1280.680@0.0.1280.680" timestamp="1609603731278" />
+    <state width="1237" height="160" key="GridCell.Tab.0.bottom" timestamp="1609609424657">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="160" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1609609424657" />
+    <state width="1237" height="160" key="GridCell.Tab.0.center" timestamp="1609609424656">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="160" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1609609424656" />
+    <state width="1237" height="160" key="GridCell.Tab.0.left" timestamp="1609609424655">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="160" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1609609424655" />
+    <state width="1237" height="160" key="GridCell.Tab.0.right" timestamp="1609609424656">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="160" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1609609424656" />
+    <state width="1237" height="43" key="GridCell.Tab.1.bottom" timestamp="1609608790128">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="43" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1609608790128" />
+    <state width="1237" height="43" key="GridCell.Tab.1.center" timestamp="1609608790128">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="43" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1609608790128" />
+    <state width="1237" height="43" key="GridCell.Tab.1.left" timestamp="1609608790128">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="43" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1609608790128" />
+    <state width="1237" height="43" key="GridCell.Tab.1.right" timestamp="1609608790128">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="43" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1609608790128" />
+    <state x="456" y="275" key="ReplaceDuplicatesPrompt" timestamp="1609605654701">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="456" y="275" key="ReplaceDuplicatesPrompt/0.0.1280.680@0.0.1280.680" timestamp="1609605654701" />
     <state x="458" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1609599983994">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="458" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1609599983994" />
+    <state x="371" y="91" key="extract.method.dialog" timestamp="1609605513930">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="371" y="91" key="extract.method.dialog/0.0.1280.680@0.0.1280.680" timestamp="1609605513930" />
+    <state x="342" y="88" key="refactoring.ChangeSignatureDialog" timestamp="1609606032799">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="342" y="88" key="refactoring.ChangeSignatureDialog/0.0.1280.680@0.0.1280.680" timestamp="1609606032799" />
+    <state x="297" y="151" width="672" height="677" key="run.anything.popup" timestamp="1609605813270">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="297" y="151" width="672" height="677" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1609605813270" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -411,6 +476,11 @@
             <option name="EMULATED" value="true" />
           </properties>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/company/gui/Interface.java</url>
+          <line>2690</line>
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

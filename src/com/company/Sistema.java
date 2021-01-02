@@ -1,5 +1,7 @@
 package com.company;
 
+import javax.swing.*;
+import java.awt.*;
 import java.io.IOException;
 import java.io.Serializable;
 import java.time.LocalTime;
@@ -8,11 +10,29 @@ import java.util.GregorianCalendar;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-
 public class Sistema implements Serializable {
     private ArrayList<Utilizador> listaUtilizadores = new ArrayList<>();
     private ArrayList<Comentario> listaComentarios = new ArrayList<>();
     private Utilizador utilizarAtivo;
+
+    public Sistema (){
+        try {
+            FicheiroDeObjectos ficheiroOb = new FicheiroDeObjectos();
+            ficheiroOb.abreLeitura("FicheiroProjeto.dat");
+
+            try {
+                Sistema sistema = (Sistema) ficheiroOb.leObjecto();
+                ficheiroOb.fechaLeitura();
+                listaComentarios = sistema.listaComentarios;
+                listaUtilizadores = sistema.listaUtilizadores;
+            } catch (Exception e) {
+                System.out.println("EXCEPCAO: " + e.getMessage());
+            }
+
+        } catch (Exception e) {
+            System.out.println("EXCEPCAO: " + e.getMessage());
+        }
+    }
 
     public boolean gravarSistema() {
 
@@ -100,18 +120,15 @@ public class Sistema implements Serializable {
         }
     }
 
-    public String login(String username, String pass) {
-        boolean valido = false;
+    public Utilizador login(String username, String pass) {
 
         for (Utilizador u : listaUtilizadores) {
-            if (username.equals(u.getUsername()) && pass.equals(u.getPassword())) {
+            if (u.getUsername().equals(username) && u.getPassword().equals(pass)) {
                 this.utilizarAtivo = u;
-                valido = true;
+                return utilizarAtivo;
             }
         }
-        if (valido) {
-            return "Login efetuado com sucesso";//Para na consola da interface, saber que tudo correu bem
-        } else return "Login invalido";
+        return null;
     }
 
     public boolean validarString(String texto) {
@@ -280,15 +297,15 @@ public class Sistema implements Serializable {
         if (telefone != "") {
             if (validarTelefone(telefone)) {
                 getClienteAtivo().setTelefone(telefone);
-            } else System.out.println("telemovel nao é valido");
+            } else System.out.println("telemóvel não é válido");
         }
 
         if (email != "") {
             if (emailUnico(email)) {
                 if (validarEmail(email)) {
                     getClienteAtivo().setEmail(email);
-                } else System.out.println("Email nao é valido");
-            } else System.out.println("Email ja esta registado");
+                } else System.out.println("Email não é válido");
+            } else System.out.println("Email já está registado");
         }
 
         if (password != "") {
@@ -296,7 +313,7 @@ public class Sistema implements Serializable {
                 if (confirmarNovaPass != "") {
                     if (confirmarPass(novaPass, confirmarNovaPass)) {
                         getClienteAtivo().setPassword(novaPass);
-                    } else System.out.println("Passwords nao sao iguais");
+                    } else System.out.println("Passwords não são iguais");
                 }
             }
         }
@@ -314,15 +331,15 @@ public class Sistema implements Serializable {
         if (telefone != "") {
             if (validarTelefone(telefone)) {
                 getRestauranteAtivo().setTelefone(telefone);
-            } else System.out.println("telemovel nao é valido");
+            } else System.out.println("telemóvel não é válido");
         }
 
         if (email != "") {
             if (emailUnico(email)) {
                 if (validarEmail(email)) {
                     getRestauranteAtivo().setEmail(email);
-                } else System.out.println("Email nao é valido");
-            } else System.out.println("Email ja esta registado");
+                } else System.out.println("Email não é válido");
+            } else System.out.println("Email já está registado");
         }
 
         if (password != "") {
@@ -330,7 +347,7 @@ public class Sistema implements Serializable {
                 if (confirmarNovaPass != "") {
                     if (confirmarPass(novaPass, confirmarNovaPass)) {
                         getRestauranteAtivo().setPassword(novaPass);
-                    } else System.out.println("Passwords nao sao iguais");
+                    } else System.out.println("Passwords não são iguais");
                 }
             }
         }
@@ -392,7 +409,7 @@ public class Sistema implements Serializable {
                     restaurantesPorValores.add(r);
                 }
             }
-        } else System.out.println("Valor minimo inserido nao é menor que o valor maximo");
+        } else System.out.println("Valor mínimo inserido não é menor que o valor máximo");
 
         return restaurantesPorValores;
     }
@@ -417,7 +434,7 @@ public class Sistema implements Serializable {
                     restaurantesPorPontuacao.add(r);
                 }
             }
-        } else System.out.println("Pontuacao minima nao é menor que a maxima");
+        } else System.out.println("Pontuação mínima não é menor que a máxima");
         return restaurantesPorPontuacao;
     }
 

@@ -3,7 +3,9 @@
 
 package com.company.gui;
 
+import com.company.Cliente;
 import com.company.Sistema;
+import com.company.Utilizador;
 import com.company.gui.util.DateLabelFormatter;
 
 import org.jdatepicker.impl.JDatePanelImpl;
@@ -14,6 +16,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.text.ParseException;
 import java.util.Enumeration;
+import java.util.GregorianCalendar;
 import java.util.Properties;
 import java.util.ResourceBundle;
 
@@ -59,11 +62,13 @@ public class Interface extends JFrame {
     private static final int ALTURA_LOGIN = 180;
     private static final int LARGURA_PADRAO = 500;
     private static final int ALTURA_PADRAO = 300;
+    private final Container contentor;
     private boolean usernameValido;
     private boolean passwordValido;
     private boolean confirmarPasswordValido;
     private Sistema sistema;
     private MaskFormatter mascaraTelemovel;
+    private JDatePickerImpl datePickerMCliMComFID1;
 
 
     public Interface(Sistema sistema) {
@@ -83,7 +88,7 @@ public class Interface extends JFrame {
         this.setTitle("RESERVAS DE RESTAURANTES");
         this.setSize(LARGURA_LOGIN, ALTURA_LOGIN);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        Container contentor = this.getContentPane();
+        contentor = this.getContentPane();
         contentor.setLayout(new CardLayout());
 
         /////// SUPERPAINEIS////////
@@ -312,47 +317,43 @@ public class Interface extends JFrame {
 
         //TODO TESTE APAGAR DEPOIS
         gravarLoginButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, LOGIN_CARD);
-            janela.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
-            // passar por parâmetro no construtor (fica como referência pq qdo precisarmos
-            // no actionlistener)
+            sistema.gravarSistema();
         });
+
         loginButton.addActionListener(a -> {
-            if (!usernameValido) {
-                JOptionPane.showMessageDialog(((Component) a.getSource()).getParent(), "Username Inexistente!");
-                usernameLoginText.requestFocus();
-                return;
+            Utilizador valida = sistema.login(usernameLoginText.getText(), new String(passwordLoginField.getPassword()));
+
+            if (valida != null) {
+                JOptionPane.showMessageDialog(((Component) a.getSource()).getParent(), "Login bem-sucedido!");
+                if (valida instanceof Cliente) {
+                    mostrarJanela(MENUCLIENTE_CARD);
+                } else {
+                    mostrarJanela(MENURESTAURANTE_CARD);
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(((Component) a.getSource()).getParent(), "Dados inválidos!");
             }
-            if (!passwordValido) {
-                JOptionPane.showMessageDialog(((Component) a.getSource()).getParent(), "Password Inválido!");
-                passwordLoginField.requestFocus();
-                return;
-            }
-        sistema.login(usernameLoginText.getText(),
-                passwordLoginField.getPassword().toString());
-    });
-//                addActionListener(a -> {
-//            CardLayout cl = (CardLayout) contentor.getLayout();
-//            cl.show(contentor, CLIENTE_CARD);
-//            janela.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
-//        });
+
+        });
 
         clienteNovoButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, CLIENTE_CARD);
-            janela.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(CLIENTE_CARD);
             // passar por parâmetro no construtor (fica como referência pq qdo precisarmos
             // no actionlistener)
         });
 
         restauranteNovoButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, RESTAURANTE_CARD);
-            janela.setSize(LARGURA_PADRAO, 350);
+            mostrarJanela(RESTAURANTE_CARD);
             // passar por parâmetro no construtor (fica como referência pq qdo precisarmos
             // no actionlistener)
         });
+    }
+
+    private void mostrarJanela(String nomeJanela) {
+        CardLayout cl = (CardLayout) contentor.getLayout();
+        cl.show(contentor, nomeJanela);
+        this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
     }
 
     ////////////////////NOVO CLIENTE/////////////////////////
@@ -444,16 +445,12 @@ public class Interface extends JFrame {
 
 
         registarClienteButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MENUCLIENTE_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MENUCLIENTE_CARD);
 
         });
 
         cancelarClienteButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, LOGIN_CARD);
-            this.setSize(LARGURA_LOGIN, ALTURA_LOGIN);
+            mostrarJanela(LOGIN_CARD);
 
         });
     }
@@ -506,34 +503,24 @@ public class Interface extends JFrame {
         sulMenuClienteSubPanel.add(logoutMenuClienteButton);
 
         comentariosMCliButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MCLIMCOM_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MCLIMCOM_CARD);
         });
 
         restaurantesMCliButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MCLIMRESTFORDRESTS_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MCLIMRESTFORDRESTS_CARD);
         });
 
         reservasMCliButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MCLIRESERVAS_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MCLIRESERVAS_CARD);
         });
 
         atualDadosMCliButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MCLIATDADOS_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MCLIATDADOS_CARD);
         });
 
 
         logoutMenuClienteButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, LOGIN_CARD);
-            this.setSize(400, 180);
+            mostrarJanela(LOGIN_CARD);
         });
 
     }
@@ -585,33 +572,23 @@ public class Interface extends JFrame {
 
 
         histReseComPonMCliMReseButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MCLIHISRES_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MCLIHISRES_CARD);
         });
 
         ReservasActMCliMReseButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MCLIRESACT_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MCLIRESACT_CARD);
         });
 
         fazerReservasMCliMReseButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MCLIFAZERRES_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MCLIFAZERRES_CARD);
         });
 
         voltarMCliMReseButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MENUCLIENTE_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MENUCLIENTE_CARD);
         });
 
         logoutMCliMReseButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, LOGIN_CARD);
-            this.setSize(400, 180);
+            mostrarJanela(LOGIN_CARD);
         });
 
     }
@@ -682,22 +659,16 @@ public class Interface extends JFrame {
         sulMCliHistResSubPanel.add(comentarMCliHistResButton);
 
         retornarMCliHistResButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MCLIRESERVAS_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MCLIRESERVAS_CARD);
         });
 
         //todo falta ativar este botão
         comentarMCliHistResButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MCLIMRESCOMPONTRESE_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MCLIMRESCOMPONTRESE_CARD);
         });
 
         voltarMCliHistResButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MENUCLIENTE_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MENUCLIENTE_CARD);
         });
     }
 
@@ -804,21 +775,15 @@ public class Interface extends JFrame {
         sulMCliRestComPonReseSubPanel.add(okMCliRestComPonReseButton);
 
         retornarMCliRestComPonReseButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MCLIRESERVAS_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MCLIRESERVAS_CARD);
         });
         voltarMCliRestComPonReseButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MENUCLIENTE_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MENUCLIENTE_CARD);
         });
 
         //todo ver os encaminhamentos
         okMCliRestComPonReseButton.addActionListener(e -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, LOGIN_CARD);
-            this.setSize(500, 180);
+            mostrarJanela(LOGIN_CARD);
         });
     }
 
@@ -988,15 +953,11 @@ public class Interface extends JFrame {
         sulNovoRestauranteSubPanel.add(registarRestauranteButton);
 
         cancelarRestauranteButton.addActionListener(e -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, LOGIN_CARD);
-            this.setSize(500, 180);
+            mostrarJanela(LOGIN_CARD);
         });
 
         registarRestauranteButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MENURESTAURANTE_CARD);
-            this.setSize(500, 300);
+            mostrarJanela(MENURESTAURANTE_CARD);
 
         });
     }
@@ -1058,33 +1019,23 @@ public class Interface extends JFrame {
 //
 //       });
         mRestAdicionarPratoButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MRESTADICIONARPRATO_CARD);
-            this.setSize(LARGURA_LOGIN, ALTURA_LOGIN);
+            mostrarJanela(MRESTADICIONARPRATO_CARD);
         });
 
         mRestActualizarPratoDiaButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MRESTACTUALIZARPRATO_CARD);
-            this.setSize(LARGURA_LOGIN, ALTURA_LOGIN);
+            mostrarJanela(MRESTACTUALIZARPRATO_CARD);
         });
 
         mRestReservasButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MRESTRESERV_CARD);
-            this.setSize(LARGURA_PADRAO, 350);
+            mostrarJanela(MRESTRESERV_CARD);
         });
 
         mRestActualizarDadosButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MRESTACTUALIZARDADOS_CARD);
-            this.setSize(LARGURA_PADRAO, 350);
+            mostrarJanela(MRESTACTUALIZARDADOS_CARD);
         });
 
         mRestPMedButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MRESTPMED_CARD);
-            this.setSize(LARGURA_PADRAO, 350);
+            mostrarJanela(MRESTPMED_CARD);
         });
 
 //        mRestReservasButton.addActionListener(a -> {
@@ -1094,15 +1045,11 @@ public class Interface extends JFrame {
 //      });
 
         mRestConsultarComentariosButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MRESTCOMENTARIOS_CARD);
-            this.setSize(LARGURA_PADRAO, 350);
+            mostrarJanela(MRESTCOMENTARIOS_CARD);
         });
 
         logoutMenuRestauranteButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, LOGIN_CARD);
-            this.setSize(LARGURA_LOGIN, ALTURA_LOGIN);
+            mostrarJanela(LOGIN_CARD);
         });
     }
 
@@ -1163,16 +1110,12 @@ public class Interface extends JFrame {
 
 
         voltarMenuRestAdPratoButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MENURESTAURANTE_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MENURESTAURANTE_CARD);
 
         });
 
         confirmarAdPratoButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MENURESTAURANTE_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MENURESTAURANTE_CARD);
 
         });
 
@@ -1228,15 +1171,11 @@ public class Interface extends JFrame {
 
 
         voltarMenuRestAtPratoButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MENURESTAURANTE_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MENURESTAURANTE_CARD);
 
         });
         confirmarAtPratoButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MENURESTAURANTE_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MENURESTAURANTE_CARD);
 
         });
     }
@@ -1399,15 +1338,11 @@ public class Interface extends JFrame {
         sulMRestAtDadosSubPanel.add(atDadosRestButton);
 
         voltarMenuRestAtDadosRestButton.addActionListener(e -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MENURESTAURANTE_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MENURESTAURANTE_CARD);
         });
 
         atDadosRestButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MENURESTAURANTE_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MENURESTAURANTE_CARD);
 
         });
 
@@ -1535,17 +1470,13 @@ public class Interface extends JFrame {
 
 
         voltarMRestReservasButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MENURESTAURANTE_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MENURESTAURANTE_CARD);
 
         });
 
         //todo ver os encaminhamentos
         okMRestReservasButton.addActionListener(e -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, LOGIN_CARD);
-            this.setSize(500, 180);
+            mostrarJanela(LOGIN_CARD);
         });
     }
 
@@ -1652,17 +1583,13 @@ public class Interface extends JFrame {
 
 
         voltarMRestComentariosButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MENURESTAURANTE_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MENURESTAURANTE_CARD);
 
         });
 
         //todo ver os encaminhamentos para responder comentário
         responderMRestComentariosButton.addActionListener(e -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, LOGIN_CARD);
-            this.setSize(500, 180);
+            mostrarJanela(LOGIN_CARD);
         });
 
     }
@@ -1719,17 +1646,13 @@ public class Interface extends JFrame {
         sulMRestPMedSubPanel.add(okMRestPMedButton);
 
         voltarMRestPMedButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MENURESTAURANTE_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MENURESTAURANTE_CARD);
 
         });
 
         //todo ver os encaminhamentos para responder comentário
         okMRestPMedButton.addActionListener(e -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, LOGIN_CARD);
-            this.setSize(500, 180);
+            mostrarJanela(LOGIN_CARD);
         });
 
     }
@@ -1783,39 +1706,27 @@ public class Interface extends JFrame {
         sulMCliMRestFOrdRestsSubPanel.add(voltarMCliMRestsFOrdRestButton);
 
         fhoraFMCliMRestFOrdRestsButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MCLIMRESTFRESTHFUNC_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MCLIMRESTFRESTHFUNC_CARD);
         });
 
         fLotMCliMRestFOrdRestsButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MCLIMRESTFRESTLOT_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MCLIMRESTFRESTLOT_CARD);
         });
 
         fCidCliMRestFOrdRestsButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MCLIMRESTFRESTCID_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MCLIMRESTFRESTCID_CARD);
         });
 
         fOrdPontCliMRestFOrdRestsButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MCLIMRESTFRESTPONT_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MCLIMRESTFRESTPONT_CARD);
         });
 
         fOrdValoresMCliMRestFOrdRestsButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MCLIMRESTFORDRESTVALOR_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MCLIMRESTFORDRESTVALOR_CARD);
         });
 
         voltarMCliMRestsFOrdRestButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MENUCLIENTE_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MENUCLIENTE_CARD);
         });
     }
 
@@ -1875,45 +1786,31 @@ public class Interface extends JFrame {
         sulMCliMRestFRestPontSubPanel.add(retonarMCliMRestFRestPontButton);
 
         umMCliMRestFRestPont.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MENUCLIENTE_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MENUCLIENTE_CARD);
         });
 
         doisMCliMRestFRestPont.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MENUCLIENTE_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MENUCLIENTE_CARD);
         });
 
         tresMCliMRestFRestPont.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MENUCLIENTE_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MENUCLIENTE_CARD);
         });
 
         quatroMCliMRestFRestPont.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MENUCLIENTE_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MENUCLIENTE_CARD);
         });
 
         cincoMCliMRestFRestPont.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MENUCLIENTE_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MENUCLIENTE_CARD);
         });
 
         retonarMCliMRestFRestPontButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MCLIMRESTFORDRESTS_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MCLIMRESTFORDRESTS_CARD);
         });
 
         voltarMCliMRestFRestPontButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MENUCLIENTE_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MENUCLIENTE_CARD);
 
         });
 
@@ -1971,27 +1868,19 @@ public class Interface extends JFrame {
 
 
         fOrdValoresCartaMCliMRestFOrdRestValorRButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MCLIMRESTFORDRESTVALORCARTA_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MCLIMRESTFORDRESTVALORCARTA_CARD);
 
         });
 
         fOrdValoresPDiaMCliMRestFOrdRestValorRButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MCLIMRESTFORDRESTVALORPDIA_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MCLIMRESTFORDRESTVALORPDIA_CARD);
 
         });
         retornarMCliMRestFOrdRestValorButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MCLIMRESTFORDRESTS_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MCLIMRESTFORDRESTS_CARD);
         });
         voltarMCliMRestFOrdRestValorutton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MENUCLIENTE_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MENUCLIENTE_CARD);
 
         });
     }
@@ -2054,45 +1943,31 @@ public class Interface extends JFrame {
         sulMCliMRestFOrdRestValorCartaSubPanel.add(retornarMCliMRestFOrdRestValorCartaButton);
 
         dezMCliMRestFOrdRestValorCartaCBox.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MENUCLIENTE_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MENUCLIENTE_CARD);
         });
 
         dezVinteMCliMRestFOrdRestValorCartaCBox.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MENUCLIENTE_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MENUCLIENTE_CARD);
         });
 
         vinteTrintaMCliMRestFOrdRestValorCartaCBox.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MENUCLIENTE_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MENUCLIENTE_CARD);
         });
 
         trintaQuarentaMCliMRestFOrdRestValorCartaCBox.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MENUCLIENTE_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MENUCLIENTE_CARD);
         });
 
         quarentaMaisMCliMRestFOrdRestValorCartaCBox.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MENUCLIENTE_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MENUCLIENTE_CARD);
         });
 
         retornarMCliMRestFOrdRestValorCartaButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MCLIMRESTFORDRESTS_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MCLIMRESTFORDRESTS_CARD);
         });
 
         voltarMCliMRestFOrdRestValorCartaButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MENUCLIENTE_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MENUCLIENTE_CARD);
 
         });
     }
@@ -2154,44 +2029,30 @@ public class Interface extends JFrame {
         sulMCliMRestFOrdRestValorPDiaSubPanel.add(retornarMCliMRestFOrdRestValorPDiaButton);
 
         dezMCliMRestFOrdRestValorPDiaCBox.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MENUCLIENTE_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MENUCLIENTE_CARD);
         });
 
         dezVinteMCliMRestFOrdRestValorPDiaCBox.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MENUCLIENTE_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MENUCLIENTE_CARD);
         });
 
         vinteTrintaMCliMRestFOrdRestValorPDiaCBox.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MENUCLIENTE_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MENUCLIENTE_CARD);
         });
 
         trintaQuarentaMCliMRestFOrdRestValorPDiaCBox.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MENUCLIENTE_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MENUCLIENTE_CARD);
         });
 
         quarentaMaisMCliMRestFOrdRestValorPDiaCBox.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MENUCLIENTE_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MENUCLIENTE_CARD);
         });
 
         retornarMCliMRestFOrdRestValorPDiaButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MCLIMRESTFORDRESTS_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MCLIMRESTFORDRESTS_CARD);
         });
         voltarMCliMRestFOrdRestValorPDiaButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MENUCLIENTE_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MENUCLIENTE_CARD);
 
         });
     }
@@ -2268,15 +2129,11 @@ public class Interface extends JFrame {
 
         //todo faltar ver botões
         retornarMCliMRestFRestHFuncButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MCLIMRESTFORDRESTS_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MCLIMRESTFORDRESTS_CARD);
         });
 
         voltarMCliMRestFRestHFuncButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MENUCLIENTE_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MENUCLIENTE_CARD);
         });
     }
 
@@ -2361,15 +2218,11 @@ public class Interface extends JFrame {
         sulMCliMRestFRestLotSubPanel.add(retornarMCliMRestFRestLotButton);
 
         retornarMCliMRestFRestLotButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MCLIMRESTFORDRESTS_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MCLIMRESTFORDRESTS_CARD);
         });
 
         voltarMCliMRestFRestLotButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MENUCLIENTE_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MENUCLIENTE_CARD);
 
         });
     }
@@ -2431,47 +2284,31 @@ public class Interface extends JFrame {
         sulMCliMRestFRestCidSubPanel.add(retornarMCliMRestFRestCidButton);
 
         coimbraMCliMRestFOrdRestJCBox.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MENUCLIENTE_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MENUCLIENTE_CARD);
         });
 
         portoMCliMRestFOrdRestJCBox.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MENUCLIENTE_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MENUCLIENTE_CARD);
         });
 
         lisboaMCliMRestFOrdRestJCBox.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MENUCLIENTE_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MENUCLIENTE_CARD);
         });
         bragaMCliMRestFOrdRestJCBox.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MENUCLIENTE_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MENUCLIENTE_CARD);
         });
         guimaraesMCliMRestFOrdRestJCBox.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MENUCLIENTE_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MENUCLIENTE_CARD);
         });
         vilaDoCondeMCliMRestFOrdRestJCBox.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MENUCLIENTE_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MENUCLIENTE_CARD);
         });
 
         retornarMCliMRestFRestCidButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MCLIMRESTFORDRESTS_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MCLIMRESTFORDRESTS_CARD);
         });
         voltarMCliMRestFRestCidButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MENUCLIENTE_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MENUCLIENTE_CARD);
 
         });
     }
@@ -2528,34 +2365,24 @@ public class Interface extends JFrame {
         sulMCliMComSubPanel.add(voltarMCliMComButton);
 
         mCliMComFPPRButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MCLIMCOMFPP_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MCLIMCOMFPP_CARD);
         });
 
         mCliMComFCliRButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MCLIMCOMFCLI_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MCLIMCOMFCLI_CARD);
         });
 
         mCliMComFRestRButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MCLIMCOMFREST_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MCLIMCOMFREST_CARD);
         });
 
         mCliMComFIDRButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MCLIMCOMFID_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MCLIMCOMFID_CARD);
         });
 
 
         voltarMCliMComButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MENUCLIENTE_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MENUCLIENTE_CARD);
 
         });
     }
@@ -2646,33 +2473,23 @@ public class Interface extends JFrame {
         sulMCliMComFPPSubPanel.add(retornarMCliMComFPPButton);
 
         visualizarMCliMComFPPButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MENUCLIENTE_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MENUCLIENTE_CARD);
         });
 
         editarMCliMComFPPButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MENUCLIENTE_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MENUCLIENTE_CARD);
         });
 
         apagarMCliMComFPPButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MENUCLIENTE_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MENUCLIENTE_CARD);
         });
 
         voltarMCliMComFPPButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MENUCLIENTE_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MENUCLIENTE_CARD);
         });
 
         retornarMCliMComFPPButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MCLIMCOM_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MCLIMCOM_CARD);
         });
     }
 
@@ -2720,21 +2537,15 @@ public class Interface extends JFrame {
         sulMCliMComFCliSubPanel.add(okMCliMComFCliButton);
 
         voltarMCliMComFCliButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MENUCLIENTE_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MENUCLIENTE_CARD);
         });
 
         retornarMCliMComFCliButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MCLIMCOM_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MCLIMCOM_CARD);
         });
 
         okMCliMComFCliButton.addActionListener(e -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, LOGIN_CARD);
-            this.setSize(500, 180);
+            mostrarJanela(LOGIN_CARD);
         });
 
     }
@@ -2784,21 +2595,15 @@ public class Interface extends JFrame {
         sulMCliMComFRestSubPanel.add(okMCliMComFRestButton);
 
         voltarMCliMComFRestButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MENUCLIENTE_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MENUCLIENTE_CARD);
         });
 
         retornarMCliMComFRestButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MCLIMCOM_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MCLIMCOM_CARD);
         });
 
         okMCliMComFRestButton.addActionListener(e -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, LOGIN_CARD);
-            this.setSize(500, 180);
+            mostrarJanela(LOGIN_CARD);
         });
 
     }
@@ -2820,7 +2625,7 @@ public class Interface extends JFrame {
         JLabel ateMCliMComFIDLabel = new JLabel("Até");
 
 
-//Adição do calendário
+        //Adição do calendário
         UtilDateModel modelMCliMComFID1 = new UtilDateModel();
         UtilDateModel modelMCliMComFID2 = new UtilDateModel();
 
@@ -2828,11 +2633,11 @@ public class Interface extends JFrame {
 
         Properties p = convertResourceBundleToProperties(b);
         JDatePanelImpl datePanelMCliMComFID1 = new JDatePanelImpl(modelMCliMComFID1, p);
-        JDatePickerImpl datePickerMCliMComFID1 = new JDatePickerImpl(datePanelMCliMComFID1, new DateLabelFormatter());
+        datePickerMCliMComFID1 = new JDatePickerImpl(datePanelMCliMComFID1, new DateLabelFormatter());
 
         JDatePanelImpl datePanelMCliMComFID2 = new JDatePanelImpl(modelMCliMComFID2, p);
         JDatePickerImpl datePickerMCliMComFID2 = new JDatePickerImpl(datePanelMCliMComFID2, new DateLabelFormatter());
-
+                
         JButton ptEnMCliMComFIDButton = new JButton("PT/EN");
         JButton voltarMCliMComFIDButton = new JButton("MENU CLIENTE");
         JButton retornarMCliMComFIDButton = new JButton("VOLTAR");
@@ -2872,21 +2677,18 @@ public class Interface extends JFrame {
         sulMCliMComFIDSubPanel.add(okMCliMComFIDButton);
 
         voltarMCliMComFIDButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MENUCLIENTE_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MENUCLIENTE_CARD);
         });
 
         retornarMCliMComFIDButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MCLIMCOM_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MCLIMCOM_CARD);
         });
 
         okMCliMComFIDButton.addActionListener(e -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, LOGIN_CARD);
-            this.setSize(500, 180);
+            GregorianCalendar data1 = (GregorianCalendar) datePickerMCliMComFID1.getJFormattedTextField().getValue();
+            String data2 = datePickerMCliMComFID2.getJFormattedTextField().getText();
+            //TODO implementar método mais tarde
+            mostrarJanela(LOGIN_CARD);
         });
 
     }
@@ -2913,7 +2715,7 @@ public class Interface extends JFrame {
         JLabel telemovelCliMCliLabel = new JLabel("Telemóvel");
         JLabel usernameCliMCliLabel = new JLabel("Username");
         JLabel passwordCliMCliLabel = new JLabel("Password");
-        JLabel confirmarPasswordCliMCliLabel = new JLabel("Confirmar password: ");
+        JLabel confirmarPasswordCliMCliLabel = new JLabel("Confirmar Password");
 
         JTextField nomeCliMCliText = new JTextField(20);
         nomeCliMCliText.setMargin(new Insets(3, 3, 3, 3));
@@ -3010,9 +2812,7 @@ public class Interface extends JFrame {
                     confirmarPassawordCliMCliField.getPassword().toString());
         });
         voltarCliMCliButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MENUCLIENTE_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MENUCLIENTE_CARD);
         });
     }
 // todo verificar os botões editar e apagar que estão em conflito com visualizar
@@ -3096,34 +2896,24 @@ public class Interface extends JFrame {
 
 
         visualizarMCliResActButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MENUCLIENTE_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MENUCLIENTE_CARD);
 
         });
 
         editarMCliResActButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MENUCLIENTE_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MENUCLIENTE_CARD);
         });
 
         apagarMCliResActButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MENUCLIENTE_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MENUCLIENTE_CARD);
         });
 
         retonarMCliResActButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MCLIRESERVAS_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MCLIRESERVAS_CARD);
         });
 
         voltarMCliResActButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MENUCLIENTE_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MENUCLIENTE_CARD);
         });
     }
 
@@ -3193,27 +2983,19 @@ public class Interface extends JFrame {
         sulMCliFResSubPanel.add(retornarMCliFResButton);
 
         presencialMCliFResRButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MCLIFAZERRESP_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MCLIFAZERRESP_CARD);
         });
 
         takeAwayMCliFResRButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MCLIFAZERRESTA_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MCLIFAZERRESTA_CARD);
         });
 
         retornarMCliFResButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MCLIRESERVAS_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MCLIRESERVAS_CARD);
         });
 
         voltarMCliFResButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MENUCLIENTE_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MENUCLIENTE_CARD);
         });
 
     }
@@ -3310,22 +3092,16 @@ public class Interface extends JFrame {
         sulMCliFResPSubPanel.add(confirmarMCliFResPButton);
 
         voltarMCliFResPButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MENUCLIENTE_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MENUCLIENTE_CARD);
         });
 
         retornarMCliFResPButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MCLIFAZERRES_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MCLIFAZERRES_CARD);
         });
 
         //todo ver os encaminhamentos
         confirmarMCliFResPButton.addActionListener(e -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, LOGIN_CARD);
-            this.setSize(500, 180);
+            mostrarJanela(LOGIN_CARD);
         });
 
     }
@@ -3427,28 +3203,20 @@ public class Interface extends JFrame {
 
 
         voltarMCliFResTAButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MENUCLIENTE_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MENUCLIENTE_CARD);
         });
 
         retornarMCliFResButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MCLIFAZERRES_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MCLIFAZERRES_CARD);
         });
         //todo fazer nova página com valor final (botoes de finalizar, editar e remover com quantidade)
         finalizarMCliFResTAButton.addActionListener(a -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MCLIFAZERRES_CARD);
-            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
+            mostrarJanela(MCLIFAZERRES_CARD);
         });
 
         //todo ver os encaminhamentos
         adicionarMCliFResTAButton.addActionListener(e -> {
-            CardLayout cl = (CardLayout) contentor.getLayout();
-            cl.show(contentor, MCLIFAZERRES_CARD);
-            this.setSize(500, 180);
+            mostrarJanela(MCLIFAZERRES_CARD);
         });
 
 
