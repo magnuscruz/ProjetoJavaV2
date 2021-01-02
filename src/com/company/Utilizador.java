@@ -44,6 +44,7 @@ public class Utilizador implements Serializable {
                 '}';
     }
 
+
     public Restaurante getRestaurante() {
         return restaurante;
     }

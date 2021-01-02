@@ -62,11 +62,13 @@ public class Interface extends JFrame {
     private static final int ALTURA_PADRAO = 300;
     private boolean passwordValido;
     private boolean confirmarPasswordValido;
-    private Sistema sistema = new Sistema();
+    private Sistema sistema;
     private MaskFormatter mascaraTelemovel;
 
 
-    public Interface() {
+    public Interface(Sistema sistema) {
+
+        this.sistema = sistema;
 
         try {
             mascaraTelemovel = new MaskFormatter("#########");

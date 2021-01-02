@@ -1,5 +1,6 @@
 package com.company;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -12,6 +13,21 @@ public class Sistema implements Serializable {
     private ArrayList<Utilizador> listaUtilizadores = new ArrayList<>();
     private ArrayList<Comentario> listaComentarios = new ArrayList<>();
     private Utilizador utilizarAtivo;
+
+    public boolean gravarSistema() {
+
+        try {
+            FicheiroDeObjectos ficheiroOb = new FicheiroDeObjectos();
+            ficheiroOb.abreEscrita("FicheiroProjeto.dat");
+            ficheiroOb.escreveObjecto(this);
+            ficheiroOb.fechaEscrita();
+            System.out.println("Sistema gravado com sucesso");
+
+        } catch (Exception e) {
+            System.out.println("EXCEPCAO: " + e.getMessage());
+        }
+        return true;
+    }
 
     private Utilizador getUtilizarAtivo() {
         return this.utilizarAtivo;
@@ -321,16 +337,16 @@ public class Sistema implements Serializable {
 
         //  FALTA AQUI VALIDAR LOTACAO
 
-        if (inicioAlm != null){
+        if (inicioAlm != null) {
             getRestauranteAtivo().setInicioAlm(inicioAlm);
         }
-        if (fimAlm != null){
+        if (fimAlm != null) {
             getRestauranteAtivo().setFimAlm(fimAlm);
         }
-        if (inicioJan != null){
+        if (inicioJan != null) {
             getRestauranteAtivo().setInicioJan(inicioJan);
         }
-        if (fimJan != null){
+        if (fimJan != null) {
             getRestauranteAtivo().setFimJan(fimJan);
         }
 
@@ -422,8 +438,8 @@ public class Sistema implements Serializable {
         return restaurantesPorLotacao;
     }
 
-    public double lotacaoTotalDisponivel (){
-        return (getRestauranteAtivo().getLotacaoEsplanada()+ getRestauranteAtivo().getLotacaoFum()+ getRestauranteAtivo().getLotacaoNFum());
+    public double lotacaoTotalDisponivel() {
+        return (getRestauranteAtivo().getLotacaoEsplanada() + getRestauranteAtivo().getLotacaoFum() + getRestauranteAtivo().getLotacaoNFum());
     }
 
 }

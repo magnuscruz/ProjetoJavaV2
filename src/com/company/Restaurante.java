@@ -30,15 +30,9 @@ public class Restaurante extends Utilizador implements Serializable {
         this.inicioJan = inicioJan;
         this.fimJan = fimJan;
 
-        //todo se eu chamar o metodo funciona, mas se quiser usar dentro de um metodo ou
-        // no toString de Restaurante, aparece NaN
-       // this.pontuacaoMedia = getPontuacaoMedia();
+
         this.ementa = new Ementa();
 
-        //todo alternativa 1 para fazer preco medio restaurante
-        //this.precoMedio = getPrecoMedio();
-
-        //this.precoMedio = getPrecoMedioRestaurante();
         this.status = true;
     }
 
@@ -189,10 +183,13 @@ public class Restaurante extends Utilizador implements Serializable {
                 totalPontuacao += u.getPontuacao();
             }
         }
-        media = totalPontuacao/count;
-        if (media ==0){
+       if (count >0){
+           media = totalPontuacao/count;
+       }
+        if (media <= 0.0001){
             return  0;
         }
+
         return media;
     }
 
@@ -212,7 +209,7 @@ public class Restaurante extends Utilizador implements Serializable {
             countDia++;
         }
 
-       if ((precoTotalCarta+precoTotalDia)==0){
+       if ((precoTotalCarta+precoTotalDia)<=0.001){
             return  0;
        }
         return (precoTotalCarta + precoTotalDia) / (countCarta + countDia);

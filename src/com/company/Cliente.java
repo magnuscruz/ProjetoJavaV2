@@ -82,10 +82,13 @@ return 0;
 
 
 
-//    public void criarReservaPresencial(Cliente cliente, Restaurante restaurante, GregorianCalendar data, LocalTime horario, int numeroLugares, int zona) {
-//        Presencial p = new Presencial(cliente, restaurante, data, horario, numeroLugares, zona);
-//        getListaReservas().add(p);
-//    }
+    public void criarReservaPresencial2(Cliente cliente, Restaurante restaurante, GregorianCalendar data, LocalTime horario, int numeroLugares, int zona) {
+        Presencial p = new Presencial(cliente, restaurante, data, horario, numeroLugares, zona);
+        boolean res = getListaReservas().add(p);
+        if (!res){
+            System.out.println("Erro, nao adicionou");
+        }
+    }
 
     public void criarReservaTakeAway(Cliente cliente, Restaurante restaurante, GregorianCalendar data, LocalTime horario, int quantidade) {
         TakeAway t = new TakeAway(cliente, restaurante, data, horario, quantidade);
@@ -154,9 +157,9 @@ return 0;
         //listaReservas.get(0).setStatus(false);// Algo do genero!
     }
 
-    public ArrayList<Reserva> getListaReservas() {// cada cliente tem as suas proprias reservas
-        return this.getListaReservas();
-    }
+//    public ArrayList<Reserva> getListaReservas() {// cada cliente tem as suas proprias reservas
+//        return this.lis();
+//    }
 
     @Override
     public String toString() {
