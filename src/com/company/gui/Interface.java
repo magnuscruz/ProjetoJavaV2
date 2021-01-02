@@ -339,14 +339,12 @@ public class Interface extends JFrame {
 
         clienteNovoButton.addActionListener(a -> {
             mostrarJanela(CLIENTE_CARD);
-            // passar por parâmetro no construtor (fica como referência pq qdo precisarmos
-            // no actionlistener)
+
         });
 
         restauranteNovoButton.addActionListener(a -> {
             mostrarJanela(RESTAURANTE_CARD);
-            // passar por parâmetro no construtor (fica como referência pq qdo precisarmos
-            // no actionlistener)
+
         });
     }
 
@@ -445,7 +443,18 @@ public class Interface extends JFrame {
 
 
         registarClienteButton.addActionListener(a -> {
-            mostrarJanela(MENUCLIENTE_CARD);
+            int validoNovoCliente = sistema.criarCliente(nomeClienteText.getText(),
+                    emailClienteText.getText(),
+                    moradaClienteText.getText(),
+                    telemovelClienteText.getText(),
+                    usernameClienteText.getText(),
+                    new String(passwordClienteField.getPassword()),
+                    new String(confirmarPassawordClienteField.getPassword()));
+            if (validoNovoCliente == 1) {
+                mostrarJanela(MENUCLIENTE_CARD);
+            } else if (validoNovoCliente == 2) {
+                JOptionPane.showMessageDialog(((Component) a.getSource()).getParent(), "Passwords nao sao iguais");
+            }
 
         });
 
@@ -957,6 +966,23 @@ public class Interface extends JFrame {
         });
 
         registarRestauranteButton.addActionListener(a -> {
+            int validoNovoRest = sistema.criarRestaurante(nomeRestauranteText.getText(),
+                    moradaRestauranteText.getText(),
+                    cidadeRestauranteText.getText(),
+                    telemovelRestauranteText.getText(),
+                    emailRestauranteText.getText(),
+                    usernameRestauranteText.getText(),
+                    new String(passwordRestauranteField.getPassword()),
+                    new String(confirmarPasswordRestauranteField.getPassword()),
+                    esplanadaRestauranteText.get,
+                    zonaInteriorFumRestauranteText.getText(),
+                    zonaInteriorNFumRestauranteText.getText(),
+                    horarioAlmocoInicioRestauranteText.getText(),
+                    horarioAlmocoFimRestauranteText.getText(),
+                    horarioJantarInicioRestauranteText.getText(),
+                    horarioJantarFimRestauranteText.getText());
+
+
             mostrarJanela(MENURESTAURANTE_CARD);
 
         });
@@ -2637,7 +2663,7 @@ public class Interface extends JFrame {
 
         JDatePanelImpl datePanelMCliMComFID2 = new JDatePanelImpl(modelMCliMComFID2, p);
         JDatePickerImpl datePickerMCliMComFID2 = new JDatePickerImpl(datePanelMCliMComFID2, new DateLabelFormatter());
-                
+
         JButton ptEnMCliMComFIDButton = new JButton("PT/EN");
         JButton voltarMCliMComFIDButton = new JButton("MENU CLIENTE");
         JButton retornarMCliMComFIDButton = new JButton("VOLTAR");

@@ -16,27 +16,11 @@ public class Main {
         //Frame f = new Frame();
 
 
-
-
-
-
-        sistema.criarRestaurante("Rest1", "ruaR2", "Coimbra", "961876453", "MAIL1@a.pt", "userR1", "pass", "pass", 20, 20, 20, LocalTime.of(11, 30), LocalTime.of(15, 00), LocalTime.of(18, 30), LocalTime.of(22, 00));
-        sistema.criarRestaurante("Rest2", "ruaR2", "Coimbra", "961876454", "MAIL2@a.pt", "userR2", "pass", "pass", 10, 20, 20, LocalTime.of(12, 30), LocalTime.of(15, 00), LocalTime.of(20, 30), LocalTime.of(23, 59));
-        sistema.criarRestaurante("Rest3", "ruaR2", "Coimbra", "961876455", "MAIL3@a.pt", "userR3", "pass", "pass", 20, 20, 20, LocalTime.of(13, 30), LocalTime.of(15, 00), LocalTime.of(21, 30), LocalTime.of(23, 59));
-
-        sistema.criarCliente("A", "Rua x", "888888888", "ee@mm.pt", "user","345678", "345678");
-
 //        sistema.getClienteAtivo().criarReservaPresencial2(sistema.getClienteAtivo(), sistema.getListaRestaurantes().get(0), new GregorianCalendar(2021, 03, 01),
 //                LocalTime.of(13, 00), 1, 5);
 //        System.out.println("Lista RESERVAS");
 //
 //        System.out.println(sistema.getClienteAtivo().getListaReservas());
-
-
-        System.out.println("------------");
-        System.out.println("RESTAURANTES");
-        System.out.println(sistema.getListaRestaurantes());
-        System.out.println("----------------");
 
 
         //System.out.println("LISTA RESTAURANTES");
@@ -66,13 +50,6 @@ public class Main {
 //            ArrayList<Reserva> listaReservaC = sistema.getClienteAtivo().getListaReservas();
 //        }
       //  sistema.gravarSistema();
-
-
-        ArrayList <Restaurante> listaRestau = sistema.getListaRestaurantes();
-        for(Restaurante r: listaRestau){
-            //funcao da interfacegrafica que adiciona uma linha à tabela
-            r.getNome();//Para meter em cada campo da tabela o tipo especifico que queremos
-        }
 
 
 

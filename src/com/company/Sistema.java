@@ -243,7 +243,7 @@ public class Sistema implements Serializable {
         return validar;
     }
 
-    public void criarRestaurante(String nome, String morada, String cidade, String telefone, String email, String username, String password, String confirmarPass, int lotacaoEsplanada, int lotacaoFum, int lotacaoNFum, LocalTime inicioAlm, LocalTime fimAlm, LocalTime inicioJan, LocalTime fimJan) {
+    public int criarRestaurante(String nome, String morada, String cidade, String telefone, String email, String username, String password, String confirmarPass, int lotacaoEsplanada, int lotacaoFum, int lotacaoNFum, LocalTime inicioAlm, LocalTime fimAlm, LocalTime inicioJan, LocalTime fimJan) {
 
         if (telefoneUnico(telefone)) {
             if (validarTelefone(telefone)) {
@@ -256,18 +256,26 @@ public class Sistema implements Serializable {
                                         Restaurante r = new Restaurante(nome, morada, cidade, telefone, email, username, password, confirmarPass, lotacaoEsplanada, lotacaoFum, lotacaoNFum, inicioAlm, fimAlm, inicioJan, fimJan);
                                         listaUtilizadores.add(r);
                                         System.out.println("Restaurante criado");
+                                        return 1;
                                     } else System.out.println("Horario invalido");
+                                    return 2;
                                 } else System.out.println("Lotacao invalida");
+                                return 3;
                             } else System.out.println("Passwords nao sao iguais");
+                            return 5;
                         } else System.out.println("Username indisponivel");
+                        return 6;
                     } else System.out.println("Email nao é valido");
+                    return 7;
                 } else System.out.println("Email ja esta registado");
+                return 8;
             } else System.out.println("Telefone invalido");
+            return 9;
         } else System.out.println("Telefone ja esta registado");
+        return 10;
     }
 
-    public void criarCliente(String nome, String morada, String telefone, String email, String username, String password, String confirmarPass) {
-
+    public int criarCliente(String nome, String email, String morada, String telefone, String username, String password, String confirmarPass) {
         if (telefoneUnico(telefone)) {
             if (validarTelefone(telefone)) {
                 if (emailUnico(email)) {
@@ -276,13 +284,20 @@ public class Sistema implements Serializable {
                             if (confirmarPass(password, confirmarPass)) {
                                 Cliente c = new Cliente(nome, morada, telefone, email, username, password, confirmarPass);
                                 listaUtilizadores.add(c);
-                                System.out.println("Cliente criado");
+                                System.out.println("Cliente criado com sucesso!");
+                                return 1;
                             } else System.out.println("Passwords nao sao iguais");
+                            return 2;
                         } else System.out.println("Username indisponivel");
+                        return 3;
                     } else System.out.println("Email nao é valido");
+                    return 4;
                 } else System.out.println("Email ja esta registado");
+                return 5;
             } else System.out.println("Telemovel nao é valido");
+            return 6;
         } else System.out.println("Telemovel ja registado");
+        return 7;
     }
 
     //todo (Opiniao PROF) Esta demasiado deselegante ou é aceitavel?

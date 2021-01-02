@@ -24,13 +24,11 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc1a7ff5-4773-4423-a8d5-04210f78b6a5" name="Default Changelist" comment="criei método login">
+    <list default="true" id="fc1a7ff5-4773-4423-a8d5-04210f78b6a5" name="Default Changelist" comment="Atualizações métodos e outras questões para o código rodar">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Text.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/Text.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/Sistema.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Sistema.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/gui/Interface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/gui/Interface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/gui/util/DateLabelFormatter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/gui/util/DateLabelFormatter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -362,7 +360,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609600106190</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="Atualizações métodos e outras questões para o código rodar">
+      <created>1609612336780</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1609612336781</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -381,7 +386,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Passando para o projeto as interfaces desenvolvidas a parte: Login" />
     <MESSAGE value="Passando para o projeto as interfaces desenvolvidas a parte: Novo Cliente" />
     <MESSAGE value="Passando para o projeto as interfaces desenvolvidas a parte: Menu Cliente" />
     <MESSAGE value="Passando para o projeto as interfaces desenvolvidas a parte: Menu Restaurante" />
@@ -406,29 +410,30 @@
     <MESSAGE value="Atualizado menu restaurante - comentarios" />
     <MESSAGE value="alterando configurações do gitignore" />
     <MESSAGE value="criei método login" />
-    <option name="LAST_COMMIT_MESSAGE" value="criei método login" />
+    <MESSAGE value="Atualizações métodos e outras questões para o código rodar" />
+    <option name="LAST_COMMIT_MESSAGE" value="Atualizações métodos e outras questões para o código rodar" />
   </component>
   <component name="WindowStateProjectService">
     <state width="400" height="463" key="DebuggerActiveHint" timestamp="1609603731278">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="400" height="463" key="DebuggerActiveHint/0.0.1280.680@0.0.1280.680" timestamp="1609603731278" />
-    <state width="1237" height="160" key="GridCell.Tab.0.bottom" timestamp="1609609424657">
+    <state width="1237" height="160" key="GridCell.Tab.0.bottom" timestamp="1609614982567">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="160" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1609609424657" />
-    <state width="1237" height="160" key="GridCell.Tab.0.center" timestamp="1609609424656">
+    <state width="1237" height="160" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1609614982567" />
+    <state width="1237" height="160" key="GridCell.Tab.0.center" timestamp="1609614982564">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="160" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1609609424656" />
-    <state width="1237" height="160" key="GridCell.Tab.0.left" timestamp="1609609424655">
+    <state width="1237" height="160" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1609614982564" />
+    <state width="1237" height="160" key="GridCell.Tab.0.left" timestamp="1609614982564">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="160" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1609609424655" />
-    <state width="1237" height="160" key="GridCell.Tab.0.right" timestamp="1609609424656">
+    <state width="1237" height="160" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1609614982564" />
+    <state width="1237" height="160" key="GridCell.Tab.0.right" timestamp="1609614982566">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="160" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1609609424656" />
+    <state width="1237" height="160" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1609614982566" />
     <state width="1237" height="43" key="GridCell.Tab.1.bottom" timestamp="1609608790128">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -449,10 +454,14 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="456" y="275" key="ReplaceDuplicatesPrompt/0.0.1280.680@0.0.1280.680" timestamp="1609605654701" />
-    <state x="458" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1609599983994">
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1609612603534">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="458" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1609599983994" />
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1609612603533" />
+    <state x="458" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1609611227671">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="458" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1609611227671" />
     <state x="371" y="91" key="extract.method.dialog" timestamp="1609605513930">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -476,11 +485,6 @@
             <option name="EMULATED" value="true" />
           </properties>
           <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/company/gui/Interface.java</url>
-          <line>2690</line>
-          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
