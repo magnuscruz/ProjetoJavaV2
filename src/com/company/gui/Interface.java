@@ -16,6 +16,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.text.ParseException;
 import java.time.LocalTime;
+import java.time.temporal.TemporalField;
 import java.util.Enumeration;
 import java.util.GregorianCalendar;
 import java.util.Properties;
@@ -982,9 +983,9 @@ public class Interface extends JFrame {
 //                    zonaIFRest,
 //                    zonaINFRest,
 //                    horarioAlmocoInicioRestauranteText.,
-//                    horarioAlmocoFimRestauranteText.getText(),
-//                    horarioJantarInicioRestauranteText.getText(),
-//                    horarioJantarFimRestauranteText.getText());
+//                    horarioAlmocoFimRestauranteText,
+//                    horarioJantarInicioRestauranteText,
+//                    horarioJantarFimRestauranteText,
 //
 //
 //            mostrarJanela(MENURESTAURANTE_CARD);

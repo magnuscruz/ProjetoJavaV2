@@ -24,9 +24,8 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc1a7ff5-4773-4423-a8d5-04210f78b6a5" name="Default Changelist" comment="adicionado ficheiros com dados">
+    <list default="true" id="fc1a7ff5-4773-4423-a8d5-04210f78b6a5" name="Default Changelist" comment="commit para ajustar dados do ficheiro projeto">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/gui/Interface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/gui/Interface.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -143,7 +142,7 @@
       <workItem from="1609197138114" duration="2152000" />
       <workItem from="1609411887852" duration="25430000" />
       <workItem from="1609498509614" duration="20405000" />
-      <workItem from="1609621722162" duration="446000" />
+      <workItem from="1609621722162" duration="2713000" />
     </task>
     <task id="LOCAL-00001" summary="Feito commit da Taís">
       <created>1608645113423</created>
@@ -390,7 +389,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609621056221</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="commit para ajustar dados do ficheiro projeto">
+      <created>1609622269897</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1609622269897</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -409,7 +415,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Passando para o projeto as interfaces desenvolvidas a parte: Menu  - Adicionar Prato" />
     <MESSAGE value="Passando para o projeto as interfaces desenvolvidas a parte: Menu  - Atualizar Prato do Dia" />
     <MESSAGE value="Passando para o projeto as interfaces desenvolvidas a parte: Menu  - Atualizar dados" />
     <MESSAGE value="Passando para o projeto as interfaces desenvolvidas a parte: Menu  - Reservas" />
@@ -434,7 +439,8 @@
     <MESSAGE value="Feito Actionlistner do criar cliente" />
     <MESSAGE value="gravamos restaurantes e clientes em memória" />
     <MESSAGE value="adicionado ficheiros com dados" />
-    <option name="LAST_COMMIT_MESSAGE" value="adicionado ficheiros com dados" />
+    <MESSAGE value="commit para ajustar dados do ficheiro projeto" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit para ajustar dados do ficheiro projeto" />
   </component>
   <component name="WindowStateProjectService">
     <state width="400" height="463" key="DebuggerActiveHint" timestamp="1609603731278">
@@ -477,14 +483,14 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="456" y="275" key="ReplaceDuplicatesPrompt/0.0.1280.680@0.0.1280.680" timestamp="1609605654701" />
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1609621073247">
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1609622293423">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1609621073247" />
-    <state x="458" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1609621062637">
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1609622293423" />
+    <state x="458" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1609622276222">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="458" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1609621062637" />
+    <state x="458" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1609622276222" />
     <state x="371" y="91" key="extract.method.dialog" timestamp="1609605513930">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
