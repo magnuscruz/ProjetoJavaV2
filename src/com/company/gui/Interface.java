@@ -3239,12 +3239,12 @@ public class Interface extends JFrame {
         retornarMCliFResButton.addActionListener(a -> {
             mostrarJanela(MCLIFAZERRES_CARD);
         });
-        //todo fazer nova página com valor final (botoes de finalizar, editar e remover com quantidade)
+        //TODO fazer nova página com valor final (botoes de finalizar, editar e remover com quantidade)
         finalizarMCliFResTAButton.addActionListener(a -> {
             mostrarJanela(MCLIFAZERRES_CARD);
         });
 
-        //todo ver os encaminhamentos
+        //TODO ver os encaminhamentos
         adicionarMCliFResTAButton.addActionListener(e -> {
             mostrarJanela(MCLIFAZERRES_CARD);
         });
