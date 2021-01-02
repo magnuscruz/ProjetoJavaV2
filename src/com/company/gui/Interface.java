@@ -15,6 +15,7 @@ import org.jdatepicker.impl.UtilDateModel;
 import java.awt.*;
 import java.awt.event.*;
 import java.text.ParseException;
+import java.time.LocalTime;
 import java.util.Enumeration;
 import java.util.GregorianCalendar;
 import java.util.Properties;
@@ -965,28 +966,31 @@ public class Interface extends JFrame {
             mostrarJanela(LOGIN_CARD);
         });
 
-        registarRestauranteButton.addActionListener(a -> {
-            int validoNovoRest = sistema.criarRestaurante(nomeRestauranteText.getText(),
-                    moradaRestauranteText.getText(),
-                    cidadeRestauranteText.getText(),
-                    telemovelRestauranteText.getText(),
-                    emailRestauranteText.getText(),
-                    usernameRestauranteText.getText(),
-                    new String(passwordRestauranteField.getPassword()),
-                    new String(confirmarPasswordRestauranteField.getPassword()),
-                    esplanadaRestauranteText.get,
-                    zonaInteriorFumRestauranteText.getText(),
-                    zonaInteriorNFumRestauranteText.getText(),
-                    horarioAlmocoInicioRestauranteText.getText(),
-                    horarioAlmocoFimRestauranteText.getText(),
-                    horarioJantarInicioRestauranteText.getText(),
-                    horarioJantarFimRestauranteText.getText());
-
-
-            mostrarJanela(MENURESTAURANTE_CARD);
-
-        });
-    }
+//        registarRestauranteButton.addActionListener(a -> {
+//            int esplanadaRest = Integer.parseInt(esplanadaRestauranteText.getText());
+//            int zonaIFRest = Integer.parseInt(zonaInteriorFumRestauranteText.getText());
+//            int zonaINFRest = Integer.parseInt(zonaInteriorNFumRestauranteText.getText());
+//            int validoNovoRest = sistema.criarRestaurante(nomeRestauranteText.getText(),
+//                    moradaRestauranteText.getText(),
+//                    cidadeRestauranteText.getText(),
+//                    telemovelRestauranteText.getText(),
+//                    emailRestauranteText.getText(),
+//                    usernameRestauranteText.getText(),
+//                    new String(passwordRestauranteField.getPassword()),
+//                    new String(confirmarPasswordRestauranteField.getPassword()),
+//                    esplanadaRest,
+//                    zonaIFRest,
+//                    zonaINFRest,
+//                    horarioAlmocoInicioRestauranteText.,
+//                    horarioAlmocoFimRestauranteText.getText(),
+//                    horarioJantarInicioRestauranteText.getText(),
+//                    horarioJantarFimRestauranteText.getText());
+//
+//
+//            mostrarJanela(MENURESTAURANTE_CARD);
+//
+//        });
+   }
 
     //////MENU RESTAURANTE////////
     private void construirPanelMRest(Container contentor, JPanel loginSuperPanel, JPanel menuRestauranteSuperPanel) {

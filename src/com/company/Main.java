@@ -14,6 +14,35 @@ public class Main {
     public static void main(String[] args) throws Exception, ClassNotFoundException {
         Sistema sistema = new Sistema();
         //Frame f = new Frame();
+        System.out.println(sistema.getListaUtilizadores());
+//
+//        sistema.criarRestaurante("A", "rua x", "Coimbra",
+//                "111111111", "email1@com.pt", "user1",
+//                "pass", "pass", 20, 10,
+//                10, LocalTime.of(12,00), LocalTime.of(14,00),
+//                LocalTime.of(19,00),LocalTime.of(22,00));
+//
+//        sistema.criarRestaurante("B", "rua y", "lisboa",
+//                "222222222", "email2@com.pt", "user2",
+//                "pass", "pass", 20, 10,
+//                10, LocalTime.of(12,00), LocalTime.of(14,00),
+//                LocalTime.of(19,00),LocalTime.of(22,00));
+//
+//        sistema.criarRestaurante("C", "rua z", "Porto",
+//                "333333333", "email3@com.pt", "user3",
+//                "pass", "pass", 20, 10,
+//                10, LocalTime.of(12,00), LocalTime.of(14,00),
+//                LocalTime.of(19,00),LocalTime.of(22,00));
+//
+//
+//        sistema.criarCliente("A4", "cliente1@com.pt", "rua A", "444444444",
+//                "cliente4", "pass", "pass");
+//
+//        sistema.criarCliente("B5", "cliente2@com.pt", "rua B", "555555555",
+//                "cliente5", "pass", "pass");
+//
+//        sistema.criarCliente("C7", "cliente3@com.pt", "rua C", "777777777",
+//                "cliente7", "pass", "pass");
 
 
 //        sistema.getClienteAtivo().criarReservaPresencial2(sistema.getClienteAtivo(), sistema.getListaRestaurantes().get(0), new GregorianCalendar(2021, 03, 01),
