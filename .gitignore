@@ -1,8 +1,5 @@
-.idea/
 *.class
 out/
-.idea\
-*.iml
 
 
 
