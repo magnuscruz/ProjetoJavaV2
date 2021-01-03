@@ -50,7 +50,8 @@ public class Main {
         sistema.getClienteAtivo().criarReservaPresencial(sistema.getListaRestaurantes().get(0), new GregorianCalendar(2021, 03, 01),
                 LocalTime.of(13, 00), 1, 20);
 
-        sistema.adicionarComentario(sistema.getClienteAtivo(), "Execelte", 4, sistema.getListaRestaurantes().get(0));
+        sistema.adicionarComentario(sistema.getClienteAtivo(), "Excelente", 4, sistema.getListaRestaurantes().get(0));
+        sistema.adicionarComentario(sistema.getClienteAtivo(), "Ruim", 5, sistema.getListaRestaurantes().get(0));
 
         sistema.getListaRestaurantes().get(0).getEmenta().adicionarPratoAPratosDia("bitoque", "arroz e batatas", 10);
         sistema.getListaRestaurantes().get(0).getEmenta().adicionarPratoACarta("bitoque", "arroz e batatas", 30);
@@ -77,6 +78,8 @@ public class Main {
 
         System.out.println("--------------------");
 
+//        sistema.getClienteAtivo().adicionarComentario("aaa", 3, sistema.getListaRestaurantes().get(0));
+//        System.out.println(sistema.getListaComentarios());
 
 
         //todo, criar ReservaPresencial - n funciona

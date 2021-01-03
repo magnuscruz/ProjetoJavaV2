@@ -3,10 +3,7 @@
 
 package com.company.gui;
 
-import com.company.Cliente;
-import com.company.Restaurante;
-import com.company.Sistema;
-import com.company.Utilizador;
+import com.company.*;
 import com.company.gui.util.DateLabelFormatter;
 
 import org.jdatepicker.impl.JDatePanelImpl;
@@ -69,6 +66,8 @@ public class Interface extends JFrame {
     private Sistema sistema;
     private MaskFormatter mascaraTelemovel;
     private JDatePickerImpl datePickerMCliMComFID1;
+    private ArrayList<Comentario> listaComentarioClienteAtivo;
+    private JPanel centroMCliMComFPPSSPanel;
 
 
     public Interface(Sistema sistema) {
@@ -991,12 +990,12 @@ public class Interface extends JFrame {
                     horaJI,
                     horaJF);
 
-            if (validoNovoRest){
+            if (validoNovoRest) {
                 mostrarJanela(MENURESTAURANTE_CARD);
             }
 
         });
-   }
+    }
 
     //////MENU RESTAURANTE////////
     private void construirPanelMRest(Container contentor, JPanel loginSuperPanel, JPanel menuRestauranteSuperPanel) {
@@ -1940,7 +1939,7 @@ public class Interface extends JFrame {
         JPanel sulMCliMRestFOrdRestValorCartaSubPanel = new JPanel();
 
         JLabel mCliMRestFOrdRestsValorCartaLabel = new JLabel("MENU CLIENTE - PESQUISAR RESTAURANTES");
-        JLabel mCliMRestFOrdRestValorCartaLabel = new JLabel("VALORES MÉDIOS DOS PRATOS - CARTA");
+        JLabel mCliMRestFOrdRestValorCartaLabel = new JLabel("VALORES MÉDIOS DOS PRATOS - CARTA E PRATO DO DIA");
 
         JRadioButton dezMCliMRestFOrdRestValorCartaRButton = new JRadioButton(">10€");
         JRadioButton dezVinteMCliMRestFOrdRestValorCartaRButton = new JRadioButton("10€-20€");
@@ -2020,7 +2019,7 @@ public class Interface extends JFrame {
         });
     }
 
-    //////MENU RESTAURANTE – RESTAURANTES – MENU FILTRAR POR VALORES MÉDIOS DOS PRATOS – PRATO DO DIA//////////
+    ////MENU RESTAURANTE – RESTAURANTES – MENU FILTRAR POR VALORES MÉDIOS DOS PRATOS – PRATO DO DIA//////////
     private void construirPanelMCliMRestFOrdRestValorPDia(Interface janela, Container contentor, JPanel loginSuperPanel, JPanel mCliMRestFOrdRestValorPDiaSuperPanel) {
 
 
@@ -2423,7 +2422,21 @@ public class Interface extends JFrame {
         sulMCliMComSubPanel.add(voltarMCliMComButton);
 
         mCliMComFPPRButton.addActionListener(a -> {
+            listaComentarioClienteAtivo = sistema.consultarListaComentariosPorCliente(sistema.getClienteAtivo().getNome());
+            String[][] dados = new String [listaComentarioClienteAtivo.size()] [3];
+            int i = 0;
+            for (Comentario c:listaComentarioClienteAtivo) {
+                dados[i][0] = c.getOpiniao();
+                dados[i][1] = c.getRestaurante().getNome();
+                dados[i][2] = "" + c.getPontuacao();
+                i++;
+            }
+
+            String [] nomeColunas = new String []{"COMENTÁRIO", "RESTAURANTE", "PONTUAÇÃO"};
+            JTable tabela = new JTable (dados, nomeColunas);
+            centroMCliMComFPPSSPanel.add(tabela,BorderLayout.CENTER);
             mostrarJanela(MCLIMCOMFPP_CARD);
+
         });
 
         mCliMComFCliRButton.addActionListener(a -> {
@@ -2458,26 +2471,6 @@ public class Interface extends JFrame {
         JPanel sulMCliMComFPPSubPanel = new JPanel();
 
         JLabel mCliMComsFPPLabel = new JLabel("MENU CLIENTE - CONSULTAR COMENTÁRIOS:");
-        //JLabel mCliMComFPPLabel = new JLabel("COMENTÁRIOS PRÓPRIOS");
-
-        //JLabel idMCliMComFPPLabel = new JLabel("ID");
-
-        //String[] idMCliMComFPPCBox = {"", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"};
-        //JComboBox arrayIdMCliMComFPPCBox = new JComboBox(idMCliMComFPPCBox);
-
-//todo faltou visualizar – aumentar tamanho da coluna e tornar possível seleção para visualizar, editar e cancelar
-        String[] nomeColunasMCliMComFPP = new String[]{
-                "ID", "DATA", "RESTAURNATE"
-        };
-
-        Object[][] dadosMCliMComFPP = new Object[][]{
-                {"ID", "DATA", "RESTAURANTE"},
-                {1, "dd/MM/yyy", "A"},
-                {2, "dd/MM/yyy", "B"},
-                {3, "dd/MM/yyy", "C"},
-        };
-        //criação da tabela
-        JTable tabelaMCliMComFPP = new JTable(dadosMCliMComFPP, nomeColunasMCliMComFPP);
 
         JRadioButton apagarMCliMComFPPButton = new JRadioButton("APAGAR");
         JRadioButton editarMCliMComFPPButton = new JRadioButton("EDITAR");
@@ -2502,8 +2495,8 @@ public class Interface extends JFrame {
         norteMCliMComFPPSubPanel.add(norteMCliMComFPPSSPanel, BorderLayout.CENTER);
         norteMCliMComFPPSubPanel.add(ptEnMCliMComFPPButton, BorderLayout.EAST);
 
-        JPanel centroMCliMComFPPSSPanel = new JPanel();
-        centroMCliMComFPPSSPanel.setLayout(new GridLayout());
+        centroMCliMComFPPSSPanel = new JPanel();
+        centroMCliMComFPPSSPanel.setLayout(new BorderLayout());
         centroMCliMComFPPSubPanel.add(centroMCliMComFPPSSPanel, BorderLayout.CENTER);
 
         JPanel centroMCliMComFPPSSPanel1 = new JPanel();
@@ -2516,11 +2509,6 @@ public class Interface extends JFrame {
         JPanel centroMCliMComFPPSSPanel3 = new JPanel();
         centroMCliMComFPPSSPanel3.setLayout(new GridLayout());
         centroMCliMComFPPSubPanel.add(centroMCliMComFPPSSPanel3);
-
-        //centroMCliMComFPPSSPanel.add(mCliMComFPPLabel);
-        centroMCliMComFPPSSPanel1.add(tabelaMCliMComFPP);
-        //centroMCliMComFPPSSPanel2.add(idMCliMComFPPLabel);
-        //centroMCliMComFPPSSPanel2.add(arrayIdMCliMComFPPCBox);
 
         centroMCliMComFPPSSPanel3.add(visualizarMCliMComFPPButton);
         centroMCliMComFPPSSPanel3.add(editarMCliMComFPPButton);
