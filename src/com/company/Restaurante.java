@@ -1,5 +1,6 @@
 package com.company;
 
+import javax.swing.*;
 import java.io.Serializable;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -37,7 +38,7 @@ public class Restaurante extends Utilizador implements Serializable {
     }
 
 
-
+//TODO : ainda nao funciona correctamente, ou pelo menos nao encaixa no metodo final
     public int zona(int zona, int num) {
         //Indice returns: 0 - Sem disponibilidade | 1 - Reserva Confirmada Esplanada | 2 - NFum | 3 - Fum|
 
@@ -46,32 +47,41 @@ public class Restaurante extends Utilizador implements Serializable {
             case 1:
                 disponibilidade = lotacaoEsplanada - num;
                 if (disponibilidade < 0) {
-                    System.out.println("Erro - lugares disponiveis esplanada: " + lotacaoEsplanada);
+                    //TODO : quando tiver tempo colocar lugares disponiveis em formato de String, a frente dos disponiveis
+                    System.out.println("Sem disponibilidade - disponiveis " + lotacaoEsplanada);
+                    JOptionPane.showMessageDialog(null, "Sem disponibilidade - disponiveis: " );
+
                 } else {
                     lotacaoEsplanada = disponibilidade;
                     System.out.println("Reservado!");
+                    JOptionPane.showMessageDialog(null, "Reservado!");
                     return zona;
                 }
                 break;
             case 2:
                 disponibilidade = lotacaoNFum - num;
                 if (disponibilidade < 0) {
-                    System.out.println("Erro - lugares disponiveis nao fumadores: " + lotacaoNFum);
+                    System.out.println("Sem disponibilidade - disponiveis: " + lotacaoNFum);
+                    JOptionPane.showMessageDialog(null, "Sem disponibilidade - disponiveis: ");
 
                 } else {
                     lotacaoNFum = disponibilidade;
                     System.out.println("Reservado!");
+                    JOptionPane.showMessageDialog(null, "Reservado!");
                     return zona;
                 }
                 break;
             case 3:
                 disponibilidade = lotacaoFum - num;
                 if (disponibilidade < 0) {
-                    System.out.println("Erro - lugares disponiveis fumadores: " + lotacaoFum);
+                    System.out.println("Sem disponibilidade - disponiveis: " + lotacaoFum);
+                    JOptionPane.showMessageDialog(null, "Sem disponibilidade - disponiveis: ");
 
                 } else {
                     lotacaoFum = disponibilidade;
                     System.out.println("Reservado!");
+                    JOptionPane.showMessageDialog(null, "Reservado!");
+
                     return zona;
                 }
                 break;
@@ -172,7 +182,7 @@ public class Restaurante extends Utilizador implements Serializable {
         this.fimJan = fimJan;
     }
 
-    //todo da NaN - getPrecoMedio tambem dava, mas eliminei o atributo e só coloquei o metodo na toString
+
     public double getPontuacaoMedia() {
         double count = 0;
         double totalPontuacao = 0;

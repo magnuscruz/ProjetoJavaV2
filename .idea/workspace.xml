@@ -24,7 +24,10 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc1a7ff5-4773-4423-a8d5-04210f78b6a5" name="Default Changelist" comment="gravamos restaurantes e clientes em memória" />
+    <list default="true" id="fc1a7ff5-4773-4423-a8d5-04210f78b6a5" name="Default Changelist" comment="gravamos restaurantes e clientes em memória">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Restaurante.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Restaurante.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -442,7 +445,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609664434874</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="Atualizei todos os metodos na classe Cliente - ja teem JOptionPane.showMessageDialog&#10;&#10;criei o metodo cancelarReserva -&gt; esta incompleto">
+      <created>1609665264834</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1609665264834</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -461,7 +471,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Iniciada revisão menu cliente - comentários" />
     <MESSAGE value="Código comentado" />
     <MESSAGE value="Código de interfaces comentado para Adriano poder trabalhar" />
     <MESSAGE value="Suprimi comentários para Adriano testar" />
@@ -486,7 +495,8 @@
     <MESSAGE value="removerCliente e Restaurante ja teem JOptionPane.showMessageDialog" />
     <MESSAGE value="Alterei o metodo consultarRestaurantePorHorario&#10; ja teem JOptionPane.showMessageDialog" />
     <MESSAGE value="Atualizei todos os metodos para consultarRestaurantes - ja teem JOptionPane.showMessageDialog" />
-    <option name="LAST_COMMIT_MESSAGE" value="Atualizei todos os metodos para consultarRestaurantes - ja teem JOptionPane.showMessageDialog" />
+    <MESSAGE value="Atualizei todos os metodos na classe Cliente - ja teem JOptionPane.showMessageDialog&#10;&#10;criei o metodo cancelarReserva -&gt; esta incompleto" />
+    <option name="LAST_COMMIT_MESSAGE" value="Atualizei todos os metodos na classe Cliente - ja teem JOptionPane.showMessageDialog&#10;&#10;criei o metodo cancelarReserva -&gt; esta incompleto" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
