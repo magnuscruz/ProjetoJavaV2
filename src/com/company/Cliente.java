@@ -80,10 +80,8 @@ public class Cliente extends Utilizador implements Serializable {
 return 0;
     }
 
-
-
     public void criarReservaPresencial2(Cliente cliente, Restaurante restaurante, GregorianCalendar data, LocalTime horario, int numeroLugares, int zona) {
-        Presencial p = new Presencial(cliente, restaurante, data, horario, numeroLugares, zona);
+        Presencial p = new Presencial(this, restaurante, data, horario, numeroLugares, zona);
         boolean res = getListaReservas().add(p);
         if (!res){
             System.out.println("Erro, nao adicionou");

@@ -24,8 +24,16 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc1a7ff5-4773-4423-a8d5-04210f78b6a5" name="Default Changelist" comment="atualizado o registar cliente">
-      <change beforePath="$PROJECT_DIR$/src/com/company/gui/Interface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/gui/Interface.java" afterDir="false" />
+    <list default="true" id="fc1a7ff5-4773-4423-a8d5-04210f78b6a5" name="Default Changelist" comment="gravamos restaurantes e clientes em memória">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_01_2021_01_54__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_01_2021_01_54__Default_Changelist_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_01_2021_22_44__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_01_2021_22_44__Default_Changelist_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_28_12_2020_22_01__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_28_12_2020_22_01__Default_Changelist_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_31_12_2020_10_59__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_31_12_2020_10_59__Default_Changelist_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FicheiroProjeto.dat" beforeDir="false" afterPath="$PROJECT_DIR$/FicheiroProjeto.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Cliente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Sistema.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Sistema.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -454,68 +462,6 @@
     <MESSAGE value="commit para tentar ajustar meus dados com os do Adriano" />
     <MESSAGE value="atualizado o registar cliente" />
     <option name="LAST_COMMIT_MESSAGE" value="atualizado o registar cliente" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state width="400" height="463" key="DebuggerActiveHint" timestamp="1609603731278">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="400" height="463" key="DebuggerActiveHint/0.0.1280.680@0.0.1280.680" timestamp="1609603731278" />
-    <state width="1237" height="160" key="GridCell.Tab.0.bottom" timestamp="1609631085097">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="160" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1609631085097" />
-    <state width="1237" height="160" key="GridCell.Tab.0.center" timestamp="1609631085094">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="160" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1609631085094" />
-    <state width="1237" height="160" key="GridCell.Tab.0.left" timestamp="1609631085090">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="160" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1609631085090" />
-    <state width="1237" height="160" key="GridCell.Tab.0.right" timestamp="1609631085094">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="160" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1609631085094" />
-    <state width="1237" height="43" key="GridCell.Tab.1.bottom" timestamp="1609621618222">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="43" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1609621618222" />
-    <state width="1237" height="43" key="GridCell.Tab.1.center" timestamp="1609621618222">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="43" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1609621618222" />
-    <state width="1237" height="43" key="GridCell.Tab.1.left" timestamp="1609621618222">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="43" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1609621618222" />
-    <state width="1237" height="43" key="GridCell.Tab.1.right" timestamp="1609621618222">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="43" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1609621618222" />
-    <state x="456" y="275" key="ReplaceDuplicatesPrompt" timestamp="1609605654701">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="456" y="275" key="ReplaceDuplicatesPrompt/0.0.1280.680@0.0.1280.680" timestamp="1609605654701" />
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1609632082035">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1609632082035" />
-    <state x="458" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1609632066901">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="458" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1609632066901" />
-    <state x="371" y="91" key="extract.method.dialog" timestamp="1609605513930">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="371" y="91" key="extract.method.dialog/0.0.1280.680@0.0.1280.680" timestamp="1609605513930" />
-    <state x="342" y="88" key="refactoring.ChangeSignatureDialog" timestamp="1609606032799">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="342" y="88" key="refactoring.ChangeSignatureDialog/0.0.1280.680@0.0.1280.680" timestamp="1609606032799" />
-    <state x="297" y="151" width="672" height="677" key="run.anything.popup" timestamp="1609605813270">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="297" y="151" width="672" height="677" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1609605813270" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

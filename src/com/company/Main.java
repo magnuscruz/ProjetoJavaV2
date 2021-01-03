@@ -14,13 +14,15 @@ public class Main {
     public static void main(String[] args) throws Exception, ClassNotFoundException {
         Sistema sistema = new Sistema();
         //Frame f = new Frame();
-        System.out.println(sistema.getListaUtilizadores());
-//
+
+
 //        sistema.criarRestaurante("A", "rua x", "Coimbra",
 //                "111111111", "email1@com.pt", "user1",
 //                "pass", "pass", 20, 10,
 //                10, LocalTime.of(12,00), LocalTime.of(14,00),
 //                LocalTime.of(19,00),LocalTime.of(22,00));
+
+
 //
 //        sistema.criarRestaurante("B", "rua y", "lisboa",
 //                "222222222", "email2@com.pt", "user2",
@@ -28,13 +30,15 @@ public class Main {
 //                10, LocalTime.of(12,00), LocalTime.of(14,00),
 //                LocalTime.of(19,00),LocalTime.of(22,00));
 //
+
+//
 //        sistema.criarRestaurante("C", "rua z", "Porto",
 //                "333333333", "email3@com.pt", "user3",
 //                "pass", "pass", 20, 10,
 //                10, LocalTime.of(12,00), LocalTime.of(14,00),
 //                LocalTime.of(19,00),LocalTime.of(22,00));
 
-
+//
 //        sistema.criarCliente("A4", "cliente1@com.pt", "rua A", "444444444",
 //                "cliente4", "pass", "pass");
 //
@@ -43,6 +47,7 @@ public class Main {
 //
 //        sistema.criarCliente("C7", "cliente3@com.pt", "rua C", "777777777",
 //                "cliente7", "pass", "pass");
+//
 
 
 //        sistema.getClienteAtivo().criarReservaPresencial2(sistema.getClienteAtivo(), sistema.getListaRestaurantes().get(0), new GregorianCalendar(2021, 03, 01),
@@ -78,11 +83,13 @@ public class Main {
 //        if (sistema.getClienteAtivo() != null) {
 //            ArrayList<Reserva> listaReservaC = sistema.getClienteAtivo().getListaReservas();
 //        }
-      //  sistema.gravarSistema();
+      // sistema.gravarSistema();
 
+        System.out.println(sistema.getListaUtilizadores());
 
+        //                       sistema.gravarSistema();
 
-        Interface sistemaGrafico = new Interface(sistema);
-        sistemaGrafico.setVisible(true);
+//        Interface sistemaGrafico = new Interface(sistema);
+//        sistemaGrafico.setVisible(true);
     }
 }
