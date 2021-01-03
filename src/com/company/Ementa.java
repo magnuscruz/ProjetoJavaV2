@@ -36,25 +36,6 @@ public class Ementa implements Serializable {
         return pratosDia;
     }
 
-    //todo primeira alternativa para fazer metodo preco medio de cada restaurante
-//    public double precoMedioRestaurante(){
-//        double countCarta = 0;
-//        double countDia = 0;
-//        double precoTotalCarta = 0;
-//        double precoTotalDia = 0;
-//
-//        for (Prato p : getCarta()){
-//            precoTotalCarta += p.getPreco();
-//            countCarta++;
-//        }
-//
-//        for ( Prato p : getPratosDia()){
-//            precoTotalDia +=p.getPreco();
-//            countDia++;
-//        }
-//        return (precoTotalCarta + precoTotalDia) / (countCarta + countDia);
-//    }
-
 
     @Override
     public String toString() {
