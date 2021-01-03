@@ -37,29 +37,37 @@ public class Cliente extends Utilizador implements Serializable {
         } else return 0;
     }
 
-    public boolean validarDataSeDataDepoisDaHoraEDataAtual (GregorianCalendar data){
-        boolean dataValida = false;
-        GregorianCalendar ontem = new GregorianCalendar();
-        ontem.toInstant();
-        ontem.add(GregorianCalendar.DAY_OF_MONTH,-1);
+    public boolean validarDataHoraDeReserva (GregorianCalendar data, LocalTime horas) {
+        GregorianCalendar dataNesteMomento = new GregorianCalendar();
+        dataNesteMomento.toInstant();
 
-        if (data.after(ontem.toInstant())){
-            dataValida = true;
+        int ano = data.get(Calendar.YEAR);
+        int mes = data.get(Calendar.MONTH);
+        int dia = data.get(Calendar.DAY_OF_MONTH);
+
+        int hora = horas.getHour();
+        int minuto = horas.getMinute();
+
+        GregorianCalendar dataHoraDaReserva = new GregorianCalendar(ano, mes, dia, hora, minuto);
+        boolean valido = dataHoraDaReserva.after(dataNesteMomento);
+
+        if (valido){
+            return true;
         }
-        return dataValida;
+        return false;
     }
 
     //TODO INCOMPLETO!!! associar cada reserva a 1 dia e almoco ou jantar.
     public int criarReservaPresencial(Restaurante restaurante, GregorianCalendar data, LocalTime hora, int zona, int numLugares) {
 //Indice dos returns: 0 - Restaurante fechado! | 1 - Reservado almoco | 2 - Reservado jantar | 3 - sem lugadores disponiveis
 
-        boolean dataValida = validarDataSeDataDepoisDaHoraEDataAtual(data);
+        boolean dataValida = validarDataHoraDeReserva(data, hora);
 
         if (dataValida) {
 
             switch (restauranteAberto(restaurante, hora)) { //LIMITE-SE A VERIFICAR SE A HORA ESCOLHIDA BATE CERTO COM HORARIO DE ALMOCO (1) OU JANTAR (2)
 
-                //ALMOCO
+                //Reserva para almoco
                 case 1:
                     switch (zona) {
                         case 1:
@@ -77,7 +85,7 @@ public class Cliente extends Utilizador implements Serializable {
                             }
                     }
 
-                    //JANTAR
+                    //Reservar para jantar
                 case 3: {
                     return 2;
                 }

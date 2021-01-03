@@ -57,7 +57,7 @@ public class Main {
 
 
         System.out.println("lista restaurantesa");
-        System.out.println(sistema.getListaComentariosPorCliente(sistema.getClienteAtivo().getNome()));
+        System.out.println(sistema.consultarListaComentariosPorCliente(sistema.getClienteAtivo().getNome()));
         System.out.println("------");
 
         System.out.println("PONTUACAO MEDIA "+ sistema.getPontuacaoMediaRestaurante(sistema.getListaRestaurantes().get(0)));

@@ -325,7 +325,6 @@ public class Sistema implements Serializable {
         return valido;
     }
 
-    //todo (Opiniao PROF) Esta demasiado deselegante ou é aceitavel?
     public void atualizarDadosCliente(String nome, String morada, String telefone, String email, String password, String novaPass, String confirmarNovaPass) {
 
         if (nome != "") {
@@ -456,31 +455,36 @@ public class Sistema implements Serializable {
         }
     }
 
-    public boolean validarMinMenorMax(int valorMin, int valorMax) {
-        boolean menor = false;
-        if (valorMin < valorMax) {
-            menor = true;
-        }
-        return menor;
-    }
+    public ArrayList<Comentario> consultarListaComentariosPorCliente(String nomeCliente) {
 
-    public double getPontuacaoMediaRestaurante(Restaurante restaurante) {
-        double count = 0;
-        double totalPontuacao = 0;
-        double media = 0;
-        for (Comentario u : getListaComentarios()) {
-            if (u.getRestaurante().getNome().equals(restaurante.nome)) {
-                count++;
-                totalPontuacao += u.getPontuacao();
+        ArrayList<Comentario> listaComentariosPorCliente = new ArrayList<>();
+        for (Comentario c : getListaComentarios()) {
+            if (c.getCliente().getNome().equalsIgnoreCase(nomeCliente)) {
+                listaComentariosPorCliente.add(c);
             }
         }
-        if (count > 0) {
-            media = totalPontuacao / count;
+
+        if (listaComentariosPorCliente.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Cliente " + nomeCliente + " não tem comentarios feitos");
+            return null;
         }
-        if (media <= 0.0001) {
-            return 0;
+        return listaComentariosPorCliente;
+    }
+
+    public ArrayList<Comentario> consultarListaComentariosPorRestaurante(String nomeRestaurante) {
+
+        ArrayList<Comentario> listaComentariosPorRestaurante = new ArrayList<>();
+        for (Comentario c : getListaComentarios()) {
+            if (c.getCliente().getNome().equalsIgnoreCase(nomeRestaurante)) {
+                listaComentariosPorRestaurante.add(c);
+            }
         }
-        return media;
+
+        if (listaComentariosPorRestaurante.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Restaurante " + nomeRestaurante + " não tem comentarios feitos");
+            return null;
+        }
+        return listaComentariosPorRestaurante;
     }
 
     public ArrayList<Restaurante> consultarRestaurantePorValores(int valorMin, int valorMax) {
@@ -563,16 +567,11 @@ public class Sistema implements Serializable {
         return restaurantesPorHorario;
     }
 
-    //TODO aindan ao esta feito!
+    //TODO ainda ao esta feito!
     public ArrayList<Restaurante> consultarRestaurantePorLugaresDisponiveis() {
         ArrayList<Restaurante> restaurantesPorLotacao = new ArrayList<>();
         return restaurantesPorLotacao;
     }
-
-    public double lotacaoTotalDisponivel() {
-        return (getRestauranteAtivo().getLotacaoEsplanada() + getRestauranteAtivo().getLotacaoFum() + getRestauranteAtivo().getLotacaoNFum());
-    }
-
 
     public ArrayList<Comentario> getListaComentarios() {
         return listaComentarios;
@@ -582,14 +581,7 @@ public class Sistema implements Serializable {
         this.listaComentarios = listaComentarios;
     }
 
-    //TODO (prof nao) este criarComentario funciona, mas ver o de cima, é o original!//Nao esquecer como reserva nao funciona, nao da p testar 100%
-    public void adicionarComentario(Cliente cliente, String opiniao, double pontuacao, Restaurante restaurante) {
-        Comentario comentario = new Comentario(opiniao, pontuacao, cliente, restaurante);
-        listaComentarios.add(comentario);
-    }
-
-
-    //todo  (prof nao) incompleto
+    //TODO  incompleto
 //    public Comentario criarComentarioORIGINAL(String opiniao, double pontuacao, Restaurante restaurante) {
 //        Calendar diaHoje = Calendar.getInstance();
 //        for (Reserva r : this.getListaReservas()) {
@@ -604,38 +596,11 @@ public class Sistema implements Serializable {
 //        return null;
 //    }
 
-    public ArrayList<Comentario> getListaComentariosPorCliente(String nomeCliente) {
-
-        ArrayList<Comentario> listaComentariosClienteX = new ArrayList<>();
-        for (Comentario c : getListaComentarios()) {
-            if (c.getCliente().getNome().equalsIgnoreCase(nomeCliente)) {
-                listaComentariosClienteX.add(c);
-            }
-        }
-
-        if (listaComentariosClienteX.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Cliente " + nomeCliente + " não tem comentarios feitos");
-            return null;
-        }
-        return listaComentariosClienteX;
+    //TODO (prof nao) este criarComentario funciona, mas ver o de cima, é o original!//Nao esquecer como reserva nao funciona, nao da p testar 100%
+    public void adicionarComentario(Cliente cliente, String opiniao, double pontuacao, Restaurante restaurante) {
+        Comentario comentario = new Comentario(opiniao, pontuacao, cliente, restaurante);
+        listaComentarios.add(comentario);
     }
-
-    public ArrayList<Comentario> getListaComentariosPorRestaurante(String nomeRestaurante) {
-
-        ArrayList<Comentario> listaComentariosRestaurante = new ArrayList<>();
-        for (Comentario c : getListaComentarios()) {
-            if (c.getCliente().getNome().equalsIgnoreCase(nomeRestaurante)) {
-                listaComentariosRestaurante.add(c);
-            }
-        }
-
-        if (listaComentariosRestaurante.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Restaurante " + nomeRestaurante + " não tem comentarios feitos");
-            return null;
-        }
-        return listaComentariosRestaurante;
-    }
-
 
     public void editarComentario(String opiniao, int pontuacao) {
         //TODO
@@ -661,6 +626,37 @@ public class Sistema implements Serializable {
         }
     }
 
+    public boolean validarMinMenorMax(int valorMin, int valorMax) {
+        boolean menor = false;
+        if (valorMin < valorMax) {
+            menor = true;
+        }
+        return menor;
+    }
+
+    public double getPontuacaoMediaRestaurante(Restaurante restaurante) {
+        double count = 0;
+        double totalPontuacao = 0;
+        double media = 0;
+        for (Comentario u : getListaComentarios()) {
+            if (u.getRestaurante().getNome().equals(restaurante.nome)) {
+                count++;
+                totalPontuacao += u.getPontuacao();
+            }
+        }
+        if (count > 0) {
+            media = totalPontuacao / count;
+        }
+        if (media <= 0.0001) {
+            return 0;
+        }
+        return media;
+    }
+
+    //TODO - tem de ter como parametro o dia! Incompleto
+    public double lotacaoTotalDisponivel() {
+        return (getRestauranteAtivo().getLotacaoEsplanada() + getRestauranteAtivo().getLotacaoFum() + getRestauranteAtivo().getLotacaoNFum());
+    }
 
 }
 

@@ -37,7 +37,7 @@ public class Comentario implements Serializable {
     @Override
     public String toString() {
         return "\niD " + idComentario +
-                "descricao='" + opiniao + '\'' +
+                " descricao='" + opiniao + '\'' +
                 ", pontuacao=" + pontuacao +
                 ", cliente=" + cliente +
                 ", restaurante=" + restaurante +

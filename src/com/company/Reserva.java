@@ -26,7 +26,7 @@ public abstract class Reserva implements Serializable {
     @Override
     public String toString() {
         return "id "+ idReserva+
-                "cliente=" + cliente +
+                " cliente=" + cliente +
                 ", restaurante=" + restaurante +
                 ", data=" + (data.get(GregorianCalendar.YEAR) + "/" + (data.get(GregorianCalendar.MONTH) + 1) + "/" + data.get(GregorianCalendar.DAY_OF_MONTH)) +
                 ", hora=" + hora +

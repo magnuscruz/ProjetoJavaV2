@@ -35,7 +35,7 @@ public class Utilizador implements Serializable {
 
     @Override
     public String toString() {
-        return "id=" + id +
+        return "id= " + id +
                 ", nome='" + nome + '\'' +
                 ", morada='" + morada + '\'' +
                 ", telefone='" + telefone + '\'' +
