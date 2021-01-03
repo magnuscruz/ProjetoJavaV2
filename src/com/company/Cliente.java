@@ -1,5 +1,6 @@
 package com.company;
 
+import javax.swing.*;
 import java.io.Serializable;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -48,7 +49,7 @@ public class Cliente extends Utilizador implements Serializable {
         return dataValida;
     }
 
-    //todo INCOMPLETO!!! associar cada reserva a 1 dia e almoco ou jantar.
+    //TODO INCOMPLETO!!! associar cada reserva a 1 dia e almoco ou jantar.
     public int criarReservaPresencial(Restaurante restaurante, GregorianCalendar data, LocalTime hora, int zona, int numLugares) {
 //Indice dos returns: 0 - Restaurante fechado! | 1 - Reservado almoco | 2 - Reservado jantar | 3 - sem lugadores disponiveis
 
@@ -85,6 +86,7 @@ return 0;
         boolean res = getListaReservas().add(p);
         if (!res){
             System.out.println("Erro, nao adicionou");
+            JOptionPane.showMessageDialog(null, "Erro, não criou");
         }
     }
 
@@ -101,12 +103,13 @@ return 0;
                 restaurante = r.getRestaurante();
                 Comentario comentario = new Comentario(opiniao, pontuacao, this, restaurante);
                 getListaComentarios().add(comentario);
+                JOptionPane.showMessageDialog(null, "Obrigado pela sua opinião");
                 return comentario;
             } else System.out.println("Nao pode comentar um restaurante que ainda nao frequentou");
         }
         return null;
     }
-    //todo (prof nao) este criarComentario funciona, mas ver o de cima, é o original!//Nao esquecer como reserva nao funciona, nao da p testar 100%
+    //TODO (prof nao) este criarComentario funciona, mas ver o de cima, é o original!//Nao esquecer como reserva nao funciona, nao da p testar 100%
     public Comentario criarComentario(String opiniao, double pontuacao, Restaurante restaurante) {
         Comentario comentario = new Comentario(opiniao, pontuacao, this, restaurante);
         getListaComentarios().add(comentario);
@@ -114,13 +117,16 @@ return 0;
     }
 
     public ArrayList<Comentario> getListaComentariosClienteX(String nomeCliente) {
+
         ArrayList<Comentario> listaComentariosClienteX = new ArrayList<>();
         for (Comentario c : getListaComentarios()) {
             if (c.getCliente().getNome().equalsIgnoreCase(nomeCliente)) {
                 listaComentariosClienteX.add(c);
             }
         }
+
         if (listaComentariosClienteX.equals(null)) {
+            JOptionPane.showMessageDialog(null, "Cliente "+ nomeCliente + " não tem comentarios feitos");
             System.out.println("Cliente " + nomeCliente + " ,nao tem comentarios feitos");
             return null;
         }
@@ -128,6 +134,7 @@ return 0;
     }
 
     public void editarComentario(String opiniao, int pontuacao) {
+        //TODO
         // Confirmar que tipo de campo é que recebemos da interface, se é int ou string ou outra coisa qualquer...
         for (Comentario c : getListaComentarios()) {
             if (c.getCliente().equals(this)) {
@@ -141,7 +148,7 @@ return 0;
         }
     }
 
-    //todo falta - caso tenho mais de um comentario no mesmo restaurante vai eliminar todos...
+    //TODO falta - caso tenho mais de um comentario no mesmo restaurante vai eliminar todos...
     public void apagarComentario(Restaurante restaurante) {
         for (Comentario c : getListaComentarios()) {
             if (c.equals(this) && c.getRestaurante().equals(restaurante)) {
@@ -150,14 +157,20 @@ return 0;
         }
     }
 
-    public void cancelarReserva() {
+    public void cancelarReserva (Cliente this) {
         getListaReservas();
-        //listaReservas.get(0).setStatus(false);// Algo do genero!
+
+        for(Reserva r: getListaReservas()){
+            if (r.getCliente().equals(this)){
+                r.setStatus(false);
+                //TODO : como Cliente e Restaurante têm lista de reservas,
+                //tambem tenho de por em Restaurante set.Status (false)
+                // nao estou a ver como...
+                JOptionPane.showMessageDialog(null, "Reserva cancelada");
+            }
+        }
     }
 
-//    public ArrayList<Reserva> getListaReservas() {// cada cliente tem as suas proprias reservas
-//        return this.lis();
-//    }
 
     @Override
     public String toString() {

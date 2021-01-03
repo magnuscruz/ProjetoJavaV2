@@ -435,7 +435,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609664130612</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="Atualizei todos os metodos para consultarRestaurantes - ja teem JOptionPane.showMessageDialog">
+      <created>1609664434874</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1609664434874</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -454,7 +461,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Atualizado Menu Cliente Restaurante" />
     <MESSAGE value="Iniciada revisão menu cliente - comentários" />
     <MESSAGE value="Código comentado" />
     <MESSAGE value="Código de interfaces comentado para Adriano poder trabalhar" />
@@ -479,7 +485,8 @@
     <MESSAGE value="atualizarCliente e atualizarRestaurante ja teem JOptionPane.showMessageDialog" />
     <MESSAGE value="removerCliente e Restaurante ja teem JOptionPane.showMessageDialog" />
     <MESSAGE value="Alterei o metodo consultarRestaurantePorHorario&#10; ja teem JOptionPane.showMessageDialog" />
-    <option name="LAST_COMMIT_MESSAGE" value="Alterei o metodo consultarRestaurantePorHorario&#10; ja teem JOptionPane.showMessageDialog" />
+    <MESSAGE value="Atualizei todos os metodos para consultarRestaurantes - ja teem JOptionPane.showMessageDialog" />
+    <option name="LAST_COMMIT_MESSAGE" value="Atualizei todos os metodos para consultarRestaurantes - ja teem JOptionPane.showMessageDialog" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
