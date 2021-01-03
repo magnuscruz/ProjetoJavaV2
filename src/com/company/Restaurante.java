@@ -114,8 +114,8 @@ public class Restaurante extends Utilizador implements Serializable {
         this.ementa = ementa;
     }
 
-    public ArrayList<Reserva> getListaReservas() {
-        return getListaReservas();
+    public ArrayList<Reserva> getListaReservasRestaurante() {
+        return restaurante.getListaReservas();
     }
 
     public String getCidade() {

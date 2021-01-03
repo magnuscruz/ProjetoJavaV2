@@ -992,7 +992,6 @@ public class Interface extends JFrame {
                 mostrarJanela(MENURESTAURANTE_CARD);
             }
 
-
         });
    }
 
