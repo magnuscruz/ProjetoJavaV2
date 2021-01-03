@@ -2280,6 +2280,18 @@ public class Interface extends JFrame {
         JButton retornarMCliMRestFRestCidButton = new JButton("VOLTAR");
         JButton pesquisarMCliMRestFRestCidButton = new JButton("PESQUISAR");
 
+//        String[] nomeColunasMRestComentarios1 = new String[]{
+//                        "ID", "USERNAME", "COMENTÁRIO", "PONTUAÇÃO"
+//                };
+//                Object[][] dadosMRestComentariosCBox1 = new Object[][]{
+//                        {"ID", "USERNAME", "COMENTÁRIO", "PONTUAÇÃO"},
+//                        {listasRestCid.get(0).getNome(), listasRestCid.get(0).getCidade(), null},
+//                        {4, null, null, null},
+//
+//                };
+//                //criação da tabela
+//                JTable tabelaMRestComentarios1 = new JTable(dadosMRestComentariosCBox1, nomeColunasMRestComentarios1);
+
         mCliMRestFRestCidSuperPanel.add(norteMCliMRestFRestCidSubPanel, "North");
         mCliMRestFRestCidSuperPanel.add(centroMCliMRestFRestCidSubPanel, "Center");
         mCliMRestFRestCidSuperPanel.add(sulMCliMRestFRestCidSubPanel, "South");
