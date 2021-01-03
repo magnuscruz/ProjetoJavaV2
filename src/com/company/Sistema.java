@@ -452,6 +452,7 @@ public class Sistema implements Serializable {
         for (Utilizador u : getListaUtilizadores()) {
             if (u instanceof Cliente && u.getUsername().equalsIgnoreCase(username)) {
                 u.setStatus(false);
+                JOptionPane.showMessageDialog(null, "Removido com sucesso");
             }
         }
     }
@@ -461,6 +462,8 @@ public class Sistema implements Serializable {
         for (Utilizador u : getListaUtilizadores()) {
             if (u instanceof Restaurante && u.getUsername().equalsIgnoreCase(username)) {
                 u.setStatus(false);
+                JOptionPane.showMessageDialog(null, "Removido com sucesso");
+
             }
         }
     }
