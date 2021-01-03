@@ -28,8 +28,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Cliente.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Presencial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Presencial.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/Restaurante.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Restaurante.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/gui/Interface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/gui/Interface.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -476,7 +476,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609667150524</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="Problema resolvido&#10;Quando criava uma reservaPresencial nao estava a adiciona-la a lista de Reservas do Restaurante, estava só a colocar em CLiente! &#10;Porque, cliente tem lista de reservas dele e restaurante tambem!">
+      <created>1609668805615</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1609668805615</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -495,7 +502,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Suprimi comentários da classe Main Interface para Adriano testar" />
     <MESSAGE value="Inseri novamente comentários da classe Main Interface, Interface, util e Text.properties para Adriano testar" />
     <MESSAGE value="Revisado menu cliente - comentarios" />
     <MESSAGE value="Ajustes nos layouts das interfaces menu cliente - comentarios" />
@@ -520,6 +526,26 @@
     <MESSAGE value="Atualizei todos os metodos na classe Restaurante - ja teem JOptionPane.showMessageDialog" />
     <MESSAGE value="Todos metodos feitos ate agora ja teem o: JOptionPane.showMessageDialog" />
     <MESSAGE value="Na interface, atualizei o actionListener do registarCliente&#10;Faltava colocar o if, em caso da variavel ser false, ele nao criar um restaurante... estava a criar mesmo qeu tivesse erros" />
-    <option name="LAST_COMMIT_MESSAGE" value="Na interface, atualizei o actionListener do registarCliente&#10;Faltava colocar o if, em caso da variavel ser false, ele nao criar um restaurante... estava a criar mesmo qeu tivesse erros" />
+    <MESSAGE value="Problema resolvido&#10;Quando criava uma reservaPresencial nao estava a adiciona-la a lista de Reservas do Restaurante, estava só a colocar em CLiente! &#10;Porque, cliente tem lista de reservas dele e restaurante tambem!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Problema resolvido&#10;Quando criava uma reservaPresencial nao estava a adiciona-la a lista de Reservas do Restaurante, estava só a colocar em CLiente! &#10;Porque, cliente tem lista de reservas dele e restaurante tambem!" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/com/company/Restaurante.java</url>
+          <line>41</line>
+          <properties class="com.company.Restaurante" method="zonaDisponibilidade">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/company/Main.java</url>
+          <line>53</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

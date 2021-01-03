@@ -39,50 +39,50 @@ public class Restaurante extends Utilizador implements Serializable {
 
 
 //TODO : ainda nao funciona correctamente, ou pelo menos nao encaixa no metodo final
-    public int zona(int zona, int num) {
+    public int zonaDisponibilidade(int zona, int num) {
         //Indice returns: 0 - Sem disponibilidade | 1 - Reserva Confirmada Esplanada | 2 - NFum | 3 - Fum|
 
         int disponibilidade = 0;
         switch (zona) {
             case 1:
                 disponibilidade = lotacaoEsplanada - num;
-                if (disponibilidade < 0) {
-                    //TODO : quando tiver tempo colocar lugares disponiveis em formato de String, a frente dos disponiveis
-                    System.out.println("Sem disponibilidade - disponiveis " + lotacaoEsplanada);
-                    JOptionPane.showMessageDialog(null, "Sem disponibilidade - disponiveis: " );
-
-                } else {
+                if (disponibilidade >= 0) {
                     lotacaoEsplanada = disponibilidade;
                     System.out.println("Reservado!");
                     JOptionPane.showMessageDialog(null, "Reservado!");
                     return zona;
+
+                } else {
+                    //TODO : quando tiver tempo colocar lugares disponiveis em formato de String, a frente dos disponiveis
+                    System.out.println("Sem disponibilidade - disponiveis " + lotacaoEsplanada);
+                    JOptionPane.showMessageDialog(null, "Sem disponibilidade - disponiveis: " );
                 }
                 break;
             case 2:
                 disponibilidade = lotacaoNFum - num;
-                if (disponibilidade < 0) {
-                    System.out.println("Sem disponibilidade - disponiveis: " + lotacaoNFum);
-                    JOptionPane.showMessageDialog(null, "Sem disponibilidade - disponiveis: ");
-
-                } else {
+                if (disponibilidade >= 0) {
                     lotacaoNFum = disponibilidade;
                     System.out.println("Reservado!");
                     JOptionPane.showMessageDialog(null, "Reservado!");
                     return zona;
+
+                } else {
+                    System.out.println("Sem disponibilidade - disponiveis: " + lotacaoNFum);
+                    JOptionPane.showMessageDialog(null, "Sem disponibilidade - disponiveis: ");
                 }
                 break;
             case 3:
                 disponibilidade = lotacaoFum - num;
-                if (disponibilidade < 0) {
-                    System.out.println("Sem disponibilidade - disponiveis: " + lotacaoFum);
-                    JOptionPane.showMessageDialog(null, "Sem disponibilidade - disponiveis: ");
-
-                } else {
+                if (disponibilidade >= 0) {
                     lotacaoFum = disponibilidade;
                     System.out.println("Reservado!");
                     JOptionPane.showMessageDialog(null, "Reservado!");
 
                     return zona;
+
+                } else {
+                    System.out.println("Sem disponibilidade - disponiveis: " + lotacaoFum);
+                    JOptionPane.showMessageDialog(null, "Sem disponibilidade - disponiveis: ");
                 }
                 break;
         }

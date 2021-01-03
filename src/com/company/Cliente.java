@@ -57,17 +57,21 @@ public class Cliente extends Utilizador implements Serializable {
         switch (restauranteAberto(restaurante,hora)) //LIMITE-SE A VERIFICAR SE A HORA ESCOLHIDA BATE CERTO COM HORARIO DE ALMOCO (1) OU JANTAR (2)
         {
             //ALMOCO
-            case 1 : switch (zona){
+            case 1 : switch (zona) {
                 case 1:
+                    int valido = restaurante.zonaDisponibilidade(zona,numLugares);
+                    if (valido==1){
+                        Presencial p = new Presencial(this, restaurante, data, hora, zona, numLugares);
+                        getListaReservas().add(p);//adicionamos a lista de reservas do Cliente em especifico
+                        restaurante.getListaReservas().add(p);// adicionamos a lista de reservas do Restaurante em especifico
+                        // Atencao! Quando criar um metodo para apagar reserva, tenho de apagar nos dois sitios!
+                        //Normalmente nao se apagam, deve-se colocar um boolean e dizer que ja nao esta ativa.
+                        System.out.println("Criar reserva presencial: " + data + hora);
+                        return 1;
+                    } else if (valido==0){
+                        System.out.println("Sem lugares disponiveis");
+                    }
             }
-                    Presencial p = new Presencial(this, restaurante, data, hora, zona, numLugares);
-                    this.getListaReservas().add(p);//adicionamos a lista de reservas do Cliente em especifico
-                    restaurante.getListaReservas().add(p);// adicionamos a lista de reservas do Restaurante em especifico
-                    // Atencao! Quando criar um metodo para apagar reserva, tenho de apagar nos dois sitios!
-                    //Normalmente nao se apagam, deve-se colocar um boolean e dizer que ja nao esta ativa.
-                    System.out.println("Criar reserva presencial: " + data + hora);
-                    return 1;
-
 
             //JANTAR
             case 3: {

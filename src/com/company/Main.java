@@ -16,12 +16,11 @@ public class Main {
         //Frame f = new Frame();
 
 
-
         sistema.criarRestaurante("A", "rua x", "Coimbra",
                 "111111111", "email1@com.pt", "user1",
                 "pass", "pass", 20, 10,
-                10, LocalTime.of(12,00), LocalTime.of(14,00),
-                LocalTime.of(19,00),LocalTime.of(22,00));
+                10, LocalTime.of(12, 00), LocalTime.of(14, 00),
+                LocalTime.of(19, 00), LocalTime.of(22, 00));
 
 //        sistema.criarRestaurante("B", "rua y", "lisboa",
 //                "222222222", "email2@com.pt", "user2",
@@ -47,18 +46,23 @@ public class Main {
                 "cliente7", "pass", "pass");
 //
 
-        sistema.login("cliente7","pass");
+        sistema.login("cliente7", "pass");
 
-        sistema.getClienteAtivo().criarReservaPresencial2(sistema.getClienteAtivo(), sistema.getListaRestaurantes().get(0), new GregorianCalendar(2021, 03, 01),
-                LocalTime.of(13, 00), 1, 5);
+        sistema.getClienteAtivo().criarReservaPresencial(sistema.getListaRestaurantes().get(0), new GregorianCalendar(2021, 03, 01),
+                LocalTime.of(13, 00), 1, 20);
+
+        sistema.getClienteAtivo().criarReservaPresencial(sistema.getListaRestaurantes().get(0), new GregorianCalendar(2021, 03, 01),
+                LocalTime.of(13, 00), 1, 20);
+
 
         System.out.println("Lista RESERVAS");
 
         System.out.println(sistema.getClienteAtivo().getListaReservas());
 
         System.out.println("--------------------");
-
-        System.out.println(sistema.getListaRestaurantes().get(0).getListaReservas());
+        sistema.login("user1", "pass");
+        // System.out.println(sistema.getListaRestaurantes().get(0).getListaReservas());
+        System.out.println(sistema.getRestauranteAtivo().getListaReservas());
         System.out.println("---------------------------");
 
 
