@@ -24,17 +24,7 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc1a7ff5-4773-4423-a8d5-04210f78b6a5" name="Default Changelist" comment="gravamos restaurantes e clientes em memória">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_01_2021_01_54__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_01_2021_01_54__Default_Changelist_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_01_2021_22_44__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_01_2021_22_44__Default_Changelist_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_28_12_2020_22_01__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_28_12_2020_22_01__Default_Changelist_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_31_12_2020_10_59__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_31_12_2020_10_59__Default_Changelist_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FicheiroProjeto.dat" beforeDir="false" afterPath="$PROJECT_DIR$/FicheiroProjeto.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Cliente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Sistema.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Sistema.java" afterDir="false" />
-    </list>
+    <list default="true" id="fc1a7ff5-4773-4423-a8d5-04210f78b6a5" name="Default Changelist" comment="gravamos restaurantes e clientes em memória" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -417,7 +407,35 @@
       <option name="project" value="LOCAL" />
       <updated>1609632061787</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="criarCliente e criarRestaurante ja o JOptionPane.showMessageDialog&#10;Ja tenho o construtor de Sistema a funcionar">
+      <created>1609663425648</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1609663425648</updated>
+    </task>
+    <task id="LOCAL-00040" summary="atualizarCliente e atualizarRestaurante ja teem JOptionPane.showMessageDialog">
+      <created>1609663803066</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1609663803066</updated>
+    </task>
+    <task id="LOCAL-00041" summary="removerCliente e Restaurante ja teem JOptionPane.showMessageDialog">
+      <created>1609663925245</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1609663925245</updated>
+    </task>
+    <task id="LOCAL-00042" summary="Alterei o metodo consultarRestaurantePorHorario&#10; ja teem JOptionPane.showMessageDialog">
+      <created>1609664130612</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1609664130612</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -436,10 +454,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Passando para o projeto as interfaces desenvolvidas a parte: Menu  - Reservas" />
-    <MESSAGE value="Passando para o projeto as interfaces desenvolvidas a parte: Menu  - Reservas (atualizado)" />
-    <MESSAGE value="Atualização dos eventos da interface MCli - Actualizar Dados.&#10;GUI - gui&#10;Frame - Interface" />
-    <MESSAGE value="Inseri máscara para telemóvel e evento para Actualizar Dados." />
     <MESSAGE value="Atualizado Menu Cliente Restaurante" />
     <MESSAGE value="Iniciada revisão menu cliente - comentários" />
     <MESSAGE value="Código comentado" />
@@ -461,7 +475,11 @@
     <MESSAGE value="commit para ajustar dados do ficheiro projeto" />
     <MESSAGE value="commit para tentar ajustar meus dados com os do Adriano" />
     <MESSAGE value="atualizado o registar cliente" />
-    <option name="LAST_COMMIT_MESSAGE" value="atualizado o registar cliente" />
+    <MESSAGE value="criarCliente e criarRestaurante ja o JOptionPane.showMessageDialog&#10;Ja tenho o construtor de Sistema a funcionar" />
+    <MESSAGE value="atualizarCliente e atualizarRestaurante ja teem JOptionPane.showMessageDialog" />
+    <MESSAGE value="removerCliente e Restaurante ja teem JOptionPane.showMessageDialog" />
+    <MESSAGE value="Alterei o metodo consultarRestaurantePorHorario&#10; ja teem JOptionPane.showMessageDialog" />
+    <option name="LAST_COMMIT_MESSAGE" value="Alterei o metodo consultarRestaurantePorHorario&#10; ja teem JOptionPane.showMessageDialog" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

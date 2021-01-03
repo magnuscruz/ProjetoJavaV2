@@ -517,28 +517,46 @@ public class Sistema implements Serializable {
     public ArrayList<Restaurante> consultarRestaurantePorPontuacao(int valorMin, int valorMax) {
 
         ArrayList<Restaurante> restaurantesPorPontuacao = new ArrayList<>();
+        int count = 0;
         if (validarMinMenorMax(valorMin, valorMax)) {
             for (Restaurante r : getListaRestaurantes()) {
                 if (r.getPontuacaoMedia() >= valorMin && r.getPontuacaoMedia() <= valorMax) {
                     restaurantesPorPontuacao.add(r);
+                    count++;
                 }
             }
-        } else System.out.println("Pontuacao minima nao é menor que a maxima");
+            if (count <= 0) {
+                JOptionPane.showMessageDialog(null, "Não existem restaurantes!");
+
+            }
+        } else {
+            //TODO atencao: acho que a interface esta de maneira diferente, nao sei se recebe dois valores...
+            System.out.println("Pontuacao minima nao é menor que a maxima");
+            JOptionPane.showMessageDialog(null, "Pontuacao minima nao é menor que a maxima");
+
+        }
         return restaurantesPorPontuacao;
     }
 
     public ArrayList<Restaurante> consultarRestaurantePorHorario(LocalTime hora) {
 
         ArrayList<Restaurante> restaurantesPorHorario = new ArrayList<>();
+        int count = 0;
 
         for (Restaurante r : getListaRestaurantes()) {
             if (getClienteAtivo().restauranteAberto(r, hora) != 0) {
                 restaurantesPorHorario.add(r);
+                count++;
             }
+        }
+        if (count <=0){
+            JOptionPane.showMessageDialog(null, "Não existem restaurantes!");
+
         }
         return restaurantesPorHorario;
     }
 
+    //TODO aindan ao esta feito!
     public ArrayList<Restaurante> consultarRestaurantePorLugaresDisponiveis() {
         ArrayList<Restaurante> restaurantesPorLotacao = new ArrayList<>();
         return restaurantesPorLotacao;
