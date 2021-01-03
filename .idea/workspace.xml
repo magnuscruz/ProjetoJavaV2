@@ -24,12 +24,11 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc1a7ff5-4773-4423-a8d5-04210f78b6a5" name="Default Changelist" comment="gravamos restaurantes e clientes em memória">
+    <list default="true" id="fc1a7ff5-4773-4423-a8d5-04210f78b6a5" name="Default Changelist" comment="nova tentativa de commit para iniciar as alterações">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Cliente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FicheiroProjeto.dat" beforeDir="false" afterPath="$PROJECT_DIR$/FicheiroProjeto.dat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Presencial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Presencial.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Restaurante.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Restaurante.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/gui/Interface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/gui/Interface.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,19 +101,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
@@ -146,6 +132,7 @@
       <workItem from="1609411887852" duration="25430000" />
       <workItem from="1609498509614" duration="20405000" />
       <workItem from="1609621722162" duration="9543000" />
+      <workItem from="1609676565948" duration="6886000" />
     </task>
     <task id="LOCAL-00001" summary="Feito commit da Taís">
       <created>1608645113423</created>
@@ -483,7 +470,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609668805615</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="nova tentativa de commit para iniciar as alterações">
+      <created>1609676505585</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1609676505585</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -502,8 +496,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Inseri novamente comentários da classe Main Interface, Interface, util e Text.properties para Adriano testar" />
-    <MESSAGE value="Revisado menu cliente - comentarios" />
     <MESSAGE value="Ajustes nos layouts das interfaces menu cliente - comentarios" />
     <MESSAGE value="feitas exclusões da parte de interface que não eram necessárias" />
     <MESSAGE value="Criada interface menu rest pontuacao" />
@@ -527,7 +519,35 @@
     <MESSAGE value="Todos metodos feitos ate agora ja teem o: JOptionPane.showMessageDialog" />
     <MESSAGE value="Na interface, atualizei o actionListener do registarCliente&#10;Faltava colocar o if, em caso da variavel ser false, ele nao criar um restaurante... estava a criar mesmo qeu tivesse erros" />
     <MESSAGE value="Problema resolvido&#10;Quando criava uma reservaPresencial nao estava a adiciona-la a lista de Reservas do Restaurante, estava só a colocar em CLiente! &#10;Porque, cliente tem lista de reservas dele e restaurante tambem!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Problema resolvido&#10;Quando criava uma reservaPresencial nao estava a adiciona-la a lista de Reservas do Restaurante, estava só a colocar em CLiente! &#10;Porque, cliente tem lista de reservas dele e restaurante tambem!" />
+    <MESSAGE value="commit para iniciar as alterações" />
+    <MESSAGE value="nova tentativa de commit para iniciar as alterações" />
+    <option name="LAST_COMMIT_MESSAGE" value="nova tentativa de commit para iniciar as alterações" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1237" height="160" key="GridCell.Tab.0.bottom" timestamp="1609682737619">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="160" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1609682737619" />
+    <state width="1237" height="160" key="GridCell.Tab.0.center" timestamp="1609682737619">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="160" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1609682737619" />
+    <state width="1237" height="160" key="GridCell.Tab.0.left" timestamp="1609682737603">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="160" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1609682737603" />
+    <state width="1237" height="160" key="GridCell.Tab.0.right" timestamp="1609682737619">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="160" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1609682737619" />
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1609676521809">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1609676521809" />
+    <state x="458" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1609676464550">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="458" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1609676464550" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

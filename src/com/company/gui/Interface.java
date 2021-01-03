@@ -60,8 +60,8 @@ public class Interface extends JFrame {
     private static final String MRESTCOMENTARIOS_CARD = "MENU RESTAURANTE - COMENTÁRIOS";
     private static final int LARGURA_LOGIN = 400;
     private static final int ALTURA_LOGIN = 180;
-    private static final int LARGURA_PADRAO = 500;
-    private static final int ALTURA_PADRAO = 300;
+    private static final int LARGURA_PADRAO = 550;
+    private static final int ALTURA_PADRAO = 350;
     private final Container contentor;
     private boolean usernameValido;
     private boolean passwordValido;
@@ -458,7 +458,7 @@ public class Interface extends JFrame {
 
         cancelarClienteButton.addActionListener(a -> {
             mostrarJanela(LOGIN_CARD);
-
+            this.setSize(LARGURA_LOGIN, ALTURA_LOGIN);
         });
     }
 
@@ -619,7 +619,7 @@ public class Interface extends JFrame {
         String[] mCliIdHistRes = {"", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
         JComboBox arrayMCliIdHistResCBox = new JComboBox(mCliIdHistRes);
 
-//todo faltou visualizar – aumentar tamanho da coluna e tornar possível seleção para visualizar, comentar e pontuar
+        //TODO faltou visualizar – aumentar tamanho da coluna e tornar possível seleção para visualizar, comentar e pontuar
         String[] nomeColunasMCliHistRes = new String[]{
                 "ID", "DATA", "RESTAURANTE"
         };
@@ -690,11 +690,11 @@ public class Interface extends JFrame {
         JPanel centroMCliRestComPonReseSubPanel = new JPanel();
         JPanel sulMCliRestComPonReseSubPanel = new JPanel();
 
-        JRadioButton umPont = new JRadioButton("1");
-        JRadioButton doisPont = new JRadioButton("2");
-        JRadioButton tresPont = new JRadioButton("3");
-        JRadioButton quatroPont = new JRadioButton("4");
-        JRadioButton cincoPont = new JRadioButton("5");
+        JRadioButton umPont = new JRadioButton("1- Péssimo");
+        JRadioButton doisPont = new JRadioButton("2- Ruim");
+        JRadioButton tresPont = new JRadioButton("3- Regular");
+        JRadioButton quatroPont = new JRadioButton("4- Bom");
+        JRadioButton cincoPont = new JRadioButton("5- Muito Bom");
 
         JLabel mCliRestComPonReseLabel = new JLabel("MENU CLIENTE – HISTÓRICO DE RESERVAS - COMENTAR");
         JLabel restMCliMReseComPonLabel = new JLabel("RESTAURANTE");
@@ -961,6 +961,7 @@ public class Interface extends JFrame {
 
         cancelarRestauranteButton.addActionListener(e -> {
             mostrarJanela(LOGIN_CARD);
+            this.setSize(LARGURA_LOGIN, ALTURA_LOGIN);
         });
 
         registarRestauranteButton.addActionListener(a -> {
@@ -1048,7 +1049,7 @@ public class Interface extends JFrame {
 //        cancelarMenuRestauranteButton.addActionListener(a -> {
 //           CardLayout cl = (CardLayout) contentor.getLayout();
 //           cl.show(contentor, LOGIN_CARD);
-//            this.setSize(500, 300);
+//            this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
 //
 //       });
         mRestAdicionarPratoButton.addActionListener(a -> {
@@ -1244,7 +1245,8 @@ public class Interface extends JFrame {
         JLabel horarioJantarFimAtDadosRestLabel = new JLabel("Fim");
         JLabel usernameAtDadosRestLabel = new JLabel("Username");
         JLabel passwordAtDadosRestLabel = new JLabel("Password");
-        JLabel confirmarPasswordAtDadosRestLabel = new JLabel("Confirmar password ");
+        JLabel novaPasswordAtDadosRestLabel = new JLabel("Nova Password");
+        JLabel confirmarPasswordAtDadosRestLabel = new JLabel("Confirmar Nova Password");
 
         JTextField nomeAtDadosRestText = new JTextField(18);
         nomeAtDadosRestText.setBorder(BorderFactory.createEmptyBorder(3, 3, 3, 3));
@@ -1279,6 +1281,8 @@ public class Interface extends JFrame {
 
         JPasswordField passwordAtDadosRestField = new JPasswordField(15);
         passwordAtDadosRestField.setBorder(BorderFactory.createEmptyBorder(3, 3, 3, 3));
+        JPasswordField novaPasswordAtDadosRestField = new JPasswordField(15);
+        novaPasswordAtDadosRestField.setBorder(BorderFactory.createEmptyBorder(3, 3, 3, 3));
         JPasswordField confirmarPasswordAtDadosRestField = new JPasswordField(15);
         confirmarPasswordAtDadosRestField.setBorder(BorderFactory.createEmptyBorder(3, 3, 3, 3));
 
@@ -1362,7 +1366,8 @@ public class Interface extends JFrame {
         centroAtDadosRestSSPanelForm5.add(usernameAtDadosRestText);
 
         centroAtDadosRestSSPanelForm6.add(passwordAtDadosRestLabel);
-        centroAtDadosRestSSPanelForm6.add(passwordAtDadosRestField);
+        centroAtDadosRestSSPanelForm6.add(novaPasswordAtDadosRestLabel);
+        centroAtDadosRestSSPanelForm6.add(novaPasswordAtDadosRestField);
         centroAtDadosRestSSPanelForm6.add(confirmarPasswordAtDadosRestLabel);
         centroAtDadosRestSSPanelForm6.add(confirmarPasswordAtDadosRestField);
 
@@ -1996,7 +2001,7 @@ public class Interface extends JFrame {
         });
 
         retornarMCliMRestFOrdRestValorCartaButton.addActionListener(a -> {
-            mostrarJanela(MCLIMRESTFORDRESTS_CARD);
+            mostrarJanela(MCLIMRESTFORDRESTVALOR_CARD);
         });
 
         voltarMCliMRestFOrdRestValorCartaButton.addActionListener(a -> {
@@ -2116,12 +2121,12 @@ public class Interface extends JFrame {
         JDatePickerImpl datePickerMCliMRestFRestHFun = new JDatePickerImpl(datePanelMCliMRestFRestHFun, new DateLabelFormatter());
 
 //TODO ver melhor forma de apresentar para conseguir selecionar
-        String[] fHoraMCliMRestFRestHFun = {"", "11h", "11h30", "12h", "12h30", "13h", "13h30", "14h", "14h30", "15h", "15h30", "19h", "19h30", "20h", "20h30", "21h", "21h30", "22h", "22h30"};
+        String[] fHoraMCliMRestFRestHFun = {"", "11", "11.30", "12", "12.30", "13", "13.30", "14", "14.30", "15", "15.30", "19", "19.30", "20", "20.30", "21", "21.30", "22", "22.30"};
         JComboBox arrayfHoraFMCliMRestFRestHFuncJCBox = new JComboBox(fHoraMCliMRestFRestHFun);
 
         JButton ptEnMCliMRestFRestHFuncButton = new JButton("PT/EN");
         JButton voltarMCliMRestFRestHFuncButton = new JButton("MENU CLIENTE");
-        JButton retornarMCliMRestFRestHFuncButton = new JButton("VOLTAR");
+        JButton pesquisarMCliMRestFRestHFuncButton = new JButton("PESQUISAR");
 
 
         mCliMRestFRestHFuncSuperPanel.add(norteMCliMRestFRestHFuncSubPanel, "North");
@@ -2158,11 +2163,11 @@ public class Interface extends JFrame {
 
         sulMCliMRestFRestHFuncSubPanel.setLayout(new FlowLayout());
         sulMCliMRestFRestHFuncSubPanel.add(voltarMCliMRestFRestHFuncButton);
-        sulMCliMRestFRestHFuncSubPanel.add(retornarMCliMRestFRestHFuncButton);
+        sulMCliMRestFRestHFuncSubPanel.add(pesquisarMCliMRestFRestHFuncButton);
 
-        //todo faltar ver botões
-        retornarMCliMRestFRestHFuncButton.addActionListener(a -> {
-            mostrarJanela(MCLIMRESTFORDRESTS_CARD);
+        //TODO faltar ver métodos para pesquisar e o comando do mostrarJanela tem quer alterado
+        pesquisarMCliMRestFRestHFuncButton.addActionListener(a -> {
+            mostrarJanela(MENUCLIENTE_CARD);
         });
 
         voltarMCliMRestFRestHFuncButton.addActionListener(a -> {
@@ -2430,13 +2435,13 @@ public class Interface extends JFrame {
         JPanel centroMCliMComFPPSubPanel = new JPanel();
         JPanel sulMCliMComFPPSubPanel = new JPanel();
 
-        JLabel mCliMComsFPPLabel = new JLabel("MENU CLIENTE - CONSULTAR:");
-        JLabel mCliMComFPPLabel = new JLabel("COMENTÁRIOS PRÓPRIOS");
+        JLabel mCliMComsFPPLabel = new JLabel("MENU CLIENTE - CONSULTAR COMENTÁRIOS:");
+        //JLabel mCliMComFPPLabel = new JLabel("COMENTÁRIOS PRÓPRIOS");
 
-        JLabel idMCliMComFPPLabel = new JLabel("ID");
+        //JLabel idMCliMComFPPLabel = new JLabel("ID");
 
-        String[] idMCliMComFPPCBox = {"", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"};
-        JComboBox arrayIdMCliMComFPPCBox = new JComboBox(idMCliMComFPPCBox);
+        //String[] idMCliMComFPPCBox = {"", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"};
+        //JComboBox arrayIdMCliMComFPPCBox = new JComboBox(idMCliMComFPPCBox);
 
 //todo faltou visualizar – aumentar tamanho da coluna e tornar possível seleção para visualizar, editar e cancelar
         String[] nomeColunasMCliMComFPP = new String[]{
@@ -2490,10 +2495,10 @@ public class Interface extends JFrame {
         centroMCliMComFPPSSPanel3.setLayout(new GridLayout());
         centroMCliMComFPPSubPanel.add(centroMCliMComFPPSSPanel3);
 
-        centroMCliMComFPPSSPanel.add(mCliMComFPPLabel);
+        //centroMCliMComFPPSSPanel.add(mCliMComFPPLabel);
         centroMCliMComFPPSSPanel1.add(tabelaMCliMComFPP);
-        centroMCliMComFPPSSPanel2.add(idMCliMComFPPLabel);
-        centroMCliMComFPPSSPanel2.add(arrayIdMCliMComFPPCBox);
+        //centroMCliMComFPPSSPanel2.add(idMCliMComFPPLabel);
+        //centroMCliMComFPPSSPanel2.add(arrayIdMCliMComFPPCBox);
 
         centroMCliMComFPPSSPanel3.add(visualizarMCliMComFPPButton);
         centroMCliMComFPPSSPanel3.add(editarMCliMComFPPButton);
@@ -2746,7 +2751,8 @@ public class Interface extends JFrame {
         JLabel telemovelCliMCliLabel = new JLabel("Telemóvel");
         JLabel usernameCliMCliLabel = new JLabel("Username");
         JLabel passwordCliMCliLabel = new JLabel("Password");
-        JLabel confirmarPasswordCliMCliLabel = new JLabel("Confirmar Password");
+        JLabel novaPasswordCliMCliLabel = new JLabel("Nova Password");
+        JLabel confirmarPasswordCliMCliLabel = new JLabel("Confirmar Nova Password");
 
         JTextField nomeCliMCliText = new JTextField(20);
         nomeCliMCliText.setMargin(new Insets(3, 3, 3, 3));
@@ -2771,8 +2777,25 @@ public class Interface extends JFrame {
 
             }
         });
-        JPasswordField confirmarPassawordCliMCliField = new JPasswordField(20);
-        confirmarPassawordCliMCliField.addFocusListener(new FocusListener() {
+        //TODO confirmar se deu certo
+        JPasswordField novaPasswordCliMCliField = new JPasswordField(20);
+        novaPasswordCliMCliField.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                passwordValido = true;
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (passwordCliMCliField.getPassword().length < 6) {
+                    passwordValido = false;
+                }
+
+            }
+        });
+
+        JPasswordField confirmarNovaPassawordCliMCliField = new JPasswordField(20);
+        confirmarNovaPassawordCliMCliField.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {
                 confirmarPasswordValido = true;
@@ -2780,7 +2803,7 @@ public class Interface extends JFrame {
 
             @Override
             public void focusLost(FocusEvent e) {
-                if (!passwordCliMCliField.getPassword().equals(confirmarPassawordCliMCliField.getPassword())) {
+                if (!passwordCliMCliField.getPassword().equals(confirmarNovaPassawordCliMCliField.getPassword())) {
                     confirmarPasswordValido = false;
                 }
 
@@ -2815,8 +2838,10 @@ public class Interface extends JFrame {
         centroAtDadosMCliSSPanel.add(usernameCliMCliText);
         centroAtDadosMCliSSPanel.add(passwordCliMCliLabel);
         centroAtDadosMCliSSPanel.add(passwordCliMCliField);
+        centroAtDadosMCliSSPanel.add(novaPasswordCliMCliLabel);
+        centroAtDadosMCliSSPanel.add(novaPasswordCliMCliField);
         centroAtDadosMCliSSPanel.add(confirmarPasswordCliMCliLabel);
-        centroAtDadosMCliSSPanel.add(confirmarPassawordCliMCliField);
+        centroAtDadosMCliSSPanel.add(confirmarNovaPassawordCliMCliField);
 
         sulAtDadosMCliSubPanel.setLayout(new FlowLayout());
         sulAtDadosMCliSubPanel.add(voltarCliMCliButton);
@@ -2830,7 +2855,7 @@ public class Interface extends JFrame {
             }
             if (!confirmarPasswordValido) {
                 JOptionPane.showMessageDialog(((Component) a.getSource()).getParent(), "Password Inválido: deve ser igual password!");
-                confirmarPassawordCliMCliField.requestFocus();
+                confirmarNovaPassawordCliMCliField.requestFocus();
                 return;
             }
             //TODO faz-se necessário atualizar  método atualizarDados Cliente, retirando o password e criar um novo metodo para atualização de password
@@ -2839,8 +2864,8 @@ public class Interface extends JFrame {
                     telemovelCliMCliText.getText(),
                     emailCliMCliText.getText(),
                     passwordCliMCliField.getPassword().toString(),
-                    confirmarPassawordCliMCliField.getPassword().toString(),
-                    confirmarPassawordCliMCliField.getPassword().toString());
+                    confirmarNovaPassawordCliMCliField.getPassword().toString(),
+                    confirmarNovaPassawordCliMCliField.getPassword().toString());
         });
         voltarCliMCliButton.addActionListener(a -> {
             mostrarJanela(MENUCLIENTE_CARD);
@@ -3050,7 +3075,7 @@ public class Interface extends JFrame {
         JLabel qtdePessoasMCliFResPLabel = new JLabel("QUANTIDADE DE PESSOAS");
         JLabel msgMCliFResPLabel = new JLabel("Contatar diretamente o restaurante no caso de reservas para mais de 20 pessoas");
 
-        String[] horaDeMCliFRes = {"", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00h", "14h30", "15h", "15h30", "19h", "19h30", "20h", "20h30", "21h", "21h30", "22h", "22h30"};
+        String[] horaDeMCliFRes = {"", "11", "11.30", "12", "12.30", "13", "13.30", "14", "14.30", "15", "15.30", "19", "19.30", "20", "20.30", "21", "21.30", "22", "22.30"};
         JComboBox arrayHoraDeMCliFResPCBox = new JComboBox(horaDeMCliFRes);
 
         //todo verificar se não deve mesmo constar
@@ -3154,7 +3179,7 @@ public class Interface extends JFrame {
         JLabel qtdePratosMCliFResTALabel = new JLabel("QUANTIDADE");
         JLabel pratosMCliFResTALabel = new JLabel("PRATOS");
 
-        String[] horasMCliFResTA = {"", "11h30", "12h", "12h30", "13h", "13h30", "14h", "14h30", "15h", "15h30", "19h", "19h30", "20h", "20h30", "21h", "21h30", "22h", "22h30"};
+        String[] horasMCliFResTA = {"", "11.30", "12", "12.30", "13", "13.30", "14", "14.30", "15", "15.30", "19", "19.30", "20", "20.30", "21", "21.30", "22", "22.30"};
         JComboBox arrayHorasMCliFResTACBox = new JComboBox(horasMCliFResTA);
 
         String[] idMCliFResTA = {"", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};

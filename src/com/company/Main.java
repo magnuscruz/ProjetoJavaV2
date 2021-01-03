@@ -94,7 +94,7 @@ public class Main {
 
         //                       sistema.gravarSistema();
 
-//        Interface sistemaGrafico = new Interface(sistema);
-//        sistemaGrafico.setVisible(true);
+        Interface sistemaGrafico = new Interface(sistema);
+        sistemaGrafico.setVisible(true);
     }
 }
