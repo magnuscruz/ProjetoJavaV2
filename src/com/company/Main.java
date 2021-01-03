@@ -68,12 +68,15 @@ public class Main {
 //        sistema.getClienteAtivo().criarReservaPresencial(sistema.getListaRestaurantes().get(0), new GregorianCalendar(2021, 03, 01),
 //                LocalTime.of(13, 00), 1, 20);
 
+        sistema.getClienteAtivo().criarReservaPresencial(sistema.getListaRestaurantes().get(0),
+                new GregorianCalendar(2020,01,10),LocalTime.of(13,00),1, 15);
 
         System.out.println("Lista RESERVAS");
 
         System.out.println(sistema.getClienteAtivo().getListaReservas());
 
         System.out.println("--------------------");
+
 
 
         //todo, criar ReservaPresencial - n funciona
@@ -97,6 +100,7 @@ public class Main {
 //        if (sistema.getClienteAtivo() != null) {
 //            ArrayList<Reserva> listaReservaC = sistema.getClienteAtivo().getListaReservas();
 //        }
+
 
 
         System.out.println("LISTA UTILIZADORES");

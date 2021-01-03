@@ -17,26 +17,6 @@ public class Cliente extends Utilizador implements Serializable {
         this.status = true;
     }
 
-    public int restauranteAberto(Restaurante restaurante, LocalTime hora) {
-        // Indice dos returns possiveis: 0 - fechado | 1 - aberto Almoco | 2 - aberto Jantar//
-
-        //LocalTime horaEscolhida = LocalTime.of(hora, minuto);// Como tinha anteriormente, mudei por causa dos parametros do metodo, nao testei
-        LocalTime horaEscolhida = LocalTime.of(hora.getHour(), hora.getMinute());
-
-        LocalTime aberturaAlm = restaurante.getInicioAlm();
-        LocalTime fechoAlm = restaurante.getFimAlm();
-        LocalTime aberturaJan = restaurante.getInicioJan();
-        LocalTime fechoJan = restaurante.getFimJan();
-
-        if (horaEscolhida.isAfter(aberturaAlm) && horaEscolhida.isBefore(fechoAlm)) {
-            return 1;
-        }
-        if (horaEscolhida.isAfter(aberturaJan) && horaEscolhida.isBefore(fechoJan)) {
-            return 2;
-
-        } else return 0;
-    }
-
     public boolean validarDataHoraDeReserva (GregorianCalendar data, LocalTime horas) {
         GregorianCalendar dataNesteMomento = new GregorianCalendar();
         dataNesteMomento.toInstant();
@@ -57,6 +37,28 @@ public class Cliente extends Utilizador implements Serializable {
         return false;
     }
 
+    public int restauranteAberto(Restaurante restaurante, LocalTime hora) {
+        // Indice dos returns possiveis: 0 - fechado | 1 - aberto Almoco | 2 - aberto Jantar//
+
+        LocalTime horaEscolhida = LocalTime.of(hora.getHour(), hora.getMinute());
+
+        LocalTime aberturaAlm = restaurante.getInicioAlm();
+        LocalTime fechoAlm = restaurante.getFimAlm();
+        LocalTime aberturaJan = restaurante.getInicioJan();
+        LocalTime fechoJan = restaurante.getFimJan();
+
+        if (horaEscolhida.isAfter(aberturaAlm) && horaEscolhida.isBefore(fechoAlm)) {
+            return 1;
+        }
+        if (horaEscolhida.isAfter(aberturaJan) && horaEscolhida.isBefore(fechoJan)) {
+            return 2;
+
+        } else{
+            JOptionPane.showMessageDialog(null, "Restaurante fechado - Escolha outra hora");
+            return 0;
+        }
+    }
+
     //TODO INCOMPLETO!!! associar cada reserva a 1 dia e almoco ou jantar.
     public int criarReservaPresencial(Restaurante restaurante, GregorianCalendar data, LocalTime hora, int zona, int numLugares) {
 //Indice dos returns: 0 - Restaurante fechado! | 1 - Reservado almoco | 2 - Reservado jantar | 3 - sem lugadores disponiveis
@@ -69,17 +71,19 @@ public class Cliente extends Utilizador implements Serializable {
 
                 //Reserva para almoco
                 case 1:
-                    switch (zona) {
+                    switch (zona) {//DENTRO DO ALMOCO - ESCOLHER EM QUE ZONA DO RESTAURANTE QUER RESERVAR!
                         case 1:
-                            int valido = restaurante.zonaDisponibilidade( zona, numLugares);
+                            int valido = restaurante.zonaDisponibilidade(data,hora, zona, numLugares);
                             if (valido == 1) {
                                 Presencial p = new Presencial(this, restaurante, data, hora, zona, numLugares);
                                 getListaReservas().add(p);//adicionamos a lista de reservas do Cliente em especifico
-                                restaurante.getListaReservas().add(p);// adicionamos a lista de reservas do Restaurante em especifico
+                              //  restaurante.getListaReservas().add(p);// adicionamos a lista de reservas do Restaurante em especifico
                                 // Atencao! Quando criar um metodo para apagar reserva, tenho de apagar nos dois sitios!
                                 //Normalmente nao se apagam, deve-se colocar um boolean e dizer que ja nao esta ativa.
-                                System.out.println("Criar reserva presencial: " + data + hora);
+                                JOptionPane.showMessageDialog(null, "Reservado!");
+                              //  System.out.println("Criar reserva presencial: " + data + hora);
                                 return 1;
+
                             } else if (valido == 0) {
                                 System.out.println("Sem lugares disponiveis");
                             }
