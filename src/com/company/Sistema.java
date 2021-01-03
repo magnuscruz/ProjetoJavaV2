@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -93,18 +94,6 @@ public class Sistema implements Serializable {
             }
         }
         return listaClientes;
-    }
-
-    public ArrayList<Comentario> getListaComentarios() {
-        return listaComentarios;
-    }
-
-    public void adicionarComentarioCliente(Cliente cliente, String opiniao, double pontuacao, Restaurante restaurante) {
-        Comentario comentario = cliente.criarComentario(opiniao, pontuacao, restaurante);
-        // Comentario comentario = new Comentario(opiniao, pontuacao,getClienteAtivo(), restaurante);
-        if (comentario != null) {
-            listaComentarios.add(comentario);
-        }
     }
 
     public void utilizadorExiste(String username) {
@@ -308,7 +297,7 @@ public class Sistema implements Serializable {
                                 Cliente c = new Cliente(nome, morada, telefone, email, username, password, confirmarPass);
                                 listaUtilizadores.add(c);
                                 System.out.println("Cliente criado");
-                               // JOptionPane.showMessageDialog(null, "Cliente criado");
+                                // JOptionPane.showMessageDialog(null, "Cliente criado");
                                 return valido = true;
                             } else {
                                 System.out.println("Passwords não são iguais");
@@ -476,8 +465,23 @@ public class Sistema implements Serializable {
         return menor;
     }
 
-    public double getPontuacaoMediaProprioRestaurante(Restaurante restaurante) {
-        return restaurante.getPontuacaoMedia();
+    public double getPontuacaoMediaRestaurante(Restaurante restaurante) {
+        double count = 0;
+        double totalPontuacao = 0;
+        double media = 0;
+        for (Comentario u : getListaComentarios()) {
+            if (u.getRestaurante().getNome().equals(restaurante.nome)) {
+                count++;
+                totalPontuacao += u.getPontuacao();
+            }
+        }
+        if (count > 0) {
+            media = totalPontuacao / count;
+        }
+        if (media <= 0.0001) {
+            return 0;
+        }
+        return media;
     }
 
     public ArrayList<Restaurante> consultarRestaurantePorValores(int valorMin, int valorMax) {
@@ -485,7 +489,9 @@ public class Sistema implements Serializable {
 
         if (validarMinMenorMax(valorMin, valorMax)) {
             for (Restaurante r : getListaRestaurantes()) {
-                if (r.getPontuacaoMedia() >= valorMin && r.getPontuacaoMedia() <= valorMax) {
+                double precoMedio =r.getPrecoMedioRestaurante();
+
+                if (precoMedio >= valorMin && precoMedio <= valorMax) {
                     restaurantesPorValores.add(r);
                 }
             }
@@ -520,7 +526,9 @@ public class Sistema implements Serializable {
         int count = 0;
         if (validarMinMenorMax(valorMin, valorMax)) {
             for (Restaurante r : getListaRestaurantes()) {
-                if (r.getPontuacaoMedia() >= valorMin && r.getPontuacaoMedia() <= valorMax) {
+                double pontuacao = getPontuacaoMediaRestaurante(r);
+
+                if (pontuacao >= valorMin && pontuacao <= valorMax) {
                     restaurantesPorPontuacao.add(r);
                     count++;
                 }
@@ -549,7 +557,7 @@ public class Sistema implements Serializable {
                 count++;
             }
         }
-        if (count <=0){
+        if (count <= 0) {
             JOptionPane.showMessageDialog(null, "Não existem restaurantes!");
 
         }
@@ -565,6 +573,95 @@ public class Sistema implements Serializable {
     public double lotacaoTotalDisponivel() {
         return (getRestauranteAtivo().getLotacaoEsplanada() + getRestauranteAtivo().getLotacaoFum() + getRestauranteAtivo().getLotacaoNFum());
     }
+
+
+    public ArrayList<Comentario> getListaComentarios() {
+        return listaComentarios;
+    }
+
+    public void setListaComentarios(ArrayList<Comentario> listaComentarios) {
+        this.listaComentarios = listaComentarios;
+    }
+
+    //TODO (prof nao) este criarComentario funciona, mas ver o de cima, é o original!//Nao esquecer como reserva nao funciona, nao da p testar 100%
+    public void adicionarComentario(Cliente cliente, String opiniao, double pontuacao, Restaurante restaurante) {
+        Comentario comentario = new Comentario(opiniao, pontuacao, cliente, restaurante);
+        listaComentarios.add(comentario);
+    }
+
+
+    //todo  (prof nao) incompleto
+//    public Comentario criarComentarioORIGINAL(String opiniao, double pontuacao, Restaurante restaurante) {
+//        Calendar diaHoje = Calendar.getInstance();
+//        for (Reserva r : this.getListaReservas()) {
+//            if (r.getData().before(diaHoje)) {
+//                restaurante = r.getRestaurante();
+//                Comentario comentario = new Comentario(opiniao, pontuacao, this, restaurante);
+//                getListaComentarios().add(comentario);
+//                JOptionPane.showMessageDialog(null, "Obrigado pela sua opinião");
+//                return comentario;
+//            } else System.out.println("Nao pode comentar um restaurante que ainda nao frequentou");
+//        }
+//        return null;
+//    }
+
+    public ArrayList<Comentario> getListaComentariosPorCliente(String nomeCliente) {
+
+        ArrayList<Comentario> listaComentariosClienteX = new ArrayList<>();
+        for (Comentario c : getListaComentarios()) {
+            if (c.getCliente().getNome().equalsIgnoreCase(nomeCliente)) {
+                listaComentariosClienteX.add(c);
+            }
+        }
+
+        if (listaComentariosClienteX.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Cliente " + nomeCliente + " não tem comentarios feitos");
+            return null;
+        }
+        return listaComentariosClienteX;
+    }
+
+    public ArrayList<Comentario> getListaComentariosPorRestaurante(String nomeRestaurante) {
+
+        ArrayList<Comentario> listaComentariosRestaurante = new ArrayList<>();
+        for (Comentario c : getListaComentarios()) {
+            if (c.getCliente().getNome().equalsIgnoreCase(nomeRestaurante)) {
+                listaComentariosRestaurante.add(c);
+            }
+        }
+
+        if (listaComentariosRestaurante.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Restaurante " + nomeRestaurante + " não tem comentarios feitos");
+            return null;
+        }
+        return listaComentariosRestaurante;
+    }
+
+
+    public void editarComentario(String opiniao, int pontuacao) {
+        //TODO
+        // Confirmar que tipo de campo é que recebemos da interface, se é int ou string ou outra coisa qualquer...
+        for (Comentario c : getListaComentarios()) {
+            if (c.getCliente().equals(this)) {
+                if (opiniao != null) {
+                    c.setOpiniao(opiniao);
+                }
+                if (pontuacao <= 0) {
+                    c.setPontuacao(pontuacao);
+                }
+            }
+        }
+    }
+
+    //TODO falta - caso tenho mais de um comentario no mesmo restaurante vai eliminar todos...
+    public void apagarComentario(Restaurante restaurante) {
+        for (Comentario c : getListaComentarios()) {
+            if (c.equals(this) && c.getRestaurante().equals(restaurante)) {
+                c.setStatus(false);
+            }
+        }
+    }
+
 
 }
 

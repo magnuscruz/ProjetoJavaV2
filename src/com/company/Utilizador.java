@@ -8,7 +8,7 @@ public class Utilizador implements Serializable {
     Restaurante restaurante;
     Cliente cliente;
 
-    private ArrayList<Comentario> listaComentarios = new ArrayList<>();
+   // private ArrayList<Comentario> listaComentarios = new ArrayList<>();
     private ArrayList<Reserva> listaReservas = new ArrayList<>();// cada utilizador vai ter a sua lista.
 
     protected int id;
@@ -61,13 +61,6 @@ public class Utilizador implements Serializable {
         this.cliente = cliente;
     }
 
-    public ArrayList<Comentario> getListaComentarios() {
-        return listaComentarios;
-    }
-
-    public void setListaComentarios(ArrayList<Comentario> listaComentarios) {
-        this.listaComentarios = listaComentarios;
-    }
 
     public ArrayList<Reserva> getListaReservas() {
         return listaReservas;
@@ -132,6 +125,12 @@ public class Utilizador implements Serializable {
     public void setStatus(boolean status) {
         this.status = status;
     }
+
+//    public ArrayList<Comentario> getListaComentarios() {
+//        return listaComentarios;
+//    }
+
+
 
 
 }

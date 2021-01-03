@@ -14,9 +14,9 @@ public class Comentario implements Serializable {
     private Restaurante restaurante;
     private GregorianCalendar dataHoje;
     private boolean status;
-    int ano;
-    int mes;
-    int dia;
+    private int ano;
+    private int mes;
+    private int dia;
 
     public Comentario(String opiniao, double pontuacao, Cliente cliente, Restaurante restaurante) {
         this.opiniao = opiniao;

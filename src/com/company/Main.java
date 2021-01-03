@@ -15,7 +15,6 @@ public class Main {
         Sistema sistema = new Sistema();
         //Frame f = new Frame();
 
-
         sistema.criarRestaurante("A", "rua x", "Coimbra",
                 "111111111", "email1@com.pt", "user1",
                 "pass", "pass", 20, 10,
@@ -50,6 +49,22 @@ public class Main {
 
         sistema.getClienteAtivo().criarReservaPresencial(sistema.getListaRestaurantes().get(0), new GregorianCalendar(2021, 03, 01),
                 LocalTime.of(13, 00), 1, 20);
+
+        sistema.adicionarComentario(sistema.getClienteAtivo(), "Execelte", 4, sistema.getListaRestaurantes().get(0));
+
+        Ementa e = new Ementa();
+        e.adicionarPratoAPratosDia("aaaa", "aaaa",8);
+
+
+        sistema.getListaRestaurantes().get(0).setEmenta(e);
+
+        System.out.println("lista restaurantesa");
+        System.out.println(sistema.getListaComentariosPorCliente(sistema.getClienteAtivo().getNome()));
+        System.out.println("------");
+
+        System.out.println("PONTUACAO MEDIA "+ sistema.getPontuacaoMediaRestaurante(sistema.getListaRestaurantes().get(0)));
+        System.out.println(sistema.consultarRestaurantePorValores(5,8));
+
 
 //        sistema.getClienteAtivo().criarReservaPresencial(sistema.getListaRestaurantes().get(0), new GregorianCalendar(2021, 03, 01),
 //                LocalTime.of(13, 00), 1, 20);

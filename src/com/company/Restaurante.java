@@ -102,8 +102,6 @@ public class Restaurante extends Utilizador implements Serializable {
                 ", inicioJan=" + inicioJan +
                 ", fimJan=" + fimJan +
                 ", ementa=" + ementa +
-                ", pontuacaoMedia=" + getPontuacaoMedia() +
-                ", precoMedio=" + getPrecoMedioRestaurante() +
                 '}';
     }
 
@@ -183,27 +181,6 @@ public class Restaurante extends Utilizador implements Serializable {
         this.fimJan = fimJan;
     }
 
-
-    public double getPontuacaoMedia() {
-        double count = 0;
-        double totalPontuacao = 0;
-        double media = 0;
-        for (Comentario u : getListaComentarios()) {
-            if (u.equals(this)) {
-                count++;
-                totalPontuacao += u.getPontuacao();
-            }
-        }
-       if (count >0){
-           media = totalPontuacao/count;
-       }
-        if (media <= 0.0001){
-            return  0;
-        }
-
-        return media;
-    }
-
     public double getPrecoMedioRestaurante() {
         double countCarta = 0;
         double countDia = 0;
@@ -220,9 +197,10 @@ public class Restaurante extends Utilizador implements Serializable {
             countDia++;
         }
 
-       if ((precoTotalCarta+precoTotalDia)<=0.001){
+        if ((precoTotalCarta+precoTotalDia)<=0.001){
             return  0;
-       }
+        }
         return (precoTotalCarta + precoTotalDia) / (countCarta + countDia);
     }
+
 }

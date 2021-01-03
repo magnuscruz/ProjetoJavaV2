@@ -26,7 +26,12 @@
   <component name="ChangeListManager">
     <list default="true" id="fc1a7ff5-4773-4423-a8d5-04210f78b6a5" name="Default Changelist" comment="atualizadas interfaces">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/gui/Interface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/gui/Interface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Cliente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Comentario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Comentario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Restaurante.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Restaurante.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Sistema.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Sistema.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Utilizador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Utilizador.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,6 +104,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
@@ -131,13 +149,6 @@
       <workItem from="1609498509614" duration="20405000" />
       <workItem from="1609621722162" duration="9543000" />
       <workItem from="1609676565948" duration="12857000" />
-    </task>
-    <task id="LOCAL-00002" summary="Feito 2º commit da Taís">
-      <created>1608645183527</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1608645183527</updated>
     </task>
     <task id="LOCAL-00003" summary="Feito 2º commit da Taís">
       <created>1608645220388</created>
@@ -475,7 +486,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609685942175</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="atualizacao do gitignore">
+      <created>1609695009226</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1609695009227</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -494,7 +512,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feitas exclusões da parte de interface que não eram necessárias" />
     <MESSAGE value="Criada interface menu rest pontuacao" />
     <MESSAGE value="Atualizado menu restaurante - comentarios" />
     <MESSAGE value="alterando configurações do gitignore" />
@@ -519,49 +536,19 @@
     <MESSAGE value="commit para iniciar as alterações" />
     <MESSAGE value="nova tentativa de commit para iniciar as alterações" />
     <MESSAGE value="atualizadas interfaces" />
-    <option name="LAST_COMMIT_MESSAGE" value="atualizadas interfaces" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state width="1237" height="160" key="GridCell.Tab.0.bottom" timestamp="1609692712861">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="160" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1609692712861" />
-    <state width="1237" height="160" key="GridCell.Tab.0.center" timestamp="1609692712860">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="160" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1609692712860" />
-    <state width="1237" height="160" key="GridCell.Tab.0.left" timestamp="1609692712859">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="160" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1609692712859" />
-    <state width="1237" height="160" key="GridCell.Tab.0.right" timestamp="1609692712860">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="160" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1609692712860" />
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1609685974659">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1609685974659" />
-    <state x="458" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1609685958340">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="458" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1609685958340" />
+    <MESSAGE value="atualizacao do gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="atualizacao do gitignore" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/com/company/Restaurante.java</url>
-          <line>41</line>
+          <line>42</line>
           <properties class="com.company.Restaurante" method="zonaDisponibilidade">
             <option name="EMULATED" value="true" />
           </properties>
           <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/company/Main.java</url>
-          <line>53</line>
-          <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

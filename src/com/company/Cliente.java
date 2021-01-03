@@ -105,73 +105,11 @@ return 0;
         getListaReservas().add(t);
     }
 
-   //todo  (prof nao) incompleto
-    public Comentario criarComentarioORIGINAL(String opiniao, double pontuacao, Restaurante restaurante) {
-        Calendar diaHoje = Calendar.getInstance();
-        for (Reserva r : this.getListaReservas()) {
-            if (r.getData().before(diaHoje)) {
-                restaurante = r.getRestaurante();
-                Comentario comentario = new Comentario(opiniao, pontuacao, this, restaurante);
-                getListaComentarios().add(comentario);
-                JOptionPane.showMessageDialog(null, "Obrigado pela sua opinião");
-                return comentario;
-            } else System.out.println("Nao pode comentar um restaurante que ainda nao frequentou");
-        }
-        return null;
-    }
-    //TODO (prof nao) este criarComentario funciona, mas ver o de cima, é o original!//Nao esquecer como reserva nao funciona, nao da p testar 100%
-    public Comentario criarComentario(String opiniao, double pontuacao, Restaurante restaurante) {
-        Comentario comentario = new Comentario(opiniao, pontuacao, this, restaurante);
-        getListaComentarios().add(comentario);
-        return comentario;
-    }
-
-    public ArrayList<Comentario> getListaComentariosClienteX(String nomeCliente) {
-
-        ArrayList<Comentario> listaComentariosClienteX = new ArrayList<>();
-        for (Comentario c : getListaComentarios()) {
-            if (c.getCliente().getNome().equalsIgnoreCase(nomeCliente)) {
-                listaComentariosClienteX.add(c);
-            }
-        }
-
-        if (listaComentariosClienteX.equals(null)) {
-            JOptionPane.showMessageDialog(null, "Cliente "+ nomeCliente + " não tem comentarios feitos");
-            System.out.println("Cliente " + nomeCliente + " ,nao tem comentarios feitos");
-            return null;
-        }
-        return listaComentariosClienteX;
-    }
-
-    public void editarComentario(String opiniao, int pontuacao) {
-        //TODO
-        // Confirmar que tipo de campo é que recebemos da interface, se é int ou string ou outra coisa qualquer...
-        for (Comentario c : getListaComentarios()) {
-            if (c.getCliente().equals(this)) {
-                if (opiniao != null) {
-                    c.setOpiniao(opiniao);
-                }
-                if (pontuacao <= 0 ) {
-                    c.setPontuacao(pontuacao);
-                }
-            }
-        }
-    }
-
-    //TODO falta - caso tenho mais de um comentario no mesmo restaurante vai eliminar todos...
-    public void apagarComentario(Restaurante restaurante) {
-        for (Comentario c : getListaComentarios()) {
-            if (c.equals(this) && c.getRestaurante().equals(restaurante)) {
-                c.setStatus(false);
-            }
-        }
-    }
-
-    public void cancelarReserva (Cliente this) {
+    public void cancelarReserva () {
         getListaReservas();
 
         for(Reserva r: getListaReservas()){
-            if (r.getCliente().equals(this)){
+            if (r.getCliente().getNome().equals(this.nome)){
                 r.setStatus(false);
                 //TODO : como Cliente e Restaurante têm lista de reservas,
                 //tambem tenho de por em Restaurante set.Status (false)
