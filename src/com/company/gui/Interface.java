@@ -4,6 +4,7 @@
 package com.company.gui;
 
 import com.company.Cliente;
+import com.company.Restaurante;
 import com.company.Sistema;
 import com.company.Utilizador;
 import com.company.gui.util.DateLabelFormatter;
@@ -17,10 +18,7 @@ import java.awt.event.*;
 import java.text.ParseException;
 import java.time.LocalTime;
 import java.time.temporal.TemporalField;
-import java.util.Enumeration;
-import java.util.GregorianCalendar;
-import java.util.Properties;
-import java.util.ResourceBundle;
+import java.util.*;
 
 import javax.swing.*;
 import javax.swing.text.MaskFormatter;
@@ -445,17 +443,15 @@ public class Interface extends JFrame {
 
 
         registarClienteButton.addActionListener(a -> {
-            int validoNovoCliente = sistema.criarCliente(nomeClienteText.getText(),
+            boolean validoNovoCliente = sistema.criarCliente(nomeClienteText.getText(),
                     emailClienteText.getText(),
                     moradaClienteText.getText(),
                     telemovelClienteText.getText(),
                     usernameClienteText.getText(),
                     new String(passwordClienteField.getPassword()),
                     new String(confirmarPassawordClienteField.getPassword()));
-            if (validoNovoCliente == 1) {
+            if (validoNovoCliente) {
                 mostrarJanela(MENUCLIENTE_CARD);
-            } else if (validoNovoCliente == 2) {
-                JOptionPane.showMessageDialog(((Component) a.getSource()).getParent(), "Passwords nao sao iguais");
             }
 
         });
@@ -967,30 +963,35 @@ public class Interface extends JFrame {
             mostrarJanela(LOGIN_CARD);
         });
 
-//        registarRestauranteButton.addActionListener(a -> {
-//            int esplanadaRest = Integer.parseInt(esplanadaRestauranteText.getText());
-//            int zonaIFRest = Integer.parseInt(zonaInteriorFumRestauranteText.getText());
-//            int zonaINFRest = Integer.parseInt(zonaInteriorNFumRestauranteText.getText());
-//            int validoNovoRest = sistema.criarRestaurante(nomeRestauranteText.getText(),
-//                    moradaRestauranteText.getText(),
-//                    cidadeRestauranteText.getText(),
-//                    telemovelRestauranteText.getText(),
-//                    emailRestauranteText.getText(),
-//                    usernameRestauranteText.getText(),
-//                    new String(passwordRestauranteField.getPassword()),
-//                    new String(confirmarPasswordRestauranteField.getPassword()),
-//                    esplanadaRest,
-//                    zonaIFRest,
-//                    zonaINFRest,
-//                    horarioAlmocoInicioRestauranteText.,
-//                    horarioAlmocoFimRestauranteText,
-//                    horarioJantarInicioRestauranteText,
-//                    horarioJantarFimRestauranteText,
-//
-//
-//            mostrarJanela(MENURESTAURANTE_CARD);
-//
-//        });
+        registarRestauranteButton.addActionListener(a -> {
+            int esplanadaRest = Integer.parseInt(esplanadaRestauranteText.getText());
+            int zonaIFRest = Integer.parseInt(zonaInteriorFumRestauranteText.getText());
+            int zonaINFRest = Integer.parseInt(zonaInteriorNFumRestauranteText.getText());
+            LocalTime horaAI = LocalTime.parse(horarioAlmocoInicioRestauranteText.getText());
+            LocalTime horaAF = LocalTime.parse(horarioAlmocoFimRestauranteText.getText());
+            LocalTime horaJI = LocalTime.parse(horarioJantarInicioRestauranteText.getText());
+            LocalTime horaJF = LocalTime.parse(horarioJantarFimRestauranteText.getText());
+
+            boolean validoNovoRest = sistema.criarRestaurante(nomeRestauranteText.getText(),
+                    moradaRestauranteText.getText(),
+                    cidadeRestauranteText.getText(),
+                    telemovelRestauranteText.getText(),
+                    emailRestauranteText.getText(),
+                    usernameRestauranteText.getText(),
+                    new String(passwordRestauranteField.getPassword()),
+                    new String(confirmarPasswordRestauranteField.getPassword()),
+                    esplanadaRest,
+                    zonaIFRest,
+                    zonaINFRest,
+                    horaAI,
+                    horaAF,
+                    horaJI,
+                    horaJF);
+
+
+            mostrarJanela(MENURESTAURANTE_CARD);
+
+        });
    }
 
     //////MENU RESTAURANTE////////
@@ -2271,22 +2272,12 @@ public class Interface extends JFrame {
         JLabel mCliMRestsFRestsCidLabel = new JLabel("MENU CLIENTE - PESQUISAR RESTAURANTES");
         JLabel mCliMRestFRestCidLabel = new JLabel("CIDADE");
 
-        JCheckBox coimbraMCliMRestFOrdRestJCBox = new JCheckBox("Coimbra");
-        coimbraMCliMRestFOrdRestJCBox.setMnemonic(KeyEvent.VK_C);
-        JCheckBox portoMCliMRestFOrdRestJCBox = new JCheckBox("Porto");
-        portoMCliMRestFOrdRestJCBox.setMnemonic(KeyEvent.VK_C);
-        JCheckBox lisboaMCliMRestFOrdRestJCBox = new JCheckBox("Lisboa");
-        lisboaMCliMRestFOrdRestJCBox.setMnemonic(KeyEvent.VK_C);
-        JCheckBox guimaraesMCliMRestFOrdRestJCBox = new JCheckBox("Guimarães");
-        guimaraesMCliMRestFOrdRestJCBox.setMnemonic(KeyEvent.VK_C);
-        JCheckBox bragaMCliMRestFOrdRestJCBox = new JCheckBox("Braga");
-        bragaMCliMRestFOrdRestJCBox.setMnemonic(KeyEvent.VK_C);
-        JCheckBox vilaDoCondeMCliMRestFOrdRestJCBox = new JCheckBox("Vila do Conde");
-        vilaDoCondeMCliMRestFOrdRestJCBox.setMnemonic(KeyEvent.VK_C);
+        JTextField mCliMRestFRestCidText = new JTextField(15);
 
         JButton ptEnMCliMRestFRestCidButton = new JButton("PT/EN");
         JButton voltarMCliMRestFRestCidButton = new JButton("MENU CLIENTE");
         JButton retornarMCliMRestFRestCidButton = new JButton("VOLTAR");
+        JButton pesquisarMCliMRestFRestCidButton = new JButton("PESQUISAR");
 
         mCliMRestFRestCidSuperPanel.add(norteMCliMRestFRestCidSubPanel, "North");
         mCliMRestFRestCidSuperPanel.add(centroMCliMRestFRestCidSubPanel, "Center");
@@ -2303,44 +2294,37 @@ public class Interface extends JFrame {
         centroMCliMRestFRestCidSubPanel.add(centroMCliMRestFRestCidSSPanel);
 
         centroMCliMRestFRestCidSSPanel.add(mCliMRestFRestCidLabel);
-        centroMCliMRestFRestCidSSPanel.add(coimbraMCliMRestFOrdRestJCBox);
-        centroMCliMRestFRestCidSSPanel.add(portoMCliMRestFOrdRestJCBox);
-        centroMCliMRestFRestCidSSPanel.add(lisboaMCliMRestFOrdRestJCBox);
-        centroMCliMRestFRestCidSSPanel.add(bragaMCliMRestFOrdRestJCBox);
-        centroMCliMRestFRestCidSSPanel.add(guimaraesMCliMRestFOrdRestJCBox);
-        centroMCliMRestFRestCidSSPanel.add(vilaDoCondeMCliMRestFOrdRestJCBox);
+        centroMCliMRestFRestCidSSPanel.add(mCliMRestFRestCidText);
 
         sulMCliMRestFRestCidSubPanel.setLayout(new FlowLayout());
         sulMCliMRestFRestCidSubPanel.add(voltarMCliMRestFRestCidButton);
         sulMCliMRestFRestCidSubPanel.add(retornarMCliMRestFRestCidButton);
-
-        coimbraMCliMRestFOrdRestJCBox.addActionListener(a -> {
-            mostrarJanela(MENUCLIENTE_CARD);
-        });
-
-        portoMCliMRestFOrdRestJCBox.addActionListener(a -> {
-            mostrarJanela(MENUCLIENTE_CARD);
-        });
-
-        lisboaMCliMRestFOrdRestJCBox.addActionListener(a -> {
-            mostrarJanela(MENUCLIENTE_CARD);
-        });
-        bragaMCliMRestFOrdRestJCBox.addActionListener(a -> {
-            mostrarJanela(MENUCLIENTE_CARD);
-        });
-        guimaraesMCliMRestFOrdRestJCBox.addActionListener(a -> {
-            mostrarJanela(MENUCLIENTE_CARD);
-        });
-        vilaDoCondeMCliMRestFOrdRestJCBox.addActionListener(a -> {
-            mostrarJanela(MENUCLIENTE_CARD);
-        });
 
         retornarMCliMRestFRestCidButton.addActionListener(a -> {
             mostrarJanela(MCLIMRESTFORDRESTS_CARD);
         });
         voltarMCliMRestFRestCidButton.addActionListener(a -> {
             mostrarJanela(MENUCLIENTE_CARD);
+        });
+        pesquisarMCliMRestFRestCidButton.addActionListener(a -> {
+            ArrayList<Restaurante> listasRestCid = new ArrayList();
+            listasRestCid = sistema.consultarRestaurantePorCidade(mCliMRestFRestCidLabel.getText());
+            if (listasRestCid != null) {
+                String[] nomeColunasMRestComentarios1 = new String[]{
+                        "ID", "USERNAME", "COMENTÁRIO", "PONTUAÇÃO"
+                };
+                Object[][] dadosMRestComentariosCBox1 = new Object[][]{
+                        {"ID", "USERNAME", "COMENTÁRIO", "PONTUAÇÃO"},
+                        {listasRestCid.get(0).getNome(), listasRestCid.get(0).getCidade(), null},
+                        {4, null, null, null},
 
+                };
+                //criação da tabela
+                JTable tabelaMRestComentarios1 = new JTable(dadosMRestComentariosCBox1, nomeColunasMRestComentarios1);
+
+            }
+
+            mostrarJanela(MCLIMRESTFORDRESTS_CARD);
         });
     }
 

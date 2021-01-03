@@ -35,14 +35,14 @@ public class Main {
 //                LocalTime.of(19,00),LocalTime.of(22,00));
 
 
-        sistema.criarCliente("A4", "cliente1@com.pt", "rua A", "444444444",
-                "cliente4", "pass", "pass");
-
-        sistema.criarCliente("B5", "cliente2@com.pt", "rua B", "555555555",
-                "cliente5", "pass", "pass");
-
-        sistema.criarCliente("C7", "cliente3@com.pt", "rua C", "777777777",
-                "cliente7", "pass", "pass");
+//        sistema.criarCliente("A4", "cliente1@com.pt", "rua A", "444444444",
+//                "cliente4", "pass", "pass");
+//
+//        sistema.criarCliente("B5", "cliente2@com.pt", "rua B", "555555555",
+//                "cliente5", "pass", "pass");
+//
+//        sistema.criarCliente("C7", "cliente3@com.pt", "rua C", "777777777",
+//                "cliente7", "pass", "pass");
 
 
 //        sistema.getClienteAtivo().criarReservaPresencial2(sistema.getClienteAtivo(), sistema.getListaRestaurantes().get(0), new GregorianCalendar(2021, 03, 01),

@@ -243,8 +243,8 @@ public class Sistema implements Serializable {
         return validar;
     }
 
-    public int criarRestaurante(String nome, String morada, String cidade, String telefone, String email, String username, String password, String confirmarPass, int lotacaoEsplanada, int lotacaoFum, int lotacaoNFum, LocalTime inicioAlm, LocalTime fimAlm, LocalTime inicioJan, LocalTime fimJan) {
-
+    public boolean criarRestaurante(String nome, String morada, String cidade, String telefone, String email, String username, String password, String confirmarPass, int lotacaoEsplanada, int lotacaoFum, int lotacaoNFum, LocalTime inicioAlm, LocalTime fimAlm, LocalTime inicioJan, LocalTime fimJan) {
+        boolean valido = false;
         if (telefoneUnico(telefone)) {
             if (validarTelefone(telefone)) {
                 if (emailUnico(email)) {
@@ -256,26 +256,28 @@ public class Sistema implements Serializable {
                                         Restaurante r = new Restaurante(nome, morada, cidade, telefone, email, username, password, confirmarPass, lotacaoEsplanada, lotacaoFum, lotacaoNFum, inicioAlm, fimAlm, inicioJan, fimJan);
                                         listaUtilizadores.add(r);
                                         System.out.println("Restaurante criado");
-                                        return 1;
+                                        JOptionPane.showMessageDialog(null, "Login bem-sucedido!");
+                                        return valido = true;
                                     } else System.out.println("Horario invalido");
-                                    return 2;
+
                                 } else System.out.println("Lotacao invalida");
-                                return 3;
+
                             } else System.out.println("Passwords nao sao iguais");
-                            return 5;
+
                         } else System.out.println("Username indisponivel");
-                        return 6;
+
                     } else System.out.println("Email nao é valido");
-                    return 7;
+
                 } else System.out.println("Email ja esta registado");
-                return 8;
+
             } else System.out.println("Telefone invalido");
-            return 9;
+
         } else System.out.println("Telefone ja esta registado");
-        return 10;
+        return valido;
     }
 
-    public int criarCliente(String nome, String email, String morada, String telefone, String username, String password, String confirmarPass) {
+    public boolean criarCliente(String nome, String email, String morada, String telefone, String username, String password, String confirmarPass) {
+        boolean valido = false;
         if (telefoneUnico(telefone)) {
             if (validarTelefone(telefone)) {
                 if (emailUnico(email)) {
@@ -284,20 +286,20 @@ public class Sistema implements Serializable {
                             if (confirmarPass(password, confirmarPass)) {
                                 Cliente c = new Cliente(nome, morada, telefone, email, username, password, confirmarPass);
                                 listaUtilizadores.add(c);
-                                System.out.println("Cliente criado com sucesso!");
-                                return 1;
-                            } else System.out.println("Passwords nao sao iguais");
-                            return 2;
+                                JOptionPane.showMessageDialog(null,"");
+                                return valido = true;
+                            } else System.out.println("");
+                            JOptionPane.showMessageDialog(null,"");
                         } else System.out.println("Username indisponivel");
-                        return 3;
+                        JOptionPane.showMessageDialog(null,"");
                     } else System.out.println("Email nao é valido");
-                    return 4;
+                    JOptionPane.showMessageDialog(null,"");
                 } else System.out.println("Email ja esta registado");
-                return 5;
+                JOptionPane.showMessageDialog(null,"");
             } else System.out.println("Telemovel nao é valido");
-            return 6;
+            JOptionPane.showMessageDialog(null,"");
         } else System.out.println("Telemovel ja registado");
-        return 7;
+        return valido;
     }
 
     //todo (Opiniao PROF) Esta demasiado deselegante ou é aceitavel?
@@ -432,10 +434,15 @@ public class Sistema implements Serializable {
     public ArrayList<Restaurante> consultarRestaurantePorCidade(String cidade) {
 
         ArrayList<Restaurante> restaurantesPorCidade = new ArrayList<>();
+        int count = 0;
         for (Restaurante u : getListaRestaurantes()) {
             if (u.getCidade().equalsIgnoreCase(cidade)) {
                 restaurantesPorCidade.add(u);
+                count++;
             }
+        }
+        if (count <= 0) {
+            JOptionPane.showMessageDialog(null, "Não existem restaurantes!");
         }
         return restaurantesPorCidade;
     }
