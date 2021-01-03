@@ -2296,6 +2296,7 @@ public class Interface extends JFrame {
         centroMCliMRestFRestCidSSPanel.add(mCliMRestFRestCidLabel);
         centroMCliMRestFRestCidSSPanel.add(mCliMRestFRestCidText);
 
+
         sulMCliMRestFRestCidSubPanel.setLayout(new FlowLayout());
         sulMCliMRestFRestCidSubPanel.add(voltarMCliMRestFRestCidButton);
         sulMCliMRestFRestCidSubPanel.add(retornarMCliMRestFRestCidButton);
@@ -2306,26 +2307,28 @@ public class Interface extends JFrame {
         voltarMCliMRestFRestCidButton.addActionListener(a -> {
             mostrarJanela(MENUCLIENTE_CARD);
         });
-        pesquisarMCliMRestFRestCidButton.addActionListener(a -> {
-            ArrayList<Restaurante> listasRestCid = new ArrayList();
-            listasRestCid = sistema.consultarRestaurantePorCidade(mCliMRestFRestCidLabel.getText());
-            if (listasRestCid != null) {
-                String[] nomeColunasMRestComentarios1 = new String[]{
-                        "ID", "USERNAME", "COMENTÁRIO", "PONTUAÇÃO"
-                };
-                Object[][] dadosMRestComentariosCBox1 = new Object[][]{
-                        {"ID", "USERNAME", "COMENTÁRIO", "PONTUAÇÃO"},
-                        {listasRestCid.get(0).getNome(), listasRestCid.get(0).getCidade(), null},
-                        {4, null, null, null},
 
-                };
-                //criação da tabela
-                JTable tabelaMRestComentarios1 = new JTable(dadosMRestComentariosCBox1, nomeColunasMRestComentarios1);
+//        pesquisarMCliMRestFRestCidButton.addActionListener(a -> {
+//            ArrayList<Restaurante> listasRestCid = new ArrayList();
+//            listasRestCid = sistema.consultarRestaurantePorCidade(mCliMRestFRestCidLabel.getText());
+//            if (listasRestCid != null) {
+//                String[] nomeColunasMRestComentarios1 = new String[]{
+//                        "ID", "USERNAME", "COMENTÁRIO", "PONTUAÇÃO"
+//                };
+//                Object[][] dadosMRestComentariosCBox1 = new Object[][]{
+//                        {"ID", "USERNAME", "COMENTÁRIO", "PONTUAÇÃO"},
+//                        {listasRestCid.get(0).getNome(), listasRestCid.get(0).getCidade(), null},
+//                        {4, null, null, null},
+//
+//                };
+//                //criação da tabela
+//                JTable tabelaMRestComentarios1 = new JTable(dadosMRestComentariosCBox1, nomeColunasMRestComentarios1);
+//
+//            }
+//
+//            mostrarJanela(MCLIMRESTFORDRESTS_CARD);
+//        });
 
-            }
-
-            mostrarJanela(MCLIMRESTFORDRESTS_CARD);
-        });
     }
 
 
