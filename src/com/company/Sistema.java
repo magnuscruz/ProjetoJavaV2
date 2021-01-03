@@ -349,15 +349,25 @@ public class Sistema implements Serializable {
         if (telefone != "") {
             if (validarTelefone(telefone)) {
                 getClienteAtivo().setTelefone(telefone);
-            } else System.out.println("telemovel nao é valido");
+            } else {
+                System.out.println("Telemovel não é valido");
+                JOptionPane.showMessageDialog(null, "Telemovel não é valido");
+            }
         }
 
         if (email != "") {
             if (emailUnico(email)) {
                 if (validarEmail(email)) {
                     getClienteAtivo().setEmail(email);
-                } else System.out.println("Email nao é valido");
-            } else System.out.println("Email ja esta registado");
+                } else {
+                    System.out.println("Email não é valido");
+                    JOptionPane.showMessageDialog(null, "Email não é valido");
+
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Email já esta registado");
+                System.out.println("Email já esta registado");
+            }
         }
 
         if (password != "") {
@@ -365,7 +375,10 @@ public class Sistema implements Serializable {
                 if (confirmarNovaPass != "") {
                     if (confirmarPass(novaPass, confirmarNovaPass)) {
                         getClienteAtivo().setPassword(novaPass);
-                    } else System.out.println("Passwords nao sao iguais");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Passwords não são iguais");
+                        System.out.println("Passwords não são iguais");
+                    }
                 }
             }
         }
@@ -383,15 +396,24 @@ public class Sistema implements Serializable {
         if (telefone != "") {
             if (validarTelefone(telefone)) {
                 getRestauranteAtivo().setTelefone(telefone);
-            } else System.out.println("telemovel nao é valido");
+            } else {
+                JOptionPane.showMessageDialog(null, "Telemovel não é valido");
+                System.out.println("Telemovel não é valido");
+            }
         }
 
         if (email != "") {
             if (emailUnico(email)) {
                 if (validarEmail(email)) {
                     getRestauranteAtivo().setEmail(email);
-                } else System.out.println("Email nao é valido");
-            } else System.out.println("Email ja esta registado");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Email não é valido");
+                    System.out.println("Email não é valido");
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Email já esta registado");
+                System.out.println("Email já esta registado");
+            }
         }
 
         if (password != "") {
@@ -399,12 +421,15 @@ public class Sistema implements Serializable {
                 if (confirmarNovaPass != "") {
                     if (confirmarPass(novaPass, confirmarNovaPass)) {
                         getRestauranteAtivo().setPassword(novaPass);
-                    } else System.out.println("Passwords nao sao iguais");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Passwords não são iguais");
+                        System.out.println("Passwords não são iguais");
+                    }
                 }
             }
         }
 
-        //  FALTA AQUI VALIDAR LOTACAO
+        //TODO  FALTA AQUI VALIDAR LOTACAO
 
         if (inicioAlm != null) {
             getRestauranteAtivo().setInicioAlm(inicioAlm);
