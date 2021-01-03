@@ -7,6 +7,7 @@ import java.util.GregorianCalendar;
 public abstract class Reserva implements Serializable {
 
 
+    protected  int idReserva;
     protected Cliente cliente;
     protected Restaurante restaurante;
     protected GregorianCalendar data;
@@ -24,7 +25,8 @@ public abstract class Reserva implements Serializable {
 
     @Override
     public String toString() {
-        return "cliente=" + cliente +
+        return "id "+ idReserva+
+                "cliente=" + cliente +
                 ", restaurante=" + restaurante +
                 ", data=" + (data.get(GregorianCalendar.YEAR) + "/" + (data.get(GregorianCalendar.MONTH) + 1) + "/" + data.get(GregorianCalendar.DAY_OF_MONTH)) +
                 ", hora=" + hora +

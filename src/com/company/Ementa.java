@@ -5,10 +5,13 @@ import java.util.ArrayList;
 
 public class Ementa implements Serializable {
 
+    private static int idEmentaEstatico = 1;
+    private int idEmenta;
     private ArrayList<Prato> carta;
     private ArrayList<Prato> pratosDia;
 
     public Ementa(){
+        this.idEmenta = idEmentaEstatico++;
         carta = new ArrayList<Prato>();
         pratosDia = new ArrayList<Prato>();
     }
@@ -36,10 +39,14 @@ public class Ementa implements Serializable {
         return pratosDia;
     }
 
+    public int getIdEmenta() {
+        return idEmenta;
+    }
 
     @Override
     public String toString() {
         return "Ementa{" +
+                "id " + idEmenta +
                 "carta=" + carta +
                 ", pratosDia=" + pratosDia +
                 '}';

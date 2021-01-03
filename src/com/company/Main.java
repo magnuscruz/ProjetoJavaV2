@@ -52,18 +52,17 @@ public class Main {
 
         sistema.adicionarComentario(sistema.getClienteAtivo(), "Execelte", 4, sistema.getListaRestaurantes().get(0));
 
-        Ementa e = new Ementa();
-        e.adicionarPratoAPratosDia("aaaa", "aaaa",8);
+        sistema.getListaRestaurantes().get(0).getEmenta().adicionarPratoAPratosDia("bitoque", "arroz e batatas", 10);
+        sistema.getListaRestaurantes().get(0).getEmenta().adicionarPratoACarta("bitoque", "arroz e batatas", 30);
 
-
-        sistema.getListaRestaurantes().get(0).setEmenta(e);
 
         System.out.println("lista restaurantesa");
         System.out.println(sistema.getListaComentariosPorCliente(sistema.getClienteAtivo().getNome()));
         System.out.println("------");
 
         System.out.println("PONTUACAO MEDIA "+ sistema.getPontuacaoMediaRestaurante(sistema.getListaRestaurantes().get(0)));
-        System.out.println(sistema.consultarRestaurantePorValores(5,8));
+        System.out.println("Preco MEDIO "+ sistema.getListaRestaurantes().get(0).getPrecoMedioRestaurante());
+        System.out.println("Restaurantes por valores "+ sistema.consultarRestaurantePorValores(5,50));
 
 
 //        sistema.getClienteAtivo().criarReservaPresencial(sistema.getListaRestaurantes().get(0), new GregorianCalendar(2021, 03, 01),

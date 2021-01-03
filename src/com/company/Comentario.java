@@ -8,6 +8,8 @@ import java.util.GregorianCalendar;
 
 
 public class Comentario implements Serializable {
+    private static int idEstaticoComentario = 1;
+    private int idComentario;
     private String opiniao;
     private double pontuacao;
     private Cliente cliente;
@@ -19,6 +21,7 @@ public class Comentario implements Serializable {
     private int dia;
 
     public Comentario(String opiniao, double pontuacao, Cliente cliente, Restaurante restaurante) {
+        this.idComentario = idEstaticoComentario++;
         this.opiniao = opiniao;
         this.pontuacao = pontuacao;
         this.cliente = cliente;
@@ -33,7 +36,8 @@ public class Comentario implements Serializable {
 
     @Override
     public String toString() {
-        return "\ndescricao='" + opiniao + '\'' +
+        return "\niD " + idComentario +
+                "descricao='" + opiniao + '\'' +
                 ", pontuacao=" + pontuacao +
                 ", cliente=" + cliente +
                 ", restaurante=" + restaurante +
@@ -71,5 +75,9 @@ public class Comentario implements Serializable {
 
     public void setPontuacao(double pontuacao) {
         this.pontuacao = pontuacao;
+    }
+
+    public double getIdComentario (){
+        return idComentario;
     }
 }

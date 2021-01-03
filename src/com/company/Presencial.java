@@ -5,6 +5,7 @@ import java.time.LocalTime;
 import java.util.GregorianCalendar;
 
 public class Presencial extends Reserva implements Serializable {
+    private static int idEstaticoPresencial = 1;
     private int zona;
     private int numeroLugares;
 
@@ -13,6 +14,7 @@ public class Presencial extends Reserva implements Serializable {
        // this.zona = zona;
         this.zona = restaurante.zonaDisponibilidade(zona,numeroLugares);
         this.numeroLugares = numeroLugares;
+        this.idReserva = idEstaticoPresencial;
         this.status = true;
     }
 

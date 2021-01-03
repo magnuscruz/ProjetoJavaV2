@@ -35,7 +35,6 @@ public class Sistema implements Serializable {
         }
     }
 
-
     public boolean gravarSistema() {
 
         try {
