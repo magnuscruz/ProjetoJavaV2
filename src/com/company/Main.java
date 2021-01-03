@@ -16,6 +16,7 @@ public class Main {
         //Frame f = new Frame();
 
 
+
 //        sistema.criarRestaurante("A", "rua x", "Coimbra",
 //                "111111111", "email1@com.pt", "user1",
 //                "pass", "pass", 20, 10,
@@ -83,13 +84,14 @@ public class Main {
 //        if (sistema.getClienteAtivo() != null) {
 //            ArrayList<Reserva> listaReservaC = sistema.getClienteAtivo().getListaReservas();
 //        }
-      // sistema.gravarSistema();
+
+
 
         System.out.println(sistema.getListaUtilizadores());
 
         //                       sistema.gravarSistema();
 
-//        Interface sistemaGrafico = new Interface(sistema);
-//        sistemaGrafico.setVisible(true);
+        Interface sistemaGrafico = new Interface(sistema);
+        sistemaGrafico.setVisible(true);
     }
 }

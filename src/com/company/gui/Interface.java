@@ -988,8 +988,10 @@ public class Interface extends JFrame {
                     horaJI,
                     horaJF);
 
+            if (validoNovoRest){
+                mostrarJanela(MENURESTAURANTE_CARD);
+            }
 
-            mostrarJanela(MENURESTAURANTE_CARD);
 
         });
    }
