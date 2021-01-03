@@ -489,7 +489,11 @@ public class Sistema implements Serializable {
                     restaurantesPorValores.add(r);
                 }
             }
-        } else System.out.println("Valor minimo inserido nao é menor que o valor maximo");
+        } else {
+            //TODO atencao: acho que a interface esta de maneira diferente, nao sei se recebe dois valores...
+            JOptionPane.showMessageDialog(null, "Valor minimo inserido nao é menor que o valor maximo");
+            System.out.println("Valor minimo inserido nao é menor que o valor maximo");
+        }
 
         return restaurantesPorValores;
     }
@@ -497,10 +501,15 @@ public class Sistema implements Serializable {
     public ArrayList<Restaurante> consultarRestaurantePorCidade(String cidade) {
 
         ArrayList<Restaurante> restaurantesPorCidade = new ArrayList<>();
+        int count = 0;
         for (Restaurante u : getListaRestaurantes()) {
             if (u.getCidade().equalsIgnoreCase(cidade)) {
                 restaurantesPorCidade.add(u);
+                count++;
             }
+        }
+        if (count <= 0) {
+            JOptionPane.showMessageDialog(null, "Não existem restaurantes!");
         }
         return restaurantesPorCidade;
     }
