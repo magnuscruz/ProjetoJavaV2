@@ -44,15 +44,15 @@ public class Main {
 //
         sistema.criarCliente("C7", "cliente3@com.pt", "rua C", "777777777",
                 "cliente7", "pass", "pass");
-//
+////
 
         sistema.login("cliente7", "pass");
 
         sistema.getClienteAtivo().criarReservaPresencial(sistema.getListaRestaurantes().get(0), new GregorianCalendar(2021, 03, 01),
                 LocalTime.of(13, 00), 1, 20);
 
-        sistema.getClienteAtivo().criarReservaPresencial(sistema.getListaRestaurantes().get(0), new GregorianCalendar(2021, 03, 01),
-                LocalTime.of(13, 00), 1, 20);
+//        sistema.getClienteAtivo().criarReservaPresencial(sistema.getListaRestaurantes().get(0), new GregorianCalendar(2021, 03, 01),
+//                LocalTime.of(13, 00), 1, 20);
 
 
         System.out.println("Lista RESERVAS");
@@ -60,10 +60,6 @@ public class Main {
         System.out.println(sistema.getClienteAtivo().getListaReservas());
 
         System.out.println("--------------------");
-        sistema.login("user1", "pass");
-        // System.out.println(sistema.getListaRestaurantes().get(0).getListaReservas());
-        System.out.println(sistema.getRestauranteAtivo().getListaReservas());
-        System.out.println("---------------------------");
 
 
         //todo, criar ReservaPresencial - n funciona

@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.io.Serializable;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 
 public class Restaurante extends Utilizador implements Serializable {
     private static int idRestaurante = 1;
@@ -39,7 +40,7 @@ public class Restaurante extends Utilizador implements Serializable {
 
 
 //TODO : ainda nao funciona correctamente, ou pelo menos nao encaixa no metodo final
-    public int zonaDisponibilidade(int zona, int num) {
+    public int zonaDisponibilidade( int zona, int num) {
         //Indice returns: 0 - Sem disponibilidade | 1 - Reserva Confirmada Esplanada | 2 - NFum | 3 - Fum|
 
         int disponibilidade = 0;

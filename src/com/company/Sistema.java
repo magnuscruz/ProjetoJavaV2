@@ -259,7 +259,7 @@ public class Sistema implements Serializable {
                                         Restaurante r = new Restaurante(nome, morada, cidade, telefone, email, username, password, confirmarPass, lotacaoEsplanada, lotacaoFum, lotacaoNFum, inicioAlm, fimAlm, inicioJan, fimJan);
                                         listaUtilizadores.add(r);
                                         System.out.println("Restaurante criado");
-                                        JOptionPane.showMessageDialog(null, "Restaurante criado");
+                                        //JOptionPane.showMessageDialog(null, "Restaurante criado");
                                         return valido = true;
                                     } else {
                                         System.out.println("Horario invalido");
@@ -308,7 +308,7 @@ public class Sistema implements Serializable {
                                 Cliente c = new Cliente(nome, morada, telefone, email, username, password, confirmarPass);
                                 listaUtilizadores.add(c);
                                 System.out.println("Cliente criado");
-                                JOptionPane.showMessageDialog(null, "Cliente criado");
+                               // JOptionPane.showMessageDialog(null, "Cliente criado");
                                 return valido = true;
                             } else {
                                 System.out.println("Passwords não são iguais");
