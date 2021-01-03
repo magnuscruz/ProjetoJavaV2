@@ -24,10 +24,8 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc1a7ff5-4773-4423-a8d5-04210f78b6a5" name="Default Changelist" comment="nova tentativa de commit para iniciar as alterações">
+    <list default="true" id="fc1a7ff5-4773-4423-a8d5-04210f78b6a5" name="Default Changelist" comment="atualizadas interfaces">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FicheiroProjeto.dat" beforeDir="false" afterPath="$PROJECT_DIR$/FicheiroProjeto.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/gui/Interface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/gui/Interface.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -132,14 +130,7 @@
       <workItem from="1609411887852" duration="25430000" />
       <workItem from="1609498509614" duration="20405000" />
       <workItem from="1609621722162" duration="9543000" />
-      <workItem from="1609676565948" duration="6886000" />
-    </task>
-    <task id="LOCAL-00001" summary="Feito commit da Taís">
-      <created>1608645113423</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1608645113423</updated>
+      <workItem from="1609676565948" duration="12857000" />
     </task>
     <task id="LOCAL-00002" summary="Feito 2º commit da Taís">
       <created>1608645183527</created>
@@ -477,7 +468,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609676505585</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="atualizadas interfaces">
+      <created>1609685942166</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1609685942175</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -496,7 +494,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Ajustes nos layouts das interfaces menu cliente - comentarios" />
     <MESSAGE value="feitas exclusões da parte de interface que não eram necessárias" />
     <MESSAGE value="Criada interface menu rest pontuacao" />
     <MESSAGE value="Atualizado menu restaurante - comentarios" />
@@ -521,33 +518,34 @@
     <MESSAGE value="Problema resolvido&#10;Quando criava uma reservaPresencial nao estava a adiciona-la a lista de Reservas do Restaurante, estava só a colocar em CLiente! &#10;Porque, cliente tem lista de reservas dele e restaurante tambem!" />
     <MESSAGE value="commit para iniciar as alterações" />
     <MESSAGE value="nova tentativa de commit para iniciar as alterações" />
-    <option name="LAST_COMMIT_MESSAGE" value="nova tentativa de commit para iniciar as alterações" />
+    <MESSAGE value="atualizadas interfaces" />
+    <option name="LAST_COMMIT_MESSAGE" value="atualizadas interfaces" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1237" height="160" key="GridCell.Tab.0.bottom" timestamp="1609682737619">
+    <state width="1237" height="160" key="GridCell.Tab.0.bottom" timestamp="1609692712861">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="160" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1609682737619" />
-    <state width="1237" height="160" key="GridCell.Tab.0.center" timestamp="1609682737619">
+    <state width="1237" height="160" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1609692712861" />
+    <state width="1237" height="160" key="GridCell.Tab.0.center" timestamp="1609692712860">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="160" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1609682737619" />
-    <state width="1237" height="160" key="GridCell.Tab.0.left" timestamp="1609682737603">
+    <state width="1237" height="160" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1609692712860" />
+    <state width="1237" height="160" key="GridCell.Tab.0.left" timestamp="1609692712859">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="160" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1609682737603" />
-    <state width="1237" height="160" key="GridCell.Tab.0.right" timestamp="1609682737619">
+    <state width="1237" height="160" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1609692712859" />
+    <state width="1237" height="160" key="GridCell.Tab.0.right" timestamp="1609692712860">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="160" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1609682737619" />
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1609676521809">
+    <state width="1237" height="160" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1609692712860" />
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1609685974659">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1609676521809" />
-    <state x="458" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1609676464550">
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1609685974659" />
+    <state x="458" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1609685958340">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="458" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1609676464550" />
+    <state x="458" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1609685958340" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

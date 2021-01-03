@@ -528,6 +528,7 @@ public class Interface extends JFrame {
 
         logoutMenuClienteButton.addActionListener(a -> {
             mostrarJanela(LOGIN_CARD);
+            this.setSize(LARGURA_LOGIN, ALTURA_LOGIN);
         });
 
     }
@@ -596,6 +597,7 @@ public class Interface extends JFrame {
 
         logoutMCliMReseButton.addActionListener(a -> {
             mostrarJanela(LOGIN_CARD);
+            this.setSize(LARGURA_LOGIN, ALTURA_LOGIN);
         });
 
     }
@@ -1084,6 +1086,7 @@ public class Interface extends JFrame {
 
         logoutMenuRestauranteButton.addActionListener(a -> {
             mostrarJanela(LOGIN_CARD);
+            this.setSize(LARGURA_LOGIN, ALTURA_LOGIN);
         });
     }
 
@@ -1515,6 +1518,7 @@ public class Interface extends JFrame {
         //todo ver os encaminhamentos
         okMRestReservasButton.addActionListener(e -> {
             mostrarJanela(LOGIN_CARD);
+            this.setSize(LARGURA_LOGIN, ALTURA_LOGIN);
         });
     }
 
@@ -1590,7 +1594,7 @@ public class Interface extends JFrame {
 
         JButton ptEnMRestReservasButton = new JButton("PT/EN");
         JButton voltarMRestComentariosButton = new JButton("MENU RESTAURANTE");
-        JButton responderMRestComentariosButton = new JButton("OK");
+        JButton responderMRestComentariosButton = new JButton("RESPONDER");
 
         mRestComentariosSuperPanel.add(norteMRestComentariosSubPanel, "North");
         mRestComentariosSuperPanel.add(centroMRestComentariosSubPanel, "Center");
@@ -1627,7 +1631,7 @@ public class Interface extends JFrame {
 
         //todo ver os encaminhamentos para responder comentário
         responderMRestComentariosButton.addActionListener(e -> {
-            mostrarJanela(LOGIN_CARD);
+            mostrarJanela(MENURESTAURANTE_CARD);
         });
 
     }
@@ -1783,16 +1787,18 @@ public class Interface extends JFrame {
         JLabel mCliMRestsFRestPontLabel = new JLabel("MENU CLIENTE - PESQUISAR RESTAURANTES");
         JLabel mCliMRestFRestPontLabel = new JLabel("PONTUAÇÃO");
 
-        JCheckBox umMCliMRestFRestPont = new JCheckBox("1 - Péssimo");
-        umMCliMRestFRestPont.setMnemonic(KeyEvent.VK_C);
-        JCheckBox doisMCliMRestFRestPont = new JCheckBox("2 - Ruim");
-        doisMCliMRestFRestPont.setMnemonic(KeyEvent.VK_C);
-        JCheckBox tresMCliMRestFRestPont = new JCheckBox("3 - Regular");
-        tresMCliMRestFRestPont.setMnemonic(KeyEvent.VK_C);
-        JCheckBox quatroMCliMRestFRestPont = new JCheckBox("4 - Bom");
-        quatroMCliMRestFRestPont.setMnemonic(KeyEvent.VK_C);
-        JCheckBox cincoMCliMRestFRestPont = new JCheckBox("5 - Muito Bom");
-        cincoMCliMRestFRestPont.setMnemonic(KeyEvent.VK_C);
+        JRadioButton umMCliMRestFRestPontRButton = new JRadioButton("1 - Péssimo");
+        JRadioButton doisMCliMRestFRestPontRButton = new JRadioButton("2 - Ruim");
+        JRadioButton tresMCliMRestFRestPontRButton = new JRadioButton("3 - Regular");
+        JRadioButton quatroMCliMRestFRestPontRButton = new JRadioButton("4 - Bom");
+        JRadioButton cincoMCliMRestFRestPontRButton = new JRadioButton("5 - Muito Bom");
+
+        ButtonGroup group = new ButtonGroup();
+        group.add(umMCliMRestFRestPontRButton);
+        group.add(doisMCliMRestFRestPontRButton);
+        group.add(tresMCliMRestFRestPontRButton);
+        group.add(quatroMCliMRestFRestPontRButton);
+        group.add(cincoMCliMRestFRestPontRButton);
 
         JButton ptEnMCliMRestFRestPontButton = new JButton("PT/EN");
         JButton voltarMCliMRestFRestPontButton = new JButton("MENU CLIENTE");
@@ -1813,33 +1819,33 @@ public class Interface extends JFrame {
         centroMCliMRestFRestPontSubPanel.add(centroMCliMRestFRestPontSSPanel);
 
         centroMCliMRestFRestPontSSPanel.add(mCliMRestFRestPontLabel);
-        centroMCliMRestFRestPontSSPanel.add(umMCliMRestFRestPont);
-        centroMCliMRestFRestPontSSPanel.add(doisMCliMRestFRestPont);
-        centroMCliMRestFRestPontSSPanel.add(tresMCliMRestFRestPont);
-        centroMCliMRestFRestPontSSPanel.add(quatroMCliMRestFRestPont);
-        centroMCliMRestFRestPontSSPanel.add(cincoMCliMRestFRestPont);
+        centroMCliMRestFRestPontSSPanel.add(umMCliMRestFRestPontRButton);
+        centroMCliMRestFRestPontSSPanel.add(doisMCliMRestFRestPontRButton);
+        centroMCliMRestFRestPontSSPanel.add(tresMCliMRestFRestPontRButton);
+        centroMCliMRestFRestPontSSPanel.add(quatroMCliMRestFRestPontRButton);
+        centroMCliMRestFRestPontSSPanel.add(cincoMCliMRestFRestPontRButton);
 
         sulMCliMRestFRestPontSubPanel.setLayout(new FlowLayout());
         sulMCliMRestFRestPontSubPanel.add(voltarMCliMRestFRestPontButton);
         sulMCliMRestFRestPontSubPanel.add(retonarMCliMRestFRestPontButton);
 
-        umMCliMRestFRestPont.addActionListener(a -> {
+        umMCliMRestFRestPontRButton.addActionListener(a -> {
             mostrarJanela(MENUCLIENTE_CARD);
         });
 
-        doisMCliMRestFRestPont.addActionListener(a -> {
+        doisMCliMRestFRestPontRButton.addActionListener(a -> {
             mostrarJanela(MENUCLIENTE_CARD);
         });
 
-        tresMCliMRestFRestPont.addActionListener(a -> {
+        tresMCliMRestFRestPontRButton.addActionListener(a -> {
             mostrarJanela(MENUCLIENTE_CARD);
         });
 
-        quatroMCliMRestFRestPont.addActionListener(a -> {
+        quatroMCliMRestFRestPontRButton.addActionListener(a -> {
             mostrarJanela(MENUCLIENTE_CARD);
         });
 
-        cincoMCliMRestFRestPont.addActionListener(a -> {
+        cincoMCliMRestFRestPontRButton.addActionListener(a -> {
             mostrarJanela(MENUCLIENTE_CARD);
         });
 
@@ -1935,16 +1941,20 @@ public class Interface extends JFrame {
 
         JLabel mCliMRestFOrdRestsValorCartaLabel = new JLabel("MENU CLIENTE - PESQUISAR RESTAURANTES");
         JLabel mCliMRestFOrdRestValorCartaLabel = new JLabel("VALORES MÉDIOS DOS PRATOS - CARTA");
-        JCheckBox dezMCliMRestFOrdRestValorCartaCBox = new JCheckBox(">10€");
-        dezMCliMRestFOrdRestValorCartaCBox.setMnemonic(KeyEvent.VK_C);
-        JCheckBox dezVinteMCliMRestFOrdRestValorCartaCBox = new JCheckBox("10€-20€");
-        dezVinteMCliMRestFOrdRestValorCartaCBox.setMnemonic(KeyEvent.VK_C);
-        JCheckBox vinteTrintaMCliMRestFOrdRestValorCartaCBox = new JCheckBox("20€-30€");
-        vinteTrintaMCliMRestFOrdRestValorCartaCBox.setMnemonic(KeyEvent.VK_C);
-        JCheckBox trintaQuarentaMCliMRestFOrdRestValorCartaCBox = new JCheckBox("30€-40€");
-        trintaQuarentaMCliMRestFOrdRestValorCartaCBox.setMnemonic(KeyEvent.VK_C);
-        JCheckBox quarentaMaisMCliMRestFOrdRestValorCartaCBox = new JCheckBox("<40€");
-        quarentaMaisMCliMRestFOrdRestValorCartaCBox.setMnemonic(KeyEvent.VK_C);
+
+        JRadioButton dezMCliMRestFOrdRestValorCartaRButton = new JRadioButton(">10€");
+        JRadioButton dezVinteMCliMRestFOrdRestValorCartaRButton = new JRadioButton("10€-20€");
+        JRadioButton vinteTrintaMCliMRestFOrdRestValorCartaRButton = new JRadioButton("20€-30€");
+        JRadioButton trintaQuarentaMCliMRestFOrdRestValorCartaRButton = new JRadioButton("30€-40€");
+        JRadioButton quarentaMaisMCliMRestFOrdRestValorCartaRButton = new JRadioButton("<40€");
+
+        ButtonGroup group = new ButtonGroup();
+        group.add(dezMCliMRestFOrdRestValorCartaRButton);
+        group.add(dezVinteMCliMRestFOrdRestValorCartaRButton);
+        group.add(vinteTrintaMCliMRestFOrdRestValorCartaRButton);
+        group.add(trintaQuarentaMCliMRestFOrdRestValorCartaRButton);
+        group.add(quarentaMaisMCliMRestFOrdRestValorCartaRButton);
+
 
         JButton ptEnMCliMRestFOrdRestValorCartaButton = new JButton("PT/EN");
         JButton voltarMCliMRestFOrdRestValorCartaButton = new JButton("MENU CLIENTE");
@@ -1970,33 +1980,33 @@ public class Interface extends JFrame {
         centroMCliMRestFOrdRestValorCartaSubPanel.add(centroMCliMRestFOrdRestValorCartaSSPanel1);
 
         centroMCliMRestFOrdRestValorCartaSSPanel.add(mCliMRestFOrdRestValorCartaLabel);
-        centroMCliMRestFOrdRestValorCartaSSPanel1.add(dezMCliMRestFOrdRestValorCartaCBox);
-        centroMCliMRestFOrdRestValorCartaSSPanel1.add(dezVinteMCliMRestFOrdRestValorCartaCBox);
-        centroMCliMRestFOrdRestValorCartaSSPanel1.add(vinteTrintaMCliMRestFOrdRestValorCartaCBox);
-        centroMCliMRestFOrdRestValorCartaSSPanel1.add(trintaQuarentaMCliMRestFOrdRestValorCartaCBox);
-        centroMCliMRestFOrdRestValorCartaSSPanel1.add(quarentaMaisMCliMRestFOrdRestValorCartaCBox);
+        centroMCliMRestFOrdRestValorCartaSSPanel1.add(dezMCliMRestFOrdRestValorCartaRButton);
+        centroMCliMRestFOrdRestValorCartaSSPanel1.add(dezVinteMCliMRestFOrdRestValorCartaRButton);
+        centroMCliMRestFOrdRestValorCartaSSPanel1.add(vinteTrintaMCliMRestFOrdRestValorCartaRButton);
+        centroMCliMRestFOrdRestValorCartaSSPanel1.add(trintaQuarentaMCliMRestFOrdRestValorCartaRButton);
+        centroMCliMRestFOrdRestValorCartaSSPanel1.add(quarentaMaisMCliMRestFOrdRestValorCartaRButton);
 
         sulMCliMRestFOrdRestValorCartaSubPanel.setLayout(new FlowLayout());
         sulMCliMRestFOrdRestValorCartaSubPanel.add(voltarMCliMRestFOrdRestValorCartaButton);
         sulMCliMRestFOrdRestValorCartaSubPanel.add(retornarMCliMRestFOrdRestValorCartaButton);
 
-        dezMCliMRestFOrdRestValorCartaCBox.addActionListener(a -> {
+        dezMCliMRestFOrdRestValorCartaRButton.addActionListener(a -> {
             mostrarJanela(MENUCLIENTE_CARD);
         });
 
-        dezVinteMCliMRestFOrdRestValorCartaCBox.addActionListener(a -> {
+        dezVinteMCliMRestFOrdRestValorCartaRButton.addActionListener(a -> {
             mostrarJanela(MENUCLIENTE_CARD);
         });
 
-        vinteTrintaMCliMRestFOrdRestValorCartaCBox.addActionListener(a -> {
+        vinteTrintaMCliMRestFOrdRestValorCartaRButton.addActionListener(a -> {
             mostrarJanela(MENUCLIENTE_CARD);
         });
 
-        trintaQuarentaMCliMRestFOrdRestValorCartaCBox.addActionListener(a -> {
+        trintaQuarentaMCliMRestFOrdRestValorCartaRButton.addActionListener(a -> {
             mostrarJanela(MENUCLIENTE_CARD);
         });
 
-        quarentaMaisMCliMRestFOrdRestValorCartaCBox.addActionListener(a -> {
+        quarentaMaisMCliMRestFOrdRestValorCartaRButton.addActionListener(a -> {
             mostrarJanela(MENUCLIENTE_CARD);
         });
 
@@ -2127,6 +2137,7 @@ public class Interface extends JFrame {
         JButton ptEnMCliMRestFRestHFuncButton = new JButton("PT/EN");
         JButton voltarMCliMRestFRestHFuncButton = new JButton("MENU CLIENTE");
         JButton pesquisarMCliMRestFRestHFuncButton = new JButton("PESQUISAR");
+        JButton retornarMCliMRestFRestHFuncButton = new JButton("VOLTAR");
 
 
         mCliMRestFRestHFuncSuperPanel.add(norteMCliMRestFRestHFuncSubPanel, "North");
@@ -2163,11 +2174,16 @@ public class Interface extends JFrame {
 
         sulMCliMRestFRestHFuncSubPanel.setLayout(new FlowLayout());
         sulMCliMRestFRestHFuncSubPanel.add(voltarMCliMRestFRestHFuncButton);
+        sulMCliMRestFRestHFuncSubPanel.add(retornarMCliMRestFRestHFuncButton);
         sulMCliMRestFRestHFuncSubPanel.add(pesquisarMCliMRestFRestHFuncButton);
 
         //TODO faltar ver métodos para pesquisar e o comando do mostrarJanela tem quer alterado
         pesquisarMCliMRestFRestHFuncButton.addActionListener(a -> {
             mostrarJanela(MENUCLIENTE_CARD);
+        });
+
+        retornarMCliMRestFRestHFuncButton.addActionListener(a -> {
+            mostrarJanela(MCLIMRESTFORDRESTS_CARD);
         });
 
         voltarMCliMRestFRestHFuncButton.addActionListener(a -> {
@@ -2318,6 +2334,12 @@ public class Interface extends JFrame {
         sulMCliMRestFRestCidSubPanel.setLayout(new FlowLayout());
         sulMCliMRestFRestCidSubPanel.add(voltarMCliMRestFRestCidButton);
         sulMCliMRestFRestCidSubPanel.add(retornarMCliMRestFRestCidButton);
+        sulMCliMRestFRestCidSubPanel.add(pesquisarMCliMRestFRestCidButton);
+
+        //TODO faltar ver métodos para pesquisar e o comando do mostrarJanela tem quer alterado - tem iniciado abaixo (comentado)
+        pesquisarMCliMRestFRestCidButton.addActionListener(a -> {
+            mostrarJanela(MCLIMRESTFORDRESTS_CARD);
+        });
 
         retornarMCliMRestFRestCidButton.addActionListener(a -> {
             mostrarJanela(MCLIMRESTFORDRESTS_CARD);
@@ -2548,7 +2570,7 @@ public class Interface extends JFrame {
         JButton ptEnMCliMComFCliButton = new JButton("PT/EN");
         JButton voltarMCliMComFCliButton = new JButton("MENU CLIENTE");
         JButton retornarMCliMComFCliButton = new JButton("VOLTAR");
-        JButton okMCliMComFCliButton = new JButton("OK");
+        JButton pesquisarMCliMComFCliButton = new JButton("PESQUISAR");
 
         mCliMComFCliSuperPanel.add(norteMCliMComFCliSubPanel, "North");
         mCliMComFCliSuperPanel.add(centroMCliMComFCliSubPanel, "Center");
@@ -2570,7 +2592,7 @@ public class Interface extends JFrame {
         sulMCliMComFCliSubPanel.setLayout(new FlowLayout());
         sulMCliMComFCliSubPanel.add(voltarMCliMComFCliButton);
         sulMCliMComFCliSubPanel.add(retornarMCliMComFCliButton);
-        sulMCliMComFCliSubPanel.add(okMCliMComFCliButton);
+        sulMCliMComFCliSubPanel.add(pesquisarMCliMComFCliButton);
 
         voltarMCliMComFCliButton.addActionListener(a -> {
             mostrarJanela(MENUCLIENTE_CARD);
@@ -2580,7 +2602,7 @@ public class Interface extends JFrame {
             mostrarJanela(MCLIMCOM_CARD);
         });
 
-        okMCliMComFCliButton.addActionListener(e -> {
+        pesquisarMCliMComFCliButton.addActionListener(e -> {
             mostrarJanela(LOGIN_CARD);
         });
 
@@ -2606,7 +2628,7 @@ public class Interface extends JFrame {
         JButton ptEnMCliMComFRestButton = new JButton("PT/EN");
         JButton voltarMCliMComFRestButton = new JButton("MENU CLIENTE");
         JButton retornarMCliMComFRestButton = new JButton("VOLTAR");
-        JButton okMCliMComFRestButton = new JButton("OK");
+        JButton pesquisarMCliMComFRestButton = new JButton("PESQUISAR");
 
         mCliMComFRestSuperPanel.add(norteMCliMComFRestSubPanel, "North");
         mCliMComFRestSuperPanel.add(centroMCliMComFRestSubPanel, "Center");
@@ -2628,7 +2650,7 @@ public class Interface extends JFrame {
         sulMCliMComFRestSubPanel.setLayout(new FlowLayout());
         sulMCliMComFRestSubPanel.add(voltarMCliMComFRestButton);
         sulMCliMComFRestSubPanel.add(retornarMCliMComFRestButton);
-        sulMCliMComFRestSubPanel.add(okMCliMComFRestButton);
+        sulMCliMComFRestSubPanel.add(pesquisarMCliMComFRestButton);
 
         voltarMCliMComFRestButton.addActionListener(a -> {
             mostrarJanela(MENUCLIENTE_CARD);
@@ -2638,8 +2660,8 @@ public class Interface extends JFrame {
             mostrarJanela(MCLIMCOM_CARD);
         });
 
-        okMCliMComFRestButton.addActionListener(e -> {
-            mostrarJanela(LOGIN_CARD);
+        pesquisarMCliMComFRestButton.addActionListener(e -> {
+            mostrarJanela(MCLIMCOM_CARD);
         });
 
     }
@@ -2677,7 +2699,7 @@ public class Interface extends JFrame {
         JButton ptEnMCliMComFIDButton = new JButton("PT/EN");
         JButton voltarMCliMComFIDButton = new JButton("MENU CLIENTE");
         JButton retornarMCliMComFIDButton = new JButton("VOLTAR");
-        JButton okMCliMComFIDButton = new JButton("OK");
+        JButton pesquisarMCliMComFIDButton = new JButton("PESQUISAR");
 
         mCliMComFIDSuperPanel.add(norteMCliMComFIDSubPanel, "North");
         mCliMComFIDSuperPanel.add(centroMCliMComFIDSubPanel, "Center");
@@ -2710,7 +2732,7 @@ public class Interface extends JFrame {
         sulMCliMComFIDSubPanel.setLayout(new FlowLayout());
         sulMCliMComFIDSubPanel.add(voltarMCliMComFIDButton);
         sulMCliMComFIDSubPanel.add(retornarMCliMComFIDButton);
-        sulMCliMComFIDSubPanel.add(okMCliMComFIDButton);
+        sulMCliMComFIDSubPanel.add(pesquisarMCliMComFIDButton);
 
         voltarMCliMComFIDButton.addActionListener(a -> {
             mostrarJanela(MENUCLIENTE_CARD);
@@ -2720,11 +2742,11 @@ public class Interface extends JFrame {
             mostrarJanela(MCLIMCOM_CARD);
         });
 
-        okMCliMComFIDButton.addActionListener(e -> {
+        pesquisarMCliMComFIDButton.addActionListener(e -> {
             GregorianCalendar data1 = (GregorianCalendar) datePickerMCliMComFID1.getJFormattedTextField().getValue();
             String data2 = datePickerMCliMComFID2.getJFormattedTextField().getText();
             //TODO implementar método mais tarde
-            mostrarJanela(LOGIN_CARD);
+            mostrarJanela(MCLIMCOM_CARD);
         });
 
     }
