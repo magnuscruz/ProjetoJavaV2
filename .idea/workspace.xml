@@ -24,13 +24,8 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f76bd0c9-46a3-467f-8d1c-c12c37b653a1" name="Default Changelist" comment="Atualizado o gitignore">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_01_2021_01_54__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_01_2021_01_54__Default_Changelist_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_01_2021_22_44__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_01_2021_22_44__Default_Changelist_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_28_12_2020_22_01__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_28_12_2020_22_01__Default_Changelist_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_31_12_2020_10_59__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_31_12_2020_10_59__Default_Changelist_.xml" afterDir="false" />
+    <list default="true" id="f76bd0c9-46a3-467f-8d1c-c12c37b653a1" name="Default Changelist" comment="Ajustes para chamar listas e separação da interface menu restaurante, reservas">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/gui/Interface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/gui/Interface.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -104,17 +99,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
@@ -125,7 +109,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="fc1a7ff5-4773-4423-a8d5-04210f78b6a5" name="Default Changelist" comment="" />
+      <changelist id="f76bd0c9-46a3-467f-8d1c-c12c37b653a1" name="Default Changelist" comment="Inseri tabela no comentário proprio, menu cliente" />
       <created>1608565947322</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -147,20 +131,7 @@
       <workItem from="1609498509614" duration="20405000" />
       <workItem from="1609621722162" duration="9543000" />
       <workItem from="1609676565948" duration="12857000" />
-    </task>
-    <task id="LOCAL-00004" summary="Feito 3º commit da Taís">
-      <created>1608645316371</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1608645316371</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Autalizações em aula">
-      <created>1609178229314</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1609178229314</updated>
+      <workItem from="1609764170678" duration="13732000" />
     </task>
     <task id="LOCAL-00006" summary="Passando para o projeto as interfaces desenvolvidas a parte: Login">
       <created>1609192681829</created>
@@ -491,7 +462,21 @@
       <option name="project" value="LOCAL" />
       <updated>1609699261823</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="Inseri tabela no comentário proprio, menu cliente">
+      <created>1609711406657</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1609711406751</updated>
+    </task>
+    <task id="LOCAL-00054" summary="Ajustes para chamar listas e separação da interface menu restaurante, reservas">
+      <created>1609772934502</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1609772934534</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -520,8 +505,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Atualizado menu restaurante - comentarios" />
-    <MESSAGE value="alterando configurações do gitignore" />
     <MESSAGE value="criei método login" />
     <MESSAGE value="Atualizações métodos e outras questões para o código rodar" />
     <MESSAGE value="Feito Actionlistner do criar cliente" />
@@ -545,33 +528,39 @@
     <MESSAGE value="atualizadas interfaces" />
     <MESSAGE value="atualizacao do gitignore" />
     <MESSAGE value="Varias Alteracoes (ver mais tarde)&#10;Uma delas, listaComentarios agora so esta em Sistema..." />
-    <option name="LAST_COMMIT_MESSAGE" value="Varias Alteracoes (ver mais tarde)&#10;Uma delas, listaComentarios agora so esta em Sistema..." />
+    <MESSAGE value="Inseri tabela no comentário proprio, menu cliente" />
+    <MESSAGE value="Ajustes para chamar listas e separação da interface menu restaurante, reservas" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ajustes para chamar listas e separação da interface menu restaurante, reservas" />
   </component>
   <component name="WindowStateProjectService">
     <state x="93" y="93" width="1095" height="495" key="DiffContextDialog" timestamp="1609710277084">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="93" y="93" width="1095" height="495" key="DiffContextDialog/0.0.1280.680@0.0.1280.680" timestamp="1609710277084" />
-    <state width="1237" height="160" key="GridCell.Tab.0.bottom" timestamp="1609710686148">
+    <state width="1237" height="160" key="GridCell.Tab.0.bottom" timestamp="1609780082342">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="160" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1609710686148" />
-    <state width="1237" height="160" key="GridCell.Tab.0.center" timestamp="1609710686145">
+    <state width="1237" height="160" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1609780082342" />
+    <state width="1237" height="160" key="GridCell.Tab.0.center" timestamp="1609780082342">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="160" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1609710686145" />
-    <state width="1237" height="160" key="GridCell.Tab.0.left" timestamp="1609710686141">
+    <state width="1237" height="160" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1609780082342" />
+    <state width="1237" height="160" key="GridCell.Tab.0.left" timestamp="1609780082342">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="160" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1609710686141" />
-    <state width="1237" height="160" key="GridCell.Tab.0.right" timestamp="1609710686147">
+    <state width="1237" height="160" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1609780082326" />
+    <state width="1237" height="160" key="GridCell.Tab.0.right" timestamp="1609780082342">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="160" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1609710686147" />
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1609707041800">
+    <state width="1237" height="160" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1609780082342" />
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1609772942373">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1609707041800" />
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1609772942373" />
+    <state x="458" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1609772978858">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="458" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1609772978858" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
