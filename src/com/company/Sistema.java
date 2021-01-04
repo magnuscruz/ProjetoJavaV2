@@ -248,6 +248,7 @@ public class Sistema implements Serializable {
                                         listaUtilizadores.add(r);
                                         System.out.println("Restaurante criado");
                                         //JOptionPane.showMessageDialog(null, "Restaurante criado");
+                                        gravarSistema();
                                         return valido = true;
                                     } else {
                                         System.out.println("Horario invalido");
@@ -285,18 +286,20 @@ public class Sistema implements Serializable {
     }
 
     public boolean criarCliente(String nome, String email, String morada, String telefone, String username, String password, String confirmarPass) {
-
+//TODO - Interface bloqueia!
         boolean valido = false;
-        if (telefoneUnico(telefone)) {
-            if (validarTelefone(telefone)) {
-                if (emailUnico(email)) {
-                    if (validarEmail(email)) {
-                        if (usernameUnico(username)) {
-                            if (confirmarPass(password, confirmarPass)) {
+        if (emailUnico(email)) { //(emailUnico(email) || email=="")
+            if (validarEmail(email)) {
+                // if (morada == "") { //
+                if (telefoneUnico(telefone)) {//(telefoneUnico(telefone) || telefone=="")
+                    if (validarTelefone(telefone)) {
+                        if (usernameUnico(username)) { // (usernameUnico(username) || username=="")
+                            if (confirmarPass(password, confirmarPass)) { //(confirmarPass(password, confirmarPass)
                                 Cliente c = new Cliente(nome, morada, telefone, email, username, password, confirmarPass);
                                 listaUtilizadores.add(c);
                                 System.out.println("Cliente criado");
                                 // JOptionPane.showMessageDialog(null, "Cliente criado");
+                                gravarSistema();
                                 return valido = true;
                             } else {
                                 System.out.println("Passwords não são iguais");
@@ -307,20 +310,27 @@ public class Sistema implements Serializable {
                             JOptionPane.showMessageDialog(null, "Username indisponivel");
                         }
                     } else {
-                        System.out.println("Email não é valido");
-                        JOptionPane.showMessageDialog(null, "Email não é valido");
+                        System.out.println("Telemovel não é valido");
+                        JOptionPane.showMessageDialog(null, "Telemovel não é valido");
+
                     }
                 } else {
-                    System.out.println("Email já esta registado");
-                    JOptionPane.showMessageDialog(null, "Email já esta registado");
+                    System.out.println("Telemovel já registado");
+                    JOptionPane.showMessageDialog(null, "Telemovel já registado");
                 }
+//
+//                } else {
+//                    System.out.println("Tem de inserir morada");
+//                    JOptionPane.showMessageDialog(null, "Tem de inserir morada");
+//                }
             } else {
-                System.out.println("Telemovel não é valido");
-                JOptionPane.showMessageDialog(null, "Telemovel não é valido");
+                System.out.println("Email não é valido");
+                JOptionPane.showMessageDialog(null, "Email não é valido");
+
             }
         } else {
-            System.out.println("Telemovel já registado");
-            JOptionPane.showMessageDialog(null, "Telemovel já registado");
+            System.out.println("Email já esta registado");
+            JOptionPane.showMessageDialog(null, "Email já esta registado");
         }
         return valido;
     }
@@ -355,6 +365,7 @@ public class Sistema implements Serializable {
                 JOptionPane.showMessageDialog(null, "Email já esta registado");
                 System.out.println("Email já esta registado");
             }
+
         }
 
         if (password != "") {
@@ -369,9 +380,12 @@ public class Sistema implements Serializable {
                 }
             }
         }
+        gravarSistema();
     }
 
     public void atualizarDadosRestaurante(String nome, String morada, String telefone, String email, String password, String novaPass, String confirmarNovaPass, int lotacaoEsplanada, int lotacaoFum, int lotacaoNFum, LocalTime inicioAlm, LocalTime fimAlm, LocalTime inicioJan, LocalTime fimJan) {
+
+
 //todo falta validar a lotacao, a questao de pedir variaveis int ou tudo String...
 
         if (nome != "") {
@@ -430,7 +444,7 @@ public class Sistema implements Serializable {
         if (fimJan != null) {
             getRestauranteAtivo().setFimJan(fimJan);
         }
-
+        gravarSistema();
 
     }
 
@@ -441,6 +455,7 @@ public class Sistema implements Serializable {
                 u.setStatus(false);
                 JOptionPane.showMessageDialog(null, "Removido com sucesso");
             }
+            gravarSistema();
         }
     }
 
@@ -453,6 +468,17 @@ public class Sistema implements Serializable {
 
             }
         }
+
+    }
+
+    public boolean verificarValidadeDatas(GregorianCalendar dataAnterior, GregorianCalendar dataPosterior) {
+
+        if (dataAnterior.before(dataPosterior)) {
+            return true;
+        } else {
+            JOptionPane.showMessageDialog(null, "Datas não são validas, insira novamente");
+        }
+        return false;
     }
 
     public ArrayList<Comentario> consultarListaComentariosPorCliente(String nomeCliente) {
@@ -487,12 +513,46 @@ public class Sistema implements Serializable {
         return listaComentariosPorRestaurante;
     }
 
-    public ArrayList<Restaurante> consultarRestaurantePorValores(int valorMin, int valorMax) {
+    public ArrayList<Comentario> consultarListaComentariosPorIntervaloDatas(Cliente cliente, GregorianCalendar dataAnterior, GregorianCalendar dataPosterior) {
+        boolean valido = verificarValidadeDatas(dataAnterior, dataPosterior);
+        int count = 0;
+        ArrayList<Comentario> listaComentariosPorData = new ArrayList<>();
+
+        if (valido) {
+            for (Comentario c : getListaComentarios()) {
+                if (c.getCliente().getNome().equals(cliente.nome) && c.getDataComentario().after(dataAnterior) && c.getDataComentario().before(dataPosterior)) {
+                    listaComentariosPorData.add(c);
+                    count++;
+                }
+            }
+            if (count <= 0) {
+                JOptionPane.showMessageDialog(null, "Não existem comentarios dentro dessas datas");
+                return null;
+            }
+        }
+        return listaComentariosPorData;
+    }
+
+    //TODO - NAO ESTA FEITO
+//    public ArrayList <Restaurante> consultarRestaurantesPorOrdemPontuacao(){
+//
+//        ArrayList <Restaurante> listaRestaurantesPorPontuacao = new ArrayList<>();
+//
+//        for (Restaurante r: getListaRestaurantes()){
+//
+//        }
+//
+//    }
+
+    public ArrayList<Restaurante> consultarRestaurantePorValores(String valorMin2, String valorMax2) {
+        int valorMin = Integer.parseInt(valorMin2);
+        int valorMax = Integer.parseInt(valorMax2);
+
         ArrayList<Restaurante> restaurantesPorValores = new ArrayList<>();
 
-        if (validarMinMenorMax(valorMin, valorMax)) {
+        if (validarMinMenorQueMax(valorMin, valorMax)) {
             for (Restaurante r : getListaRestaurantes()) {
-                double precoMedio =r.getPrecoMedioRestaurante();
+                double precoMedio = r.getPrecoMedioRestaurante();
 
                 if (precoMedio >= valorMin && precoMedio <= valorMax) {
                     restaurantesPorValores.add(r);
@@ -523,11 +583,13 @@ public class Sistema implements Serializable {
         return restaurantesPorCidade;
     }
 
-    public ArrayList<Restaurante> consultarRestaurantePorPontuacao(int valorMin, int valorMax) {
+    public ArrayList<Restaurante> consultarRestaurantePorPontuacao(String valorMin2, String valorMax2) {
+        int valorMin = Integer.parseInt(valorMin2);
+        int valorMax = Integer.parseInt(valorMax2);
 
         ArrayList<Restaurante> restaurantesPorPontuacao = new ArrayList<>();
         int count = 0;
-        if (validarMinMenorMax(valorMin, valorMax)) {
+        if (validarMinMenorQueMax(valorMin, valorMax)) {
             for (Restaurante r : getListaRestaurantes()) {
                 double pontuacao = getPontuacaoMediaRestaurante(r);
 
@@ -567,6 +629,76 @@ public class Sistema implements Serializable {
         return restaurantesPorHorario;
     }
 
+    public ArrayList<Reserva> consultarReservasPorCliente(String nomeCliente) {
+        ArrayList<Reserva> listaReservasCliente = new ArrayList<>();
+
+        for (Reserva r : getRestauranteAtivo().getListaReservas()) {
+            if (r.getCliente().getNome().equals(nomeCliente)) {
+                getRestauranteAtivo().getListaReservas().add(r);
+
+            }
+        }
+        if (listaReservasCliente.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Cliente sem reservas");
+            return null;
+        }
+        return listaReservasCliente;
+    }
+
+    public ArrayList<Reserva> consultarReservasTakeAwayPorValoresMedios(String valor1, String valor2) {
+        int valorMin = Integer.parseInt(valor1);
+        int valorMax = Integer.parseInt(valor2);
+
+        ArrayList<Reserva> listaReservasTakeAwayValoresMedios = new ArrayList<>();
+
+        if (validarMinMenorQueMax(valorMin, valorMax)) {
+            for (Reserva r : getRestauranteAtivo().getListaReservas()) {
+                if (r instanceof TakeAway && ((TakeAway) r).getValorTotal() >= valorMin && ((TakeAway) r).getValorTotal() <= valorMax) {
+                    listaReservasTakeAwayValoresMedios.add(r);
+                }
+            }
+        }
+        if (listaReservasTakeAwayValoresMedios.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Cliente sem reservas");
+            return null;
+        }
+        return listaReservasTakeAwayValoresMedios;
+    }
+
+    public ArrayList<Reserva> getReservasTakeAway() {
+
+        ArrayList<Reserva> listaReservasTakeAway = new ArrayList<>();
+
+        for (Reserva r : getRestauranteAtivo().getListaReservas()) {
+            if (r instanceof TakeAway) {
+                listaReservasTakeAway.add(r);
+            }
+        }
+        if (listaReservasTakeAway.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Sem reservas TakeAway");
+            return null;
+        }
+        return listaReservasTakeAway;
+    }
+
+    public ArrayList<Reserva> getReservasPresencial() {
+
+        ArrayList<Reserva> listaReservasPresencial = new ArrayList<>();
+
+        for (Reserva r : getRestauranteAtivo().getListaReservas()) {
+            if (r instanceof Presencial) {
+                listaReservasPresencial.add(r);
+            }
+        }
+        if (listaReservasPresencial.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Sem reservas Presenciais");
+            return null;
+        }
+        return listaReservasPresencial;
+    }
+
+    ///Restaurante - reservas por data
+
     //TODO ainda ao esta feito!
     public ArrayList<Restaurante> consultarRestaurantePorLugaresDisponiveis() {
         ArrayList<Restaurante> restaurantesPorLotacao = new ArrayList<>();
@@ -581,25 +713,25 @@ public class Sistema implements Serializable {
         this.listaComentarios = listaComentarios;
     }
 
-    //TODO  incompleto
-//    public Comentario criarComentarioORIGINAL(String opiniao, double pontuacao, Restaurante restaurante) {
-//        Calendar diaHoje = Calendar.getInstance();
-//        for (Reserva r : this.getListaReservas()) {
-//            if (r.getData().before(diaHoje)) {
-//                restaurante = r.getRestaurante();
-//                Comentario comentario = new Comentario(opiniao, pontuacao, this, restaurante);
-//                getListaComentarios().add(comentario);
-//                JOptionPane.showMessageDialog(null, "Obrigado pela sua opinião");
-//                return comentario;
-//            } else System.out.println("Nao pode comentar um restaurante que ainda nao frequentou");
-//        }
-//        return null;
-//    }
+    //TODO  incompleto - este tem de ser o final
+    public void adicionarComentario2(Cliente cliente, String opiniao, double pontuacao, Restaurante restaurante) {
+
+        for (Reserva r : cliente.getListaReservas()) {
+            if (r.getCliente().getNome().equals(cliente.getNome()) && r.getCliente().getRestaurante().getNome().equals(restaurante.getNome())) {
+                Comentario comentario = new Comentario(opiniao, pontuacao, cliente, restaurante);
+                listaComentarios.add(comentario);
+                gravarSistema();
+            }
+        }
+
+    }
 
     //TODO (prof nao) este criarComentario funciona, mas ver o de cima, é o original!//Nao esquecer como reserva nao funciona, nao da p testar 100%
     public void adicionarComentario(Cliente cliente, String opiniao, double pontuacao, Restaurante restaurante) {
         Comentario comentario = new Comentario(opiniao, pontuacao, cliente, restaurante);
         listaComentarios.add(comentario);
+        gravarSistema();
+
     }
 
     public void editarComentario(String opiniao, int pontuacao) {
@@ -614,6 +746,7 @@ public class Sistema implements Serializable {
                     c.setPontuacao(pontuacao);
                 }
             }
+            gravarSistema();
         }
     }
 
@@ -623,10 +756,11 @@ public class Sistema implements Serializable {
             if (c.equals(this) && c.getRestaurante().equals(restaurante)) {
                 c.setStatus(false);
             }
+            gravarSistema();
         }
     }
 
-    public boolean validarMinMenorMax(int valorMin, int valorMax) {
+    public boolean validarMinMenorQueMax(int valorMin, int valorMax) {
         boolean menor = false;
         if (valorMin < valorMax) {
             menor = true;
@@ -659,4 +793,3 @@ public class Sistema implements Serializable {
     }
 
 }
-

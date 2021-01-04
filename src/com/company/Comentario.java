@@ -14,7 +14,7 @@ public class Comentario implements Serializable {
     private double pontuacao;
     private Cliente cliente;
     private Restaurante restaurante;
-    private GregorianCalendar dataHoje;
+    private GregorianCalendar dataComentario = new GregorianCalendar();
     private boolean status;
     private int ano;
     private int mes;
@@ -28,10 +28,10 @@ public class Comentario implements Serializable {
         this.restaurante = restaurante;
         this.status = true;
 
-        Calendar dataHoje = Calendar.getInstance();//Automaticamente fica a data do dia que foi feito o Comentario!
-        this.ano = dataHoje.get(Calendar.YEAR);
-        this.mes = dataHoje.get((Calendar.MONTH));
-        this.dia = dataHoje.get(Calendar.DAY_OF_MONTH);
+        this.dataComentario.toInstant();//Automaticamente fica a data do dia que foi feito o Comentario!
+        this.ano = dataComentario.get(Calendar.YEAR);
+        this.mes = dataComentario.get((Calendar.MONTH));
+        this.dia = dataComentario.get(Calendar.DAY_OF_MONTH);
     }
 
     @Override
@@ -43,6 +43,10 @@ public class Comentario implements Serializable {
                 ", restaurante=" + restaurante +
                 ", data=" + dia + "/" + (mes + 1) + "/" + ano +
                 '}';
+    }
+
+    public GregorianCalendar getDataComentario() {
+        return dataComentario;
     }
 
     public Cliente getCliente() {

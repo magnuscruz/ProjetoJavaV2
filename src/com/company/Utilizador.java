@@ -1,5 +1,6 @@
 package com.company;
 
+import javax.swing.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -8,7 +9,6 @@ public class Utilizador implements Serializable {
     Restaurante restaurante;
     Cliente cliente;
 
-   // private ArrayList<Comentario> listaComentarios = new ArrayList<>();
     private ArrayList<Reserva> listaReservas = new ArrayList<>();// cada utilizador vai ter a sua lista.
 
     protected int id;
@@ -21,9 +21,10 @@ public class Utilizador implements Serializable {
     protected String confirmarPass;
     protected boolean status;
 
-    Utilizador(){ }
+    Utilizador() {
+    }
 
-    public Utilizador(String nome, String morada, String telefone, String email, String username, String password,String confirmarPass) {
+    public Utilizador(String nome, String morada, String telefone, String email, String username, String password, String confirmarPass) {
         this.nome = nome;
         this.morada = morada;
         this.telefone = telefone;
@@ -44,7 +45,6 @@ public class Utilizador implements Serializable {
                 '}';
     }
 
-
     public Restaurante getRestaurante() {
         return restaurante;
     }
@@ -60,7 +60,6 @@ public class Utilizador implements Serializable {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
-
 
     public ArrayList<Reserva> getListaReservas() {
         return listaReservas;
@@ -126,11 +125,20 @@ public class Utilizador implements Serializable {
         this.status = status;
     }
 
-//    public ArrayList<Comentario> getListaComentarios() {
-//        return listaComentarios;
-//    }
-
-
-
+    public double getPrecoMedioReservaTakeAway() {
+        double media = 0;
+        double precoTotal = 0;
+        int count =0;
+        for (Reserva r : getListaReservas()) {
+            if (r instanceof TakeAway) {
+                precoTotal += ((TakeAway) r).getValorTotal();
+            }
+        }
+        if (count > 0){
+            return media = precoTotal/count;
+        }
+        JOptionPane.showMessageDialog(null, "Sem reservas TakeAway!");
+        return 0;
+    }
 
 }

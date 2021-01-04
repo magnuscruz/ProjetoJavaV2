@@ -38,6 +38,16 @@ public class Restaurante extends Utilizador implements Serializable {
         this.status = true;
     }
 
+    public void TESTEENTRARCICLOFOREACHCOMLISTARESERVAS (){
+        if (getListaReservas().isEmpty()) {
+            System.out.println("ENTROU NO IF DO METODO");
+            for (Reserva r : getListaReservas()) {
+                if (getListaReservas().isEmpty()) {
+                    System.out.println("ENTROU NO FOREACH");
+                }
+            }
+        }
+    }
 
     //TODO : ainda nao funciona correctamente, ou pelo menos nao encaixa no metodo final
     // tem de ter data e hora para verificar se ha vagas
@@ -47,15 +57,20 @@ public class Restaurante extends Utilizador implements Serializable {
         int disponibilidade = 0;
         switch (zona) {
             case 1:
-                for (Reserva r : getListaReservas()) {
-                    if (r.getData().equals(dia) || getListaReservas().isEmpty()) {
-                        disponibilidade = r.getRestaurante().lotacaoEsplanada;
-                        if (disponibilidade >= num) {
-                            return 1;
+                System.out.println(getListaReservas().size());
+                if (!getListaReservas().isEmpty()) {
+                    for (Reserva r : getListaReservas()) {
+                        if (r.getData().equals(dia)) {
+                            disponibilidade = r.getRestaurante().lotacaoEsplanada;
+                            System.out.println("ENTROU");
+                            if (disponibilidade >= num) {
+                                return 1;
+                            }
                         }
-
                     }
-
+                }else {
+                    System.out.println("ENTROUUUU");
+                    return 1;
                 }
                 return 1;
 
@@ -211,7 +226,8 @@ public class Restaurante extends Utilizador implements Serializable {
             countDia++;
         }
 
-        if ((precoTotalCarta + precoTotalDia) <= 0.001) {
+//TODO - Confirmar que funciona, devido a questao de comparar a 0
+        if ((precoTotalCarta + precoTotalDia) <= 0) {
             return 0;
         }
         return (precoTotalCarta + precoTotalDia) / (countCarta + countDia);

@@ -56,6 +56,8 @@ public class Interface extends JFrame {
     private static final String MRESTRESERV_CARD = "MENU RESTAURANTE - HISTÓRICO DE RESERVAS";
     private static final String MRESTRESERVASFID_CARD = "MENU RESTAURANTE - HISTÓRICO DE RESERVAS - INTERVALO DE DATAS";
     private static final String MRESTRESERVASFTIPO_CARD = "MENU RESTAURANTE - HISTÓRICO DE RESERVAS - TIPO";
+    private static final String MRESTRESERVASFTIPOP_CARD = "MENU RESTAURANTE - HISTÓRICO DE RESERVAS - PRESENCIAL";
+    private static final String MRESTRESERVASFTIPOTA_CARD = "MENU RESTAURANTE - HISTÓRICO DE RESERVAS - TAKE-AWAY";
     private static final String MRESTRESERVASFIV_CARD = "MENU RESTAURANTE - HISTÓRICO DE RESERVAS - INTERVALO VALORES PRATOS";
     private static final String MRESTRESERVASFCLI_CARD = "MENU RESTAURANTE - HISTÓRICO DE RESERVAS - CLIENTES";
 
@@ -167,6 +169,11 @@ public class Interface extends JFrame {
         mRestReservasFIDSuperPanel.setLayout(new BorderLayout());
         JPanel mRestReservasFTipoSuperPanel = new JPanel();
         mRestReservasFTipoSuperPanel.setLayout(new BorderLayout());
+        JPanel mRestReservasFTipoPSuperPanel = new JPanel();
+        mRestReservasFTipoPSuperPanel.setLayout(new BorderLayout());
+        JPanel mRestReservasFTipoTASuperPanel = new JPanel();
+        mRestReservasFTipoTASuperPanel.setLayout(new BorderLayout());
+
         JPanel mRestReservasFIVSuperPanel = new JPanel();
         mRestReservasFIVSuperPanel.setLayout(new BorderLayout());
         JPanel mRestReservasFCliSuperPanel = new JPanel();
@@ -198,6 +205,10 @@ public class Interface extends JFrame {
         construirPanelMRestReservasFID(this, contentor, loginSuperPanel, mRestReservasFIDSuperPanel);
 
         construirPanelMRestReservasFTipo(this, contentor, loginSuperPanel, mRestReservasFTipoSuperPanel);
+
+        construirPanelMRestReservasFTipoP(this, contentor, loginSuperPanel, mRestReservasFTipoPSuperPanel);
+
+        construirPanelMRestReservasFTipoTA(this, contentor, loginSuperPanel, mRestReservasFTipoTASuperPanel);
 
         construirPanelMRestReservasFIV(this, contentor, loginSuperPanel, mRestReservasFIVSuperPanel);
 
@@ -254,6 +265,8 @@ public class Interface extends JFrame {
         contentor.add(mRestReservasSuperPanel, MRESTRESERV_CARD);
         contentor.add(mRestReservasFIDSuperPanel, MRESTRESERVASFID_CARD);
         contentor.add(mRestReservasFTipoSuperPanel, MRESTRESERVASFTIPO_CARD);
+        contentor.add(mRestReservasFTipoPSuperPanel, MRESTRESERVASFTIPOP_CARD);
+        contentor.add(mRestReservasFTipoTASuperPanel, MRESTRESERVASFTIPOTA_CARD);
         contentor.add(mRestReservasFIVSuperPanel, MRESTRESERVASFIV_CARD);
         contentor.add(mRestReservasFCliSuperPanel, MRESTRESERVASFCLI_CARD);
         contentor.add(mRestComentariosSuperPanel, MRESTCOMENTARIOS_CARD);
@@ -279,6 +292,7 @@ public class Interface extends JFrame {
         contentor.add(mCliMComFRestSuperPanel, MCLIMCOMFREST_CARD);
         contentor.add(mCliMComFIDSuperPanel, MCLIMCOMFID_CARD);
         contentor.add(mRestPMedSuperPanel, MRESTPMED_CARD);
+
     }
 
 
@@ -1697,7 +1711,6 @@ public class Interface extends JFrame {
 //        centroMRestReservasFIDSSPanel3.add(filtrarIntervValmRestResRButton);
 
 
-
 //        centroMRestReservasFIDSSPanel4.add(filtrarClientemRestResRButton);
 //        centroMRestReservasFIDSSPanel4.add(usernameMRestReservasFIDLabel);
 //        centroMRestReservasFIDSSPanel4.add(usernameMRestReservasFIDText);
@@ -1739,9 +1752,6 @@ public class Interface extends JFrame {
 //        }
 //        return properties;
 //    }
-
-
-
 
 
     //////MENU RESTAURANTE – HISTÓRICO DE RESERVAS  - TIPO//////////
@@ -1880,6 +1890,315 @@ public class Interface extends JFrame {
 //        });
     }
 
+    //////MENU RESTAURANTE – HISTÓRICO DE RESERVAS  - TIPO PRESENCIAL//////////
+    private void construirPanelMRestReservasFTipoP(Interface janela, Container contentor, JPanel loginSuperPanel, JPanel mRestReservasFTipoPSuperPanel) {
+
+
+        /////SUBPAINEIS//////
+        JPanel norteMRestReservasFTipoPSubPanel = new JPanel();
+        norteMRestReservasFTipoPSubPanel.setLayout(new BorderLayout());
+        JPanel centroMRestReservasFTipoPSubPanel = new JPanel();
+        JPanel sulMRestReservasFTipoPSubPanel = new JPanel();
+
+        JLabel mRestReservasFTipoPLabel = new JLabel("HISTÓRICO DE RESERVAS - PRESENCIAL");
+//        JLabel usernameMRestReservasFTipoPLabel = new JLabel("Username");
+//        //JLabel filtrarTipomRestResLabel = new JLabel("Escolha a opção em que a lista será mostrada:");
+//        JLabel filtrarDataInicioMRestReservasFTipoPLabel = new JLabel("De");
+//        JLabel filtrarDataFimMRestReservasFTipoPLabel = new JLabel("Até");
+//
+//
+//        JTextField usernameMRestReservasFTipoPText = new JTextField(20);
+//
+//        JCheckBox cem = new JCheckBox("Até 100");
+//        cem.setMnemonic(KeyEvent.VK_C);
+//        JCheckBox duzentos = new JCheckBox("100-200");
+//        duzentos.setMnemonic(KeyEvent.VK_C);
+//        JCheckBox trezentos = new JCheckBox("200-300");
+//        trezentos.setMnemonic(KeyEvent.VK_C);
+//        JCheckBox quatrocentos = new JCheckBox("+ de 300");
+//        quatrocentos.setMnemonic(KeyEvent.VK_C);
+//
+//
+//        JRadioButton filtrarIntervDatasMRestResRButton = new JRadioButton("DATAS");
+//        //todo verificar a questão do calendário
+//        JRadioButton filtrarTipomRestResRButton = new JRadioButton("TIPO");
+//        JRadioButton filtrarIntervValmRestResRButton = new JRadioButton("VALORES");
+//        JRadioButton filtrarClientemRestResRButton = new JRadioButton("CLIENTE");
+//
+//        ButtonGroup group = new ButtonGroup();
+//        group.add(filtrarIntervDatasMRestResRButton);
+//        group.add(filtrarTipomRestResRButton);
+//        group.add(filtrarIntervValmRestResRButton);
+//        group.add(filtrarClientemRestResRButton);
+        String[] nomeColunasMRestReservasFTipoP = new String[] {"CLIENTE", "DATA", "N.PESSOAS"};
+
+        //todo exemplo a verificar
+        Object[][] dadosMRestReservasFTipoP = new Object[][]{
+                {"CLIENTE", "DATA", "N.PESSOAS"},
+                {null, null, null},
+        };
+
+        //criação da tabela
+        JTable tabelaMRestReservasFTipoP = new JTable(dadosMRestReservasFTipoP, nomeColunasMRestReservasFTipoP);
+
+        JComboBox<String> filtrosTipoMRestReservasFTipoPJCBox = new JComboBox<>();
+        filtrosTipoMRestReservasFTipoPJCBox.addItem("");
+        filtrosTipoMRestReservasFTipoPJCBox.addItem("Presencial");
+        filtrosTipoMRestReservasFTipoPJCBox.addItem("Take-Away");
+
+        JButton ptEnMRestReservasFTipoPButton = new JButton("PT/EN");
+        JButton voltarMRestReservasFTipoPButton = new JButton("MENU RESTAURANTE");
+        JButton retornarMRestReservasFTipoPButton = new JButton("RETORNAR");
+
+        //Adição do calendário
+//        UtilDateModel model1 = new UtilDateModel();
+//        UtilDateModel model2 = new UtilDateModel();
+//
+//        ResourceBundle b = ResourceBundle.getBundle("Text");
+//
+//        Properties p = convertResourceBundleToProperties(b);
+//        JDatePanelImpl datePanel = new JDatePanelImpl(model1, p);
+//        JDatePickerImpl datePicker1 = new JDatePickerImpl(datePanel, new DateLabelFormatter());
+//
+//        JDatePanelImpl datePanel1 = new JDatePanelImpl(model2, p);
+//        JDatePickerImpl datePicker2 = new JDatePickerImpl(datePanel1, new DateLabelFormatter());
+
+        mRestReservasFTipoPSuperPanel.add(norteMRestReservasFTipoPSubPanel, "North");
+        mRestReservasFTipoPSuperPanel.add(centroMRestReservasFTipoPSubPanel, "Center");
+        mRestReservasFTipoPSuperPanel.add(sulMRestReservasFTipoPSubPanel, "South");
+
+        JPanel norteMRestReservasFTipoPSSPanel = new JPanel();
+        norteMRestReservasFTipoPSSPanel.setLayout(new
+
+                FlowLayout());
+        norteMRestReservasFTipoPSSPanel.add(mRestReservasFTipoPLabel);
+        norteMRestReservasFTipoPSubPanel.add(norteMRestReservasFTipoPSSPanel, BorderLayout.CENTER);
+        norteMRestReservasFTipoPSubPanel.add(ptEnMRestReservasFTipoPButton, BorderLayout.EAST);
+
+        JPanel centroMRestReservasFTipoPSSPanel = new JPanel();
+        centroMRestReservasFTipoPSSPanel.setLayout(new
+
+                FlowLayout());
+        centroMRestReservasFTipoPSubPanel.add(centroMRestReservasFTipoPSSPanel, BorderLayout.WEST);
+
+        JPanel centroMRestReservasFTipoPSSPanel1 = new JPanel();
+        centroMRestReservasFTipoPSSPanel1.setLayout(new
+
+                FlowLayout());
+        centroMRestReservasFTipoPSubPanel.add(centroMRestReservasFTipoPSSPanel1, BorderLayout.WEST);
+
+        JPanel centroMRestReservasFTipoPSSPanel2 = new JPanel();
+        centroMRestReservasFTipoPSSPanel2.setLayout(new
+
+                FlowLayout());
+        centroMRestReservasFTipoPSubPanel.add(centroMRestReservasFTipoPSSPanel2, BorderLayout.WEST);
+
+        JPanel centroMRestReservasFTipoPSSPanel2A = new JPanel();
+        centroMRestReservasFTipoPSSPanel2A.setLayout(new
+
+                GridLayout(1, 1));
+        centroMRestReservasFTipoPSubPanel.add(centroMRestReservasFTipoPSSPanel2A, BorderLayout.WEST);
+
+        JPanel centroMRestReservasFTipoPSSPanel3 = new JPanel();
+        centroMRestReservasFTipoPSSPanel3.setLayout(new
+
+                FlowLayout());
+        centroMRestReservasFTipoPSubPanel.add(centroMRestReservasFTipoPSSPanel3, BorderLayout.WEST);
+
+        JPanel centroMRestReservasFTipoPSSPanel4 = new JPanel();
+        centroMRestReservasFTipoPSSPanel4.setLayout(new
+
+                FlowLayout());
+        centroMRestReservasFTipoPSubPanel.add(centroMRestReservasFTipoPSSPanel4, BorderLayout.WEST);
+
+//        centroMRestReservasFTipoPSSPanel.add(filtrarIntervDatasMRestResRButton);
+//        centroMRestReservasFTipoPSSPanel1.add(filtrarDataInicioMRestReservasFTipoPLabel);
+//        centroMRestReservasFTipoPSSPanel1.add(datePicker1);
+//        centroMRestReservasFTipoPSSPanel1.add(filtrarDataFimMRestReservasFTipoPLabel);
+//        centroMRestReservasFTipoPSSPanel1.add(datePicker2);
+//
+//      centroMRestReservasFTipoPSSPanel2.add(filtrarTipomRestResRButton);
+        centroMRestReservasFTipoPSSPanel2A.add(filtrosTipoMRestReservasFTipoPJCBox);
+
+        centroMRestReservasFTipoPSSPanel2A.add(tabelaMRestReservasFTipoP);
+//        centroMRestReservasFTipoPSSPanel3.add(filtrarIntervValmRestResRButton);
+//        centroMRestReservasFTipoPSSPanel3.add(cem);
+//        centroMRestReservasFTipoPSSPanel3.add(duzentos);
+//        centroMRestReservasFTipoPSSPanel3.add(trezentos);
+//        centroMRestReservasFTipoPSSPanel3.add(quatrocentos);
+//
+//        centroMRestReservasFTipoPSSPanel4.add(filtrarClientemRestResRButton);
+//        centroMRestReservasFTipoPSSPanel4.add(usernameMRestReservasFTipoPLabel);
+//        centroMRestReservasFTipoPSSPanel4.add(usernameMRestReservasFTipoPText);
+
+        sulMRestReservasFTipoPSubPanel.setLayout(new
+
+                FlowLayout());
+        sulMRestReservasFTipoPSubPanel.add(voltarMRestReservasFTipoPButton);
+        sulMRestReservasFTipoPSubPanel.add(retornarMRestReservasFTipoPButton);
+
+        retornarMRestReservasFTipoPButton.addActionListener(a ->
+
+        {
+            mostrarJanela(MRESTRESERV_CARD);
+        });
+
+        voltarMRestReservasFTipoPButton.addActionListener(a ->
+
+        {
+            mostrarJanela(MENURESTAURANTE_CARD);
+        });
+//
+//        //todo ver os encaminhamentos
+//        okMRestReservasFTipoPButton.addActionListener(e -> {
+//            mostrarJanela(LOGIN_CARD);
+//            this.setSize(LARGURA_LOGIN, ALTURA_LOGIN);
+//        });
+    }
+
+
+    //////MENU RESTAURANTE – HISTÓRICO DE RESERVAS  - TIPO TAKE-AWAY//////////
+    private void construirPanelMRestReservasFTipoTA(Interface janela, Container contentor, JPanel loginSuperPanel, JPanel mRestReservasFTipoTASuperPanel) {
+
+
+        /////SUBPAINEIS//////
+        JPanel norteMRestReservasFTipoTASubPanel = new JPanel();
+        norteMRestReservasFTipoTASubPanel.setLayout(new BorderLayout());
+        JPanel centroMRestReservasFTipoTASubPanel = new JPanel();
+        JPanel sulMRestReservasFTipoTASubPanel = new JPanel();
+
+        JLabel mRestReservasFTipoTALabel = new JLabel("HISTÓRICO DE RESERVAS – TAKE-AWAY");
+//        JLabel usernameMRestReservasFTipoTALabel = new JLabel("Username");
+//        //JLabel filtrarTipomRestResLabel = new JLabel("Escolha a opção em que a lista será mostrada:");
+//        JLabel filtrarDataInicioMRestReservasFTipoTALabel = new JLabel("De");
+//        JLabel filtrarDataFimMRestReservasFTipoTALabel = new JLabel("Até");
+//
+//
+//        JTextField usernameMRestReservasFTipoTAText = new JTextField(20);
+//
+//        JCheckBox cem = new JCheckBox("Até 100");
+//        cem.setMnemonic(KeyEvent.VK_C);
+//        JCheckBox duzentos = new JCheckBox("100-200");
+//        duzentos.setMnemonic(KeyEvent.VK_C);
+//        JCheckBox trezentos = new JCheckBox("200-300");
+//        trezentos.setMnemonic(KeyEvent.VK_C);
+//        JCheckBox quatrocentos = new JCheckBox("+ de 300");
+//        quatrocentos.setMnemonic(KeyEvent.VK_C);
+//
+//
+//        JRadioButton filtrarIntervDatasMRestResRButton = new JRadioButton("DATAS");
+//        //todo verificar a questão do calendário
+//        JRadioButton filtrarTipomRestResRButton = new JRadioButton("TIPO");
+//        JRadioButton filtrarIntervValmRestResRButton = new JRadioButton("VALORES");
+//        JRadioButton filtrarClientemRestResRButton = new JRadioButton("CLIENTE");
+//
+//        ButtonGroup group = new ButtonGroup();
+//        group.add(filtrarIntervDatasMRestResRButton);
+//        group.add(filtrarTipomRestResRButton);
+//        group.add(filtrarIntervValmRestResRButton);
+//        group.add(filtrarClientemRestResRButton);
+
+        String[] nomeColunasMRestReservasFTipoTA = new String[]{"CLIENTE", "DATA", "PREÇO"};
+//todo exemplo a verificar
+        Object[][] dadosMRestReservasFTipoTA = new Object[][]{{"CLIENTE", "DATA", "PREÇO"}, {null, null, null},};
+
+//criação da tabela
+        JTable tabelaMRestReservasFTipoTA = new JTable(dadosMRestReservasFTipoTA, nomeColunasMRestReservasFTipoTA);
+
+        // JComboBox<String> filtrosTipoMRestReservasFTipoTAJCBox = new JComboBox<>();
+        //filtrosTipoMRestReservasFTipoTAJCBox.addItem("");
+        //filtrosTipoMRestReservasFTipoTAJCBox.addItem("Presencial");
+        //filtrosTipoMRestReservasFTipoTAJCBox.addItem("Take-Away");
+
+        JButton ptEnMRestReservasFTipoTAButton = new JButton("PT/EN");
+        JButton voltarMRestReservasFTipoTAButton = new JButton("MENU RESTAURANTE");
+        JButton retornarMRestReservasFTipoTAButton = new JButton("RETORNAR");
+
+        //Adição do calendário
+//        UtilDateModel model1 = new UtilDateModel();
+//        UtilDateModel model2 = new UtilDateModel();
+//
+//        ResourceBundle b = ResourceBundle.getBundle("Text");
+//
+//        Properties p = convertResourceBundleToProperties(b);
+//        JDatePanelImpl datePanel = new JDatePanelImpl(model1, p);
+//        JDatePickerImpl datePicker1 = new JDatePickerImpl(datePanel, new DateLabelFormatter());
+//
+//        JDatePanelImpl datePanel1 = new JDatePanelImpl(model2, p);
+//        JDatePickerImpl datePicker2 = new JDatePickerImpl(datePanel1, new DateLabelFormatter());
+
+        mRestReservasFTipoTASuperPanel.add(norteMRestReservasFTipoTASubPanel, "North");
+        mRestReservasFTipoTASuperPanel.add(centroMRestReservasFTipoTASubPanel, "Center");
+        mRestReservasFTipoTASuperPanel.add(sulMRestReservasFTipoTASubPanel, "South");
+
+        JPanel norteMRestReservasFTipoTASSPanel = new JPanel();
+        norteMRestReservasFTipoTASSPanel.setLayout(new FlowLayout());
+        norteMRestReservasFTipoTASSPanel.add(mRestReservasFTipoTALabel);
+        norteMRestReservasFTipoTASubPanel.add(norteMRestReservasFTipoTASSPanel, BorderLayout.CENTER);
+        norteMRestReservasFTipoTASubPanel.add(ptEnMRestReservasFTipoTAButton, BorderLayout.EAST);
+
+        JPanel centroMRestReservasFTipoTASSPanel = new JPanel();
+        centroMRestReservasFTipoTASSPanel.setLayout(new FlowLayout());
+        centroMRestReservasFTipoTASubPanel.add(centroMRestReservasFTipoTASSPanel, BorderLayout.WEST);
+
+        JPanel centroMRestReservasFTipoTASSPanel1 = new JPanel();
+        centroMRestReservasFTipoTASSPanel1.setLayout(new FlowLayout());
+        centroMRestReservasFTipoTASubPanel.add(centroMRestReservasFTipoTASSPanel1, BorderLayout.WEST);
+
+        JPanel centroMRestReservasFTipoTASSPanel2 = new JPanel();
+        centroMRestReservasFTipoTASSPanel2.setLayout(new FlowLayout());
+        centroMRestReservasFTipoTASubPanel.add(centroMRestReservasFTipoTASSPanel2, BorderLayout.WEST);
+
+        JPanel centroMRestReservasFTipoTASSPanel2A = new JPanel();
+        centroMRestReservasFTipoTASSPanel2A.setLayout(new GridLayout(1, 1));
+        centroMRestReservasFTipoTASubPanel.add(centroMRestReservasFTipoTASSPanel2A, BorderLayout.WEST);
+
+        JPanel centroMRestReservasFTipoTASSPanel3 = new JPanel();
+        centroMRestReservasFTipoTASSPanel3.setLayout(new FlowLayout());
+        centroMRestReservasFTipoTASubPanel.add(centroMRestReservasFTipoTASSPanel3, BorderLayout.WEST);
+
+        JPanel centroMRestReservasFTipoTASSPanel4 = new JPanel();
+        centroMRestReservasFTipoTASSPanel4.setLayout(new FlowLayout());
+        centroMRestReservasFTipoTASubPanel.add(centroMRestReservasFTipoTASSPanel4, BorderLayout.WEST);
+
+//        centroMRestReservasFTipoTASSPanel.add(filtrarIntervDatasMRestResRButton);
+//        centroMRestReservasFTipoTASSPanel1.add(filtrarDataInicioMRestReservasFTipoTALabel);
+//        centroMRestReservasFTipoTASSPanel1.add(datePicker1);
+//        centroMRestReservasFTipoTASSPanel1.add(filtrarDataFimMRestReservasFTipoTALabel);
+//        centroMRestReservasFTipoTASSPanel1.add(datePicker2);
+//
+//      centroMRestReservasFTipoTASSPanel2.add(filtrarTipomRestResRButton);
+        //centroMRestReservasFTipoTASSPanel2A.add(filtrosTipoMRestReservasFTipoTAJCBox);
+        centroMRestReservasFTipoTASSPanel2A.add(tabelaMRestReservasFTipoTA);
+
+//        centroMRestReservasFTipoTASSPanel3.add(filtrarIntervValmRestResRButton);
+//        centroMRestReservasFTipoTASSPanel3.add(cem);
+//        centroMRestReservasFTipoTASSPanel3.add(duzentos);
+//        centroMRestReservasFTipoTASSPanel3.add(trezentos);
+//        centroMRestReservasFTipoTASSPanel3.add(quatrocentos);
+//
+//        centroMRestReservasFTipoTASSPanel4.add(filtrarClientemRestResRButton);
+//        centroMRestReservasFTipoTASSPanel4.add(usernameMRestReservasFTipoTALabel);
+//        centroMRestReservasFTipoTASSPanel4.add(usernameMRestReservasFTipoTAText);
+
+        sulMRestReservasFTipoTASubPanel.setLayout(new FlowLayout());
+        sulMRestReservasFTipoTASubPanel.add(voltarMRestReservasFTipoTAButton);
+        sulMRestReservasFTipoTASubPanel.add(retornarMRestReservasFTipoTAButton);
+
+        retornarMRestReservasFTipoTAButton.addActionListener(a -> {
+            mostrarJanela(MRESTRESERV_CARD);
+        });
+
+        voltarMRestReservasFTipoTAButton.addActionListener(a -> {
+            mostrarJanela(MENURESTAURANTE_CARD);
+        });
+//
+//        //todo ver os encaminhamentos
+//        okMRestReservasFTipoTAButton.addActionListener(e -> {
+//            mostrarJanela(LOGIN_CARD);
+//            this.setSize(LARGURA_LOGIN, ALTURA_LOGIN);
+//        });
+    }
 
 
     //////MENU RESTAURANTE – HISTÓRICO DE RESERVAS – INTERVALO DE VALORES //////////
@@ -2053,7 +2372,7 @@ public class Interface extends JFrame {
 
 
     //////MENU RESTAURANTE – HISTÓRICO DE RESERVAS - CLIENTE//////////
-    private void construirPanelMRestReservasFCli (Interface janela, Container contentor, JPanel loginSuperPanel, JPanel MRestReservasFCliSuperPanel) {
+    private void construirPanelMRestReservasFCli(Interface janela, Container contentor, JPanel loginSuperPanel, JPanel MRestReservasFCliSuperPanel) {
 
 
         /////SUBPAINEIS//////
@@ -2184,7 +2503,6 @@ public class Interface extends JFrame {
 //            this.setSize(LARGURA_LOGIN, ALTURA_LOGIN);
 //        });
     }
-
 
 
     //////MENU RESTAURANTE – COMENTÁRIOS//////////
@@ -2420,7 +2738,7 @@ public class Interface extends JFrame {
 
 
     ////PAREI AQUI 1752
-    //////MENU RESTAURANTE – RESTAURANTES – FILTRAR POR PONTUAÇÃO//////////
+//////MENU RESTAURANTE – RESTAURANTES – FILTRAR POR PONTUAÇÃO//////////
     private void construirPanelMCliMRestFRestPont(Interface janela, Container contentor, JPanel loginSuperPanel, JPanel mCliMRestFRestPontSuperPanel) {
 
 
@@ -3018,7 +3336,7 @@ public class Interface extends JFrame {
     }
 
 
-    //TODO ver como criar o apagar e editar comentário na seleção da tabela e ver a questão do OK
+//TODO ver como criar o apagar e editar comentário na seleção da tabela e ver a questão do OK
 //////MENU CLIENTE – CONSULTAR COMENTÁRIOS MENU//////////
 
     private void construirPanelMCliMCom(Interface janela, Container contentor, JPanel
@@ -3070,53 +3388,53 @@ public class Interface extends JFrame {
 
         mCliMComFPPRButton.addActionListener(a -> {
             listaComentarioClienteAtivo = sistema.consultarListaComentariosPorCliente(sistema.getClienteAtivo().getNome());
-            String[][] dadosMCliMComFPPSSPanel = new String [listaComentarioClienteAtivo.size()] [3];
+            String[][] dadosMCliMComFPPSSPanel = new String[listaComentarioClienteAtivo.size()][3];
             int i = 0;
-            for (Comentario c:listaComentarioClienteAtivo) {
+            for (Comentario c : listaComentarioClienteAtivo) {
                 dadosMCliMComFPPSSPanel[i][0] = c.getOpiniao();
                 dadosMCliMComFPPSSPanel[i][1] = c.getRestaurante().getNome();
                 dadosMCliMComFPPSSPanel[i][2] = "" + c.getPontuacao();
                 i++;
             }
 
-            String [] nomeColunasMCliMComFPPSSPanel = new String []{"COMENTÁRIO", "RESTAURANTE", "PONTUAÇÃO"};
-            JTable tabelaMCliMComFPPSSPanel = new JTable (dadosMCliMComFPPSSPanel, nomeColunasMCliMComFPPSSPanel);
-            centroMCliMComFPPSSPanel.add(tabelaMCliMComFPPSSPanel,BorderLayout.CENTER);
+            String[] nomeColunasMCliMComFPPSSPanel = new String[]{"COMENTÁRIO", "RESTAURANTE", "PONTUAÇÃO"};
+            JTable tabelaMCliMComFPPSSPanel = new JTable(dadosMCliMComFPPSSPanel, nomeColunasMCliMComFPPSSPanel);
+            centroMCliMComFPPSSPanel.add(tabelaMCliMComFPPSSPanel, BorderLayout.CENTER);
             mostrarJanela(MCLIMCOMFPP_CARD);
 
         });
 
         mCliMComFCliRButton.addActionListener(a -> {
             listaComentarioCliente = sistema.consultarListaComentariosPorCliente(sistema.getClienteAtivo().getNome());
-            String[][] dadosMCliMComFCliSSPanel = new String [listaComentarioCliente.size()] [3];
+            String[][] dadosMCliMComFCliSSPanel = new String[listaComentarioCliente.size()][3];
             int i = 0;
-            for (Comentario c:listaComentarioCliente) {
+            for (Comentario c : listaComentarioCliente) {
                 dadosMCliMComFCliSSPanel[i][0] = c.getOpiniao();
                 dadosMCliMComFCliSSPanel[i][1] = c.getRestaurante().getNome();
                 dadosMCliMComFCliSSPanel[i][2] = "" + c.getPontuacao();
                 i++;
             }
 
-            String [] nomeColunasMCliMComFCliSSPanel = new String []{"COMENTÁRIO", "RESTAURANTE", "PONTUAÇÃO"};
-            JTable tabelaMCliMComFCliSSPanel = new JTable (dadosMCliMComFCliSSPanel, nomeColunasMCliMComFCliSSPanel);
-            centroMCliMComFClinSSPanel.add(tabelaMCliMComFCliSSPanel,BorderLayout.CENTER);
+            String[] nomeColunasMCliMComFCliSSPanel = new String[]{"COMENTÁRIO", "RESTAURANTE", "PONTUAÇÃO"};
+            JTable tabelaMCliMComFCliSSPanel = new JTable(dadosMCliMComFCliSSPanel, nomeColunasMCliMComFCliSSPanel);
+            centroMCliMComFClinSSPanel.add(tabelaMCliMComFCliSSPanel, BorderLayout.CENTER);
             mostrarJanela(MCLIMCOMFCLI_CARD);
         });
 
         mCliMComFRestRButton.addActionListener(a -> {
             listaComentarioRest = sistema.consultarListaComentariosPorRestaurante(sistema.getClienteAtivo().getNome());
-            String[][] dadosMCliMComFRestSSPanel = new String [listaComentarioRest.size()] [3];
+            String[][] dadosMCliMComFRestSSPanel = new String[listaComentarioRest.size()][3];
             int i = 0;
-            for (Comentario c:listaComentarioRest) {
+            for (Comentario c : listaComentarioRest) {
                 dadosMCliMComFRestSSPanel[i][0] = c.getOpiniao();
                 dadosMCliMComFRestSSPanel[i][1] = c.getRestaurante().getNome();
                 dadosMCliMComFRestSSPanel[i][2] = "" + c.getPontuacao();
                 i++;
             }
 
-            String [] nomeColunasMCliMComFRestSSPanel = new String []{"COMENTÁRIO", "RESTAURANTE", "PONTUAÇÃO"};
-            JTable tabelaMCliMComFRestSSPanel = new JTable (dadosMCliMComFRestSSPanel, nomeColunasMCliMComFRestSSPanel);
-            centroMCliMComFRestSSPanel.add(tabelaMCliMComFRestSSPanel,BorderLayout.CENTER);
+            String[] nomeColunasMCliMComFRestSSPanel = new String[]{"COMENTÁRIO", "RESTAURANTE", "PONTUAÇÃO"};
+            JTable tabelaMCliMComFRestSSPanel = new JTable(dadosMCliMComFRestSSPanel, nomeColunasMCliMComFRestSSPanel);
+            centroMCliMComFRestSSPanel.add(tabelaMCliMComFRestSSPanel, BorderLayout.CENTER);
             mostrarJanela(MCLIMCOMFREST_CARD);
         });
 
@@ -3557,7 +3875,7 @@ public class Interface extends JFrame {
     }
 // todo verificar os botões editar e apagar que estão em conflito com visualizar
 
-    //////MENU CLIENTE – RESERVAS - ACTIVAS//////////
+//////MENU CLIENTE – RESERVAS - ACTIVAS//////////
 
     private void construirPanelMCliResAct(Interface janela, Container contentor, JPanel
             loginSuperPanel, JPanel mCliResActSuperPanel) {
