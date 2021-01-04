@@ -67,7 +67,11 @@ public class Interface extends JFrame {
     private MaskFormatter mascaraTelemovel;
     private JDatePickerImpl datePickerMCliMComFID1;
     private ArrayList<Comentario> listaComentarioClienteAtivo;
+    private ArrayList<Comentario> listaComentarioRest;
+    private ArrayList<Comentario> listaComentarioCliente;
     private JPanel centroMCliMComFPPSSPanel;
+    private JPanel centroMCliMComFClinSSPanel;
+    private JPanel centroMCliMComFRestSSPanel;
 
 
     public Interface(Sistema sistema) {
@@ -1399,22 +1403,22 @@ public class Interface extends JFrame {
         JPanel sulMRestReservasSubPanel = new JPanel();
 
         JLabel mRestReservasLabel = new JLabel("HISTÓRICO DE RESERVAS");
-        JLabel usernameMRestReservasLabel = new JLabel("Username");
+        //JLabel usernameMRestReservasLabel = new JLabel("Username");
         //JLabel filtrarTipomRestResLabel = new JLabel("Escolha a opção em que a lista será mostrada:");
-        JLabel filtrarDataInicioMRestReservasLabel = new JLabel("De");
-        JLabel filtrarDataFimMRestReservasLabel = new JLabel("Até");
+        //JLabel filtrarDataInicioMRestReservasLabel = new JLabel("De");
+        //JLabel filtrarDataFimMRestReservasLabel = new JLabel("Até");
 
 
-        JTextField usernameMRestReservasText = new JTextField(20);
+        //JTextField usernameMRestReservasText = new JTextField(20);
 
-        JCheckBox cem = new JCheckBox("Até 100");
-        cem.setMnemonic(KeyEvent.VK_C);
-        JCheckBox duzentos = new JCheckBox("100-200");
-        duzentos.setMnemonic(KeyEvent.VK_C);
-        JCheckBox trezentos = new JCheckBox("200-300");
-        trezentos.setMnemonic(KeyEvent.VK_C);
-        JCheckBox quatrocentos = new JCheckBox("+ de 300");
-        quatrocentos.setMnemonic(KeyEvent.VK_C);
+//        JCheckBox cem = new JCheckBox("Até 100");
+//        cem.setMnemonic(KeyEvent.VK_C);
+//        JCheckBox duzentos = new JCheckBox("100-200");
+//        duzentos.setMnemonic(KeyEvent.VK_C);
+//        JCheckBox trezentos = new JCheckBox("200-300");
+//        trezentos.setMnemonic(KeyEvent.VK_C);
+//        JCheckBox quatrocentos = new JCheckBox("+ de 300");
+//        quatrocentos.setMnemonic(KeyEvent.VK_C);
 
 
         JRadioButton filtrarIntervDatasMRestResRButton = new JRadioButton("DATAS");
@@ -1429,27 +1433,27 @@ public class Interface extends JFrame {
         group.add(filtrarIntervValmRestResRButton);
         group.add(filtrarClientemRestResRButton);
 
-        JComboBox<String> filtrosTipoMRestReservasJCBox = new JComboBox<>();
-        filtrosTipoMRestReservasJCBox.addItem("");
-        filtrosTipoMRestReservasJCBox.addItem("Presencial");
-        filtrosTipoMRestReservasJCBox.addItem("Take-Away");
-
+//        JComboBox<String> filtrosTipoMRestReservasJCBox = new JComboBox<>();
+//        filtrosTipoMRestReservasJCBox.addItem("");
+//        filtrosTipoMRestReservasJCBox.addItem("Presencial");
+//        filtrosTipoMRestReservasJCBox.addItem("Take-Away");
+//
         JButton ptEnMRestReservasButton = new JButton("PT/EN");
         JButton voltarMRestReservasButton = new JButton("MENU RESTAURANTE");
         JButton okMRestReservasButton = new JButton("OK");
 
         //Adição do calendário
-        UtilDateModel model1 = new UtilDateModel();
-        UtilDateModel model2 = new UtilDateModel();
+//        UtilDateModel model1 = new UtilDateModel();
+//        UtilDateModel model2 = new UtilDateModel();
+//
+//        ResourceBundle b = ResourceBundle.getBundle("Text");
+//
+//        Properties p = convertResourceBundleToProperties(b);
+//        JDatePanelImpl datePanel = new JDatePanelImpl(model1, p);
+//        JDatePickerImpl datePicker1 = new JDatePickerImpl(datePanel, new DateLabelFormatter());
 
-        ResourceBundle b = ResourceBundle.getBundle("Text");
-
-        Properties p = convertResourceBundleToProperties(b);
-        JDatePanelImpl datePanel = new JDatePanelImpl(model1, p);
-        JDatePickerImpl datePicker1 = new JDatePickerImpl(datePanel, new DateLabelFormatter());
-
-        JDatePanelImpl datePanel1 = new JDatePanelImpl(model2, p);
-        JDatePickerImpl datePicker2 = new JDatePickerImpl(datePanel1, new DateLabelFormatter());
+//        JDatePanelImpl datePanel1 = new JDatePanelImpl(model2, p);
+//        JDatePickerImpl datePicker2 = new JDatePickerImpl(datePanel1, new DateLabelFormatter());
 
         mRestReservasSuperPanel.add(norteMRestReservasSubPanel, "North");
         mRestReservasSuperPanel.add(centroMRestReservasSubPanel, "Center");
@@ -1473,9 +1477,9 @@ public class Interface extends JFrame {
         centroMRestReservasSSPanel2.setLayout(new FlowLayout());
         centroMRestReservasSubPanel.add(centroMRestReservasSSPanel2, BorderLayout.WEST);
 
-        JPanel centroMRestReservasSSPanel2A = new JPanel();
-        centroMRestReservasSSPanel2A.setLayout(new GridLayout(1, 1));
-        centroMRestReservasSubPanel.add(centroMRestReservasSSPanel2A, BorderLayout.WEST);
+//        JPanel centroMRestReservasSSPanel2A = new JPanel();
+//        centroMRestReservasSSPanel2A.setLayout(new GridLayout(1, 1));
+//        centroMRestReservasSubPanel.add(centroMRestReservasSSPanel2A, BorderLayout.WEST);
 
         JPanel centroMRestReservasSSPanel3 = new JPanel();
         centroMRestReservasSSPanel3.setLayout(new FlowLayout());
@@ -1486,39 +1490,55 @@ public class Interface extends JFrame {
         centroMRestReservasSubPanel.add(centroMRestReservasSSPanel4, BorderLayout.WEST);
 
         centroMRestReservasSSPanel.add(filtrarIntervDatasMRestResRButton);
-        centroMRestReservasSSPanel1.add(filtrarDataInicioMRestReservasLabel);
-        centroMRestReservasSSPanel1.add(datePicker1);
-        centroMRestReservasSSPanel1.add(filtrarDataFimMRestReservasLabel);
-        centroMRestReservasSSPanel1.add(datePicker2);
+//        centroMRestReservasSSPanel1.add(filtrarDataInicioMRestReservasLabel);
+//        centroMRestReservasSSPanel1.add(datePicker1);
+//        centroMRestReservasSSPanel1.add(filtrarDataFimMRestReservasLabel);
+//        centroMRestReservasSSPanel1.add(datePicker2);
 
-        centroMRestReservasSSPanel2.add(filtrarTipomRestResRButton);
-        centroMRestReservasSSPanel2A.add(filtrosTipoMRestReservasJCBox);
+        centroMRestReservasSSPanel2.add(filtrarIntervValmRestResRButton);
+//        centroMRestReservasSSPanel2.add(cem);
+//        centroMRestReservasSSPanel2.add(duzentos);
+//        centroMRestReservasSSPanel2.add(trezentos);
+//        centroMRestReservasSSPanel2.add(quatrocentos);
 
-        centroMRestReservasSSPanel3.add(filtrarIntervValmRestResRButton);
-        centroMRestReservasSSPanel3.add(cem);
-        centroMRestReservasSSPanel3.add(duzentos);
-        centroMRestReservasSSPanel3.add(trezentos);
-        centroMRestReservasSSPanel3.add(quatrocentos);
+        centroMRestReservasSSPanel3.add(filtrarTipomRestResRButton);
+        //centroMRestReservasSSPanel2A.add(filtrosTipoMRestReservasJCBox);
 
         centroMRestReservasSSPanel4.add(filtrarClientemRestResRButton);
-        centroMRestReservasSSPanel4.add(usernameMRestReservasLabel);
-        centroMRestReservasSSPanel4.add(usernameMRestReservasText);
+//        centroMRestReservasSSPanel4.add(usernameMRestReservasLabel);
+//        centroMRestReservasSSPanel4.add(usernameMRestReservasText);
 
         sulMRestReservasSubPanel.setLayout(new FlowLayout());
         sulMRestReservasSubPanel.add(voltarMRestReservasButton);
         sulMRestReservasSubPanel.add(okMRestReservasButton);
 
 
+        filtrarIntervDatasMRestResRButton.addActionListener(a -> {
+            mostrarJanela(MENURESTAURANTE_CARD);
+        });
+
+        filtrarTipomRestResRButton.addActionListener(a -> {
+            mostrarJanela(MENURESTAURANTE_CARD);
+        });
+
+        filtrarIntervValmRestResRButton.addActionListener(a -> {
+            mostrarJanela(MENURESTAURANTE_CARD);
+        });
+
+        filtrarClientemRestResRButton.addActionListener(a -> {
+            mostrarJanela(MENURESTAURANTE_CARD);
+        });
+
         voltarMRestReservasButton.addActionListener(a -> {
             mostrarJanela(MENURESTAURANTE_CARD);
 
         });
 
-        //todo ver os encaminhamentos
-        okMRestReservasButton.addActionListener(e -> {
-            mostrarJanela(LOGIN_CARD);
-            this.setSize(LARGURA_LOGIN, ALTURA_LOGIN);
-        });
+//        //todo ver os encaminhamentos
+//        okMRestReservasButton.addActionListener(e -> {
+//            mostrarJanela(LOGIN_CARD);
+//            this.setSize(LARGURA_LOGIN, ALTURA_LOGIN);
+//        });
     }
 
     /**
@@ -2423,27 +2443,53 @@ public class Interface extends JFrame {
 
         mCliMComFPPRButton.addActionListener(a -> {
             listaComentarioClienteAtivo = sistema.consultarListaComentariosPorCliente(sistema.getClienteAtivo().getNome());
-            String[][] dados = new String [listaComentarioClienteAtivo.size()] [3];
+            String[][] dadosMCliMComFPPSSPanel = new String [listaComentarioClienteAtivo.size()] [3];
             int i = 0;
             for (Comentario c:listaComentarioClienteAtivo) {
-                dados[i][0] = c.getOpiniao();
-                dados[i][1] = c.getRestaurante().getNome();
-                dados[i][2] = "" + c.getPontuacao();
+                dadosMCliMComFPPSSPanel[i][0] = c.getOpiniao();
+                dadosMCliMComFPPSSPanel[i][1] = c.getRestaurante().getNome();
+                dadosMCliMComFPPSSPanel[i][2] = "" + c.getPontuacao();
                 i++;
             }
 
-            String [] nomeColunas = new String []{"COMENTÁRIO", "RESTAURANTE", "PONTUAÇÃO"};
-            JTable tabela = new JTable (dados, nomeColunas);
-            centroMCliMComFPPSSPanel.add(tabela,BorderLayout.CENTER);
+            String [] nomeColunasMCliMComFPPSSPanel = new String []{"COMENTÁRIO", "RESTAURANTE", "PONTUAÇÃO"};
+            JTable tabelaMCliMComFPPSSPanel = new JTable (dadosMCliMComFPPSSPanel, nomeColunasMCliMComFPPSSPanel);
+            centroMCliMComFPPSSPanel.add(tabelaMCliMComFPPSSPanel,BorderLayout.CENTER);
             mostrarJanela(MCLIMCOMFPP_CARD);
 
         });
 
         mCliMComFCliRButton.addActionListener(a -> {
+            listaComentarioCliente = sistema.consultarListaComentariosPorCliente(sistema.getClienteAtivo().getNome());
+            String[][] dadosMCliMComFCliSSPanel = new String [listaComentarioCliente.size()] [3];
+            int i = 0;
+            for (Comentario c:listaComentarioCliente) {
+                dadosMCliMComFCliSSPanel[i][0] = c.getOpiniao();
+                dadosMCliMComFCliSSPanel[i][1] = c.getRestaurante().getNome();
+                dadosMCliMComFCliSSPanel[i][2] = "" + c.getPontuacao();
+                i++;
+            }
+
+            String [] nomeColunasMCliMComFCliSSPanel = new String []{"COMENTÁRIO", "RESTAURANTE", "PONTUAÇÃO"};
+            JTable tabelaMCliMComFCliSSPanel = new JTable (dadosMCliMComFCliSSPanel, nomeColunasMCliMComFCliSSPanel);
+            centroMCliMComFClinSSPanel.add(tabelaMCliMComFCliSSPanel,BorderLayout.CENTER);
             mostrarJanela(MCLIMCOMFCLI_CARD);
         });
 
         mCliMComFRestRButton.addActionListener(a -> {
+            listaComentarioRest = sistema.consultarListaComentariosPorRestaurante(sistema.getClienteAtivo().getNome());
+            String[][] dadosMCliMComFRestSSPanel = new String [listaComentarioRest.size()] [3];
+            int i = 0;
+            for (Comentario c:listaComentarioRest) {
+                dadosMCliMComFRestSSPanel[i][0] = c.getOpiniao();
+                dadosMCliMComFRestSSPanel[i][1] = c.getRestaurante().getNome();
+                dadosMCliMComFRestSSPanel[i][2] = "" + c.getPontuacao();
+                i++;
+            }
+
+            String [] nomeColunasMCliMComFRestSSPanel = new String []{"COMENTÁRIO", "RESTAURANTE", "PONTUAÇÃO"};
+            JTable tabelaMCliMComFRestSSPanel = new JTable (dadosMCliMComFRestSSPanel, nomeColunasMCliMComFRestSSPanel);
+            centroMCliMComFRestSSPanel.add(tabelaMCliMComFRestSSPanel,BorderLayout.CENTER);
             mostrarJanela(MCLIMCOMFREST_CARD);
         });
 
@@ -2500,19 +2546,12 @@ public class Interface extends JFrame {
         centroMCliMComFPPSubPanel.add(centroMCliMComFPPSSPanel, BorderLayout.CENTER);
 
         JPanel centroMCliMComFPPSSPanel1 = new JPanel();
-        centroMCliMComFPPSSPanel1.setLayout(new GridBagLayout());
+        centroMCliMComFPPSSPanel1.setLayout(new GridLayout());
         centroMCliMComFPPSubPanel.add(centroMCliMComFPPSSPanel1);
-        JPanel centroMCliMComFPPSSPanel2 = new JPanel();
-        centroMCliMComFPPSSPanel2.setLayout(new FlowLayout());
-        centroMCliMComFPPSubPanel.add(centroMCliMComFPPSSPanel2);
 
-        JPanel centroMCliMComFPPSSPanel3 = new JPanel();
-        centroMCliMComFPPSSPanel3.setLayout(new GridLayout());
-        centroMCliMComFPPSubPanel.add(centroMCliMComFPPSSPanel3);
-
-        centroMCliMComFPPSSPanel3.add(visualizarMCliMComFPPButton);
-        centroMCliMComFPPSSPanel3.add(editarMCliMComFPPButton);
-        centroMCliMComFPPSSPanel3.add(apagarMCliMComFPPButton);
+        centroMCliMComFPPSSPanel1.add(visualizarMCliMComFPPButton);
+        centroMCliMComFPPSSPanel1.add(editarMCliMComFPPButton);
+        centroMCliMComFPPSSPanel1.add(apagarMCliMComFPPButton);
 
         sulMCliMComFPPSubPanel.setLayout(new FlowLayout());
         sulMCliMComFPPSubPanel.add(voltarMCliMComFPPButton);
@@ -2570,12 +2609,16 @@ public class Interface extends JFrame {
         norteMCliMComFCliSubPanel.add(norteMCliMComFClinSSPanel, BorderLayout.CENTER);
         norteMCliMComFCliSubPanel.add(ptEnMCliMComFCliButton, BorderLayout.EAST);
 
-        JPanel centroMCliMComFClinSSPanel = new JPanel();
-        centroMCliMComFClinSSPanel.setLayout(new FlowLayout());
-        centroMCliMComFCliSubPanel.add(centroMCliMComFClinSSPanel, BorderLayout.WEST);
+        centroMCliMComFClinSSPanel = new JPanel();
+        centroMCliMComFClinSSPanel.setLayout(new BorderLayout());
+        centroMCliMComFCliSubPanel.add(centroMCliMComFClinSSPanel, BorderLayout.CENTER);
 
-        centroMCliMComFClinSSPanel.add(nomeMCliMComFCliLabel);
-        centroMCliMComFClinSSPanel.add(nomeMCliMComFCliText);
+        JPanel centroMCliMComFClinSSPanel1 = new JPanel();
+        centroMCliMComFClinSSPanel1.setLayout(new FlowLayout());
+        centroMCliMComFCliSubPanel.add(centroMCliMComFClinSSPanel1, BorderLayout.WEST);
+
+        centroMCliMComFClinSSPanel1.add(nomeMCliMComFCliLabel);
+        centroMCliMComFClinSSPanel1.add(nomeMCliMComFCliText);
 
         sulMCliMComFCliSubPanel.setLayout(new FlowLayout());
         sulMCliMComFCliSubPanel.add(voltarMCliMComFCliButton);
@@ -2628,12 +2671,16 @@ public class Interface extends JFrame {
         norteMCliMComFRestSubPanel.add(norteMCliMComFRestSSPanel, BorderLayout.CENTER);
         norteMCliMComFRestSubPanel.add(ptEnMCliMComFRestButton, BorderLayout.EAST);
 
-        JPanel centroMCliMComFRestSSPanel = new JPanel();
-        centroMCliMComFRestSSPanel.setLayout(new FlowLayout());
-        centroMCliMComFRestSubPanel.add(centroMCliMComFRestSSPanel, BorderLayout.WEST);
+        centroMCliMComFRestSSPanel = new JPanel();
+        centroMCliMComFRestSSPanel.setLayout(new BorderLayout());
+        centroMCliMComFRestSubPanel.add(centroMCliMComFRestSSPanel, BorderLayout.CENTER);
 
-        centroMCliMComFRestSSPanel.add(nomeRestMCliMComFRestLabel);
-        centroMCliMComFRestSSPanel.add(nomeResMCliMComFRestText);
+        JPanel centroMCliMComFRestSSPanel1 = new JPanel();
+        centroMCliMComFRestSSPanel1.setLayout(new FlowLayout());
+        centroMCliMComFRestSubPanel.add(centroMCliMComFRestSSPanel1, BorderLayout.WEST);
+
+        centroMCliMComFRestSSPanel1.add(nomeRestMCliMComFRestLabel);
+        centroMCliMComFRestSSPanel1.add(nomeResMCliMComFRestText);
 
         sulMCliMComFRestSubPanel.setLayout(new FlowLayout());
         sulMCliMComFRestSubPanel.add(voltarMCliMComFRestButton);
