@@ -45,6 +45,7 @@ public class Interface extends JFrame {
     private static final String MCLIMCOMFCLI_CARD = "MENU CLIENTE – COMENTÁRIOS – FILTRAR POR CLIENTE";
     private static final String MCLIMCOMFCLIRESULTADO_CARD = "MENU CLIENTE – COMENTÁRIOS – FILTRAR POR CLIENTE - RESULTADO";
     private static final String MCLIMCOMFREST_CARD = "MENU CLIENTE – COMENTÁRIOS - FILTRAR POR RESTAURANTE";
+    private static final String MCLIMCOMFRESTRESULTADO_CARD = "MENU CLIENTE – COMENTÁRIOS - FILTRAR POR RESTAURANTE - RESULTADO";
     private static final String MCLIMCOMFID_CARD = "MENU CLIENTE – COMENTÁRIOS – FILTRAR POR INTERVALO DE DATAS";
     private static final String MRESTPMED_CARD = "MENU CLIENTE – PONTUAÇÃO MÉDIA";
 
@@ -114,194 +115,199 @@ public class Interface extends JFrame {
         regNovoCliSuperPanel.setLayout(new BorderLayout());
         JPanel registarNovoRestSuperPanel = new JPanel();
         registarNovoRestSuperPanel.setLayout(new BorderLayout());
-        JPanel mCliSuperPanel = new JPanel();
-        mCliSuperPanel.setLayout(new BorderLayout());
-        JPanel mCliAtDadosSuperPanel = new JPanel();
-        mCliAtDadosSuperPanel.setLayout(new BorderLayout());
-        JPanel mCliHistResSuperPanel = new JPanel();
-        mCliHistResSuperPanel.setLayout(new BorderLayout());
-        JPanel mCliMResComPontReseSuperPanel = new JPanel();
-        mCliMResComPontReseSuperPanel.setLayout(new BorderLayout());
-        JPanel mCliResActSuperPanel = new JPanel();
-        mCliResActSuperPanel.setLayout(new BorderLayout());
-        JPanel mCliFazerResSuperPanel = new JPanel();
-        mCliFazerResSuperPanel.setLayout(new BorderLayout());
-        JPanel mCliFazerResPSuperPanel = new JPanel();
-        mCliFazerResPSuperPanel.setLayout(new BorderLayout());
-        JPanel mCliFazerResTASuperPanel = new JPanel();
-        mCliFazerResTASuperPanel.setLayout(new BorderLayout());
-        JPanel mCliReservasMReseSuperPanel = new JPanel();
-        mCliReservasMReseSuperPanel.setLayout(new BorderLayout());
-        JPanel mCliMRestFOrdRestsSuperPanel = new JPanel();
-        mCliMRestFOrdRestsSuperPanel.setLayout(new BorderLayout());
-        JPanel mCliMRestFRestPontSuperPanel = new JPanel();
-        mCliMRestFRestPontSuperPanel.setLayout(new BorderLayout());
-        JPanel mCliMRestFOrdRestValorSuperPanel = new JPanel();
-        mCliMRestFOrdRestValorSuperPanel.setLayout(new BorderLayout());
-        JPanel mCliMRestFOrdRestValorCartaSuperPanel = new JPanel();
-        mCliMRestFOrdRestValorCartaSuperPanel.setLayout(new BorderLayout());
-        JPanel mCliMRestFOrdRestValorPDiaSuperPanel = new JPanel();
-        mCliMRestFOrdRestValorPDiaSuperPanel.setLayout(new BorderLayout());
-        JPanel mCliMRestFRestHFuncSuperPanel = new JPanel();
-        mCliMRestFRestHFuncSuperPanel.setLayout(new BorderLayout());
-        JPanel mCliMRestFRestLotSuperPanel = new JPanel();
-        mCliMRestFRestLotSuperPanel.setLayout(new BorderLayout());
-        JPanel mCliMRestFRestCidSuperPanel = new JPanel();
-        mCliMRestFRestCidSuperPanel.setLayout(new BorderLayout());
-        JPanel mCliMComSuperPanel = new JPanel();
-        mCliMComSuperPanel.setLayout(new BorderLayout());
-        JPanel mCliMComFPPSuperPanel = new JPanel();
-        mCliMComFPPSuperPanel.setLayout(new BorderLayout());
-        JPanel mCliMComFCliSuperPanel = new JPanel();
-        mCliMComFCliSuperPanel.setLayout(new BorderLayout());
-        JPanel mCliMComFCliResultadoSuperPanel = new JPanel();
-        mCliMComFCliResultadoSuperPanel.setLayout(new BorderLayout());
-
-        JPanel mCliMComFRestSuperPanel = new JPanel();
-        mCliMComFRestSuperPanel.setLayout(new BorderLayout());
-        JPanel mCliMComFIDSuperPanel = new JPanel();
-        mCliMComFIDSuperPanel.setLayout(new BorderLayout());
-
-
-        JPanel mRestSuperPanel = new JPanel();
-        mRestSuperPanel.setLayout(new BorderLayout());
-        JPanel mRestAdPratoSuperPanel = new JPanel();
-        mRestAdPratoSuperPanel.setLayout(new BorderLayout());
-        JPanel mRestAtPratoDiaSuperPanel = new JPanel();
-        mRestAtPratoDiaSuperPanel.setLayout(new BorderLayout());
-        JPanel mRestAtDadosSuperPanel = new JPanel();
-        mRestAtDadosSuperPanel.setLayout(new BorderLayout());
-        JPanel mRestReservasSuperPanel = new JPanel();
-        mRestReservasSuperPanel.setLayout(new BorderLayout());
-        JPanel mRestReservasFIDSuperPanel = new JPanel();
-        mRestReservasFIDSuperPanel.setLayout(new BorderLayout());
-        JPanel mRestReservasFTipoSuperPanel = new JPanel();
-        mRestReservasFTipoSuperPanel.setLayout(new BorderLayout());
-        JPanel mRestReservasFTipoPSuperPanel = new JPanel();
-        mRestReservasFTipoPSuperPanel.setLayout(new BorderLayout());
-        JPanel mRestReservasFTipoTASuperPanel = new JPanel();
-        mRestReservasFTipoTASuperPanel.setLayout(new BorderLayout());
-
-        JPanel mRestReservasFIVSuperPanel = new JPanel();
-        mRestReservasFIVSuperPanel.setLayout(new BorderLayout());
-        JPanel mRestReservasFCliSuperPanel = new JPanel();
-        mRestReservasFCliSuperPanel.setLayout(new BorderLayout());
-        JPanel mRestComentariosSuperPanel = new JPanel();
-        mRestComentariosSuperPanel.setLayout(new BorderLayout());
-        JPanel mRestPMedSuperPanel = new JPanel();
-        mRestPMedSuperPanel.setLayout(new BorderLayout());
-
-        construirPanelLogin(this, contentor, loginSuperPanel);
-
-        construirPanelCliente(this, contentor, loginSuperPanel, regNovoCliSuperPanel);
-
-        construirPanelRestaurante(this, contentor, loginSuperPanel, registarNovoRestSuperPanel);
-
-        construirPanelMenuCliente(this, contentor, loginSuperPanel, mCliSuperPanel);
-
-        ////PROBLEMA - não aceita this
-        construirPanelMRest(contentor, loginSuperPanel, mRestSuperPanel);
-
-        construirPanelMRestAdPrato(this, contentor, loginSuperPanel, mRestAdPratoSuperPanel);
-
-        construirPanelMRestAtPratoDia(this, contentor, loginSuperPanel, mRestAtPratoDiaSuperPanel);
-
-        construirPanelMRestAtDados(this, contentor, loginSuperPanel, mRestAtDadosSuperPanel);
-
-        construirPanelMRestReservas(this, contentor, loginSuperPanel, mRestReservasSuperPanel);
-
-        construirPanelMRestReservasFID(this, contentor, loginSuperPanel, mRestReservasFIDSuperPanel);
-
-        construirPanelMRestReservasFTipo(this, contentor, loginSuperPanel, mRestReservasFTipoSuperPanel);
-
-        construirPanelMRestReservasFTipoP(this, contentor, loginSuperPanel, mRestReservasFTipoPSuperPanel);
-
-        construirPanelMRestReservasFTipoTA(this, contentor, loginSuperPanel, mRestReservasFTipoTASuperPanel);
-
-        construirPanelMRestReservasFIV(this, contentor, loginSuperPanel, mRestReservasFIVSuperPanel);
-
-        construirPanelMRestReservasFCli(this, contentor, loginSuperPanel, mRestReservasFCliSuperPanel);
-
-        construirPanelMRestComentarios(this, contentor, loginSuperPanel, mRestComentariosSuperPanel);
-
-        construirPanelMCliAtDados(this, contentor, loginSuperPanel, mCliAtDadosSuperPanel);
-
-        construirPanelMCliHistRes(this, contentor, loginSuperPanel, mCliHistResSuperPanel);
-
-        construirPanelMCliResAct(this, contentor, loginSuperPanel, mCliResActSuperPanel);
-
-        construirPanelMCliFazerRes(this, contentor, loginSuperPanel, mCliFazerResSuperPanel);
-
-        construirPanelMCliFazerResP(this, contentor, loginSuperPanel, mCliFazerResPSuperPanel);
-
-        construirPanelMCliFazerResTA(this, contentor, loginSuperPanel, mCliFazerResTASuperPanel);
-
-        construirPanelReservasMCliMRese(this, contentor, loginSuperPanel, mCliReservasMReseSuperPanel);
-
-        construirPanelMCliMResComPonReservas(this, contentor, loginSuperPanel, mCliMResComPontReseSuperPanel);
-
-        construirPanelMCliMRestFOrdRests(this, contentor, loginSuperPanel, mCliMRestFOrdRestsSuperPanel);
-
-        construirPanelMCliMRestFRestPont(this, contentor, loginSuperPanel, mCliMRestFRestPontSuperPanel);
-
-        construirPanelMCliMRestFOrdRestValor(this, contentor, loginSuperPanel, mCliMRestFOrdRestValorSuperPanel);
-
-        construirPanelMCliMRestFOrdRestValorCarta(this, contentor, loginSuperPanel, mCliMRestFOrdRestValorCartaSuperPanel);
-
-        construirPanelMCliMRestFOrdRestValorPDia(this, contentor, loginSuperPanel, mCliMRestFOrdRestValorPDiaSuperPanel);
-
-        construirPanelMCliMRestFRestHFunc(this, contentor, loginSuperPanel, mCliMRestFRestHFuncSuperPanel);
-
-        construirPanelMCliMRestFRestLot(this, contentor, loginSuperPanel, mCliMRestFRestLotSuperPanel);
-
-        construirPanelMCliMRestFRestCid(this, contentor, loginSuperPanel, mCliMRestFRestCidSuperPanel);
-        construirPanelMCliMCom(this, contentor, loginSuperPanel, mCliMComSuperPanel);
-        construirPanelMCliMComFPP(this, contentor, loginSuperPanel, mCliMComFPPSuperPanel);
-        construirPanelMCliMComFCli(this, contentor, loginSuperPanel, mCliMComFCliSuperPanel);
-        construirPanelMCliMComFCliResultado(this, contentor, loginSuperPanel, mCliMComFCliResultadoSuperPanel);
-        construirPanelMCliMComFRest(this, contentor, loginSuperPanel, mCliMComFRestSuperPanel);
-        construirPanelMCliMComFID(this, contentor, loginSuperPanel, mCliMComFIDSuperPanel);
-        construirPanelMRestPMed(this, contentor, loginSuperPanel, mRestPMedSuperPanel);
-
-        contentor.add(loginSuperPanel, LOGIN_CARD);
-        contentor.add(regNovoCliSuperPanel, CLIENTE_CARD);
-        contentor.add(registarNovoRestSuperPanel, RESTAURANTE_CARD);
-        contentor.add(mCliSuperPanel, MENUCLIENTE_CARD);
-        contentor.add(mRestSuperPanel, MENURESTAURANTE_CARD);
-        contentor.add(mRestAdPratoSuperPanel, MRESTADICIONARPRATO_CARD);
-        contentor.add(mRestAtPratoDiaSuperPanel, MRESTACTUALIZARPRATO_CARD);
-        contentor.add(mRestAtDadosSuperPanel, MRESTACTUALIZARDADOS_CARD);
-        contentor.add(mRestReservasSuperPanel, MRESTRESERV_CARD);
-        contentor.add(mRestReservasFIDSuperPanel, MRESTRESERVASFID_CARD);
-        contentor.add(mRestReservasFTipoSuperPanel, MRESTRESERVASFTIPO_CARD);
-        contentor.add(mRestReservasFTipoPSuperPanel, MRESTRESERVASFTIPOP_CARD);
-        contentor.add(mRestReservasFTipoTASuperPanel, MRESTRESERVASFTIPOTA_CARD);
-        contentor.add(mRestReservasFIVSuperPanel, MRESTRESERVASFIV_CARD);
-        contentor.add(mRestReservasFCliSuperPanel, MRESTRESERVASFCLI_CARD);
-        contentor.add(mRestComentariosSuperPanel, MRESTCOMENTARIOS_CARD);
-        contentor.add(mCliAtDadosSuperPanel, MCLIATDADOS_CARD);
-        contentor.add(mCliHistResSuperPanel, MCLIHISRES_CARD);
-        contentor.add(mCliResActSuperPanel, MCLIRESACT_CARD);
-        contentor.add(mCliFazerResSuperPanel, MCLIFAZERRES_CARD);
-        contentor.add(mCliFazerResPSuperPanel, MCLIFAZERRESP_CARD);
-        contentor.add(mCliFazerResTASuperPanel, MCLIFAZERRESTA_CARD);
-        contentor.add(mCliReservasMReseSuperPanel, MCLIRESERVAS_CARD);
-        contentor.add(mCliMResComPontReseSuperPanel, MCLIMRESCOMPONTRESE_CARD);
-        contentor.add(mCliMRestFOrdRestsSuperPanel, MCLIMRESTFORDRESTS_CARD);
-        contentor.add(mCliMRestFRestPontSuperPanel, MCLIMRESTFRESTPONT_CARD);
-        contentor.add(mCliMRestFOrdRestValorSuperPanel, MCLIMRESTFORDRESTVALOR_CARD);
-        contentor.add(mCliMRestFOrdRestValorCartaSuperPanel, MCLIMRESTFORDRESTVALORCARTA_CARD);
-        contentor.add(mCliMRestFOrdRestValorPDiaSuperPanel, MCLIMRESTFORDRESTVALORPDIA_CARD);
-        contentor.add(mCliMRestFRestHFuncSuperPanel, MCLIMRESTFRESTHFUNC_CARD);
-        contentor.add(mCliMRestFRestLotSuperPanel, MCLIMRESTFRESTLOT_CARD);
-        contentor.add(mCliMRestFRestCidSuperPanel, MCLIMRESTFRESTCID_CARD);
-        contentor.add(mCliMComSuperPanel, MCLIMCOM_CARD);
-        contentor.add(mCliMComFPPSuperPanel, MCLIMCOMFPP_CARD);
-        contentor.add(mCliMComFCliSuperPanel, MCLIMCOMFCLI_CARD);
-        contentor.add(mCliMComFCliResultadoSuperPanel, MCLIMCOMFCLIRESULTADO_CARD);
-        contentor.add(mCliMComFRestSuperPanel, MCLIMCOMFREST_CARD);
-        contentor.add(mCliMComFIDSuperPanel, MCLIMCOMFID_CARD);
-        contentor.add(mRestPMedSuperPanel, MRESTPMED_CARD);
+//        JPanel mCliSuperPanel = new JPanel();
+//        mCliSuperPanel.setLayout(new BorderLayout());
+//        JPanel mCliAtDadosSuperPanel = new JPanel();
+//        mCliAtDadosSuperPanel.setLayout(new BorderLayout());
+//        JPanel mCliHistResSuperPanel = new JPanel();
+//        mCliHistResSuperPanel.setLayout(new BorderLayout());
+//        JPanel mCliMResComPontReseSuperPanel = new JPanel();
+//        mCliMResComPontReseSuperPanel.setLayout(new BorderLayout());
+//        JPanel mCliResActSuperPanel = new JPanel();
+//        mCliResActSuperPanel.setLayout(new BorderLayout());
+//        JPanel mCliFazerResSuperPanel = new JPanel();
+//        mCliFazerResSuperPanel.setLayout(new BorderLayout());
+//        JPanel mCliFazerResPSuperPanel = new JPanel();
+//        mCliFazerResPSuperPanel.setLayout(new BorderLayout());
+//        JPanel mCliFazerResTASuperPanel = new JPanel();
+//        mCliFazerResTASuperPanel.setLayout(new BorderLayout());
+//        JPanel mCliReservasMReseSuperPanel = new JPanel();
+//        mCliReservasMReseSuperPanel.setLayout(new BorderLayout());
+//        JPanel mCliMRestFOrdRestsSuperPanel = new JPanel();
+//        mCliMRestFOrdRestsSuperPanel.setLayout(new BorderLayout());
+//        JPanel mCliMRestFRestPontSuperPanel = new JPanel();
+//        mCliMRestFRestPontSuperPanel.setLayout(new BorderLayout());
+//        JPanel mCliMRestFOrdRestValorSuperPanel = new JPanel();
+//        mCliMRestFOrdRestValorSuperPanel.setLayout(new BorderLayout());
+//        JPanel mCliMRestFOrdRestValorCartaSuperPanel = new JPanel();
+//        mCliMRestFOrdRestValorCartaSuperPanel.setLayout(new BorderLayout());
+//        JPanel mCliMRestFOrdRestValorPDiaSuperPanel = new JPanel();
+//        mCliMRestFOrdRestValorPDiaSuperPanel.setLayout(new BorderLayout());
+//        JPanel mCliMRestFRestHFuncSuperPanel = new JPanel();
+//        mCliMRestFRestHFuncSuperPanel.setLayout(new BorderLayout());
+//        JPanel mCliMRestFRestLotSuperPanel = new JPanel();
+//        mCliMRestFRestLotSuperPanel.setLayout(new BorderLayout());
+//        JPanel mCliMRestFRestCidSuperPanel = new JPanel();
+//        mCliMRestFRestCidSuperPanel.setLayout(new BorderLayout());
+//        JPanel mCliMComSuperPanel = new JPanel();
+//        mCliMComSuperPanel.setLayout(new BorderLayout());
+//        JPanel mCliMComFPPSuperPanel = new JPanel();
+//        mCliMComFPPSuperPanel.setLayout(new BorderLayout());
+//        JPanel mCliMComFCliSuperPanel = new JPanel();
+//        mCliMComFCliSuperPanel.setLayout(new BorderLayout());
+//        JPanel mCliMComFCliResultadoSuperPanel = new JPanel();
+//        mCliMComFCliResultadoSuperPanel.setLayout(new BorderLayout());
+//
+//        JPanel mCliMComFRestSuperPanel = new JPanel();
+//        mCliMComFRestSuperPanel.setLayout(new BorderLayout());
+//        JPanel mCliMComFIDSuperPanel = new JPanel();
+//        mCliMComFIDSuperPanel.setLayout(new BorderLayout());
+//
+//
+//        JPanel mRestSuperPanel = new JPanel();
+//        mRestSuperPanel.setLayout(new BorderLayout());
+//        JPanel mRestAdPratoSuperPanel = new JPanel();
+//        mRestAdPratoSuperPanel.setLayout(new BorderLayout());
+//        JPanel mRestAtPratoDiaSuperPanel = new JPanel();
+//        mRestAtPratoDiaSuperPanel.setLayout(new BorderLayout());
+//        JPanel mRestAtDadosSuperPanel = new JPanel();
+//        mRestAtDadosSuperPanel.setLayout(new BorderLayout());
+//        JPanel mRestReservasSuperPanel = new JPanel();
+//        mRestReservasSuperPanel.setLayout(new BorderLayout());
+//        JPanel mRestReservasFIDSuperPanel = new JPanel();
+//        mRestReservasFIDSuperPanel.setLayout(new BorderLayout());
+//        JPanel mRestReservasFTipoSuperPanel = new JPanel();
+//        mRestReservasFTipoSuperPanel.setLayout(new BorderLayout());
+//        JPanel mRestReservasFTipoPSuperPanel = new JPanel();
+//        mRestReservasFTipoPSuperPanel.setLayout(new BorderLayout());
+//        JPanel mRestReservasFTipoTASuperPanel = new JPanel();
+//        mRestReservasFTipoTASuperPanel.setLayout(new BorderLayout());
+//
+//        JPanel mRestReservasFIVSuperPanel = new JPanel();
+//        mRestReservasFIVSuperPanel.setLayout(new BorderLayout());
+//        JPanel mRestReservasFCliSuperPanel = new JPanel();
+//        mRestReservasFCliSuperPanel.setLayout(new BorderLayout());
+//        JPanel mRestComentariosSuperPanel = new JPanel();
+//        mRestComentariosSuperPanel.setLayout(new BorderLayout());
+//        JPanel mRestPMedSuperPanel = new JPanel();
+//        mRestPMedSuperPanel.setLayout(new BorderLayout());
+//
+//        construirPanelLogin(this, contentor, loginSuperPanel);
+//
+//        construirPanelCliente(this, contentor, loginSuperPanel, regNovoCliSuperPanel);
+//
+//        construirPanelRestaurante(this, contentor, loginSuperPanel, registarNovoRestSuperPanel);
+//
+//        construirPanelMenuCliente(this, contentor, loginSuperPanel, mCliSuperPanel);
+//
+//        ////PROBLEMA - não aceita this
+//        construirPanelMRest(contentor, loginSuperPanel, mRestSuperPanel);
+//
+//        construirPanelMRestAdPrato(this, contentor, loginSuperPanel, mRestAdPratoSuperPanel);
+//
+//        construirPanelMRestAtPratoDia(this, contentor, loginSuperPanel, mRestAtPratoDiaSuperPanel);
+//
+//        construirPanelMRestAtDados(this, contentor, loginSuperPanel, mRestAtDadosSuperPanel);
+//
+//        construirPanelMRestReservas(this, contentor, loginSuperPanel, mRestReservasSuperPanel);
+//
+//        construirPanelMRestReservasFID(this, contentor, loginSuperPanel, mRestReservasFIDSuperPanel);
+//
+//        construirPanelMRestReservasFTipo(this, contentor, loginSuperPanel, mRestReservasFTipoSuperPanel);
+//
+//        construirPanelMRestReservasFTipoP(this, contentor, loginSuperPanel, mRestReservasFTipoPSuperPanel);
+//
+//        construirPanelMRestReservasFTipoTA(this, contentor, loginSuperPanel, mRestReservasFTipoTASuperPanel);
+//
+//        construirPanelMRestReservasFIV(this, contentor, loginSuperPanel, mRestReservasFIVSuperPanel);
+//
+//        construirPanelMRestReservasFCli(this, contentor, loginSuperPanel, mRestReservasFCliSuperPanel);
+//
+//        construirPanelMRestComentarios(this, contentor, loginSuperPanel, mRestComentariosSuperPanel);
+//
+//        construirPanelMCliAtDados(this, contentor, loginSuperPanel, mCliAtDadosSuperPanel);
+//
+//        construirPanelMCliHistRes(this, contentor, loginSuperPanel, mCliHistResSuperPanel);
+//
+//        construirPanelMCliResAct(this, contentor, loginSuperPanel, mCliResActSuperPanel);
+//
+//        construirPanelMCliFazerRes(this, contentor, loginSuperPanel, mCliFazerResSuperPanel);
+//
+//        construirPanelMCliFazerResP(this, contentor, loginSuperPanel, mCliFazerResPSuperPanel);
+//
+//        construirPanelMCliFazerResTA(this, contentor, loginSuperPanel, mCliFazerResTASuperPanel);
+//
+//        construirPanelReservasMCliMRese(this, contentor, loginSuperPanel, mCliReservasMReseSuperPanel);
+//
+//        construirPanelMCliMResComPonReservas(this, contentor, loginSuperPanel, mCliMResComPontReseSuperPanel);
+//
+//        construirPanelMCliMRestFOrdRests(this, contentor, loginSuperPanel, mCliMRestFOrdRestsSuperPanel);
+//
+//        construirPanelMCliMRestFRestPont(this, contentor, loginSuperPanel, mCliMRestFRestPontSuperPanel);
+//
+//        construirPanelMCliMRestFOrdRestValor(this, contentor, loginSuperPanel, mCliMRestFOrdRestValorSuperPanel);
+//
+//        construirPanelMCliMRestFOrdRestValorCarta(this, contentor, loginSuperPanel, mCliMRestFOrdRestValorCartaSuperPanel);
+//
+//        construirPanelMCliMRestFOrdRestValorPDia(this, contentor, loginSuperPanel, mCliMRestFOrdRestValorPDiaSuperPanel);
+//
+//        construirPanelMCliMRestFRestHFunc(this, contentor, loginSuperPanel, mCliMRestFRestHFuncSuperPanel);
+//
+//        construirPanelMCliMRestFRestLot(this, contentor, loginSuperPanel, mCliMRestFRestLotSuperPanel);
+//
+//        construirPanelMCliMRestFRestCid(this, contentor, loginSuperPanel, mCliMRestFRestCidSuperPanel);
+//        construirPanelMCliMCom(this, contentor, loginSuperPanel, mCliMComSuperPanel);
+//        construirPanelMCliMComFPP(this, contentor, loginSuperPanel, mCliMComFPPSuperPanel);
+//        construirPanelMCliMComFCli(this, contentor, loginSuperPanel, mCliMComFCliSuperPanel);
+//        construirPanelMCliMComFCliResultado(this, contentor, loginSuperPanel, mCliMComFCliResultadoSuperPanel);
+//        construirPanelMCliMComFRest(this, contentor, loginSuperPanel, mCliMComFRestSuperPanel);
+//        construirPanelMCliMComFRest(this, contentor, loginSuperPanel, mCliMComFRestSuperPanel);
+//        /////TODO continnuar
+////        construirPanelMCliMComFRestResultado
+////                mCliMComFRestResultadoSuperPanel
+//       // MCLIMCOMFRESTRESULTADO_CARD
+//        construirPanelMCliMComFID(this, contentor, loginSuperPanel, mCliMComFIDSuperPanel);
+//        construirPanelMRestPMed(this, contentor, loginSuperPanel, mRestPMedSuperPanel);
+//
+//        contentor.add(loginSuperPanel, LOGIN_CARD);
+//        contentor.add(regNovoCliSuperPanel, CLIENTE_CARD);
+//        contentor.add(registarNovoRestSuperPanel, RESTAURANTE_CARD);
+//        contentor.add(mCliSuperPanel, MENUCLIENTE_CARD);
+//        contentor.add(mRestSuperPanel, MENURESTAURANTE_CARD);
+//        contentor.add(mRestAdPratoSuperPanel, MRESTADICIONARPRATO_CARD);
+//        contentor.add(mRestAtPratoDiaSuperPanel, MRESTACTUALIZARPRATO_CARD);
+//        contentor.add(mRestAtDadosSuperPanel, MRESTACTUALIZARDADOS_CARD);
+//        contentor.add(mRestReservasSuperPanel, MRESTRESERV_CARD);
+//        contentor.add(mRestReservasFIDSuperPanel, MRESTRESERVASFID_CARD);
+//        contentor.add(mRestReservasFTipoSuperPanel, MRESTRESERVASFTIPO_CARD);
+//        contentor.add(mRestReservasFTipoPSuperPanel, MRESTRESERVASFTIPOP_CARD);
+//        contentor.add(mRestReservasFTipoTASuperPanel, MRESTRESERVASFTIPOTA_CARD);
+//        contentor.add(mRestReservasFIVSuperPanel, MRESTRESERVASFIV_CARD);
+//        contentor.add(mRestReservasFCliSuperPanel, MRESTRESERVASFCLI_CARD);
+//        contentor.add(mRestComentariosSuperPanel, MRESTCOMENTARIOS_CARD);
+//        contentor.add(mCliAtDadosSuperPanel, MCLIATDADOS_CARD);
+//        contentor.add(mCliHistResSuperPanel, MCLIHISRES_CARD);
+//        contentor.add(mCliResActSuperPanel, MCLIRESACT_CARD);
+//        contentor.add(mCliFazerResSuperPanel, MCLIFAZERRES_CARD);
+//        contentor.add(mCliFazerResPSuperPanel, MCLIFAZERRESP_CARD);
+//        contentor.add(mCliFazerResTASuperPanel, MCLIFAZERRESTA_CARD);
+//        contentor.add(mCliReservasMReseSuperPanel, MCLIRESERVAS_CARD);
+//        contentor.add(mCliMResComPontReseSuperPanel, MCLIMRESCOMPONTRESE_CARD);
+//        contentor.add(mCliMRestFOrdRestsSuperPanel, MCLIMRESTFORDRESTS_CARD);
+//        contentor.add(mCliMRestFRestPontSuperPanel, MCLIMRESTFRESTPONT_CARD);
+//        contentor.add(mCliMRestFOrdRestValorSuperPanel, MCLIMRESTFORDRESTVALOR_CARD);
+//        contentor.add(mCliMRestFOrdRestValorCartaSuperPanel, MCLIMRESTFORDRESTVALORCARTA_CARD);
+//        contentor.add(mCliMRestFOrdRestValorPDiaSuperPanel, MCLIMRESTFORDRESTVALORPDIA_CARD);
+//        contentor.add(mCliMRestFRestHFuncSuperPanel, MCLIMRESTFRESTHFUNC_CARD);
+//        contentor.add(mCliMRestFRestLotSuperPanel, MCLIMRESTFRESTLOT_CARD);
+//        contentor.add(mCliMRestFRestCidSuperPanel, MCLIMRESTFRESTCID_CARD);
+//        contentor.add(mCliMComSuperPanel, MCLIMCOM_CARD);
+//        contentor.add(mCliMComFPPSuperPanel, MCLIMCOMFPP_CARD);
+//        contentor.add(mCliMComFCliSuperPanel, MCLIMCOMFCLI_CARD);
+//        contentor.add(mCliMComFCliResultadoSuperPanel, MCLIMCOMFCLIRESULTADO_CARD);
+//        contentor.add(mCliMComFRestSuperPanel, MCLIMCOMFREST_CARD);
+//        contentor.add(mCliMComFIDSuperPanel, MCLIMCOMFID_CARD);
+//        contentor.add(mRestPMedSuperPanel, MRESTPMED_CARD);
 
     }
 
