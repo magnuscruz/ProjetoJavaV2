@@ -24,8 +24,9 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f76bd0c9-46a3-467f-8d1c-c12c37b653a1" name="Default Changelist" comment="Ajuste campo horas e para o ecrã login ficar vazio">
+    <list default="true" id="f76bd0c9-46a3-467f-8d1c-c12c37b653a1" name="Default Changelist" comment="Atualizados os logins">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FicheiroProjeto.dat" beforeDir="false" afterPath="$PROJECT_DIR$/FicheiroProjeto.dat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/gui/Interface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/gui/Interface.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -136,14 +137,8 @@
       <workItem from="1609784416535" duration="3081000" />
       <workItem from="1609797486256" duration="8928000" />
       <workItem from="1609828583731" duration="4606000" />
-      <workItem from="1609835174203" duration="678000" />
-    </task>
-    <task id="LOCAL-00011" summary="Passando para o projeto as interfaces desenvolvidas a parte: Menu  - Adicionar Prato">
-      <created>1609193107451</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1609193107451</updated>
+      <workItem from="1609835174203" duration="953000" />
+      <workItem from="1609837087486" duration="925000" />
     </task>
     <task id="LOCAL-00012" summary="Passando para o projeto as interfaces desenvolvidas a parte: Menu  - Atualizar Prato do Dia">
       <created>1609193168050</created>
@@ -481,7 +476,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609834907297</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="Atualizados os logins">
+      <created>1609836076470</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1609836076470</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -510,7 +512,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="commit para ajustar dados do ficheiro projeto" />
     <MESSAGE value="commit para tentar ajustar meus dados com os do Adriano" />
     <MESSAGE value="atualizado o registar cliente" />
     <MESSAGE value="criarCliente e criarRestaurante ja o JOptionPane.showMessageDialog&#10;Ja tenho o construtor de Sistema a funcionar" />
@@ -535,33 +536,34 @@
     <MESSAGE value="Devido ao problema no git, passei para meu código as pastas do Sistema, Restaurante, Utilizador, Comentario, Cliente." />
     <MESSAGE value="Atualizações de diversas interfaces" />
     <MESSAGE value="Ajuste campo horas e para o ecrã login ficar vazio" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ajuste campo horas e para o ecrã login ficar vazio" />
+    <MESSAGE value="Atualizados os logins" />
+    <option name="LAST_COMMIT_MESSAGE" value="Atualizados os logins" />
   </component>
   <component name="WindowStateProjectService">
     <state x="93" y="93" width="1095" height="495" key="DiffContextDialog" timestamp="1609710277084">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="93" y="93" width="1095" height="495" key="DiffContextDialog/0.0.1280.680@0.0.1280.680" timestamp="1609710277084" />
-    <state width="1237" height="160" key="GridCell.Tab.0.bottom" timestamp="1609834930963">
+    <state width="1237" height="160" key="GridCell.Tab.0.bottom" timestamp="1609837329602">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="160" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1609834930963" />
-    <state width="1237" height="160" key="GridCell.Tab.0.center" timestamp="1609834930962">
+    <state width="1237" height="160" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1609837329602" />
+    <state width="1237" height="160" key="GridCell.Tab.0.center" timestamp="1609837329602">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="160" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1609834930962" />
-    <state width="1237" height="160" key="GridCell.Tab.0.left" timestamp="1609834930962">
+    <state width="1237" height="160" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1609837329602" />
+    <state width="1237" height="160" key="GridCell.Tab.0.left" timestamp="1609837329602">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="160" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1609834930962" />
-    <state width="1237" height="160" key="GridCell.Tab.0.right" timestamp="1609834930962">
+    <state width="1237" height="160" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1609837329602" />
+    <state width="1237" height="160" key="GridCell.Tab.0.right" timestamp="1609837329602">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="160" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1609834930962" />
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1609835442946">
+    <state width="1237" height="160" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1609837329602" />
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1609836107111">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1609835442946" />
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1609836107111" />
     <state x="458" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1609788302002">
       <screen x="0" y="0" width="1280" height="680" />
     </state>

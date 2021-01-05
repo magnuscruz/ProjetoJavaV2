@@ -12,10 +12,8 @@ import org.jdatepicker.impl.UtilDateModel;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.time.LocalTime;
-import java.time.temporal.TemporalField;
 import java.util.*;
 
 import javax.swing.*;
@@ -82,7 +80,7 @@ public class Interface extends JFrame {
     private JPanel centroMCliMComFClinSSPanel;
     private JPanel centroMCliMComFRestSSPanel;
     private ArrayList<Reserva> listaReserva;
-    private JPanel centroMRestReservasFIDSSPanel1;
+    private JPanel centroMRestReservasFIDSSPanel3;
     private JTextField usernameLoginText;
     private JPasswordField passwordLoginField;
 
@@ -1577,13 +1575,13 @@ public class Interface extends JFrame {
         centroMRestReservasFIDSSPanel.setLayout(new FlowLayout());
         centroMRestReservasFIDSubPanel.add(centroMRestReservasFIDSSPanel, BorderLayout.WEST);
 
-        centroMRestReservasFIDSSPanel1 = new JPanel();
-        centroMRestReservasFIDSSPanel1.setLayout(new FlowLayout());
-        centroMRestReservasFIDSubPanel.add(centroMRestReservasFIDSSPanel1, BorderLayout.CENTER);
-
         JPanel centroMRestReservasFIDSSPanel2 = new JPanel();
         centroMRestReservasFIDSSPanel2.setLayout(new FlowLayout());
         centroMRestReservasFIDSubPanel.add(centroMRestReservasFIDSSPanel2, BorderLayout.WEST);
+
+        centroMRestReservasFIDSSPanel3 = new JPanel();
+        centroMRestReservasFIDSSPanel3.setLayout(new FlowLayout());
+        centroMRestReservasFIDSubPanel.add(centroMRestReservasFIDSSPanel3, BorderLayout.CENTER);
 
         centroMRestReservasFIDSSPanel.add(filtrarDataInicioMRestReservasFIDLabel);
         centroMRestReservasFIDSSPanel.add(datePickerMRestReservasFID1);
@@ -1640,7 +1638,7 @@ public class Interface extends JFrame {
 
             String[] nomeColunasMCliMComFPPSSPanel = new String[]{"DATA", "CLIENTE"};
             JTable tabelaMCliMComFPPSSPanel = new JTable(dadosMReservasFIDSSPanel, nomeColunasMCliMComFPPSSPanel);
-            centroMRestReservasFIDSSPanel1.add(tabelaMCliMComFPPSSPanel);
+            centroMRestReservasFIDSSPanel3.add(tabelaMCliMComFPPSSPanel);
         });
     }
 
