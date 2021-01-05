@@ -482,6 +482,21 @@ public class Sistema implements Serializable {
         }
         return false;
     }
+    public ArrayList<Comentario> consultarListaComentariosProprios(Cliente cliente) {
+
+        ArrayList<Comentario> listaComentariosProprios = new ArrayList<>();
+        for (Comentario c : getListaComentarios()) {
+            if (c.getCliente().getNome().equals(cliente.getNome())) {
+                listaComentariosProprios.add(c);
+            }
+        }
+
+        if (listaComentariosProprios.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Cliente não tem comentários feitos");
+            return null;
+        }
+        return listaComentariosProprios;
+    }
 
     public ArrayList<Comentario> consultarListaComentariosPorCliente(String nomeCliente) {
 

@@ -43,6 +43,7 @@ public class Interface extends JFrame {
     private static final String MCLIMCOM_CARD = "MENU CLIENTE – MENU COMENTÁRIOS";
     private static final String MCLIMCOMFPP_CARD = "MENU CLIENTE – COMENTÁRIOS - PRÓPRIOS";
     private static final String MCLIMCOMFCLI_CARD = "MENU CLIENTE – COMENTÁRIOS – FILTRAR POR CLIENTE";
+    private static final String MCLIMCOMFCLIRESULTADO_CARD = "MENU CLIENTE – COMENTÁRIOS – FILTRAR POR CLIENTE - RESULTADO";
     private static final String MCLIMCOMFREST_CARD = "MENU CLIENTE – COMENTÁRIOS - FILTRAR POR RESTAURANTE";
     private static final String MCLIMCOMFID_CARD = "MENU CLIENTE – COMENTÁRIOS – FILTRAR POR INTERVALO DE DATAS";
     private static final String MRESTPMED_CARD = "MENU CLIENTE – PONTUAÇÃO MÉDIA";
@@ -83,6 +84,7 @@ public class Interface extends JFrame {
     private JPanel centroMRestReservasFIDSSPanel3;
     private JTextField usernameLoginText;
     private JPasswordField passwordLoginField;
+    private JPanel centroMCliMComFCliResultadonSSPanel;
 
 
     public Interface(Sistema sistema) {
@@ -152,6 +154,9 @@ public class Interface extends JFrame {
         mCliMComFPPSuperPanel.setLayout(new BorderLayout());
         JPanel mCliMComFCliSuperPanel = new JPanel();
         mCliMComFCliSuperPanel.setLayout(new BorderLayout());
+        JPanel mCliMComFCliResultadoSuperPanel = new JPanel();
+        mCliMComFCliResultadoSuperPanel.setLayout(new BorderLayout());
+
         JPanel mCliMComFRestSuperPanel = new JPanel();
         mCliMComFRestSuperPanel.setLayout(new BorderLayout());
         JPanel mCliMComFIDSuperPanel = new JPanel();
@@ -253,6 +258,7 @@ public class Interface extends JFrame {
         construirPanelMCliMCom(this, contentor, loginSuperPanel, mCliMComSuperPanel);
         construirPanelMCliMComFPP(this, contentor, loginSuperPanel, mCliMComFPPSuperPanel);
         construirPanelMCliMComFCli(this, contentor, loginSuperPanel, mCliMComFCliSuperPanel);
+        construirPanelMCliMComFCliResultado(this, contentor, loginSuperPanel, mCliMComFCliResultadoSuperPanel);
         construirPanelMCliMComFRest(this, contentor, loginSuperPanel, mCliMComFRestSuperPanel);
         construirPanelMCliMComFID(this, contentor, loginSuperPanel, mCliMComFIDSuperPanel);
         construirPanelMRestPMed(this, contentor, loginSuperPanel, mRestPMedSuperPanel);
@@ -292,6 +298,7 @@ public class Interface extends JFrame {
         contentor.add(mCliMComSuperPanel, MCLIMCOM_CARD);
         contentor.add(mCliMComFPPSuperPanel, MCLIMCOMFPP_CARD);
         contentor.add(mCliMComFCliSuperPanel, MCLIMCOMFCLI_CARD);
+        contentor.add(mCliMComFCliResultadoSuperPanel, MCLIMCOMFCLIRESULTADO_CARD);
         contentor.add(mCliMComFRestSuperPanel, MCLIMCOMFREST_CARD);
         contentor.add(mCliMComFIDSuperPanel, MCLIMCOMFID_CARD);
         contentor.add(mRestPMedSuperPanel, MRESTPMED_CARD);
@@ -371,6 +378,8 @@ public class Interface extends JFrame {
 
             if (valida != null) {
                 JOptionPane.showMessageDialog(((Component) a.getSource()).getParent(), "Login bem-sucedido!");
+
+                //TODO professor sugeriu criar aqui um método para que os demais paineis surjam depois que o cliente estiver ativo
                 if (valida instanceof Cliente) {
                     mostrarJanela(MENUCLIENTE_CARD);
                 } else {
@@ -2838,7 +2847,7 @@ public class Interface extends JFrame {
         sulMCliMComSubPanel.add(voltarMCliMComButton);
 
         mCliMComFPPRButton.addActionListener(a -> {
-            listaComentarioClienteAtivo = sistema.consultarListaComentariosPorCliente(sistema.getClienteAtivo().getNome());
+            listaComentarioClienteAtivo = sistema.consultarListaComentariosProprios(sistema.getClienteAtivo());
             String[][] dadosMCliMComFPPSSPanel = new String[listaComentarioClienteAtivo.size()][3];
             int i = 0;
             for (Comentario c : listaComentarioClienteAtivo) {
@@ -2848,29 +2857,35 @@ public class Interface extends JFrame {
                 i++;
             }
 
+//            String[] nomeColunasMCliMComFPPSSPanel = new String[]{"COMENTÁRIO", "RESTAURANTE", "PONTUAÇÃO"};
+//            JTable tabelaMCliMComFPPSSPanel = new JTable(dadosMCliMComFPPSSPanel, nomeColunasMCliMComFPPSSPanel);
+//            centroMCliMComFPPSSPanel.add(tabelaMCliMComFPPSSPanel, BorderLayout.CENTER);
+//            mostrarJanela(MCLIMCOMFPP_CARD);
+
+
             String[] nomeColunasMCliMComFPPSSPanel = new String[]{"COMENTÁRIO", "RESTAURANTE", "PONTUAÇÃO"};
             JTable tabelaMCliMComFPPSSPanel = new JTable(dadosMCliMComFPPSSPanel, nomeColunasMCliMComFPPSSPanel);
-            centroMCliMComFPPSSPanel.add(tabelaMCliMComFPPSSPanel, BorderLayout.CENTER);
+            JScrollPane jScrollMCliMComFPP = new JScrollPane(tabelaMCliMComFPPSSPanel);
+            centroMCliMComFPPSSPanel.add(jScrollMCliMComFPP, BorderLayout.CENTER);
             mostrarJanela(MCLIMCOMFPP_CARD);
-
         });
 
         mCliMComFCliRButton.addActionListener(a -> {
-            listaComentarioCliente = sistema.consultarListaComentariosPorCliente(sistema.getClienteAtivo().getNome());
-            String[][] dadosMCliMComFCliSSPanel = new String[listaComentarioCliente.size()][3];
-            int i = 0;
-            for (Comentario c : listaComentarioCliente) {
-                dadosMCliMComFCliSSPanel[i][0] = c.getOpiniao();
-                dadosMCliMComFCliSSPanel[i][1] = c.getRestaurante().getNome();
-                dadosMCliMComFCliSSPanel[i][2] = "" + c.getPontuacao();
-                i++;
-            }
-
-            String[] nomeColunasMCliMComFCliSSPanel = new String[]{"COMENTÁRIO", "RESTAURANTE", "PONTUAÇÃO"};
-            JTable tabelaMCliMComFCliSSPanel = new JTable(dadosMCliMComFCliSSPanel, nomeColunasMCliMComFCliSSPanel);
-            JScrollPane jScrollMCliMComFCli = new JScrollPane();
-            jScrollMCliMComFCli.add(tabelaMCliMComFCliSSPanel);
-            centroMCliMComFClinSSPanel.add(jScrollMCliMComFCli, BorderLayout.CENTER);
+//            listaComentarioCliente = sistema.consultarListaComentariosPorCliente(sistema.getClienteAtivo().getNome());
+//            String[][] dadosMCliMComFCliSSPanel = new String[listaComentarioCliente.size()][3];
+//            int i = 0;
+//            for (Comentario c : listaComentarioCliente) {
+//                dadosMCliMComFCliSSPanel[i][0] = c.getOpiniao();
+//                dadosMCliMComFCliSSPanel[i][1] = c.getRestaurante().getNome();
+//                dadosMCliMComFCliSSPanel[i][2] = "" + c.getPontuacao();
+//                i++;
+//            }
+//
+//            String[] nomeColunasMCliMComFCliSSPanel = new String[]{"COMENTÁRIO", "RESTAURANTE", "PONTUAÇÃO"};
+//            JTable tabelaMCliMComFCliSSPanel = new JTable(dadosMCliMComFCliSSPanel, nomeColunasMCliMComFCliSSPanel);
+//            JScrollPane jScrollMCliMComFCli = new JScrollPane(tabelaMCliMComFCliSSPanel);
+//            jScrollMCliMComFCli.add(tabelaMCliMComFCliSSPanel);
+//            centroMCliMComFClinSSPanel.add(jScrollMCliMComFCli, BorderLayout.CENTER);
             mostrarJanela(MCLIMCOMFCLI_CARD);
         });
 
@@ -2887,7 +2902,9 @@ public class Interface extends JFrame {
 
             String[] nomeColunasMCliMComFRestSSPanel = {"COMENTÁRIO", "RESTAURANTE", "PONTUAÇÃO"};
             JTable tabelaMCliMComFRestSSPanel = new JTable(dadosMCliMComFRestSSPanel, nomeColunasMCliMComFRestSSPanel);
-            centroMCliMComFRestSSPanel.add(tabelaMCliMComFRestSSPanel, BorderLayout.CENTER);
+            JScrollPane jScrollMCliMComFRest = new JScrollPane();
+            jScrollMCliMComFRest.add(tabelaMCliMComFRestSSPanel);
+            centroMCliMComFRestSSPanel.add(jScrollMCliMComFRest, BorderLayout.CENTER);
             mostrarJanela(MCLIMCOMFREST_CARD);
         });
 
@@ -2976,7 +2993,7 @@ public class Interface extends JFrame {
         });
     }
 
-//todo ver como criar o apagar e editar comentário na seleção da tabela e ver a questão do OK
+//TODO ver como criar o apagar e editar comentário na seleção da tabela e ver a questão do OK
 //////MENU CLIENTE – CONSULTAR COMENTÁRIOS – CLIENTE ESPECÍFICO//////////
 
     private void construirPanelMCliMComFCli(Interface janela, Container contentor, JPanel loginSuperPanel, JPanel mCliMComFCliSuperPanel) {
@@ -3032,13 +3049,86 @@ public class Interface extends JFrame {
         });
 
         pesquisarMCliMComFCliButton.addActionListener(e -> {
-            mostrarJanela(LOGIN_CARD,usernameLoginText, passwordLoginField);
-            this.setSize(LARGURA_LOGIN, ALTURA_LOGIN);
+            listaComentarioCliente = sistema.consultarListaComentariosPorCliente(sistema.getClienteAtivo().getNome());
+            String[][] dadosMCliMComFCliSSPanel = new String[listaComentarioCliente.size()][3];
+            int i = 0;
+            for (Comentario c : listaComentarioCliente) {
+                dadosMCliMComFCliSSPanel[i][0] = c.getOpiniao();
+                dadosMCliMComFCliSSPanel[i][1] = c.getRestaurante().getNome();
+                dadosMCliMComFCliSSPanel[i][2] = "" + c.getPontuacao();
+                i++;
+            }
+
+            String[] nomeColunasMCliMComFCliSSPanel = new String[]{"COMENTÁRIO", "RESTAURANTE", "PONTUAÇÃO"};
+            JTable tabelaMCliMComFCliSSPanel = new JTable(dadosMCliMComFCliSSPanel, nomeColunasMCliMComFCliSSPanel);
+            JScrollPane jScrollMCliMComFCli = new JScrollPane();
+            jScrollMCliMComFCli.add(tabelaMCliMComFCliSSPanel);
+            centroMCliMComFClinSSPanel.add(jScrollMCliMComFCli, BorderLayout.CENTER);
+            mostrarJanela(MCLIMCOMFCLIRESULTADO_CARD);
         });
 
     }
+//TODO ver como criar o apagar e editar comentário na seleção da tabela e ver a questão do OK
+//////MENU CLIENTE – CONSULTAR COMENTÁRIOS – CLIENTE ESPECÍFICO - RESULTADO//////////
 
-//todo ver como criar o apagar e editar comentário na seleção da tabela e ver a questão do OK
+    private void construirPanelMCliMComFCliResultado(Interface janela, Container contentor, JPanel loginSuperPanel, JPanel mCliMComFCliResultadoSuperPanel) {
+
+        /////SUBPAINEIS//////
+        JPanel norteMCliMComFCliResultadoSubPanel = new JPanel();
+        norteMCliMComFCliResultadoSubPanel.setLayout(new BorderLayout());
+        JPanel centroMCliMComFCliResultadoSubPanel = new JPanel();
+        JPanel sulMCliMComFCliResultadoSubPanel = new JPanel();
+
+        JLabel mCliMComFCliResultadoLabel = new JLabel("MENU CLIENTE - CONSULTAR COMENTÁRIOS:");
+
+        JButton ptEnMCliMComFCliResultadoButton = new JButton("PT/EN");
+        JButton voltarMCliMComFCliResultadoButton = new JButton("MENU CLIENTE");
+        JButton retornarMCliMComFCliResultadoButton = new JButton("VOLTAR");
+
+        mCliMComFCliResultadoSuperPanel.add(norteMCliMComFCliResultadoSubPanel, "North");
+        mCliMComFCliResultadoSuperPanel.add(centroMCliMComFCliResultadoSubPanel, "Center");
+        mCliMComFCliResultadoSuperPanel.add(sulMCliMComFCliResultadoSubPanel, "South");
+
+        JPanel norteMCliMComFCliResultadonSSPanel = new JPanel();
+        norteMCliMComFCliResultadonSSPanel.add(mCliMComFCliResultadoLabel);
+        norteMCliMComFCliResultadoSubPanel.add(norteMCliMComFCliResultadonSSPanel, BorderLayout.CENTER);
+        norteMCliMComFCliResultadoSubPanel.add(ptEnMCliMComFCliResultadoButton, BorderLayout.EAST);
+
+
+        centroMCliMComFCliResultadonSSPanel = new JPanel();
+        centroMCliMComFCliResultadonSSPanel.setLayout(new FlowLayout());
+        centroMCliMComFCliResultadoSubPanel.add(centroMCliMComFCliResultadonSSPanel, BorderLayout.CENTER);
+
+
+        listaComentarioCliente = sistema.consultarListaComentariosPorCliente(sistema.getClienteAtivo().getNome());
+        String[][] dadosMCliMComFCliResultadoSSPanel = new String[listaComentarioCliente.size()][3];
+        int i = 0;
+        for (Comentario c : listaComentarioCliente) {
+            dadosMCliMComFCliResultadoSSPanel[i][0] = c.getOpiniao();
+            dadosMCliMComFCliResultadoSSPanel[i][1] = c.getRestaurante().getNome();
+            dadosMCliMComFCliResultadoSSPanel[i][2] = "" + c.getPontuacao();
+            i++;
+        }
+
+        String[] nomeColunasMCliMComFCliResultadoSSPanel = new String[]{"COMENTÁRIO", "RESTAURANTE", "PONTUAÇÃO"};
+        JTable tabelaMCliMComFCliResultadoSSPanel = new JTable(dadosMCliMComFCliResultadoSSPanel, nomeColunasMCliMComFCliResultadoSSPanel);
+        JScrollPane jScrollMCliMComFCliResultado = new JScrollPane(tabelaMCliMComFCliResultadoSSPanel);
+        centroMCliMComFCliResultadonSSPanel.add(jScrollMCliMComFCliResultado, BorderLayout.CENTER);
+
+        sulMCliMComFCliResultadoSubPanel.setLayout(new FlowLayout());
+        sulMCliMComFCliResultadoSubPanel.add(voltarMCliMComFCliResultadoButton);
+        sulMCliMComFCliResultadoSubPanel.add(retornarMCliMComFCliResultadoButton);
+
+        voltarMCliMComFCliResultadoButton.addActionListener(a -> {
+            mostrarJanela(MENUCLIENTE_CARD);
+        });
+
+        retornarMCliMComFCliResultadoButton.addActionListener(a -> {
+            mostrarJanela(MCLIMCOM_CARD);
+        });
+    }
+    
+//TODO ver como criar o apagar e editar comentário na seleção da tabela e ver a questão do OK
 //////MENU CLIENTE – CONSULTAR COMENTÁRIOS - RESTAURANTES//////////
 
     private void construirPanelMCliMComFRest(Interface janela, Container contentor, JPanel
