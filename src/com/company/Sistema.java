@@ -288,10 +288,12 @@ public class Sistema implements Serializable {
     public boolean criarCliente(String nome, String email, String morada, String telefone, String username, String password, String confirmarPass) {
 //TODO - Interface bloqueia!
         boolean valido = false;
-        if (emailUnico(email)) { //(emailUnico(email) || email=="")
+        //if (emailUnico(email)) {
+        if (emailUnico(email) || email==""){
             if (validarEmail(email)) {
                 // if (morada == "") { //
-                if (telefoneUnico(telefone)) {//(telefoneUnico(telefone) || telefone=="")
+                //if (telefoneUnico(telefone)) {//
+                if (telefoneUnico(telefone) || telefone==""){
                     if (validarTelefone(telefone)) {
                         if (usernameUnico(username)) { // (usernameUnico(username) || username=="")
                             if (confirmarPass(password, confirmarPass)) { //(confirmarPass(password, confirmarPass)

@@ -2868,7 +2868,9 @@ public class Interface extends JFrame {
 
             String[] nomeColunasMCliMComFCliSSPanel = new String[]{"COMENTÁRIO", "RESTAURANTE", "PONTUAÇÃO"};
             JTable tabelaMCliMComFCliSSPanel = new JTable(dadosMCliMComFCliSSPanel, nomeColunasMCliMComFCliSSPanel);
-            centroMCliMComFClinSSPanel.add(tabelaMCliMComFCliSSPanel, BorderLayout.CENTER);
+            JScrollPane jScrollMCliMComFCli = new JScrollPane();
+            jScrollMCliMComFCli.add(tabelaMCliMComFCliSSPanel);
+            centroMCliMComFClinSSPanel.add(jScrollMCliMComFCli, BorderLayout.CENTER);
             mostrarJanela(MCLIMCOMFCLI_CARD);
         });
 
@@ -2883,7 +2885,7 @@ public class Interface extends JFrame {
                 i++;
             }
 
-            String[] nomeColunasMCliMComFRestSSPanel = new String[]{"COMENTÁRIO", "RESTAURANTE", "PONTUAÇÃO"};
+            String[] nomeColunasMCliMComFRestSSPanel = {"COMENTÁRIO", "RESTAURANTE", "PONTUAÇÃO"};
             JTable tabelaMCliMComFRestSSPanel = new JTable(dadosMCliMComFRestSSPanel, nomeColunasMCliMComFRestSSPanel);
             centroMCliMComFRestSSPanel.add(tabelaMCliMComFRestSSPanel, BorderLayout.CENTER);
             mostrarJanela(MCLIMCOMFREST_CARD);
