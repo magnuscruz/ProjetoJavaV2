@@ -115,7 +115,7 @@ public class Main {
 
 //
 //        //                       sistema.gravarSistema();
-sistema.login("cliente7", "pass");
+//sistema.login("cliente7", "pass");
         Interface sistemaGrafico = new Interface(sistema);
         sistemaGrafico.setVisible(true);
     }

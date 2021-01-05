@@ -54,6 +54,11 @@ public class Sistema implements Serializable {
         return this.utilizarAtivo;
     }
 
+    //TODO - TESTAR - ver no debug se faz logout
+    public Utilizador logout() {
+        return utilizarAtivo;
+    }
+
     public Cliente getClienteAtivo() {
         if (getUtilizarAtivo() instanceof Cliente) {
             return (Cliente) getUtilizarAtivo();
@@ -288,12 +293,10 @@ public class Sistema implements Serializable {
     public boolean criarCliente(String nome, String email, String morada, String telefone, String username, String password, String confirmarPass) {
 //TODO - Interface bloqueia!
         boolean valido = false;
-        //if (emailUnico(email)) {
-        if (emailUnico(email) || email==""){
+        if (emailUnico(email)) { //(emailUnico(email) || email=="")
             if (validarEmail(email)) {
                 // if (morada == "") { //
-                //if (telefoneUnico(telefone)) {//
-                if (telefoneUnico(telefone) || telefone==""){
+                if (telefoneUnico(telefone)) {//(telefoneUnico(telefone) || telefone=="")
                     if (validarTelefone(telefone)) {
                         if (usernameUnico(username)) { // (usernameUnico(username) || username=="")
                             if (confirmarPass(password, confirmarPass)) { //(confirmarPass(password, confirmarPass)
@@ -367,7 +370,6 @@ public class Sistema implements Serializable {
                 JOptionPane.showMessageDialog(null, "Email já esta registado");
                 System.out.println("Email já esta registado");
             }
-
         }
 
         if (password != "") {
@@ -388,7 +390,7 @@ public class Sistema implements Serializable {
     public void atualizarDadosRestaurante(String nome, String morada, String telefone, String email, String password, String novaPass, String confirmarNovaPass, int lotacaoEsplanada, int lotacaoFum, int lotacaoNFum, LocalTime inicioAlm, LocalTime fimAlm, LocalTime inicioJan, LocalTime fimJan) {
 
 
-//todo falta validar a lotacao, a questao de pedir variaveis int ou tudo String...
+//TODO falta validar a lotacao, a questao de pedir variaveis int ou tudo String...
 
         if (nome != "") {
             getRestauranteAtivo().setNome(nome);
@@ -482,27 +484,12 @@ public class Sistema implements Serializable {
         }
         return false;
     }
-    public ArrayList<Comentario> consultarListaComentariosProprios(Cliente cliente) {
-
-        ArrayList<Comentario> listaComentariosProprios = new ArrayList<>();
-        for (Comentario c : getListaComentarios()) {
-            if (c.getCliente().getNome().equals(cliente.getNome())) {
-                listaComentariosProprios.add(c);
-            }
-        }
-
-        if (listaComentariosProprios.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Cliente não tem comentários feitos");
-            return null;
-        }
-        return listaComentariosProprios;
-    }
 
     public ArrayList<Comentario> consultarListaComentariosPorCliente(String nomeCliente) {
 
         ArrayList<Comentario> listaComentariosPorCliente = new ArrayList<>();
         for (Comentario c : getListaComentarios()) {
-            if (c.getCliente().getNome().equalsIgnoreCase(nomeCliente)) {
+            if (c.getCliente().getNome().equalsIgnoreCase(nomeCliente) && c.getStatus()) {
                 listaComentariosPorCliente.add(c);
             }
         }
@@ -518,7 +505,7 @@ public class Sistema implements Serializable {
 
         ArrayList<Comentario> listaComentariosPorRestaurante = new ArrayList<>();
         for (Comentario c : getListaComentarios()) {
-            if (c.getCliente().getNome().equalsIgnoreCase(nomeRestaurante)) {
+            if (c.getCliente().getNome().equalsIgnoreCase(nomeRestaurante) && c.getStatus()) {
                 listaComentariosPorRestaurante.add(c);
             }
         }
@@ -537,7 +524,7 @@ public class Sistema implements Serializable {
 
         if (valido) {
             for (Comentario c : getListaComentarios()) {
-                if (c.getCliente().getNome().equals(cliente.nome) && c.getDataComentario().after(dataAnterior) && c.getDataComentario().before(dataPosterior)) {
+                if (c.getCliente().getNome().equals(cliente.nome) && c.getDataComentario().after(dataAnterior) && c.getDataComentario().before(dataPosterior) && c.getStatus()) {
                     listaComentariosPorData.add(c);
                     count++;
                 }
@@ -550,16 +537,17 @@ public class Sistema implements Serializable {
         return listaComentariosPorData;
     }
 
-    //TODO - NAO ESTA FEITO
-//    public ArrayList <Restaurante> consultarRestaurantesPorOrdemPontuacao(){
-//
-//        ArrayList <Restaurante> listaRestaurantesPorPontuacao = new ArrayList<>();
-//
-//        for (Restaurante r: getListaRestaurantes()){
-//
-//        }
-//
-//    }
+    //TODO - NAO ESTA FEITO - Mas Tais vai fazer na parte dela, na tabela usa o sort
+    public ArrayList<Restaurante> consultarRestaurantesPorOrdemPontuacao() {
+
+        ArrayList<Restaurante> listaRestaurantesPorPontuacao = new ArrayList<>();
+
+        for (Restaurante r : getListaRestaurantes()) {
+
+        }
+
+        return listaRestaurantesPorPontuacao;
+    }
 
     public ArrayList<Restaurante> consultarRestaurantePorValores(String valorMin2, String valorMax2) {
         int valorMin = Integer.parseInt(valorMin2);
@@ -650,9 +638,8 @@ public class Sistema implements Serializable {
         ArrayList<Reserva> listaReservasCliente = new ArrayList<>();
 
         for (Reserva r : getRestauranteAtivo().getListaReservas()) {
-            if (r.getCliente().getNome().equals(nomeCliente)) {
+            if (r.getCliente().getNome().equals(nomeCliente) && r.getStatus()) {
                 getRestauranteAtivo().getListaReservas().add(r);
-
             }
         }
         if (listaReservasCliente.isEmpty()) {
@@ -670,7 +657,7 @@ public class Sistema implements Serializable {
 
         if (validarMinMenorQueMax(valorMin, valorMax)) {
             for (Reserva r : getRestauranteAtivo().getListaReservas()) {
-                if (r instanceof TakeAway && ((TakeAway) r).getValorTotal() >= valorMin && ((TakeAway) r).getValorTotal() <= valorMax) {
+                if (r instanceof TakeAway && ((TakeAway) r).getValorTotal() >= valorMin && ((TakeAway) r).getValorTotal() <= valorMax && r.getStatus()) {
                     listaReservasTakeAwayValoresMedios.add(r);
                 }
             }
@@ -682,12 +669,29 @@ public class Sistema implements Serializable {
         return listaReservasTakeAwayValoresMedios;
     }
 
+    public ArrayList<Reserva> consultarReservasPorData(GregorianCalendar data1, GregorianCalendar data2) {
+        ArrayList<Reserva> listaReservasPorData = new ArrayList<>();
+        boolean datasValidas = verificarValidadeDatas(data1, data2);
+        if (datasValidas) {
+            for (Reserva r : getRestauranteAtivo().getListaReservas()) {
+                if (r.getData().after(data1) && r.getData().before(data2) && r.getStatus()) {
+                    listaReservasPorData.add(r);
+                }
+            }
+            if (listaReservasPorData.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Não existem reservas dentro desse intervalo datas");
+                return null;
+            }
+        }
+        return listaReservasPorData;
+    }
+
     public ArrayList<Reserva> getReservasTakeAway() {
 
         ArrayList<Reserva> listaReservasTakeAway = new ArrayList<>();
 
         for (Reserva r : getRestauranteAtivo().getListaReservas()) {
-            if (r instanceof TakeAway) {
+            if (r instanceof TakeAway && r.getStatus()) {
                 listaReservasTakeAway.add(r);
             }
         }
@@ -703,7 +707,7 @@ public class Sistema implements Serializable {
         ArrayList<Reserva> listaReservasPresencial = new ArrayList<>();
 
         for (Reserva r : getRestauranteAtivo().getListaReservas()) {
-            if (r instanceof Presencial) {
+            if (r instanceof Presencial && r.getStatus()) {
                 listaReservasPresencial.add(r);
             }
         }
@@ -714,7 +718,19 @@ public class Sistema implements Serializable {
         return listaReservasPresencial;
     }
 
-    ///Restaurante - reservas por data
+
+    //TODO verificar se funciona corretamente
+    public double lotacaoTotalRestaurante(Restaurante restaurante) {
+        double lotacaoTotalRest = 0;
+
+        for (Restaurante r : getListaRestaurantes()) {
+            if (r.getId() == restaurante.getId()) {
+                lotacaoTotalRest = r.getLotacaoFum() + r.getLotacaoNFum() + r.getLotacaoEsplanada();
+            }
+        }
+        return lotacaoTotalRest;
+    }
+
 
     //TODO ainda ao esta feito!
     public ArrayList<Restaurante> consultarRestaurantePorLugaresDisponiveis() {
@@ -740,7 +756,6 @@ public class Sistema implements Serializable {
                 gravarSistema();
             }
         }
-
     }
 
     //TODO (prof nao) este criarComentario funciona, mas ver o de cima, é o original!//Nao esquecer como reserva nao funciona, nao da p testar 100%
@@ -755,7 +770,7 @@ public class Sistema implements Serializable {
         //TODO
         // Confirmar que tipo de campo é que recebemos da interface, se é int ou string ou outra coisa qualquer...
         for (Comentario c : getListaComentarios()) {
-            if (c.getCliente().equals(this)) {
+            if (c.getCliente().equals(this) && c.getStatus()) {
                 if (opiniao != null) {
                     c.setOpiniao(opiniao);
                 }
@@ -790,7 +805,7 @@ public class Sistema implements Serializable {
         double totalPontuacao = 0;
         double media = 0;
         for (Comentario u : getListaComentarios()) {
-            if (u.getRestaurante().getNome().equals(restaurante.nome)) {
+            if (u.getRestaurante().getNome().equals(restaurante.nome) && u.getStatus()) {
                 count++;
                 totalPontuacao += u.getPontuacao();
             }

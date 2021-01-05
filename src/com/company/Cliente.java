@@ -17,7 +17,7 @@ public class Cliente extends Utilizador implements Serializable {
         this.status = true;
     }
 
-    public boolean validarDataHoraDeReserva (GregorianCalendar data, LocalTime horas) {
+    public boolean validarDataHoraDeReserva(GregorianCalendar data, LocalTime horas) {
         GregorianCalendar dataNesteMomento = new GregorianCalendar();
         dataNesteMomento.toInstant();
 
@@ -31,9 +31,10 @@ public class Cliente extends Utilizador implements Serializable {
         GregorianCalendar dataHoraDaReserva = new GregorianCalendar(ano, mes, dia, hora, minuto);
         boolean valido = dataHoraDaReserva.after(dataNesteMomento);
 
-        if (valido){
+        if (valido) {
             return true;
         }
+        JOptionPane.showMessageDialog(null, "Insira uma data e hora posterior ao dia de hoje!");
         return false;
     }
 
@@ -53,7 +54,7 @@ public class Cliente extends Utilizador implements Serializable {
         if (horaEscolhida.isAfter(aberturaJan) && horaEscolhida.isBefore(fechoJan)) {
             return 2;
 
-        } else{
+        } else {
             JOptionPane.showMessageDialog(null, "Restaurante fechado - Escolha outra hora");
             return 0;
         }
@@ -73,7 +74,7 @@ public class Cliente extends Utilizador implements Serializable {
                 case 1:
                     switch (zona) {//DENTRO DO ALMOCO - ESCOLHER EM QUE ZONA DO RESTAURANTE QUER RESERVAR!
                         case 1:
-                            int valido = restaurante.zonaDisponibilidade(data,hora, zona, numLugares);
+                            int valido = restaurante.zonaDisponibilidade(data, hora, zona, numLugares);
                             if (valido == 1) {
                                 Presencial p = new Presencial(cliente, restaurante, data, hora, zona, numLugares);
                                 getListaReservas().add(p);//adicionamos a lista de reservas do Cliente em especifico
@@ -106,27 +107,60 @@ public class Cliente extends Utilizador implements Serializable {
         Presencial p = new Presencial(this, restaurante, data, horario, numeroLugares, zona);
         restaurante.getListaReservas().add(p);
         boolean res = getListaReservas().add(p);
-        if (!res){
+        if (!res) {
             System.out.println("Erro, nao adicionou");
             JOptionPane.showMessageDialog(null, "Erro, não criou");
         }
     }
 
-    public void criarReservaTakeAway(Cliente cliente, Restaurante restaurante, GregorianCalendar data, LocalTime horario, int quantidade) {
-        TakeAway t = new TakeAway(cliente, restaurante, data, horario, quantidade);
-        getListaReservas().add(t);
+    public boolean validarQtdRefeicoesPedidas(int quantidade, Restaurante restaurante) {
+
+        int qtdMax = 21;
+        if (quantidade >= qtdMax) {
+            JOptionPane.showMessageDialog(null, "Limite máximo por pedido é " + qtdMax);
+            return false;
+        }
+        return true;
     }
 
-    public void cancelarReserva () {
-        getListaReservas();
+    public void criarReservaTakeAway(Cliente cliente, Restaurante restaurante, GregorianCalendar data, LocalTime horario, int quantidade) {
+        boolean validarDatas = validarDataHoraDeReserva(data, horario);
+        int restauranteAberto = restauranteAberto(restaurante, horario);
+        boolean validarQtdRefeicoes = validarQtdRefeicoesPedidas(quantidade, restaurante);
 
-        for(Reserva r: getListaReservas()){
-            if (r.getCliente().getNome().equals(this.nome)){
+        if (validarDatas) {
+            if (restauranteAberto==1 || restauranteAberto==2) {
+                if (validarQtdRefeicoes) {
+                    TakeAway t = new TakeAway(cliente, restaurante, data, horario, quantidade);
+                    getListaReservas().add(t);
+                }
+            }
+        }
+    }
+
+    public void editarReservaTakeAway(Restaurante restaurante, GregorianCalendar data, LocalTime horario, int quantidade) {
+        boolean validarDatas = validarDataHoraDeReserva(data, horario);
+        boolean validarQtdRefeicoes = validarQtdRefeicoesPedidas(quantidade, restaurante);
+
+        if (validarDatas) {
+            if (validarQtdRefeicoes) {
+                TakeAway t = new TakeAway(cliente, restaurante, data, horario, quantidade);
+                getListaReservas().add(t);
+            }
+        }
+    }
+
+    public void editarReservaPresencial(GregorianCalendar data, LocalTime hora, int zona, int numLugares) {
+
+    }
+
+    public void cancelarReserva(Reserva reserva) {
+
+        for (Reserva r : getListaReservas()) {
+            if (r instanceof TakeAway && r.getIdReserva() == reserva.getIdReserva()) {
                 r.setStatus(false);
-                //TODO : como Cliente e Restaurante têm lista de reservas,
-                //tambem tenho de por em Restaurante set.Status (false)
-                // nao estou a ver como...
-                JOptionPane.showMessageDialog(null, "Reserva cancelada");
+            } else {
+                r.setStatus(false);
             }
         }
     }
@@ -136,5 +170,4 @@ public class Cliente extends Utilizador implements Serializable {
     public String toString() {
         return "\nCliente: " + super.toString();
     }
-
 }

@@ -52,4 +52,8 @@ public abstract class Reserva implements Serializable {
     public void setStatus(Boolean status) {
         this.status = status;
     }
+
+    public int getIdReserva() {
+        return idReserva;
+    }
 }

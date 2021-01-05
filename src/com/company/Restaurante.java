@@ -60,7 +60,7 @@ public class Restaurante extends Utilizador implements Serializable {
                 System.out.println(getListaReservas().size());
                 if (!getListaReservas().isEmpty()) {
                     for (Reserva r : getListaReservas()) {
-                        if (r.getData().equals(dia)) {
+                        if (r.getData().equals(dia) && r.getStatus()) {
                             disponibilidade = r.getRestaurante().lotacaoEsplanada;
                             System.out.println("ENTROU");
                             if (disponibilidade >= num) {
@@ -209,6 +209,7 @@ public class Restaurante extends Utilizador implements Serializable {
     public void setFimJan(LocalTime fimJan) {
         this.fimJan = fimJan;
     }
+
 
     public double getPrecoMedioRestaurante() {
         double countCarta = 0;

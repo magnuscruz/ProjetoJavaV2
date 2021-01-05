@@ -21,6 +21,7 @@ public class Ementa implements Serializable {
         this.pratosDia = pratosDia;
     }
 
+
     public void adicionarPratoACarta( String nome, String descricao, double preco) {
         Prato p = new Prato(nome, descricao, preco);
         carta.add(p);

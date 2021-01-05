@@ -141,4 +141,7 @@ public class Utilizador implements Serializable {
         return 0;
     }
 
+    public int getId() {
+        return id;
+    }
 }
