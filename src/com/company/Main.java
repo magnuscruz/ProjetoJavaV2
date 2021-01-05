@@ -63,7 +63,7 @@ public class Main {
 
         System.out.println("PONTUACAO MEDIA "+ sistema.getPontuacaoMediaRestaurante(sistema.getListaRestaurantes().get(0)));
         System.out.println("Preco MEDIO "+ sistema.getListaRestaurantes().get(0).getPrecoMedioRestaurante());
-        System.out.println("Restaurantes por valores "+ sistema.consultarRestaurantePorValores(5,50));
+        //System.out.println("Restaurantes por valores "+ sistema.consultarRestaurantePorValores(5,50));
 
 
 //        sistema.getClienteAtivo().criarReservaPresencial(sistema.getListaRestaurantes().get(0), new GregorianCalendar(2021, 03, 01),
