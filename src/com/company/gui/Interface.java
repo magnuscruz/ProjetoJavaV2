@@ -62,7 +62,7 @@ public class Interface extends JFrame {
     private static final String MRESTCOMENTARIOS_CARD = "MENU RESTAURANTE - COMENTÁRIOS";
     private static final int LARGURA_LOGIN = 400;
     private static final int ALTURA_LOGIN = 180;
-    private static final int LARGURA_PADRAO = 550;
+    private static final int LARGURA_PADRAO = 600;
     private static final int ALTURA_PADRAO = 350;
     private final Container contentor;
     private final JButton logoutButton;
@@ -369,7 +369,6 @@ public class Interface extends JFrame {
             } else {
                 JOptionPane.showMessageDialog(((Component) a.getSource()).getParent(), "Dados inválidos!");
             }
-
         });
 
         clienteNovoButton.addActionListener(a -> mostrarJanela(CLIENTE_CARD));
@@ -463,7 +462,7 @@ public class Interface extends JFrame {
                     new String(passwordClienteField.getPassword()),
                     new String(confirmarPassawordClienteField.getPassword()));
             if (validoNovoCliente) {
-                JOptionPane.showMessageDialog(null, "Registado com sucesso! Faça o login!");
+                JOptionPane.showMessageDialog(((Component) a.getSource()).getParent(), "Registado com sucesso!");
                 mostrarJanela(MENUCLIENTE_CARD);
             }
         });
@@ -944,6 +943,7 @@ public class Interface extends JFrame {
                     horaJF);
 
             if (validoNovoRest) {
+                JOptionPane.showMessageDialog(null, "Registado com sucesso!");
                 mostrarJanela(MENURESTAURANTE_CARD);
             }
 
@@ -1271,7 +1271,8 @@ public class Interface extends JFrame {
         centroAtDadosRestSSPanelForm5.add(usernameAtDadosRestLabel);
         centroAtDadosRestSSPanelForm5.add(usernameAtDadosRestText);
 
-        centroAtDadosRestSSPanelForm6.add(passwordAtDadosRestLabel);
+        centroAtDadosRestSSPanelForm5.add(passwordAtDadosRestLabel);
+        centroAtDadosRestSSPanelForm5.add(passwordAtDadosRestField);
         centroAtDadosRestSSPanelForm6.add(novaPasswordAtDadosRestLabel);
         centroAtDadosRestSSPanelForm6.add(novaPasswordAtDadosRestField);
         centroAtDadosRestSSPanelForm6.add(confirmarPasswordAtDadosRestLabel);
@@ -3395,5 +3396,4 @@ public class Interface extends JFrame {
         adicionarMCliFResTAButton.addActionListener(e -> mostrarJanela(MCLIFAZERRES_CARD));
         this.setVisible(true);
     }
-
 }
