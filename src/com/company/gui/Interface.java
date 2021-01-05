@@ -508,7 +508,7 @@ public class Interface extends JFrame {
         });
 
         cancelarClienteButton.addActionListener(a -> {
-            mostrarJanela(LOGIN_CARD);
+            mostrarJanela(LOGIN_CARD,usernameLoginText, passwordLoginField);
             this.setSize(LARGURA_LOGIN, ALTURA_LOGIN);
         });
     }
@@ -647,7 +647,7 @@ public class Interface extends JFrame {
         });
 
         logoutMCliMReseButton.addActionListener(a -> {
-            mostrarJanela(LOGIN_CARD);
+            mostrarJanela(LOGIN_CARD, usernameLoginText, passwordLoginField);
             this.setSize(LARGURA_LOGIN, ALTURA_LOGIN);
         });
 
@@ -850,7 +850,8 @@ public class Interface extends JFrame {
 
         //todo ver os encaminhamentos
         okMCliRestComPonReseButton.addActionListener(e -> {
-            mostrarJanela(LOGIN_CARD);
+            mostrarJanela(LOGIN_CARD,usernameLoginText, passwordLoginField);
+            this.setSize(LARGURA_LOGIN, ALTURA_LOGIN);
         });
     }
 
@@ -1020,7 +1021,7 @@ public class Interface extends JFrame {
         sulNovoRestauranteSubPanel.add(registarRestauranteButton);
 
         cancelarRestauranteButton.addActionListener(e -> {
-            mostrarJanela(LOGIN_CARD);
+            mostrarJanela(LOGIN_CARD,usernameLoginText, passwordLoginField);
             this.setSize(LARGURA_LOGIN, ALTURA_LOGIN);
         });
 
@@ -1143,7 +1144,7 @@ public class Interface extends JFrame {
         });
 
         logoutMenuRestauranteButton.addActionListener(a -> {
-            mostrarJanela(LOGIN_CARD);
+            mostrarJanela(LOGIN_CARD,usernameLoginText, passwordLoginField);
             this.setSize(LARGURA_LOGIN, ALTURA_LOGIN);
         });
     }
@@ -2109,7 +2110,8 @@ public class Interface extends JFrame {
 
         //todo ver os encaminhamentos para responder comentário
         pesquisarMRestPMedButton.addActionListener(e -> {
-            mostrarJanela(LOGIN_CARD);
+            mostrarJanela(LOGIN_CARD,usernameLoginText, passwordLoginField);
+            this.setSize(LARGURA_LOGIN, ALTURA_LOGIN);
         });
 
     }
@@ -3030,7 +3032,8 @@ public class Interface extends JFrame {
         });
 
         pesquisarMCliMComFCliButton.addActionListener(e -> {
-            mostrarJanela(LOGIN_CARD);
+            mostrarJanela(LOGIN_CARD,usernameLoginText, passwordLoginField);
+            this.setSize(LARGURA_LOGIN, ALTURA_LOGIN);
         });
 
     }
@@ -3610,7 +3613,8 @@ public class Interface extends JFrame {
 
         //todo ver os encaminhamentos
         confirmarMCliFResPButton.addActionListener(e -> {
-            mostrarJanela(LOGIN_CARD);
+            mostrarJanela(LOGIN_CARD,usernameLoginText, passwordLoginField);
+            this.setSize(LARGURA_LOGIN, ALTURA_LOGIN);
         });
 
     }
