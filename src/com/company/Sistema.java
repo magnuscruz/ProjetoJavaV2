@@ -55,8 +55,8 @@ public class Sistema implements Serializable {
     }
 
     //TODO - TESTAR - ver no debug se faz logout
-    public Utilizador logout() {
-        return utilizarAtivo;
+    public void logout() {
+        this.utilizarAtivo = null;
     }
 
     public Cliente getClienteAtivo() {
@@ -483,6 +483,21 @@ public class Sistema implements Serializable {
             JOptionPane.showMessageDialog(null, "Datas não são validas, insira novamente");
         }
         return false;
+    }
+    public ArrayList<Comentario> consultarListaComentariosProprios(Cliente cliente) {
+
+        ArrayList<Comentario> listaComentariosProprios = new ArrayList<>();
+        for (Comentario c : getListaComentarios()) {
+            if (c.getCliente().getNome().equals(cliente.getNome())) {
+                listaComentariosProprios.add(c);
+            }
+        }
+
+        if (listaComentariosProprios.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Cliente não tem comentários feitos");
+            return null;
+        }
+        return listaComentariosProprios;
     }
 
     public ArrayList<Comentario> consultarListaComentariosPorCliente(String nomeCliente) {

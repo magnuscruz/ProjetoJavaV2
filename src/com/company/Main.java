@@ -15,11 +15,11 @@ public class Main {
         Sistema sistema = new Sistema();
         //Frame f = new Frame();
 //
-//        sistema.criarRestaurante("A", "rua x", "Coimbra",
-//                "111111111", "email1@com.pt", "user1",
-//                "pass", "pass", 20, 10,
-//                10, LocalTime.of(12, 00), LocalTime.of(14, 00),
-//                LocalTime.of(19, 00), LocalTime.of(22, 00));
+        sistema.criarRestaurante("A", "rua x", "Coimbra",
+                "111111111", "email1@com.pt", "user1",
+                "pass", "pass", 20, 10,
+                10, LocalTime.of(12, 00), LocalTime.of(14, 00),
+                LocalTime.of(19, 00), LocalTime.of(22, 00));
 //
 ////        sistema.criarRestaurante("B", "rua y", "lisboa",
 ////                "222222222", "email2@com.pt", "user2",
