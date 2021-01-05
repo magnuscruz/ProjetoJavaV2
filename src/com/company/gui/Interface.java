@@ -12,6 +12,7 @@ import org.jdatepicker.impl.UtilDateModel;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.time.LocalTime;
 import java.time.temporal.TemporalField;
@@ -80,6 +81,10 @@ public class Interface extends JFrame {
     private JPanel centroMCliMComFPPSSPanel;
     private JPanel centroMCliMComFClinSSPanel;
     private JPanel centroMCliMComFRestSSPanel;
+    private ArrayList<Reserva> listaReserva;
+    private JPanel centroMRestReservasFIDSSPanel1;
+    private JTextField usernameLoginText;
+    private JPasswordField passwordLoginField;
 
 
     public Interface(Sistema sistema) {
@@ -315,9 +320,9 @@ public class Interface extends JFrame {
         JLabel usernameLoginLabel = new JLabel("Username");
         JLabel passwordLoginLabel = new JLabel("Password");
 
-        JTextField usernameLoginText = new JTextField(20);
+        usernameLoginText = new JTextField(20);
 
-        JPasswordField passwordLoginField = new JPasswordField(20);
+        passwordLoginField = new JPasswordField(20);
 
         ///Layout dos subPaineis north, centro e south
         norteLoginSubPanel.setLayout(new BorderLayout());
@@ -391,7 +396,10 @@ public class Interface extends JFrame {
         });
     }
 
-    private void mostrarJanela(String nomeJanela) {
+    private void mostrarJanela(String nomeJanela,JTextField... textFields) {
+        for (JTextField text: textFields) {
+            text.setText(null);
+        }
         CardLayout cl = (CardLayout) contentor.getLayout();
         cl.show(contentor, nomeJanela);
         this.setSize(LARGURA_PADRAO, ALTURA_PADRAO);
@@ -570,7 +578,7 @@ public class Interface extends JFrame {
 
 
         logoutMenuClienteButton.addActionListener(a -> {
-            mostrarJanela(LOGIN_CARD);
+            mostrarJanela(LOGIN_CARD,usernameLoginText, passwordLoginField);
             this.setSize(LARGURA_LOGIN, ALTURA_LOGIN);
         });
 
@@ -1440,7 +1448,6 @@ public class Interface extends JFrame {
 
         atDadosRestButton.addActionListener(a -> {
             mostrarJanela(MENURESTAURANTE_CARD);
-
         });
 
     }
@@ -1458,15 +1465,15 @@ public class Interface extends JFrame {
         JLabel mRestReservasLabel = new JLabel("HISTÓRICO DE RESERVAS");
         JRadioButton filtrarIntervDatasMRestResRButton = new JRadioButton("DATAS");
         //todo verificar a questão do calendário
-        JRadioButton filtrarTipomRestResRButton = new JRadioButton("TIPO");
-        JRadioButton filtrarIntervValmRestResRButton = new JRadioButton("VALORES");
-        JRadioButton filtrarClientemRestResRButton = new JRadioButton("CLIENTE");
+        JRadioButton filtrarTipoMRestResRButton = new JRadioButton("TIPO");
+        JRadioButton filtrarIntervValMRestResRButton = new JRadioButton("VALORES");
+        JRadioButton filtrarClienteMRestResRButton = new JRadioButton("CLIENTE");
 
         ButtonGroup group = new ButtonGroup();
         group.add(filtrarIntervDatasMRestResRButton);
-        group.add(filtrarTipomRestResRButton);
-        group.add(filtrarIntervValmRestResRButton);
-        group.add(filtrarClientemRestResRButton);
+        group.add(filtrarTipoMRestResRButton);
+        group.add(filtrarIntervValMRestResRButton);
+        group.add(filtrarClienteMRestResRButton);
 
         JButton ptEnMRestReservasButton = new JButton("PT/EN");
         JButton voltarMRestReservasButton = new JButton("MENU RESTAURANTE");
@@ -1491,9 +1498,9 @@ public class Interface extends JFrame {
         centroMRestReservasSubPanel.add(centroMRestReservasSSPanel1, BorderLayout.WEST);
 
         centroMRestReservasSSPanel.add(filtrarIntervDatasMRestResRButton);
-        centroMRestReservasSSPanel.add(filtrarTipomRestResRButton);
-        centroMRestReservasSSPanel.add(filtrarIntervValmRestResRButton);
-        centroMRestReservasSSPanel.add(filtrarClientemRestResRButton);
+        centroMRestReservasSSPanel.add(filtrarTipoMRestResRButton);
+        centroMRestReservasSSPanel.add(filtrarIntervValMRestResRButton);
+        centroMRestReservasSSPanel.add(filtrarClienteMRestResRButton);
 
         sulMRestReservasSubPanel.setLayout(new FlowLayout());
         sulMRestReservasSubPanel.add(voltarMRestReservasButton);
@@ -1504,15 +1511,15 @@ public class Interface extends JFrame {
             mostrarJanela(MRESTRESERVASFID_CARD);
         });
 
-        filtrarTipomRestResRButton.addActionListener(a -> {
+        filtrarTipoMRestResRButton.addActionListener(a -> {
             mostrarJanela(MRESTRESERVASFTIPO_CARD);
         });
 
-        filtrarIntervValmRestResRButton.addActionListener(a -> {
+        filtrarIntervValMRestResRButton.addActionListener(a -> {
             mostrarJanela(MRESTRESERVASFIV_CARD);
         });
 
-        filtrarClientemRestResRButton.addActionListener(a -> {
+        filtrarClienteMRestResRButton.addActionListener(a -> {
             mostrarJanela(MRESTRESERVASFCLI_CARD);
         });
 
@@ -1540,7 +1547,7 @@ public class Interface extends JFrame {
         JButton ptEnMRestReservasFIDButton = new JButton("PT/EN");
         JButton voltarMRestReservasFIDButton = new JButton("MENU RESTAURANTE");
         JButton retornarMRestReservasFIDButton = new JButton("VOLTAR");
-        JButton okMRestReservasFIDButton = new JButton("OK");
+        JButton pesquisarMRestReservasFIDButton = new JButton("PESQUISAR");
 
         //Adição do calendário
         UtilDateModel modelMRestReservasFID1 = new UtilDateModel();
@@ -1569,15 +1576,24 @@ public class Interface extends JFrame {
         centroMRestReservasFIDSSPanel.setLayout(new FlowLayout());
         centroMRestReservasFIDSubPanel.add(centroMRestReservasFIDSSPanel, BorderLayout.WEST);
 
+        centroMRestReservasFIDSSPanel1 = new JPanel();
+        centroMRestReservasFIDSSPanel1.setLayout(new FlowLayout());
+        centroMRestReservasFIDSubPanel.add(centroMRestReservasFIDSSPanel1, BorderLayout.CENTER);
+
+        JPanel centroMRestReservasFIDSSPanel2 = new JPanel();
+        centroMRestReservasFIDSSPanel2.setLayout(new FlowLayout());
+        centroMRestReservasFIDSubPanel.add(centroMRestReservasFIDSSPanel2, BorderLayout.WEST);
+
         centroMRestReservasFIDSSPanel.add(filtrarDataInicioMRestReservasFIDLabel);
         centroMRestReservasFIDSSPanel.add(datePickerMRestReservasFID1);
         centroMRestReservasFIDSSPanel.add(filtrarDataFimMRestReservasFIDLabel);
         centroMRestReservasFIDSSPanel.add(datePickerMRestReservasFID2);
+        centroMRestReservasFIDSSPanel2.add(pesquisarMRestReservasFIDButton);
 
         sulMRestReservasFIDSubPanel.setLayout(new FlowLayout());
         sulMRestReservasFIDSubPanel.add(voltarMRestReservasFIDButton);
         sulMRestReservasFIDSubPanel.add(retornarMRestReservasFIDButton);
-        sulMRestReservasFIDSubPanel.add(okMRestReservasFIDButton);
+
 
         retornarMRestReservasFIDButton.addActionListener(a -> {
             mostrarJanela(MRESTRESERV_CARD);
@@ -1588,8 +1604,42 @@ public class Interface extends JFrame {
         });
 
         //todo ver os encaminhamentos
-        okMRestReservasFIDButton.addActionListener(e -> {
-            mostrarJanela(MENURESTAURANTE_CARD);
+        pesquisarMRestReservasFIDButton.addActionListener(e -> {
+            GregorianCalendar data1 = (GregorianCalendar) datePickerMRestReservasFID1.getJFormattedTextField().getValue();
+            GregorianCalendar data2 = (GregorianCalendar) datePickerMRestReservasFID2.getJFormattedTextField().getValue();
+            if(data1==null){
+                JOptionPane.showMessageDialog(((Component)e.getSource()).getParent(),"A data inicial deve ser preenchida");
+                datePickerMRestReservasFID1.requestFocus();
+            }
+            if(data2==null){
+                JOptionPane.showMessageDialog(((Component)e.getSource()).getParent(),"A data final deve ser preenchida");
+                datePickerMRestReservasFID2.requestFocus();
+            }
+            //TODO o certo é pegar o restaurante ativo e a lista de reservas para aquele restaurante - o melhor era concentrar no sistema
+            listaReserva = sistema.getListaClientes().get(0).getListaReservas();
+            ArrayList <Reserva> listaTemporaria = new ArrayList<>();
+            for (Reserva r: listaReserva) {
+                    if(data1.before(r.getData())&& data2.after(r.getData())){
+                        listaTemporaria.add(r);
+                    }
+            }
+            listaReserva = listaTemporaria;
+            String[][] dadosMReservasFIDSSPanel = new String[listaReserva.size()][2];
+            int i = 0;
+            DateLabelFormatter dateFormatter = new DateLabelFormatter();
+            for (Reserva r : listaReserva) {
+                try {
+                    dadosMReservasFIDSSPanel[i][0] = dateFormatter.dateTimeToString(r.getData());
+                } catch (ParseException parseException) {
+                    parseException.printStackTrace();
+                }
+                dadosMReservasFIDSSPanel[i][1] = r.getCliente().getNome();
+                i++;
+            }
+
+            String[] nomeColunasMCliMComFPPSSPanel = new String[]{"DATA", "CLIENTE"};
+            JTable tabelaMCliMComFPPSSPanel = new JTable(dadosMReservasFIDSSPanel, nomeColunasMCliMComFPPSSPanel);
+            centroMRestReservasFIDSSPanel1.add(tabelaMCliMComFPPSSPanel);
         });
     }
 
