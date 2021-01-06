@@ -134,7 +134,7 @@ public class Interface extends JFrame {
         contentor.add(registarNovoRestSuperPanel, RESTAURANTE_CARD);
     }
 
-    private void posLogin(JPanel login) {
+    private void posLogin() {
         JPanel mCliSuperPanel = new JPanel();
         mCliSuperPanel.setLayout(new BorderLayout());
         JPanel mCliAtDadosSuperPanel = new JPanel();
@@ -361,7 +361,7 @@ public class Interface extends JFrame {
 
             if (valida != null) {
                 JOptionPane.showMessageDialog(((Component) a.getSource()).getParent(), "Login bem-sucedido!");
-                posLogin(loginSuperPanel);
+                posLogin();
                 if (valida instanceof Cliente) {
                     mostrarJanela(MENUCLIENTE_CARD);
                 } else {
@@ -461,8 +461,11 @@ public class Interface extends JFrame {
                     moradaClienteText.getText(),
                     telemovelClienteText.getText(),
                     usernameClienteText.getText(),
-                    new String(passwordClienteField.getPassword()),
-                    new String(confirmarPassawordClienteField.getPassword()));
+                    Arrays.toString(passwordClienteField.getPassword()),
+                    Arrays.toString(confirmarPassawordClienteField.getPassword()));
+//            new String(passwordClienteField.getPassword()),
+//                    new String(confirmarPassawordClienteField.getPassword()));
+
             if (validoNovoCliente) {
                 JOptionPane.showMessageDialog(((Component) a.getSource()).getParent(), "Registado com sucesso!");
                 mostrarJanela(LOGIN_CARD, usernameLoginText, passwordLoginField);
@@ -590,25 +593,6 @@ public class Interface extends JFrame {
 
         JLabel mCliTitHistResLabel = new JLabel("MENU CLIENTE - HISTÓRICO DE RESERVAS");
 
-        JLabel mCliIdHistResLabel = new JLabel("ID");
-
-        String[] mCliIdHistRes = {"", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
-        JComboBox arrayMCliIdHistResCBox = new JComboBox(mCliIdHistRes);
-
-        //TODO faltou visualizar – aumentar tamanho da coluna e tornar possível seleção para visualizar, comentar e pontuar
-        String[] nomeColunasMCliHistRes = new String[]{
-                "ID", "DATA", "RESTAURANTE"
-        };
-
-        Object[][] data = new Object[][]{
-                {"ID", "DATA", "RESTAURANTE"},
-                {1, "dd/MM/yyy", "A"},
-                {1, "dd/MM/yyy", "B"},
-                {3, "dd/MM/yyy", "C"},
-        };
-        //criação da tabela
-        JTable tabelaMCliHistRes = new JTable(data, nomeColunasMCliHistRes);
-
         JButton ptEnMCliRestButton = new JButton("PT/EN");
         JButton voltarMCliHistResButton = new JButton("MENU CLIENTE");
         JButton comentarMCliHistResButton = new JButton("COMENTAR");
@@ -631,10 +615,6 @@ public class Interface extends JFrame {
         JPanel centroMCliHistResSSPanel1 = new JPanel();
         centroMCliHistResSSPanel1.setLayout(new FlowLayout());
         centroMCliHistResSubPanel.add(centroMCliHistResSSPanel1, BorderLayout.WEST);
-
-        centroMCliHistResSSPanel.add(tabelaMCliHistRes);
-        centroMCliHistResSSPanel1.add(mCliIdHistResLabel);
-        centroMCliHistResSSPanel1.add(arrayMCliIdHistResCBox);
 
         sulMCliHistResSubPanel.setLayout(new FlowLayout());
         sulMCliHistResSubPanel.add(voltarMCliHistResButton);
@@ -3134,6 +3114,7 @@ public class Interface extends JFrame {
         }
 
 
+
 // todo verificar os botões editar e apagar que estão em conflito com visualizar
 //////MENU CLIENTE – RESERVAS - ACTIVAS//////////
         private void construirPanelMCliResAct (JPanel mCliResActSuperPanel){
@@ -3385,7 +3366,6 @@ public class Interface extends JFrame {
 
             JLabel mCliTitFResTALabel = new JLabel("FAZER RESERVAS TAKE-AWAY");
             JLabel horaMCliFResTALabel = new JLabel("HORA");
-            JLabel idMCliFResTALabel = new JLabel("ID");
             JLabel qtdePratosMCliFResTALabel = new JLabel("QUANTIDADE");
             JLabel pratosMCliFResTALabel = new JLabel("PRATOS");
 
