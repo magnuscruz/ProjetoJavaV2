@@ -532,20 +532,20 @@ public class Sistema implements Serializable {
         return listaComentariosPorRestaurante;
     }
 
-    public ArrayList<Comentario> consultarListaComentariosPorIntervaloDatas(Cliente cliente, GregorianCalendar dataAnterior, GregorianCalendar dataPosterior) {
+    public ArrayList<Comentario> consultarListaComentariosPorIntervaloDatas(GregorianCalendar dataAnterior, GregorianCalendar dataPosterior) {
         boolean valido = verificarValidadeDatas(dataAnterior, dataPosterior);
         int count = 0;
         ArrayList<Comentario> listaComentariosPorData = new ArrayList<>();
 
         if (valido) {
             for (Comentario c : getListaComentarios()) {
-                if (c.getCliente().getNome().equals(cliente.nome) && c.getDataComentario().after(dataAnterior) && c.getDataComentario().before(dataPosterior) && c.getStatus()) {
+                if (c.getDataComentario().after(dataAnterior) && c.getDataComentario().before(dataPosterior) && c.getStatus()) {
                     listaComentariosPorData.add(c);
                     count++;
                 }
             }
             if (count <= 0) {
-                JOptionPane.showMessageDialog(null, "Não existem comentarios dentro dessas datas");
+                JOptionPane.showMessageDialog(null, "Não existem comentários dentro dessas datas");
                 return null;
             }
         }

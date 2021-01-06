@@ -28,11 +28,11 @@ public class Main {
 ////                LocalTime.of(19,00),LocalTime.of(22,00));
 ////
 //
-////        sistema.criarRestaurante("C", "rua z", "Porto",
-////                "333333333", "email3@com.pt", "user3",
-////                "pass", "pass", 20, 10,
-////                10, LocalTime.of(12,00), LocalTime.of(14,00),
-////                LocalTime.of(19,00),LocalTime.of(22,00));
+        sistema.criarRestaurante("C", "rua z", "Porto",
+                "333333333", "email3@com.pt", "user3",
+                "pass", "pass", 20, 10,
+                10, LocalTime.of(12,00), LocalTime.of(14,00),
+                LocalTime.of(19,00),LocalTime.of(22,00));
 //
 ////
 ////        sistema.criarCliente("A4", "cliente1@com.pt", "rua A", "444444444",
@@ -50,8 +50,9 @@ public class Main {
 //        sistema.getClienteAtivo().criarReservaPresencial(sistema.getListaRestaurantes().get(0), new GregorianCalendar(2021, 03, 01),
 //                LocalTime.of(13, 00), 1, 20);
 //
-        sistema.adicionarComentario(sistema.getClienteAtivo(), "Excelente", 4, sistema.getListaRestaurantes().get(0));
-       System.out.println("Lista de Comentários " + sistema.getListaComentarios());
+        sistema.adicionarComentario(sistema.getListaClientes().get(0),"Bom", 4, sistema.getListaRestaurantes().get(0));
+        //sistema.adicionarComentario(sistema.getClienteAtivo(), "Excelente", 4, sistema.getListaRestaurantes().get(0));
+       //System.out.println("Lista de Comentários " + sistema.getListaComentarios());
         //     sistema.adicionarComentario(sistema.getClienteAtivo(), "Ruim", 5, sistema.getListaRestaurantes().get(0));
 //
 //        sistema.getListaRestaurantes().get(0).getEmenta().adicionarPratoAPratosDia("bitoque", "arroz e batatas", 10);
