@@ -1022,21 +1022,24 @@ public class Interface extends JFrame {
         JLabel nomePratoLabel = new JLabel("Nome Prato");
         JLabel descricaoPratoLabel = new JLabel("Descrição");
         JLabel precoPratoLabel = new JLabel("Preço");
+        JLabel menuRestAdPratoLabel = new JLabel("Tipo    ");
 
-        JTextField nomePratoText = new JTextField(20);
-        JTextField descricaoPratoText = new JTextField(20);
-        JTextField precoPratoText = new JTextField(10);
+//        JTextField nomePratoText = new JTextField(25);
+//        JTextField descricaoPratoText = new JTextField(25);
+//        JTextField precoPratoText = new JTextField(10);
+
+        JTextArea nomePratoText = new JTextArea(2,50);
+        JTextArea descricaoPratoText = new JTextArea(4,50);
+        JTextArea precoPratoText = new JTextArea(1,10);
 
         JButton ptEnAdPratoButton = new JButton("PT/EN");
         JButton voltarMenuRestAdPratoButton = new JButton("MENU RESTAURANTE");
         JButton confirmarAdPratoButton = new JButton("CONFIRMAR");
 
-        JRadioButton menuRestAdPratoCarta = new JRadioButton("Carta");
-        JRadioButton menuRestAdPratoPDia = new JRadioButton ("Prato do dia");
+        JComboBox menuRestAdPrato = new JComboBox();
+        menuRestAdPrato.addItem("Carta");
+        menuRestAdPrato.addItem("Prato do dia");
 
-        ButtonGroup group = new ButtonGroup();
-        group.add(menuRestAdPratoCarta);
-        group.add(menuRestAdPratoPDia);
 
         mRestAdPratoSuperPanel.add(norteAdPratoSubPanel, "North");
         mRestAdPratoSuperPanel.add(centroAdPratoSubPanel, "Center");
@@ -1049,22 +1052,35 @@ public class Interface extends JFrame {
         norteAdPratoSubPanel.add(ptEnAdPratoButton, BorderLayout.EAST);
 
         JPanel centroAdPratoSSPanel = new JPanel();
-        centroAdPratoSSPanel.setLayout(new GridLayout(5, 2));
-        centroAdPratoSubPanel.add(centroAdPratoSSPanel, BorderLayout.CENTER);
+        centroAdPratoSSPanel.setLayout(new FlowLayout());
+        centroAdPratoSubPanel.add(centroAdPratoSSPanel);
 
         JPanel centroAdPratoSSPanel1 = new JPanel();
-        centroAdPratoSSPanel1.setLayout(new GridLayout(5, 2));
-        centroAdPratoSubPanel.add(centroAdPratoSSPanel1, BorderLayout.CENTER);
+        centroAdPratoSSPanel1.setLayout(new FlowLayout());
+        centroAdPratoSubPanel.add(centroAdPratoSSPanel1);
+
+        JPanel centroAdPratoSSPanel2 = new JPanel();
+        centroAdPratoSSPanel2.setLayout(new FlowLayout());
+        centroAdPratoSubPanel.add(centroAdPratoSSPanel2);
+
+        JPanel centroAdPratoSSPanel3 = new JPanel();
+        centroAdPratoSSPanel3.setLayout(new GridBagLayout());
+        centroAdPratoSubPanel.add(centroAdPratoSSPanel3, BorderLayout.CENTER);
+
+        JPanel centroAdPratoSSPanel4 = new JPanel();
+        centroAdPratoSSPanel4.setLayout(new GridBagLayout());
+        centroAdPratoSubPanel.add(centroAdPratoSSPanel4, BorderLayout.CENTER);
+
 
         centroAdPratoSSPanel.add(nomePratoLabel);
         centroAdPratoSSPanel.add(nomePratoText);
-        centroAdPratoSSPanel.add(descricaoPratoLabel);
-        centroAdPratoSSPanel.add(descricaoPratoText);
-        centroAdPratoSSPanel.add(precoPratoLabel);
-        centroAdPratoSSPanel.add(precoPratoText);
+        centroAdPratoSSPanel1.add(descricaoPratoLabel);
+        centroAdPratoSSPanel1.add(descricaoPratoText);
+        centroAdPratoSSPanel2.add(precoPratoLabel);
+        centroAdPratoSSPanel2.add(precoPratoText);
 
-        centroAdPratoSSPanel1.add(menuRestAdPratoCarta);
-        centroAdPratoSSPanel1.add(menuRestAdPratoPDia);
+        centroAdPratoSSPanel3.add(menuRestAdPratoLabel);
+        centroAdPratoSSPanel3.add(menuRestAdPrato);
 
         sulAdPratoSubPanel.setLayout(new FlowLayout());
         sulAdPratoSubPanel.add(voltarMenuRestAdPratoButton);
@@ -1091,9 +1107,13 @@ public class Interface extends JFrame {
         JLabel atDescricaoPratoLabel = new JLabel("Descrição");
         JLabel atPrecoPratoLabel = new JLabel("Preço");
 
-        JTextField atNomePratoText = new JTextField(20);
-        JTextField atDescricaoPratoText = new JTextField(20);
-        JTextField atPrecoPratoText = new JTextField(10);
+//        JTextField  = new JTextField(20);
+//        JTextField  = new JTextField(20);
+//        JTextField  = new JTextField(10);
+
+        JTextArea atNomePratoText = new JTextArea(1,50);
+        JTextArea atDescricaoPratoText = new JTextArea(1,50);
+        JTextArea atPrecoPratoText = new JTextArea(1,5);
 
         JButton ptEnAtPratoButton = new JButton("PT/EN");
         JButton voltarMenuRestAtPratoButton = new JButton("MENU RESTAURANTE");
@@ -1109,15 +1129,20 @@ public class Interface extends JFrame {
         norteAtPratoSubPanel.add(norteAtPratoSSPanel, BorderLayout.CENTER);
         norteAtPratoSubPanel.add(ptEnAtPratoButton, BorderLayout.EAST);
 
-        JPanel centroAtPratoSSPanelForm = new JPanel();
-        centroAtPratoSSPanelForm.setLayout(new GridLayout(3, 2));
-        centroAtPratoSubPanel.add(centroAtPratoSSPanelForm);
-        centroAtPratoSSPanelForm.add(atNomePratoLabel);
-        centroAtPratoSSPanelForm.add(atNomePratoText);
-        centroAtPratoSSPanelForm.add(atDescricaoPratoLabel);
-        centroAtPratoSSPanelForm.add(atDescricaoPratoText);
-        centroAtPratoSSPanelForm.add(atPrecoPratoLabel);
-        centroAtPratoSSPanelForm.add(atPrecoPratoText);
+        JPanel centroAtPratoSSPanel = new JPanel();
+        centroAtPratoSSPanel.setLayout(new GridLayout(6, 2));
+        centroAtPratoSubPanel.add(centroAtPratoSSPanel);
+
+        JPanel centroAtPratoSSPanel1 = new JPanel();
+        centroAtPratoSSPanel1.setLayout(new GridLayout(1, 2));
+        centroAtPratoSubPanel.add(centroAtPratoSSPanel1);
+
+        centroAtPratoSSPanel.add(atNomePratoLabel);
+        centroAtPratoSSPanel.add(atNomePratoText);
+        centroAtPratoSSPanel.add(atDescricaoPratoLabel);
+        centroAtPratoSSPanel.add(atDescricaoPratoText);
+        centroAtPratoSSPanel1.add(atPrecoPratoLabel);
+        centroAtPratoSSPanel1.add(atPrecoPratoText);
 
         sulAtPratoSubPanel.setLayout(new FlowLayout());
         sulAtPratoSubPanel.add(voltarMenuRestAtPratoButton);
