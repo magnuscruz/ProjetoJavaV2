@@ -45,13 +45,14 @@ public class Main {
 //               "cliente7", "pass", "pass");
 //////
 //
-//        sistema.login("cliente7", "pass");
+ //      sistema.login("10", "10");
 //
 //        sistema.getClienteAtivo().criarReservaPresencial(sistema.getListaRestaurantes().get(0), new GregorianCalendar(2021, 03, 01),
 //                LocalTime.of(13, 00), 1, 20);
 //
-//        sistema.adicionarComentario(sistema.getClienteAtivo(), "Excelente", 4, sistema.getListaRestaurantes().get(0));
-//        sistema.adicionarComentario(sistema.getClienteAtivo(), "Ruim", 5, sistema.getListaRestaurantes().get(0));
+        sistema.adicionarComentario(sistema.getClienteAtivo(), "Excelente", 4, sistema.getListaRestaurantes().get(0));
+       System.out.println("Lista de Comentários " + sistema.getListaComentarios());
+        //     sistema.adicionarComentario(sistema.getClienteAtivo(), "Ruim", 5, sistema.getListaRestaurantes().get(0));
 //
 //        sistema.getListaRestaurantes().get(0).getEmenta().adicionarPratoAPratosDia("bitoque", "arroz e batatas", 10);
 //        sistema.getListaRestaurantes().get(0).getEmenta().adicionarPratoACarta("bitoque", "arroz e batatas", 30);
