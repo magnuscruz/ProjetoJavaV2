@@ -17,19 +17,51 @@ public class Ementa implements Serializable {
     }
 
     public Ementa(ArrayList<Prato> carta, ArrayList<Prato> pratosDia) {
-        this.carta = carta;
-        this.pratosDia = pratosDia;
+
+        for (Prato p: getCarta()){
+            if (p.getStatus()){
+                this.carta = carta;
+            }
+        }
+        for (Prato p: getPratosDia()){
+            if (p.getStatus()){
+                this.pratosDia = pratosDia;
+            }
+        }
     }
 
+    public void adicionarPrato( String nome, String descricao, double preco, String letra) {
 
-    public void adicionarPratoACarta( String nome, String descricao, double preco) {
-        Prato p = new Prato(nome, descricao, preco);
-        carta.add(p);
+        if (letra.equals("c")) {
+            Prato p = new Prato(nome, descricao, preco);
+            carta.add(p);
+        }
+        else if (letra.equals("p")){
+            Prato p = new Prato(nome, descricao, preco);
+            pratosDia.add(p);
+        }
     }
 
-    public void adicionarPratoAPratosDia(String nome, String descricao, double preco) {
-        Prato p = new Prato(nome, descricao, preco);
-        pratosDia.add(p);
+    public void removerPratoCarta (int id){
+
+        for (Prato p: getCarta()){
+            if (p.getIdPrato()==id){
+                p.setStatus(false);
+                carta.remove(p);
+                break;
+            }
+        }
+
+    }
+    //TODO - Nao é o ideal!! estao a fazer remove, e elimina atraves do ID... tentar ver se ha outra maneira atraves da interface
+    public void removerPratoDia (int id){
+        for (Prato p: getPratosDia()){
+            if (p.getIdPrato()==id){
+                p.setStatus(false);
+                pratosDia.remove(p);
+                break;
+            }
+        }
     }
 
     public ArrayList<Prato> getCarta() {
@@ -43,6 +75,8 @@ public class Ementa implements Serializable {
     public int getIdEmenta() {
         return idEmenta;
     }
+
+
 
     @Override
     public String toString() {

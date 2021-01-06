@@ -15,12 +15,12 @@ public class Sistema implements Serializable {
     private ArrayList<Utilizador> listaUtilizadores = new ArrayList<>();
     private ArrayList<Comentario> listaComentarios = new ArrayList<>();
     private Utilizador utilizarAtivo;
+    // private static int clienteId =5000;
 
     public Sistema() {
         try {
             FicheiroDeObjectos ficheiroOb = new FicheiroDeObjectos();
             ficheiroOb.abreLeitura("FicheiroProjeto.dat");
-
             try {
                 Sistema sistema = (Sistema) ficheiroOb.leObjecto();
                 ficheiroOb.fechaLeitura();
@@ -49,6 +49,7 @@ public class Sistema implements Serializable {
         }
         return true;
     }
+
 
     private Utilizador getUtilizarAtivo() {
         return this.utilizarAtivo;
@@ -290,6 +291,17 @@ public class Sistema implements Serializable {
         return valido;
     }
 
+//    public void sequenciaClienteId (){
+//        int num = clienteId;
+//        int tamanho = getListaClientes().size();
+//        for (int i = 0; i < getListaClientes().size(); i++) {
+//            if (getListaClientes().get(i).getId()==num){
+//                num = getListaClientes().get(i).getId()+1;
+//            }
+//        }
+//        clienteId=num+1;
+//    }
+
     public boolean criarCliente(String nome, String email, String morada, String telefone, String username, String password, String confirmarPass) {
 //TODO - Interface bloqueia!
         boolean valido = false;
@@ -301,6 +313,7 @@ public class Sistema implements Serializable {
                         if (usernameUnico(username)) { // (usernameUnico(username) || username=="")
                             if (confirmarPass(password, confirmarPass)) { //(confirmarPass(password, confirmarPass)
                                 Cliente c = new Cliente(nome, morada, telefone, email, username, password, confirmarPass);
+                                // c.setId(++clienteId);
                                 listaUtilizadores.add(c);
                                 System.out.println("Cliente criado");
                                 // JOptionPane.showMessageDialog(null, "Cliente criado");
@@ -484,11 +497,12 @@ public class Sistema implements Serializable {
         }
         return false;
     }
+
     public ArrayList<Comentario> consultarListaComentariosProprios(Cliente cliente) {
 
         ArrayList<Comentario> listaComentariosProprios = new ArrayList<>();
         for (Comentario c : getListaComentarios()) {
-            if (c.getCliente().getNome().equals(cliente.getNome())) {
+            if (c.getCliente().getNome().equals(cliente.getNome()) && c.getStatus()) {
                 listaComentariosProprios.add(c);
             }
         }
@@ -508,7 +522,6 @@ public class Sistema implements Serializable {
                 listaComentariosPorCliente.add(c);
             }
         }
-
         if (listaComentariosPorCliente.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Cliente " + nomeCliente + " não tem comentarios feitos");
             return null;
@@ -539,13 +552,13 @@ public class Sistema implements Serializable {
 
         if (valido) {
             for (Comentario c : getListaComentarios()) {
-                if (c.getDataComentario().after(dataAnterior) && c.getDataComentario().before(dataPosterior) && c.getStatus()) {
+                if ( c.getDataComentario().after(dataAnterior) && c.getDataComentario().before(dataPosterior) && c.getStatus()) {
                     listaComentariosPorData.add(c);
                     count++;
                 }
             }
             if (count <= 0) {
-                JOptionPane.showMessageDialog(null, "Não existem comentários dentro dessas datas");
+                JOptionPane.showMessageDialog(null, "Não existem comentarios dentro dessas datas");
                 return null;
             }
         }
@@ -664,6 +677,24 @@ public class Sistema implements Serializable {
         return listaReservasCliente;
     }
 
+    public ArrayList <Reserva> consultarHistoricoReservas (){
+        GregorianCalendar diaHoje = new GregorianCalendar();
+        diaHoje.toInstant();
+
+        ArrayList<Reserva> listaHistoricoReservas = new ArrayList<>();
+
+        for (Reserva r : getClienteAtivo().getListaReservas()){
+            if (diaHoje.after(r.getData())){
+                listaHistoricoReservas.add(r);
+            }
+        }
+        if (listaHistoricoReservas.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Cliente sem reservas");
+            return null;
+        }
+        return listaHistoricoReservas;
+    }
+
     public ArrayList<Reserva> consultarReservasTakeAwayPorValoresMedios(String valor1, String valor2) {
         int valorMin = Integer.parseInt(valor1);
         int valorMax = Integer.parseInt(valor2);
@@ -701,7 +732,7 @@ public class Sistema implements Serializable {
         return listaReservasPorData;
     }
 
-    public ArrayList<Reserva> getReservasTakeAway() {
+    public ArrayList<Reserva> getReservasTakeAwayTodas() {
 
         ArrayList<Reserva> listaReservasTakeAway = new ArrayList<>();
 
@@ -717,7 +748,7 @@ public class Sistema implements Serializable {
         return listaReservasTakeAway;
     }
 
-    public ArrayList<Reserva> getReservasPresencial() {
+    public ArrayList<Reserva> getReservasPresencialTodas() {
 
         ArrayList<Reserva> listaReservasPresencial = new ArrayList<>();
 
@@ -733,23 +764,47 @@ public class Sistema implements Serializable {
         return listaReservasPresencial;
     }
 
+    public ArrayList<Reserva> consultarReservasAtivas(Cliente cliente, GregorianCalendar data) {
+        GregorianCalendar dataHoje = new GregorianCalendar();
+        dataHoje.toInstant();
 
-    //TODO verificar se funciona corretamente
-    public double lotacaoTotalRestaurante(Restaurante restaurante) {
-        double lotacaoTotalRest = 0;
-
-        for (Restaurante r : getListaRestaurantes()) {
-            if (r.getId() == restaurante.getId()) {
-                lotacaoTotalRest = r.getLotacaoFum() + r.getLotacaoNFum() + r.getLotacaoEsplanada();
+        ArrayList<Reserva> listaReservasAtivas = new ArrayList<>();
+        for (Reserva r : cliente.getListaReservas()) {
+            if (r.getData().after(dataHoje) && r.getStatus()) {
+                listaReservasAtivas.add(r);
             }
         }
-        return lotacaoTotalRest;
+        if (listaReservasAtivas.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Sem reservas ativas");
+            return null;
+        }
+        return listaReservasAtivas;
     }
 
-
-    //TODO ainda ao esta feito!
-    public ArrayList<Restaurante> consultarRestaurantePorLugaresDisponiveis() {
+    //    //TODO acho que so preciso disto para restaurante, mas vou deixar ficar aqui para ja
+//    public double lotacaoTotalRestaurante(Restaurante restaurante) {
+//        double lotacaoTotalRest = 0;
+//
+//        for (Restaurante r : getListaRestaurantes()) {
+//            if (r.getId() == restaurante.getId()) {
+//                lotacaoTotalRest = r.getLotacaoFum() + r.getLotacaoNFum() + r.getLotacaoEsplanada();
+//            }
+//        }
+//        return lotacaoTotalRest;
+//    }
+    //TODO Testar - quando reserva presencial estiver a funcionar!
+    public ArrayList<Restaurante> consultarRestaurantePorLugaresDisponiveis(GregorianCalendar dia, int numeroLugares) {
         ArrayList<Restaurante> restaurantesPorLotacao = new ArrayList<>();
+
+        for (Restaurante r : getListaRestaurantes()) {
+            if (r.getRestaurante().disponibilidadeRestaurante(r.getRestaurante(), dia) >= numeroLugares) {
+                restaurantesPorLotacao.add(r);
+            }
+        }
+        if (restaurantesPorLotacao.isEmpty()) {
+            return null;
+        }
+
         return restaurantesPorLotacao;
     }
 
@@ -761,11 +816,11 @@ public class Sistema implements Serializable {
         this.listaComentarios = listaComentarios;
     }
 
-    //TODO  incompleto - este tem de ser o final
+    //TODO  testar quando criarReserva estiver operacional
     public void adicionarComentario2(Cliente cliente, String opiniao, double pontuacao, Restaurante restaurante) {
 
         for (Reserva r : cliente.getListaReservas()) {
-            if (r.getCliente().getNome().equals(cliente.getNome()) && r.getCliente().getRestaurante().getNome().equals(restaurante.getNome())) {
+            if (r.getCliente().getNome().equals(cliente.getNome()) && r.getCliente().getRestaurante().getNome().equals(restaurante.getNome()) && r.getStatus()) {
                 Comentario comentario = new Comentario(opiniao, pontuacao, cliente, restaurante);
                 listaComentarios.add(comentario);
                 gravarSistema();
@@ -774,7 +829,7 @@ public class Sistema implements Serializable {
     }
 
     //TODO (prof nao) este criarComentario funciona, mas ver o de cima, é o original!//Nao esquecer como reserva nao funciona, nao da p testar 100%
-    public void adicionarComentario(Cliente cliente, String opiniao, double pontuacao, Restaurante restaurante) {
+    public void adicionarComentario(String opiniao, double pontuacao, Cliente cliente, Restaurante restaurante) {
         Comentario comentario = new Comentario(opiniao, pontuacao, cliente, restaurante);
         listaComentarios.add(comentario);
         gravarSistema();
@@ -834,9 +889,21 @@ public class Sistema implements Serializable {
         return media;
     }
 
-    //TODO - tem de ter como parametro o dia! Incompleto
-    public double lotacaoTotalDisponivel() {
-        return (getRestauranteAtivo().getLotacaoEsplanada() + getRestauranteAtivo().getLotacaoFum() + getRestauranteAtivo().getLotacaoNFum());
-    }
+    public LocalTime stringParaLocalTime(String hora) {
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+            // String hora = "13:30";
+            Date d = sdf.parse(hora);
+            int hora1 = d.getHours();
+            int minuto = d.getMinutes();
+            LocalTime horaReserva = LocalTime.of(hora1, minuto);
 
+            return horaReserva;
+
+        } catch (ParseException e) {
+            e.getMessage();
+        }
+        JOptionPane.showMessageDialog(null, "Insira data neste formato: hh:mm");
+        return null;
+    }
 }

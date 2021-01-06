@@ -7,7 +7,8 @@ import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
 public class Restaurante extends Utilizador implements Serializable {
-    private static int idRestaurante = 1;
+    // private static int idRestaurante = 1;
+    private int id;
     private String cidade;
     private int lotacaoEsplanada;
     private int lotacaoNFum;
@@ -20,9 +21,10 @@ public class Restaurante extends Utilizador implements Serializable {
     // private double pontuacaoMedia;
     private Ementa ementa;
 
+
     public Restaurante(String nome, String morada, String cidade, String telefone, String email, String username, String password, String confirmarPass, int lotacaoEsplanada, int lotacaoFum, int lotacaoNFum, LocalTime inicioAlm, LocalTime fimAlm, LocalTime inicioJan, LocalTime fimJan) {
         super(nome, morada, telefone, email, username, password, confirmarPass);
-        this.id = idRestaurante++;
+        //this.id = idRestaurante++;
         this.cidade = cidade;
         this.lotacaoEsplanada = lotacaoEsplanada;
         this.lotacaoFum = lotacaoFum;
@@ -31,14 +33,12 @@ public class Restaurante extends Utilizador implements Serializable {
         this.fimAlm = fimAlm;
         this.inicioJan = inicioJan;
         this.fimJan = fimJan;
-
-
         this.ementa = new Ementa();
-
         this.status = true;
     }
 
-    public void TESTEENTRARCICLOFOREACHCOMLISTARESERVAS (){
+
+    public void TESTEENTRARCICLOFOREACHCOMLISTARESERVAS() {
         if (getListaReservas().isEmpty()) {
             System.out.println("ENTROU NO IF DO METODO");
             for (Reserva r : getListaReservas()) {
@@ -51,28 +51,28 @@ public class Restaurante extends Utilizador implements Serializable {
 
     //TODO : ainda nao funciona correctamente, ou pelo menos nao encaixa no metodo final
     // tem de ter data e hora para verificar se ha vagas
-    public int zonaDisponibilidade(GregorianCalendar dia, LocalTime hora, int zona, int num) {
-        //Indice returns: 0 - Sem disponibilidade | 1 - Reserva Confirmada Esplanada | 2 - NFum | 3 - Fum|
-
-        int disponibilidade = 0;
-        switch (zona) {
-            case 1:
-                System.out.println(getListaReservas().size());
-                if (!getListaReservas().isEmpty()) {
-                    for (Reserva r : getListaReservas()) {
-                        if (r.getData().equals(dia) && r.getStatus()) {
-                            disponibilidade = r.getRestaurante().lotacaoEsplanada;
-                            System.out.println("ENTROU");
-                            if (disponibilidade >= num) {
-                                return 1;
-                            }
-                        }
-                    }
-                }else {
-                    System.out.println("ENTROUUUU");
-                    return 1;
-                }
-                return 1;
+//    public int zonaDisponibilidade(Restaurante restaurante,GregorianCalendar dia, int zona, int num) {
+//        //Indice returns: 0 - Sem disponibilidade | 1 - Reserva Confirmada Esplanada | 2 - NFum | 3 - Fum|
+//
+//       // int disponibilidade = 0;
+//        switch (zona) {
+//            case 1:
+//                System.out.println(getListaReservas().size());
+//
+//                    for (Reserva r : getListaReservas()) {
+//                 //       int disponibilidade = restaurante.getLotacaoEsplanada();
+//                        if (r.getRestaurante().getNome().equals(restaurante.getNome()) && r.getData().equals(dia) && r.getStatus()) {
+//                           int disponibilidade = r.getRestaurante().lotacaoEsplanada;
+//                            System.out.println("ENTROU");
+//                            if (disponibilidade >= num) {
+//                                r.getRestaurante().lotacaoEsplanada = r.getRestaurante().lotacaoEsplanada - num;
+//                                return 1;
+//                            }else return 2;
+//                        }
+//                    }
+//
+//                }
+//                return 1;
 
 
 //             //   disponibilidade = lotacaoEsplanada - num;
@@ -115,14 +115,15 @@ public class Restaurante extends Utilizador implements Serializable {
 //                    JOptionPane.showMessageDialog(null, "Sem disponibilidade - disponiveis: ");
 //                }
 //                break;
-        }
-        return 0;
-    }
+//        }
+//        return 0;
+//    }
 
     @Override
     public String toString() {
         return "\nRestaurante{" + super.toString() +
-                "cidade: " + cidade +
+                "IDNOVO " + getId() +
+                " cidade: " + cidade +
                 ", lotacaoEsplanada=" + lotacaoEsplanada +
                 ", lotacaoFum=" + lotacaoFum +
                 ", lotacaoNFum=" + lotacaoNFum +
@@ -210,7 +211,6 @@ public class Restaurante extends Utilizador implements Serializable {
         this.fimJan = fimJan;
     }
 
-
     public double getPrecoMedioRestaurante() {
         double countCarta = 0;
         double countDia = 0;
@@ -232,6 +232,22 @@ public class Restaurante extends Utilizador implements Serializable {
             return 0;
         }
         return (precoTotalCarta + precoTotalDia) / (countCarta + countDia);
+    }
+
+    //TODO - Testar, e verificar se fica aqui ou em Sistema
+    public double disponibilidadeRestaurante(Restaurante restaurante, GregorianCalendar dia) {
+        double disponibilidade = 0;
+        for (Reserva r : getListaReservas()) {
+            if (r.getData().equals(dia)) {
+                disponibilidade = +r.getRestaurante().getLotacaoEsplanada() + r.getRestaurante().getLotacaoNFum() + r.getRestaurante().getLotacaoFum();
+            }
+        }
+        return disponibilidade;
+    }
+
+    public double lotacaoTotalRestaurante (){
+        double total = getLotacaoEsplanada()+getLotacaoNFum()+getLotacaoFum();
+        return total;
     }
 
 }
