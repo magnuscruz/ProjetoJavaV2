@@ -2103,18 +2103,18 @@ public class Interface extends JFrame {
         JLabel mCliMRestFOrdRestsValorCartaLabel = new JLabel("MENU CLIENTE - PESQUISAR RESTAURANTES");
         JLabel mCliMRestFOrdRestValorCartaLabel = new JLabel("VALORES MÉDIOS DOS PRATOS - CARTA E PRATO DO DIA");
 
-        JRadioButton dezMCliMRestFOrdRestValorCartaRButton = new JRadioButton(">10€");
-        JRadioButton dezVinteMCliMRestFOrdRestValorCartaRButton = new JRadioButton("10€-20€");
-        JRadioButton vinteTrintaMCliMRestFOrdRestValorCartaRButton = new JRadioButton("20€-30€");
-        JRadioButton trintaQuarentaMCliMRestFOrdRestValorCartaRButton = new JRadioButton("30€-40€");
-        JRadioButton quarentaMaisMCliMRestFOrdRestValorCartaRButton = new JRadioButton("<40€");
-
-        ButtonGroup group = new ButtonGroup();
-        group.add(dezMCliMRestFOrdRestValorCartaRButton);
-        group.add(dezVinteMCliMRestFOrdRestValorCartaRButton);
-        group.add(vinteTrintaMCliMRestFOrdRestValorCartaRButton);
-        group.add(trintaQuarentaMCliMRestFOrdRestValorCartaRButton);
-        group.add(quarentaMaisMCliMRestFOrdRestValorCartaRButton);
+//        JRadioButton dezMCliMRestFOrdRestValorCartaRButton = new JRadioButton(">10€");
+//        JRadioButton dezVinteMCliMRestFOrdRestValorCartaRButton = new JRadioButton("10€-20€");
+//        JRadioButton vinteTrintaMCliMRestFOrdRestValorCartaRButton = new JRadioButton("20€-30€");
+//        JRadioButton trintaQuarentaMCliMRestFOrdRestValorCartaRButton = new JRadioButton("30€-40€");
+//        JRadioButton quarentaMaisMCliMRestFOrdRestValorCartaRButton = new JRadioButton("<40€");
+//
+//        ButtonGroup group = new ButtonGroup();
+//        group.add(dezMCliMRestFOrdRestValorCartaRButton);
+//        group.add(dezVinteMCliMRestFOrdRestValorCartaRButton);
+//        group.add(vinteTrintaMCliMRestFOrdRestValorCartaRButton);
+//        group.add(trintaQuarentaMCliMRestFOrdRestValorCartaRButton);
+//        group.add(quarentaMaisMCliMRestFOrdRestValorCartaRButton);
 
         JButton ptEnMCliMRestFOrdRestValorCartaButton = new JButton("PT/EN");
         JButton voltarMCliMRestFOrdRestValorCartaButton = new JButton("MENU CLIENTE");
@@ -2139,32 +2139,32 @@ public class Interface extends JFrame {
         centroMCliMRestFOrdRestValorCartaSubPanel.add(centroMCliMRestFOrdRestValorCartaSSPanel1);
 
         centroMCliMRestFOrdRestValorCartaSSPanel.add(mCliMRestFOrdRestValorCartaLabel);
-        centroMCliMRestFOrdRestValorCartaSSPanel1.add(dezMCliMRestFOrdRestValorCartaRButton);
-        centroMCliMRestFOrdRestValorCartaSSPanel1.add(dezVinteMCliMRestFOrdRestValorCartaRButton);
-        centroMCliMRestFOrdRestValorCartaSSPanel1.add(vinteTrintaMCliMRestFOrdRestValorCartaRButton);
-        centroMCliMRestFOrdRestValorCartaSSPanel1.add(trintaQuarentaMCliMRestFOrdRestValorCartaRButton);
-        centroMCliMRestFOrdRestValorCartaSSPanel1.add(quarentaMaisMCliMRestFOrdRestValorCartaRButton);
+//        centroMCliMRestFOrdRestValorCartaSSPanel1.add(dezMCliMRestFOrdRestValorCartaRButton);
+//        centroMCliMRestFOrdRestValorCartaSSPanel1.add(dezVinteMCliMRestFOrdRestValorCartaRButton);
+//        centroMCliMRestFOrdRestValorCartaSSPanel1.add(vinteTrintaMCliMRestFOrdRestValorCartaRButton);
+//        centroMCliMRestFOrdRestValorCartaSSPanel1.add(trintaQuarentaMCliMRestFOrdRestValorCartaRButton);
+//        centroMCliMRestFOrdRestValorCartaSSPanel1.add(quarentaMaisMCliMRestFOrdRestValorCartaRButton);
 
         sulMCliMRestFOrdRestValorCartaSubPanel.setLayout(new FlowLayout());
         sulMCliMRestFOrdRestValorCartaSubPanel.add(voltarMCliMRestFOrdRestValorCartaButton);
         sulMCliMRestFOrdRestValorCartaSubPanel.add(retornarMCliMRestFOrdRestValorCartaButton);
 
-        dezMCliMRestFOrdRestValorCartaRButton.addActionListener(a -> mostrarJanela(MENUCLIENTE_CARD));
-
-        dezVinteMCliMRestFOrdRestValorCartaRButton.addActionListener(a -> mostrarJanela(MENUCLIENTE_CARD));
-
-        vinteTrintaMCliMRestFOrdRestValorCartaRButton.addActionListener(a -> mostrarJanela(MENUCLIENTE_CARD));
-
-        trintaQuarentaMCliMRestFOrdRestValorCartaRButton.addActionListener(a -> mostrarJanela(MENUCLIENTE_CARD));
-
-        quarentaMaisMCliMRestFOrdRestValorCartaRButton.addActionListener(a -> mostrarJanela(MENUCLIENTE_CARD));
+//        dezMCliMRestFOrdRestValorCartaRButton.addActionListener(a -> mostrarJanela(MENUCLIENTE_CARD));
+//
+//        dezVinteMCliMRestFOrdRestValorCartaRButton.addActionListener(a -> mostrarJanela(MENUCLIENTE_CARD));
+//
+//        vinteTrintaMCliMRestFOrdRestValorCartaRButton.addActionListener(a -> mostrarJanela(MENUCLIENTE_CARD));
+//
+//        trintaQuarentaMCliMRestFOrdRestValorCartaRButton.addActionListener(a -> mostrarJanela(MENUCLIENTE_CARD));
+//
+//        quarentaMaisMCliMRestFOrdRestValorCartaRButton.addActionListener(a -> mostrarJanela(MENUCLIENTE_CARD));
 
         retornarMCliMRestFOrdRestValorCartaButton.addActionListener(a -> mostrarJanela(MCLIMRESTFORDRESTVALOR_CARD));
 
         voltarMCliMRestFOrdRestValorCartaButton.addActionListener(a -> mostrarJanela(MENUCLIENTE_CARD));
     }
 
-    ////MENU RESTAURANTE – RESTAURANTES – MENU FILTRAR POR VALORES MÉDIOS DOS PRATOS – PRATO DO DIA//////////
+    ////MENU CLIENTE – RESTAURANTES – MENU FILTRAR POR VALORES MÉDIOS DOS PRATOS – PRATO DO DIA//////////
     private void construirPanelMCliMRestFOrdRestValorPDia(JPanel mCliMRestFOrdRestValorPDiaSuperPanel) {
 
 
