@@ -2277,7 +2277,8 @@ public class Interface extends JFrame {
 
         //TODO faltar ver métodos para pesquisar e o comando do mostrarJanela tem quer alterado
 
-        //Tais - método feito com Magnus
+
+        //método feito ontem à noite
         pesquisarMCliMRestFRestHFuncButton.addActionListener(a -> {
             Pattern pttrn = Pattern.compile("^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$");
             if (fHoraMCliMRestFRestHFuncText.getText() != null && pttrn.matcher(fHoraMCliMRestFRestHFuncText.getText()).find()) {
