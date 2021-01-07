@@ -8,13 +8,29 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 public class Cliente extends Utilizador implements Serializable {
-    private static int idCliente = 5000;
+    // private static int idCliente = 5000;
     Restaurante restaurante;
 
     public Cliente(String nome, String morada, String telefone, String email, String username, String password, String confirmarPass) {
         super(nome, morada, telefone, email, username, password, confirmarPass);
-        this.id = idCliente++;
+        //this.id = idCliente++;
         this.status = true;
+    }
+
+    //TODO incompleto!!
+    public boolean dataStringParaGregorian (String hora){
+
+        boolean valido = false;
+        for (int i = 0; i < hora.length(); i++) {
+            Character caractere = hora.charAt(i);
+            if (Character.isDigit(caractere) || hora.charAt(i)==3) {
+                valido = true;
+            } else {
+                valido = false;
+                break;
+            }
+        }
+        return valido;
     }
 
     public boolean validarDataHoraDeReserva(GregorianCalendar data, LocalTime horas) {
@@ -68,13 +84,13 @@ public class Cliente extends Utilizador implements Serializable {
 
         if (dataValida) {
 
-            switch (restauranteAberto(restaurante, hora)) { //LIMITE-SE A VERIFICAR SE A HORA ESCOLHIDA BATE CERTO COM HORARIO DE ALMOCO (1) OU JANTAR (2)
+            switch (restauranteAberto(restaurante, hora)) { // HORARIO DE ALMOCO (1) OU JANTAR (2)
 
                 //Reserva para almoco
                 case 1:
                     switch (zona) {//DENTRO DO ALMOCO - ESCOLHER EM QUE ZONA DO RESTAURANTE QUER RESERVAR!
                         case 1:
-                            int valido = restaurante.zonaDisponibilidade(data, hora, zona, numLugares);
+                            int valido = restaurante.zonaDisponibilidade(restaurante,data, zona, numLugares);
                             if (valido == 1) {
                                 Presencial p = new Presencial(cliente, restaurante, data, hora, zona, numLugares);
                                 getListaReservas().add(p);//adicionamos a lista de reservas do Cliente em especifico
@@ -113,11 +129,19 @@ public class Cliente extends Utilizador implements Serializable {
         }
     }
 
+    //TODO  - só permite que take away seja 30 % de lotacao
     public boolean validarQtdRefeicoesPedidas(int quantidade, Restaurante restaurante) {
+        double max = restaurante.lotacaoTotalRestaurante()*0.3;
+        //  int qtdMax = 21;
+        if (quantidade >= max) {
+            JOptionPane.showMessageDialog(null, "Limite máximo por pedido é " + max);
+            return false;
+        }
+        return true;
+    }
 
-        int qtdMax = 21;
-        if (quantidade >= qtdMax) {
-            JOptionPane.showMessageDialog(null, "Limite máximo por pedido é " + qtdMax);
+    public boolean validarSeRestauranteTemEmenta(Restaurante r) {
+        if (r.getEmenta().getCarta().isEmpty() && r.getEmenta().getPratosDia().isEmpty()) {
             return false;
         }
         return true;
@@ -129,7 +153,7 @@ public class Cliente extends Utilizador implements Serializable {
         boolean validarQtdRefeicoes = validarQtdRefeicoesPedidas(quantidade, restaurante);
 
         if (validarDatas) {
-            if (restauranteAberto==1 || restauranteAberto==2) {
+            if (restauranteAberto == 1 || restauranteAberto == 2) {
                 if (validarQtdRefeicoes) {
                     TakeAway t = new TakeAway(cliente, restaurante, data, horario, quantidade);
                     getListaReservas().add(t);
