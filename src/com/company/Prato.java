@@ -1,7 +1,7 @@
 package com.company;
 
 public class Prato {
-    private static int idd=1;
+    private static int idd = 1;
     private int idPrato;
     private String nome;
     private String descricao;

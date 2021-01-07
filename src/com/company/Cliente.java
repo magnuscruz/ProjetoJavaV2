@@ -75,49 +75,49 @@ public class Cliente extends Utilizador implements Serializable {
             return 0;
         }
     }
-
+//Comentei esta parte do código do Adriano para voltar a funcionar
     //TODO INCOMPLETO!!! associar cada reserva a 1 dia e almoco ou jantar.
-    public int criarReservaPresencial(Restaurante restaurante, GregorianCalendar data, LocalTime hora, int zona, int numLugares) {
-//Indice dos returns: 0 - Restaurante fechado! | 1 - Reservado almoco | 2 - Reservado jantar | 3 - sem lugadores disponiveis
-
-        boolean dataValida = validarDataHoraDeReserva(data, hora);
-
-        if (dataValida) {
-
-            switch (restauranteAberto(restaurante, hora)) { // HORARIO DE ALMOCO (1) OU JANTAR (2)
-
-                //Reserva para almoco
-                case 1:
-                    switch (zona) {//DENTRO DO ALMOCO - ESCOLHER EM QUE ZONA DO RESTAURANTE QUER RESERVAR!
-                        case 1:
-                            int valido = restaurante.zonaDisponibilidade(restaurante,data, zona, numLugares);
-                            if (valido == 1) {
-                                Presencial p = new Presencial(cliente, restaurante, data, hora, zona, numLugares);
-                                getListaReservas().add(p);//adicionamos a lista de reservas do Cliente em especifico
-                                //  restaurante.getListaReservas().add(p);// adicionamos a lista de reservas do Restaurante em especifico
-                                // Atencao! Quando criar um metodo para apagar reserva, tenho de apagar nos dois sitios!
-                                //Normalmente nao se apagam, deve-se colocar um boolean e dizer que ja nao esta ativa.
-                                JOptionPane.showMessageDialog(null, "Reservado!");
-                                //  System.out.println("Criar reserva presencial: " + data + hora);
-                                return 1;
-
-                            } else if (valido == 0) {
-                                System.out.println("Sem lugares disponiveis");
-                            }
-                    }
-
-                    //Reservar para jantar
-                case 3: {
-                    return 2;
-                }
-                case 0:
-                    //ESTA FECHADO!!
-                    return 0;
-
-            }
-        }
-        return 0;
-    }
+//    public int criarReservaPresencial(Restaurante restaurante, GregorianCalendar data, LocalTime hora, int zona, int numLugares) {
+////Indice dos returns: 0 - Restaurante fechado! | 1 - Reservado almoco | 2 - Reservado jantar | 3 - sem lugadores disponiveis
+//
+//        boolean dataValida = validarDataHoraDeReserva(data, hora);
+//
+//        if (dataValida) {
+//
+//            switch (restauranteAberto(restaurante, hora)) { // HORARIO DE ALMOCO (1) OU JANTAR (2)
+//
+//                //Reserva para almoco
+//                case 1:
+//                    switch (zona) {//DENTRO DO ALMOCO - ESCOLHER EM QUE ZONA DO RESTAURANTE QUER RESERVAR!
+//                        case 1:
+//                            int valido = restaurante.zonaDisponibilidade(restaurante,data, zona, numLugares);
+//                            if (valido == 1) {
+//                                Presencial p = new Presencial(cliente, restaurante, data, hora, zona, numLugares);
+//                                getListaReservas().add(p);//adicionamos a lista de reservas do Cliente em especifico
+//                                //  restaurante.getListaReservas().add(p);// adicionamos a lista de reservas do Restaurante em especifico
+//                                // Atencao! Quando criar um metodo para apagar reserva, tenho de apagar nos dois sitios!
+//                                //Normalmente nao se apagam, deve-se colocar um boolean e dizer que ja nao esta ativa.
+//                                JOptionPane.showMessageDialog(null, "Reservado!");
+//                                //  System.out.println("Criar reserva presencial: " + data + hora);
+//                                return 1;
+//
+//                            } else if (valido == 0) {
+//                                System.out.println("Sem lugares disponiveis");
+//                            }
+//                    }
+//
+//                    //Reservar para jantar
+//                case 3: {
+//                    return 2;
+//                }
+//                case 0:
+//                    //ESTA FECHADO!!
+//                    return 0;
+//
+//            }
+//        }
+//        return 0;
+//    }
 
     public void criarReservaPresencial2(Restaurante restaurante, GregorianCalendar data, LocalTime horario, int numeroLugares, int zona) {
         Presencial p = new Presencial(this, restaurante, data, horario, numeroLugares, zona);

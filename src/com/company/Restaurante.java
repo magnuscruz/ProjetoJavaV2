@@ -73,8 +73,8 @@ public class Restaurante extends Utilizador implements Serializable {
 //
 //                }
 //                return 1;
-
-
+//
+//
 //             //   disponibilidade = lotacaoEsplanada - num;
 //                if (disponibilidade >= 0) {
 //                    lotacaoEsplanada = disponibilidade;
