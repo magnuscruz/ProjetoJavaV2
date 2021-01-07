@@ -574,6 +574,7 @@ public class Sistema implements Serializable {
         ArrayList<Restaurante> listaRestaurantesPorPontuacao = new ArrayList<>();
 
         for (Restaurante r : getListaRestaurantes()) {
+            listaRestaurantesPorPontuacao.add(r);
 
         }
 
@@ -796,20 +797,20 @@ public class Sistema implements Serializable {
 //        return lotacaoTotalRest;
 //    }
     //TODO Testar - quando reserva presencial estiver a funcionar!
-    public ArrayList<Restaurante> consultarRestaurantePorLugaresDisponiveis(GregorianCalendar dia, int numeroLugares) {
-        ArrayList<Restaurante> restaurantesPorLotacao = new ArrayList<>();
-
-        for (Restaurante r : getListaRestaurantes()) {
-            if (r.getRestaurante().disponibilidadeRestaurante(r.getRestaurante(), dia) >= numeroLugares) {
-                restaurantesPorLotacao.add(r);
-            }
-        }
-        if (restaurantesPorLotacao.isEmpty()) {
-            return null;
-        }
-
-        return restaurantesPorLotacao;
-    }
+//    public ArrayList<Restaurante> consultarRestaurantePorLugaresDisponiveis() {
+//        ArrayList<Restaurante> restaurantesPorLotacao = new ArrayList<>();
+//
+//        for (Restaurante r : getListaRestaurantes()) {
+//            if (r.getRestaurante().disponibilidadeRestaurante(r.getRestaurante(), dia) >= numeroLugares) {
+//                restaurantesPorLotacao.add(r);
+//            }
+//        }
+//        if (restaurantesPorLotacao.isEmpty()) {
+//            return null;
+//        }
+//
+//        return restaurantesPorLotacao;
+//    }
 
     public ArrayList<Comentario> getListaComentarios() {
         return listaComentarios;
@@ -823,7 +824,7 @@ public class Sistema implements Serializable {
     public void adicionarComentario2(Cliente cliente, String opiniao, double pontuacao, Restaurante restaurante) {
 
         for (Reserva r : cliente.getListaReservas()) {
-            if (r.getCliente().getNome().equals(cliente.getNome()) && r.getCliente().getRestaurante().getNome().equals(restaurante.getNome()) && r.getStatus()) {
+            if (r.getCliente().getNome().equals(cliente.getNome()) && r.getRestaurante().getNome().equals(restaurante.getNome()) && r.getStatus()) {
                 Comentario comentario = new Comentario(opiniao, pontuacao, cliente, restaurante);
                 listaComentarios.add(comentario);
                 gravarSistema();

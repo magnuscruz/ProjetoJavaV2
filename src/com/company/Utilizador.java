@@ -45,22 +45,6 @@ public class Utilizador implements Serializable {
                 '}';
     }
 
-    public Restaurante getRestaurante() {
-        return restaurante;
-    }
-
-    public void setRestaurante(Restaurante restaurante) {
-        this.restaurante = restaurante;
-    }
-
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
-
     public ArrayList<Reserva> getListaReservas() {
         return listaReservas;
     }

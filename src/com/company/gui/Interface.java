@@ -12,6 +12,7 @@ import org.jdatepicker.impl.UtilDateModel;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.security.interfaces.RSAKey;
 import java.text.ParseException;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -20,6 +21,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.swing.*;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 import javax.swing.text.MaskFormatter;
 
 public class Interface extends JFrame {
@@ -90,6 +93,7 @@ public class Interface extends JFrame {
     private JPanel centroMCliMComFRestResultadoSSPanel;
     private JPanel centroMCliMComFIDSSPanel3;
     private ArrayList<Restaurante> listaRestHF;
+    private JPanel centroMCliMRestFRestPontSSPanel1;
 
 
     public Interface(Sistema sistema) {
@@ -1903,7 +1907,7 @@ public class Interface extends JFrame {
         JButton fCidCliMRestFOrdRestsButton = new JButton("CIDADE");
 
         JLabel fOrdMCliMRestsFOrdRestLabel = new JLabel("FILTRAR/ORDENAR:");
-        JButton fOrdPontCliMRestFOrdRestsButton = new JButton("PONTUAÇÃO");
+        JButton fOrdPontMCliMRestFOrdRestsButton = new JButton("PONTUAÇÃO");
         JButton fOrdValoresMCliMRestFOrdRestsButton = new JButton("VALORES MÉDIOS DOS PRATOS");
 
         JButton ptEnMCliMRestFOrdRestsButton = new JButton("PT/EN");
@@ -1923,16 +1927,21 @@ public class Interface extends JFrame {
         centroMCliMRestFOrdRestsSSPanel.setLayout(new GridLayout(8, 1));
         centroMCliMRestFOrdRestsSubPanel.add(centroMCliMRestFOrdRestsSSPanel);
 
+        JPanel centroMCliMRestFOrdRestsSSPanel1 = new JPanel();
+        centroMCliMRestFOrdRestsSSPanel1.setLayout(new FlowLayout());
+        centroMCliMRestFOrdRestsSubPanel.add(centroMCliMRestFOrdRestsSSPanel1);
+
         centroMCliMRestFOrdRestsSSPanel.add(fMCliMRestFOrdRestsLabel);
         centroMCliMRestFOrdRestsSSPanel.add(fhoraFMCliMRestFOrdRestsButton);
         centroMCliMRestFOrdRestsSSPanel.add(fLotMCliMRestFOrdRestsButton);
         centroMCliMRestFOrdRestsSSPanel.add(fCidCliMRestFOrdRestsButton);
         centroMCliMRestFOrdRestsSSPanel.add(fOrdMCliMRestsFOrdRestLabel);
-        centroMCliMRestFOrdRestsSSPanel.add(fOrdPontCliMRestFOrdRestsButton);
+        centroMCliMRestFOrdRestsSSPanel.add(fOrdPontMCliMRestFOrdRestsButton);
         centroMCliMRestFOrdRestsSSPanel.add(fOrdValoresMCliMRestFOrdRestsButton);
 
         sulMCliMRestFOrdRestsSubPanel.setLayout(new FlowLayout());
         sulMCliMRestFOrdRestsSubPanel.add(voltarMCliMRestsFOrdRestButton);
+
 
         fhoraFMCliMRestFOrdRestsButton.addActionListener(a -> mostrarJanela(MCLIMRESTFRESTHFUNC_CARD));
 
@@ -1940,15 +1949,14 @@ public class Interface extends JFrame {
 
         fCidCliMRestFOrdRestsButton.addActionListener(a -> mostrarJanela(MCLIMRESTFRESTCID_CARD));
 
-        fOrdPontCliMRestFOrdRestsButton.addActionListener(a -> mostrarJanela(MCLIMRESTFRESTPONT_CARD));
-
-        fOrdValoresMCliMRestFOrdRestsButton.addActionListener(a -> mostrarJanela(MCLIMRESTFORDRESTVALOR_CARD));
+        //TODO TAIS NOVO verificar
+        fOrdPontMCliMRestFOrdRestsButton.addActionListener(a -> mostrarJanela(MCLIMRESTFRESTPONT_CARD));
 
         voltarMCliMRestsFOrdRestButton.addActionListener(a -> mostrarJanela(MENUCLIENTE_CARD));
     }
 
 
-    //////MENU RESTAURANTE – RESTAURANTES – FILTRAR POR PONTUAÇÃO//////////
+    //////MENU CLIENTE – RESTAURANTES – FILTRAR POR PONTUAÇÃO//////////
     private void construirPanelMCliMRestFRestPont(JPanel mCliMRestFRestPontSuperPanel) {
 
 
@@ -1961,22 +1969,10 @@ public class Interface extends JFrame {
         JLabel mCliMRestsFRestPontLabel = new JLabel("MENU CLIENTE - PESQUISAR RESTAURANTES");
         JLabel mCliMRestFRestPontLabel = new JLabel("PONTUAÇÃO");
 
-        JRadioButton umMCliMRestFRestPontRButton = new JRadioButton("1 - Péssimo");
-        JRadioButton doisMCliMRestFRestPontRButton = new JRadioButton("2 - Ruim");
-        JRadioButton tresMCliMRestFRestPontRButton = new JRadioButton("3 - Regular");
-        JRadioButton quatroMCliMRestFRestPontRButton = new JRadioButton("4 - Bom");
-        JRadioButton cincoMCliMRestFRestPontRButton = new JRadioButton("5 - Muito Bom");
-
-        ButtonGroup group = new ButtonGroup();
-        group.add(umMCliMRestFRestPontRButton);
-        group.add(doisMCliMRestFRestPontRButton);
-        group.add(tresMCliMRestFRestPontRButton);
-        group.add(quatroMCliMRestFRestPontRButton);
-        group.add(cincoMCliMRestFRestPontRButton);
-
         JButton ptEnMCliMRestFRestPontButton = new JButton("PT/EN");
         JButton voltarMCliMRestFRestPontButton = new JButton("MENU CLIENTE");
         JButton retonarMCliMRestFRestPontButton = new JButton("VOLTAR");
+        //JButton teste = new JButton("TESTE");
 
         mCliMRestFRestPontSuperPanel.add(norteMCliMRestFRestPontSubPanel, "North");
         mCliMRestFRestPontSuperPanel.add(centroMCliMRestFRestPontSubPanel, "Center");
@@ -1992,26 +1988,44 @@ public class Interface extends JFrame {
         centroMCliMRestFRestPontSSPanel.setLayout(new GridLayout(6, 1));
         centroMCliMRestFRestPontSubPanel.add(centroMCliMRestFRestPontSSPanel);
 
+
+        //TODO revisar Tais
+        ArrayList<Restaurante> listasRestPont;
+        listasRestPont = sistema.consultarRestaurantesPorOrdemPontuacao();
+        if (listasRestPont != null) {
+            String[][] dadosMCliMRestFOrdRestsSSPanel = new String[listasRestPont.size()][2];
+            int i = 0;
+            for (Restaurante ret : listasRestPont) {
+                double pontuacaoMedia = sistema.getPontuacaoMediaRestaurante(ret);
+                int pontuacaoMedia2 = (int) pontuacaoMedia;
+                String pontuacaoMedia3 = Integer.toString(pontuacaoMedia2);
+                dadosMCliMRestFOrdRestsSSPanel[i][0] = ret.getCidade();
+                dadosMCliMRestFOrdRestsSSPanel[i][1] = pontuacaoMedia3;
+                i++;
+            }
+            mostrarJanela(MCLIMRESTFRESTPONT_CARD);
+            System.out.println("Entrou!");
+            String[] nomeColunasMCliMRestFOrdRestsSSPanel = new String[]{"RESTAURANTE", "PONTUAÇÃO"};
+            JTable tabelaMCliMRestFOrdRestsSSPanel = new JTable(dadosMCliMRestFOrdRestsSSPanel, nomeColunasMCliMRestFOrdRestsSSPanel);
+            JScrollPane jScrollMCliMRestFRestCid = new JScrollPane();
+            jScrollMCliMRestFRestCid.add(tabelaMCliMRestFOrdRestsSSPanel);
+            TableRowSorter<TableModel> sorter = new TableRowSorter<>(tabelaMCliMRestFOrdRestsSSPanel.getModel());
+            tabelaMCliMRestFOrdRestsSSPanel.setRowSorter(sorter);
+            centroMCliMRestFRestPontSSPanel.add(jScrollMCliMRestFRestCid, BorderLayout.CENTER);
+
+        } else
+            JOptionPane.showMessageDialog(null, "Sem restaurante");
+
+
+        centroMCliMRestFRestPontSubPanel.setBackground(Color.blue);
+        //centroMCliMRestFRestPontSSPanel1.setBackground(Color.GREEN);
+
         centroMCliMRestFRestPontSSPanel.add(mCliMRestFRestPontLabel);
-        centroMCliMRestFRestPontSSPanel.add(umMCliMRestFRestPontRButton);
-        centroMCliMRestFRestPontSSPanel.add(doisMCliMRestFRestPontRButton);
-        centroMCliMRestFRestPontSSPanel.add(tresMCliMRestFRestPontRButton);
-        centroMCliMRestFRestPontSSPanel.add(quatroMCliMRestFRestPontRButton);
-        centroMCliMRestFRestPontSSPanel.add(cincoMCliMRestFRestPontRButton);
+        //centroMCliMRestFRestPontSubPanel.add(teste);
 
         sulMCliMRestFRestPontSubPanel.setLayout(new FlowLayout());
         sulMCliMRestFRestPontSubPanel.add(voltarMCliMRestFRestPontButton);
         sulMCliMRestFRestPontSubPanel.add(retonarMCliMRestFRestPontButton);
-
-        umMCliMRestFRestPontRButton.addActionListener(a -> mostrarJanela(MENUCLIENTE_CARD));
-
-        doisMCliMRestFRestPontRButton.addActionListener(a -> mostrarJanela(MENUCLIENTE_CARD));
-
-        tresMCliMRestFRestPontRButton.addActionListener(a -> mostrarJanela(MENUCLIENTE_CARD));
-
-        quatroMCliMRestFRestPontRButton.addActionListener(a -> mostrarJanela(MENUCLIENTE_CARD));
-
-        cincoMCliMRestFRestPontRButton.addActionListener(a -> mostrarJanela(MENUCLIENTE_CARD));
 
         retonarMCliMRestFRestPontButton.addActionListener(a -> mostrarJanela(MCLIMRESTFORDRESTS_CARD));
 
@@ -2282,7 +2296,7 @@ public class Interface extends JFrame {
         pesquisarMCliMRestFRestHFuncButton.addActionListener(a -> {
             Pattern pttrn = Pattern.compile("^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$");
             if (fHoraMCliMRestFRestHFuncText.getText() != null && pttrn.matcher(fHoraMCliMRestFRestHFuncText.getText()).find()) {
-                LocalTime hora = LocalTime.parse(fHoraMCliMRestFRestHFuncText.getText()+ ":00", DateTimeFormatter.ISO_TIME);
+                LocalTime hora = LocalTime.parse(fHoraMCliMRestFRestHFuncText.getText() + ":00", DateTimeFormatter.ISO_TIME);
                 listaRestHF = sistema.consultarRestaurantePorHorario(hora);
                 if (listaRestHF != null && !listaRestHF.isEmpty()) {
                     String[][] dadosMCliMRestFRestHFuncSSPanel = new String[listaRestHF.size()][1];
@@ -2301,7 +2315,8 @@ public class Interface extends JFrame {
             } else {
                 JOptionPane.showMessageDialog(null, "Escreva uma hora válida!");
             }
-            mostrarJanela(MCLIMRESTFORDRESTS_CARD);});
+            mostrarJanela(MCLIMRESTFORDRESTS_CARD);
+        });
 
         retornarMCliMRestFRestHFuncButton.addActionListener(a -> mostrarJanela(MCLIMRESTFORDRESTS_CARD));
 
@@ -2320,22 +2335,7 @@ public class Interface extends JFrame {
         JLabel mCliMRestsFRestsLotLabel = new JLabel("MENU CLIENTE - PESQUISAR RESTAURANTES");
         JLabel mCliMRestFRestLotLabel = new JLabel("LOTAÇÃO");
         JLabel dataMCliMRestFRestLotLabel = new JLabel("DATA");
-
-        //todo exemplo a verificar (HÁ FORMA MELHOR?)
-
-        String[] nomeColunasMCliMRestFRestLot = new String[]{
-                "RESTAURANTE”, “ZONA", "TOTAL", "DISPONÍVEIS"
-        };
-
-        Object[][] dadosMCliMRestFRestLot = new Object[][]{
-                {"RESTAURANTE”, “ZONA", "TOTAL", "DISPONÍVEIS"},
-                {"A", "Esplanada", 20, 5},
-                {"B", "Interior Ñ Fumadores", 20, 10},
-                {"C", "Interior Fumadores", 5, 2},
-        };
-
-        //criação da tabela
-        JTable tabelaMCliMRestFRestLot = new JTable(dadosMCliMRestFRestLot, nomeColunasMCliMRestFRestLot);
+        JButton pesquisarMCliMRestFRestLotButton = new JButton("PESQUISAR");
 
         //Calendário
         UtilDateModel modelMCliMRestFRestLot = new UtilDateModel();
@@ -2381,18 +2381,65 @@ public class Interface extends JFrame {
         centroMCliMRestFRestLotSSPanel.add(mCliMRestFRestLotLabel);
         centroMCliMRestFRestLotSSPanel1.add(dataMCliMRestFRestLotLabel);
         centroMCliMRestFRestLotSSPanel1.add(datePickerMCliMRestFRestLot);
-        centroMCliMRestFRestLotSSPanel2.add(tabelaMCliMRestFRestLot);
+        //centroMCliMRestFRestLotSSPanel2.add(tabelaMCliMRestFRestLot);
 
         sulMCliMRestFRestLotSubPanel.setLayout(new FlowLayout());
         sulMCliMRestFRestLotSubPanel.add(voltarMCliMRestFRestLotButton);
         sulMCliMRestFRestLotSubPanel.add(retornarMCliMRestFRestLotButton);
+        sulMCliMRestFRestLotSubPanel.add(pesquisarMCliMRestFRestLotButton);
+
+        //tais revisar
+//        pesquisarMCliMRestFRestLotButton.addActionListener(a -> {
+//            GregorianCalendar dataMCliMRestFRestLot = (GregorianCalendar) datePickerMCliMRestFRestLot.getJFormattedTextField().getValue();
+//            ArrayList<Restaurante> listaRestLot = listaRestLot = sistema.consultarRestaurantePorLugaresDisponiveis(); //mudar para lotação qdo estiver pronto
+//
+//
+//            sistema.criarRestaurante(nomeRestauranteText.getText(),
+//                    moradaRestauranteText.getText(),
+//
+//            if (dataMCliMRestFRestLot == null) {
+//                JOptionPane.showMessageDialog(((Component) a.getSource()).getParent(), "A data deve ser preenchida");
+//                datePickerMCliMRestFRestLot.requestFocus();
+//            }
+//            //                for (Comentario cID : listaComentarioID) {
+////                    if (dataMCliMComFID1.before(cID.getData()) && dataMCliMComFID2.after(cID.getData())) {
+////                        listaTemporariaCID.add(cID);
+////                    }
+////                }
+//
+//            String[][] dadosMCliMRestFRestLotSPanel = new String[listaRestLot.size()][6];
+//            int i = 0;
+//            DateLabelFormatter dateFormatter = new DateLabelFormatter();
+//            for (Restaurante resta : listaRestLot) {
+//                try {
+//                    dadosMCliMRestFRestLotSPanel[i][0] = dateFormatter.dateTimeToString(resta.getRestaurante());
+//
+//                } catch (ParseException parseException) {
+//                    parseException.printStackTrace();
+//                }
+//                dadosMCliMRestFRestLotSPanel[i][1] = String.valueOf(resta.getRestaurante());
+//                dadosMCliMRestFRestLotSPanel[i][3] = String.valueOf(resta.getLotacaoEsplanada());
+//                dadosMCliMRestFRestLotSPanel[i][2] = String.valueOf(resta.getLotacaoFum());
+//                dadosMCliMRestFRestLotSPanel[i][4] = String.valueOf(resta.getLotacaoNFum());
+//                dadosMCliMRestFRestLotSPanel[i][5] = String.valueOf(resta.getListaReservasRestaurante());
+//                i++;
+//            }
+//
+//            String[] nomeColunasMCliMRestFRestLotSSPanel = new String[]{"RESTAURANTE", "ESPLANADA", "Z.I.FUM", "Z.I.NFUM", "RESERVAS"};
+//            JTable tabelaMCliMRestFRestLotSSPanel = new JTable(dadosMCliMRestFRestLotSPanel, nomeColunasMCliMRestFRestLotSSPanel);
+//            JScrollPane jscrollMCliMRestFRestLot = new JScrollPane(tabelaMCliMRestFRestLotSSPanel);
+//            centroMCliMRestFRestLotSSPanel2.add(jscrollMCliMRestFRestLot, BorderLayout.CENTER);
+//            mostrarJanela(MCLIMRESTFORDRESTS_CARD);
+//            //JOptionPane.showMessageDialog(null, "");
+//        });
+
 
         retornarMCliMRestFRestLotButton.addActionListener(a -> mostrarJanela(MCLIMRESTFORDRESTS_CARD));
 
         voltarMCliMRestFRestLotButton.addActionListener(a -> mostrarJanela(MENUCLIENTE_CARD));
     }
 
-    //////MENU RESTAURANTE – RESTAURANTES – MENU FILTROS - CIDADE//////////
+    //////MENU CLIENTE – RESTAURANTES – MENU FILTROS - CIDADE//////////
     private void construirPanelMCliMRestFRestCid(JPanel mCliMRestFRestCidSuperPanel) {
 
         /////SUBPAINEIS//////
@@ -2425,6 +2472,10 @@ public class Interface extends JFrame {
         centroMCliMRestFRestCidSSPanel.setLayout(new GridLayout(8, 2));
         centroMCliMRestFRestCidSubPanel.add(centroMCliMRestFRestCidSSPanel);
 
+        JPanel centroMCliMRestFRestCidSSPanel1 = new JPanel();
+        centroMCliMRestFRestCidSSPanel1.setLayout(new GridLayout(8, 2));
+        centroMCliMRestFRestCidSubPanel.add(centroMCliMRestFRestCidSSPanel1);
+
         centroMCliMRestFRestCidSSPanel.add(mCliMRestFRestCidLabel);
         centroMCliMRestFRestCidSSPanel.add(mCliMRestFRestCidText);
 
@@ -2433,32 +2484,33 @@ public class Interface extends JFrame {
         sulMCliMRestFRestCidSubPanel.add(retornarMCliMRestFRestCidButton);
         sulMCliMRestFRestCidSubPanel.add(pesquisarMCliMRestFRestCidButton);
 
-        //TODO faltar ver métodos para pesquisar e o comando do mostrarJanela tem quer alterado - tem iniciado abaixo (comentado)
-        pesquisarMCliMRestFRestCidButton.addActionListener(a -> mostrarJanela(MCLIMRESTFORDRESTS_CARD));
-
         retornarMCliMRestFRestCidButton.addActionListener(a -> mostrarJanela(MCLIMRESTFORDRESTS_CARD));
+
         voltarMCliMRestFRestCidButton.addActionListener(a -> mostrarJanela(MENUCLIENTE_CARD));
-        //TODO verificar
-//        pesquisarMCliMRestFRestCidButton.addActionListener(a -> {
-//            ArrayList<Restaurante> listasRestCid = new ArrayList();
-//            listasRestCid = sistema.consultarRestaurantePorCidade(mCliMRestFRestCidLabel.getText());
-//            if (listasRestCid != null) {
-//                String[] nomeColunasMRestComentarios1 = new String[]{
-//                        "ID", "USERNAME", "COMENTÁRIO", "PONTUAÇÃO"
-//                };
-//                Object[][] dadosMRestComentariosCBox1 = new Object[][]{
-//                        {"ID", "USERNAME", "COMENTÁRIO", "PONTUAÇÃO"},
-//                        {listasRestCid.get(0).getNome(), listasRestCid.get(0).getCidade(), null},
-//                        {4, null, null, null},
-//
-//                };
-//                //criação da tabela
-//                JTable tabelaMRestComentarios1 = new JTable(dadosMRestComentariosCBox1, nomeColunasMRestComentarios1);
-//
-//            }
-//
-//            mostrarJanela(MCLIMRESTFORDRESTS_CARD);
-//        });
+
+        //TODO verificar Tais
+        pesquisarMCliMRestFRestCidButton.addActionListener(a -> {
+            ArrayList<Restaurante> listasRestCid;
+            listasRestCid = sistema.consultarRestaurantePorCidade(mCliMRestFRestCidText.getText());
+            if (listasRestCid != null) {
+                String[][] dadosMCliMRestFRestCidSSPanel = new String[listasRestCid.size()][2];
+                int i = 0;
+                for (Restaurante c : listasRestCid) {
+                    dadosMCliMRestFRestCidSSPanel[i][0] = c.getRestaurante().getNome();
+                    dadosMCliMRestFRestCidSSPanel[i][1] = c.getRestaurante().getCidade();
+                    i++;
+                }
+
+                String[] nomeColunasMCliMRestFRestCidSSPanel = new String[]{"RESTAURANTE", "CIDADE"};
+                JTable tabelaMCliMComFCliSSPanel = new JTable(dadosMCliMRestFRestCidSSPanel, nomeColunasMCliMRestFRestCidSSPanel);
+                JScrollPane jScrollMCliMRestFRestCid = new JScrollPane();
+                jScrollMCliMRestFRestCid.add(tabelaMCliMComFCliSSPanel);
+                centroMCliMRestFRestCidSSPanel1.add(jScrollMCliMRestFRestCid, BorderLayout.CENTER);
+            } else
+                JOptionPane.showMessageDialog(null, "Sem restaurante registado!");
+
+            mostrarJanela(MCLIMRESTFORDRESTS_CARD);
+        });
 
     }
 
@@ -2935,7 +2987,7 @@ public class Interface extends JFrame {
         voltarMCliMComFIDButton.addActionListener(a -> mostrarJanela(MENUCLIENTE_CARD));
 
         retornarMCliMComFIDButton.addActionListener(a -> mostrarJanela(MCLIMCOM_CARD));
-
+//TAIS
         pesquisarMCliMComFIDButton.addActionListener(e -> {
             GregorianCalendar dataMCliMComFID1 = (GregorianCalendar) datePickerMCliMComFID1.getJFormattedTextField().getValue();
             GregorianCalendar dataMCliMComFID2 = (GregorianCalendar) datePickerMCliMComFID2.getJFormattedTextField().getValue();
@@ -3154,7 +3206,7 @@ public class Interface extends JFrame {
 
         //criação da tabela
         JTable tabelaMCliResAct = new JTable(dados, nomeColunasMCliResAct);
-//TAIS
+
         JButton ptEnMCliRestButton = new JButton("PT/EN");
         JButton voltarMCliResActButton = new JButton("MENU CLIENTE");
         JButton visualizarMCliResActButton = new JButton("VISUALIZAR");

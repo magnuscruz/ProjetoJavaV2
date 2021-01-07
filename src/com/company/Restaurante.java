@@ -37,6 +37,13 @@ public class Restaurante extends Utilizador implements Serializable {
         this.status = true;
     }
 
+    public Restaurante getRestaurante() {
+        return restaurante;
+    }
+
+    public void setRestaurante(Restaurante restaurante) {
+        this.restaurante = restaurante;
+    }
 
     public void TESTEENTRARCICLOFOREACHCOMLISTARESERVAS() {
         if (getListaReservas().isEmpty()) {

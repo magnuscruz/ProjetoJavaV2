@@ -33,6 +33,14 @@ public class Cliente extends Utilizador implements Serializable {
         return valido;
     }
 
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
     public boolean validarDataHoraDeReserva(GregorianCalendar data, LocalTime horas) {
         GregorianCalendar dataNesteMomento = new GregorianCalendar();
         dataNesteMomento.toInstant();
