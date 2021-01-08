@@ -526,7 +526,7 @@ public class Sistema implements Serializable {
             }
         }
         if (listaComentariosPorCliente.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Cliente " + nomeCliente + " não tem comentarios feitos");
+            //JOptionPane.showMessageDialog(null, "Cliente " + nomeCliente + " não tem comentarios feitos");
             return null;
         }
         return listaComentariosPorCliente;
@@ -542,7 +542,7 @@ public class Sistema implements Serializable {
         }
 
         if (listaComentariosPorRestaurante.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Restaurante " + nomeRestaurante + " não tem comentarios feitos");
+            //JOptionPane.showMessageDialog(null, "Restaurante " + nomeRestaurante + " não tem comentarios feitos");
             return null;
         }
         return listaComentariosPorRestaurante;
@@ -561,24 +561,22 @@ public class Sistema implements Serializable {
                 }
             }
             if (count <= 0) {
-                JOptionPane.showMessageDialog(null, "Não existem comentarios dentro dessas datas");
+                //JOptionPane.showMessageDialog(null, "Não existem comentarios dentro dessas datas");
                 return null;
             }
         }
         return listaComentariosPorData;
     }
 
-    //TODO - NAO ESTA FEITO - Mas Tais vai fazer na parte dela, na tabela usa o sort
+    /**
+     * Consultar Restaurantes ordenados pela pontuação média.
+     * @return
+     */
     public ArrayList<Restaurante> consultarRestaurantesPorOrdemPontuacao() {
-
-        ArrayList<Restaurante> listaRestaurantesPorPontuacao = new ArrayList<>();
-
-        for (Restaurante r : getListaRestaurantes()) {
-            listaRestaurantesPorPontuacao.add(r);
-
-        }
-
-        return listaRestaurantesPorPontuacao;
+        ArrayList<Restaurante> listaOrdenada = new ArrayList<>();
+        listaOrdenada.addAll(getListaRestaurantes());
+        listaOrdenada.sort((r1,r2)->Double.valueOf(getPontuacaoMediaRestaurante(r1)).compareTo(Double.valueOf(getPontuacaoMediaRestaurante(r2))));
+        return listaOrdenada;
     }
 
     public ArrayList<Restaurante> consultarRestaurantePorValores(String valorMin2, String valorMax2) {

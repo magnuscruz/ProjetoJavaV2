@@ -41,8 +41,8 @@ public class Main {
 ////        sistema.criarCliente("B5", "cliente2@com.pt", "rua B", "555555555",
 ////                "cliente5", "pass", "pass");
 ////
-        sistema.criarCliente("C7", "cliente3@com.pt", "rua C", "777777777",
-                "cliente7", "pass", "pass");
+//        sistema.criarCliente("C7", "cliente3@com.pt", "rua C", "777777777",
+//                "cliente7", "pass", "pass");
 //////
 //
         //      sistema.login("10", "10");
@@ -50,8 +50,12 @@ public class Main {
 //        sistema.getClienteAtivo().criarReservaPresencial(sistema.getListaRestaurantes().get(0), new GregorianCalendar(2021, 03, 01),
 //                LocalTime.of(13, 00), 1, 20);
 //
-        //       sistema.adicionarComentario(sistema.getListaClientes().get(0),"Bom", 4, sistema.getListaRestaurantes().get(0));
-        //sistema.adicionarComentario(sistema.getClienteAtivo(), "Excelente", 4, sistema.getListaRestaurantes().get(0));
+
+
+        sistema.adicionarComentario("Mal atendimento", 2, sistema.getListaClientes().get(0), sistema.getListaRestaurantes().get(0));
+        sistema.adicionarComentario("Excelente", 3, sistema.getListaClientes().get(0), sistema.getListaRestaurantes().get(0));
+        sistema.adicionarComentario("Bom", 4, sistema.getListaClientes().get(0), sistema.getListaRestaurantes().get(0));
+        sistema.adicionarComentario("Mediano", 4, sistema.getListaClientes().get(0), sistema.getListaRestaurantes().get(0));
         //System.out.println("Lista de Comentários " + sistema.getListaComentarios());
         //     sistema.adicionarComentario(sistema.getClienteAtivo(), "Ruim", 5, sistema.getListaRestaurantes().get(0));
 //

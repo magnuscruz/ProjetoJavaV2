@@ -37,6 +37,7 @@ public class Restaurante extends Utilizador implements Serializable {
         this.status = true;
     }
 
+
     public Restaurante getRestaurante() {
         return restaurante;
     }
