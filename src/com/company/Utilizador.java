@@ -42,6 +42,7 @@ public class Utilizador implements Serializable {
                 ", telefone='" + telefone + '\'' +
                 ", email='" + email + '\'' +
                 ", username='" + username + '\'' +
+                ", pass='" + password + '\'' +
                 '}';
     }
 

@@ -5,6 +5,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalTime;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class DateLabelFormatter extends AbstractFormatter {
 
@@ -36,6 +37,7 @@ public class DateLabelFormatter extends AbstractFormatter {
     public String valueToString(Object value) throws ParseException {
         if (value != null) {
             Calendar cal = (Calendar) value;
+            cal = (GregorianCalendar)value;
             return dateFormatter.format(cal.getTime());
         }
 

@@ -52,7 +52,15 @@ public class Sistema implements Serializable {
         }
         return true;
     }
-
+//TESTE
+//    public String gregorianParaString(GregorianCalendar data) {
+//        String ano = Integer.toString(data.get(Calendar.YEAR));
+//        String mes = Integer.toString(data.get(Calendar.MONTH));
+//        String mes2 = Integer.toString(data.get(Calendar.MONTH));
+//        String dia = Integer.toString(data.get(Calendar.DAY_OF_MONTH));
+//        String dataString = String.join(":", ano, mes2, dia);
+//        return dataString;
+//    }
 
     private Utilizador getUtilizarAtivo() {
         return this.utilizarAtivo;
@@ -119,8 +127,6 @@ public class Sistema implements Serializable {
     }
 
     public Utilizador login(String username, String pass) {
-        boolean valido = false;
-
         for (Utilizador u : listaUtilizadores) {
             if (username.equals(u.getUsername()) && pass.equals(u.getPassword())) {
                 this.utilizarAtivo = u;
@@ -318,7 +324,7 @@ public class Sistema implements Serializable {
                                 Cliente c = new Cliente(nome, morada, telefone, email, username, password, confirmarPass);
                                 // c.setId(++clienteId);
                                 listaUtilizadores.add(c);
-                                System.out.println("Cliente criado");
+                                System.out.println("Cliente criado " + c + " " + listaUtilizadores.size());
                                 // JOptionPane.showMessageDialog(null, "Cliente criado");
                                 gravarSistema();
                                 return valido = true;
@@ -536,7 +542,7 @@ public class Sistema implements Serializable {
 
         ArrayList<Comentario> listaComentariosPorRestaurante = new ArrayList<>();
         for (Comentario c : getListaComentarios()) {
-            if (c.getCliente().getNome().equalsIgnoreCase(nomeRestaurante) && c.getStatus()) {
+            if (c.getRestaurante().getNome().equalsIgnoreCase(nomeRestaurante) && c.getStatus()) {
                 listaComentariosPorRestaurante.add(c);
             }
         }
@@ -555,12 +561,12 @@ public class Sistema implements Serializable {
 
         if (valido) {
             for (Comentario c : getListaComentarios()) {
-                if ( c.getDataComentario().after(dataAnterior) && c.getDataComentario().before(dataPosterior) && c.getStatus()) {
+                if (c.getDataComentario().after(dataAnterior) && c.getDataComentario().before(dataPosterior) && c.getStatus()) {
                     listaComentariosPorData.add(c);
                     count++;
                 }
             }
-            if (count <= 0) {
+            if (listaComentariosPorData.isEmpty()) {
                 //JOptionPane.showMessageDialog(null, "Não existem comentarios dentro dessas datas");
                 return null;
             }
@@ -570,12 +576,13 @@ public class Sistema implements Serializable {
 
     /**
      * Consultar Restaurantes ordenados pela pontuação média.
+     *
      * @return
      */
     public ArrayList<Restaurante> consultarRestaurantesPorOrdemPontuacao() {
         ArrayList<Restaurante> listaOrdenada = new ArrayList<>();
         listaOrdenada.addAll(getListaRestaurantes());
-        listaOrdenada.sort((r1,r2)->Double.valueOf(getPontuacaoMediaRestaurante(r1)).compareTo(Double.valueOf(getPontuacaoMediaRestaurante(r2))));
+        listaOrdenada.sort((r1, r2) -> Double.valueOf(getPontuacaoMediaRestaurante(r1)).compareTo(Double.valueOf(getPontuacaoMediaRestaurante(r2))));
         return listaOrdenada;
     }
 
@@ -679,14 +686,14 @@ public class Sistema implements Serializable {
         return listaReservasCliente;
     }
 
-    public ArrayList <Reserva> consultarHistoricoReservas (){
+    public ArrayList<Reserva> consultarHistoricoReservas() {
         GregorianCalendar diaHoje = new GregorianCalendar();
         diaHoje.toInstant();
 
         ArrayList<Reserva> listaHistoricoReservas = new ArrayList<>();
 
-        for (Reserva r : getClienteAtivo().getListaReservas()){
-            if (diaHoje.after(r.getData())){
+        for (Reserva r : getClienteAtivo().getListaReservas()) {
+            if (diaHoje.after(r.getData())) {
                 listaHistoricoReservas.add(r);
             }
         }

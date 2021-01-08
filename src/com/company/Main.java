@@ -2,6 +2,7 @@ package com.company;
 
 
 import com.company.gui.Interface;
+import com.company.gui.util.DateLabelFormatter;
 
 import java.awt.*;
 import java.time.LocalTime;
@@ -52,12 +53,12 @@ public class Main {
 //
 
 
-        sistema.adicionarComentario("Mal atendimento", 2, sistema.getListaClientes().get(0), sistema.getListaRestaurantes().get(0));
-        sistema.adicionarComentario("Excelente", 3, sistema.getListaClientes().get(0), sistema.getListaRestaurantes().get(0));
-        sistema.adicionarComentario("Bom", 4, sistema.getListaClientes().get(0), sistema.getListaRestaurantes().get(0));
-        sistema.adicionarComentario("Mediano", 4, sistema.getListaClientes().get(0), sistema.getListaRestaurantes().get(0));
-        //System.out.println("Lista de Comentários " + sistema.getListaComentarios());
-        //     sistema.adicionarComentario(sistema.getClienteAtivo(), "Ruim", 5, sistema.getListaRestaurantes().get(0));
+//        sistema.adicionarComentario("Mal atendimento", 2, sistema.getListaClientes().get(0), sistema.getListaRestaurantes().get(0));
+//        sistema.adicionarComentario("Excelente", 3, sistema.getListaClientes().get(0), sistema.getListaRestaurantes().get(0));
+//        sistema.adicionarComentario("Bom", 4, sistema.getListaClientes().get(0), sistema.getListaRestaurantes().get(0));
+//        sistema.adicionarComentario("Mediano", 4, sistema.getListaClientes().get(0), sistema.getListaRestaurantes().get(0));
+//        //System.out.println("Lista de Comentários " + sistema.getListaComentarios());
+//        //     sistema.adicionarComentario(sistema.getClienteAtivo(), "Ruim", 5, sistema.getListaRestaurantes().get(0));
 //
 //        sistema.getListaRestaurantes().get(0).getEmenta().adicionarPratoAPratosDia("bitoque", "arroz e batatas", 10);
 //        sistema.getListaRestaurantes().get(0).getEmenta().adicionarPratoACarta("bitoque", "arroz e batatas", 30);
@@ -118,11 +119,20 @@ public class Main {
         System.out.println(sistema.getListaClientes());
         System.out.println("RESTAURANTE");
         System.out.println(sistema.getListaRestaurantes());
+        //System.out.println(sistema.consultarListaComentariosPorIntervaloDatas(new GregorianCalendar(2020,1,1), new GregorianCalendar(2021, 2, 2)));
 
 //
 //        //                       sistema.gravarSistema();
 //sistema.login("cliente7", "pass");
+
+        //TESTE
+//        GregorianCalendar hoje = new GregorianCalendar();
+//        hoje = new GregorianCalendar(2020,1,1);
+//        sistema.gregorianParaString(hoje);
+//        System.out.println("a" + hoje);
+
         Interface sistemaGrafico = new Interface(sistema);
         sistemaGrafico.setVisible(true);
+
     }
 }
