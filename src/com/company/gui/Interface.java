@@ -45,8 +45,10 @@ public class Interface extends JFrame {
     private static final String MCLIMRESTFORDRESTVALORCARTA_CARD = "MENU CLIENTE - MENU RESTAURANTES - VALOR MÉDIO DOS PRATOS - CARTA";
     private static final String MCLIMRESTFORDRESTVALORPDIA_CARD = "MENU CLIENTE - MENU RESTAURANTES - VALOR MÉDIO DOS PRATOS - PRATO DO DIA";
     private static final String MCLIMRESTFRESTHFUNC_CARD = "MENU CLIENTE - MENU RESTAURANTES - HORÁRIO FUNCIONAMENTO";
+    private static final String MCLIMRESTFRESTHFUNCRESULTADO_CARD = "MENU CLIENTE - MENU RESTAURANTES - HORÁRIO FUNCIONAMENTO - RESULTADO";
     private static final String MCLIMRESTFRESTLOT_CARD = "MENU CLIENTE - MENU RESTAURANTES - LOTAÇÃO";
     private static final String MCLIMRESTFRESTCID_CARD = "MENU CLIENTE - MENU RESTAURANTES - CIDADE";
+    private static final String MCLIMRESTFRESTCIDRESULTADO_CARD = "MENU CLIENTE - MENU RESTAURANTES - CIDADE - RESULTADO";
     private static final String MCLIMCOM_CARD = "MENU CLIENTE – MENU COMENTÁRIOS";
     private static final String MCLIMCOMFPP_CARD = "MENU CLIENTE – COMENTÁRIOS - PRÓPRIOS";
     private static final String MCLIMCOMFCLI_CARD = "MENU CLIENTE – COMENTÁRIOS – FILTRAR POR CLIENTE";
@@ -98,6 +100,9 @@ public class Interface extends JFrame {
     private JPanel centroMCliMRestFRestPontSSPanel1;
     private JPanel mCliMRestFRestPontSuperPanel;
     private JPanel centroMCliMComFIDResultadoSSPanel;
+    private JTextField fHoraMCliMRestFRestHFuncText;
+    private JPanel centroMCliMRestFRestHFuncResultadoSSPanel2;
+    private JPanel centroMCliMRestFRestCidResultadoSSPanel1;
 
 
     public Interface(Sistema sistema) {
@@ -181,6 +186,8 @@ public class Interface extends JFrame {
         mCliMRestFRestLotSuperPanel.setLayout(new BorderLayout());
         JPanel mCliMRestFRestCidSuperPanel = new JPanel();
         mCliMRestFRestCidSuperPanel.setLayout(new BorderLayout());
+        JPanel mCliMRestFRestCidResultadoSuperPanel = new JPanel();
+        mCliMRestFRestCidResultadoSuperPanel.setLayout(new BorderLayout());
         JPanel mCliMComSuperPanel = new JPanel();
         mCliMComSuperPanel.setLayout(new BorderLayout());
         JPanel mCliMComFPPSuperPanel = new JPanel();
@@ -223,6 +230,9 @@ public class Interface extends JFrame {
         mRestComentariosSuperPanel.setLayout(new BorderLayout());
         JPanel mRestPMedSuperPanel = new JPanel();
         mRestPMedSuperPanel.setLayout(new BorderLayout());
+        JPanel mCliMRestFRestHFuncResultadoSuperPanel = new JPanel();
+        mCliMRestFRestHFuncResultadoSuperPanel.setLayout(new BorderLayout());
+
 
         if (sistema.getClienteAtivo() != null) {
             construirPanelMenuCliente(mCliSuperPanel);
@@ -240,8 +250,10 @@ public class Interface extends JFrame {
             construirPanelMCliMRestFOrdRestValorCarta(mCliMRestFOrdRestValorCartaSuperPanel);
             construirPanelMCliMRestFOrdRestValorPDia(mCliMRestFOrdRestValorPDiaSuperPanel);
             construirPanelMCliMRestFRestHFunc(mCliMRestFRestHFuncSuperPanel);
+            construirPanelMCliMRestFRestHFuncResultado(mCliMRestFRestHFuncResultadoSuperPanel);
             construirPanelMCliMRestFRestLot(mCliMRestFRestLotSuperPanel);
             construirPanelMCliMRestFRestCid(mCliMRestFRestCidSuperPanel);
+            construirPanelMCliMRestFRestCidResultado(mCliMRestFRestCidResultadoSuperPanel);
             construirPanelMCliMCom(mCliMComSuperPanel);
             construirPanelMCliMComFPP(mCliMComFPPSuperPanel);
             construirPanelMCliMComFCli(mCliMComFCliSuperPanel);
@@ -267,8 +279,10 @@ public class Interface extends JFrame {
             contentor.add(mCliMRestFOrdRestValorCartaSuperPanel, MCLIMRESTFORDRESTVALORCARTA_CARD);
             contentor.add(mCliMRestFOrdRestValorPDiaSuperPanel, MCLIMRESTFORDRESTVALORPDIA_CARD);
             contentor.add(mCliMRestFRestHFuncSuperPanel, MCLIMRESTFRESTHFUNC_CARD);
+            contentor.add(mCliMRestFRestHFuncResultadoSuperPanel, MCLIMRESTFRESTHFUNCRESULTADO_CARD);
             contentor.add(mCliMRestFRestLotSuperPanel, MCLIMRESTFRESTLOT_CARD);
             contentor.add(mCliMRestFRestCidSuperPanel, MCLIMRESTFRESTCID_CARD);
+            contentor.add(mCliMRestFRestCidResultadoSuperPanel, MCLIMRESTFRESTCIDRESULTADO_CARD);
             contentor.add(mCliMComSuperPanel, MCLIMCOM_CARD);
             contentor.add(mCliMComFPPSuperPanel, MCLIMCOMFPP_CARD);
             contentor.add(mCliMComFCliSuperPanel, MCLIMCOMFCLI_CARD);
@@ -451,6 +465,7 @@ public class Interface extends JFrame {
         JPanel centroNovoClienteSSPanelForm = new JPanel();
         centroNovoClienteSSPanelForm.setLayout(new GridLayout(7, 2));
         centroNovoClienteSubPanel.add(centroNovoClienteSSPanelForm);
+
         centroNovoClienteSSPanelForm.add(nomeClienteLabel);
         centroNovoClienteSSPanelForm.add(nomeClienteText);
         centroNovoClienteSSPanelForm.add(emailClienteLabel);
@@ -2037,31 +2052,33 @@ public class Interface extends JFrame {
         //TODO revisar Tais Magnus
         ArrayList<Restaurante> listasRestPont = sistema.consultarRestaurantesPorOrdemPontuacao();
         if (listasRestPont != null && !listasRestPont.isEmpty()) {
-            String[][] dadosMCliMRestFOrdRestsSSPanel = new String[listasRestPont.size()][2];
+            String[][] dadosMCliMRestFRestPontSSPanel = new String[listasRestPont.size()][2];
             int i = 0;
             for (Restaurante ret : listasRestPont) {
-                dadosMCliMRestFOrdRestsSSPanel[i][0] = ret.getCidade();
-                dadosMCliMRestFOrdRestsSSPanel[i][1] = "" + sistema.getPontuacaoMediaRestaurante(ret); //converte o double para String
+                dadosMCliMRestFRestPontSSPanel[i][0] = ret.getCidade();
+                dadosMCliMRestFRestPontSSPanel[i][1] = "" + sistema.getPontuacaoMediaRestaurante(ret); //converte o double para String
                 i++;
             }
 
-            String[] nomeColunasMCliMRestFOrdRestsSSPanel = new String[]{"RESTAURANTE", "PONTUAÇÃO"};
-            JTable tabelaMCliMRestFOrdRestsSSPanel = new JTable(dadosMCliMRestFOrdRestsSSPanel, nomeColunasMCliMRestFOrdRestsSSPanel);
-            JScrollPane jScrollMCliMRestFRestCid = new JScrollPane();
-            jScrollMCliMRestFRestCid.add(tabelaMCliMRestFOrdRestsSSPanel);
-            centroMCliMRestFRestPontSubPanel.add(jScrollMCliMRestFRestCid, BorderLayout.CENTER);
+            String[] nomeColunasMCliMRestFRestPontSSPanel = new String[]{"RESTAURANTE", "PONTUAÇÃO"};
+            JTable tabelaMCliMRestFRestPontSSPanel = new JTable(dadosMCliMRestFRestPontSSPanel, nomeColunasMCliMRestFRestPontSSPanel);
+            JScrollPane jScrollnomeColunasMCliMRestFRestPont = new JScrollPane(tabelaMCliMRestFRestPontSSPanel);
+            tabelaMCliMRestFRestPontSSPanel.setSize(10,10);
+            tabelaMCliMRestFRestPontSSPanel.setVisible(true);
+            centroMCliMRestFRestPontSubPanel.add(jScrollnomeColunasMCliMRestFRestPont, BorderLayout.CENTER);
 
-        } else
-            JOptionPane.showMessageDialog(null, "Sem restaurante");
+        } else {
+            JOptionPane.showMessageDialog(null, "Sem restaurante");}
 
         sulMCliMRestFRestPontSubPanel.setLayout(new FlowLayout());
         sulMCliMRestFRestPontSubPanel.add(voltarMCliMRestFRestPontButton);
         sulMCliMRestFRestPontSubPanel.add(retonarMCliMRestFRestPontButton);
+        mostrarJanela(MCLIMRESTFRESTPONT_CARD);
 
         retonarMCliMRestFRestPontButton.addActionListener(a -> mostrarJanela(MCLIMRESTFORDRESTS_CARD));
         voltarMCliMRestFRestPontButton.addActionListener(a -> mostrarJanela(MENUCLIENTE_CARD));
 
-        mostrarJanela(MCLIMRESTFRESTPONT_CARD);
+
 
     }
 
@@ -2279,7 +2296,7 @@ public class Interface extends JFrame {
         JLabel mCliMRestFRestHFuncLabel = new JLabel("HORÁRIOS DE FUNCIONAMENTO");
 
         JLabel fHoraMCliMRestFRestHFuncLabel = new JLabel("HORA");
-        JTextField fHoraMCliMRestFRestHFuncText = new JTextField(5);
+        fHoraMCliMRestFRestHFuncText = new JTextField(5);
 
         JButton ptEnMCliMRestFRestHFuncButton = new JButton("PT/EN");
         JButton voltarMCliMRestFRestHFuncButton = new JButton("MENU CLIENTE");
@@ -2308,13 +2325,9 @@ public class Interface extends JFrame {
         centroMCliMRestFRestHFuncSSPanel2.setLayout(new FlowLayout());
         centroMCliMRestFRestHFuncSubPanel.add(centroMCliMRestFRestHFuncSSPanel2);
 
-        JPanel centroMCliMRestFRestHFuncSSPanel3 = new JPanel();
-        centroMCliMRestFRestHFuncSSPanel3.setLayout(new FlowLayout());
-        centroMCliMRestFRestHFuncSubPanel.add(centroMCliMRestFRestHFuncSSPanel3);
-
         centroMCliMRestFRestHFuncSSPanel.add(mCliMRestFRestHFuncLabel);
-        centroMCliMRestFRestHFuncSSPanel2.add(fHoraMCliMRestFRestHFuncLabel);
-        centroMCliMRestFRestHFuncSSPanel2.add(fHoraMCliMRestFRestHFuncText);
+        centroMCliMRestFRestHFuncSSPanel1.add(fHoraMCliMRestFRestHFuncLabel);
+        centroMCliMRestFRestHFuncSSPanel1.add(fHoraMCliMRestFRestHFuncText);
 
         sulMCliMRestFRestHFuncSubPanel.setLayout(new FlowLayout());
         sulMCliMRestFRestHFuncSubPanel.add(voltarMCliMRestFRestHFuncButton);
@@ -2338,16 +2351,16 @@ public class Interface extends JFrame {
                         i++;
                     }
                     String[] nomeColunasMCliMRestFRestFuncSSPanel = new String[]{"RESTAURANTE"};
-                    JTable tabelaMCliMComFPPSSPanel = new JTable(dadosMCliMRestFRestHFuncSSPanel, nomeColunasMCliMRestFRestFuncSSPanel);
-                    JScrollPane jScrollMCliMRestFRestFuncFPP = new JScrollPane(tabelaMCliMComFPPSSPanel);
-                    centroMCliMRestFRestHFuncSSPanel3.add(jScrollMCliMRestFRestFuncFPP, BorderLayout.CENTER);
+                    JTable tabelaMCliMRestFRestHFuncSSPanel = new JTable(dadosMCliMRestFRestHFuncSSPanel, nomeColunasMCliMRestFRestFuncSSPanel);
+                    JScrollPane jScrollMCliMRestFRestFuncFPP = new JScrollPane(tabelaMCliMRestFRestHFuncSSPanel);
+                    centroMCliMRestFRestHFuncResultadoSSPanel2.add(jScrollMCliMRestFRestFuncFPP, BorderLayout.CENTER);
                 } else {
                     JOptionPane.showMessageDialog(null, "Nenhum restaurante aberto neste horário!");
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Escreva uma hora válida!");
             }
-            mostrarJanela(MCLIMRESTFORDRESTS_CARD);
+            mostrarJanela(MCLIMRESTFRESTHFUNCRESULTADO_CARD);
         });
 
         retornarMCliMRestFRestHFuncButton.addActionListener(a -> mostrarJanela(MCLIMRESTFORDRESTS_CARD));
@@ -2355,7 +2368,62 @@ public class Interface extends JFrame {
         voltarMCliMRestFRestHFuncButton.addActionListener(a -> mostrarJanela(MENUCLIENTE_CARD));
     }
 
-    //////MENU RESTAURANTE – RESTAURANTES – MENU FILTROS - LOTAÇÃO//////////
+
+    //////MENU ClLIENTE – RESTAURANTES – MENU FILTROS – HORÁRIO DE FUNCIONAMENTO - RESULTADO//////////
+    private void construirPanelMCliMRestFRestHFuncResultado(JPanel mCliMRestFRestHFuncResultadoSuperPanel) {
+
+        /////SUBPAINEIS//////
+        JPanel norteMCliMRestFRestHFuncResultadoSubPanel = new JPanel();
+        norteMCliMRestFRestHFuncResultadoSubPanel.setLayout(new BorderLayout());
+        JPanel centroMCliMRestFRestHFuncResultadoSubPanel = new JPanel();
+        JPanel sulMCliMRestFRestHFuncResultadoSubPanel = new JPanel();
+
+        JLabel mCliMRestsFRestsHFuncLabel = new JLabel("MENU CLIENTE - PESQUISAR RESTAURANTES");
+        JLabel MCliMRestFRestHFuncResultadoLabel = new JLabel("HORÁRIOS DE FUNCIONAMENTO");
+
+        JLabel fHoraMCliMRestFRestHFuncResultadoLabel = new JLabel("HORA");
+        JTextField fHoraMCliMRestFRestHFuncResultadoText = new JTextField(5);
+
+        JButton ptEnMCliMRestFRestHFuncResultadoButton = new JButton("PT/EN");
+        JButton voltarMCliMRestFRestHFuncResultadoButton = new JButton("MENU CLIENTE");
+        JButton retornarMCliMRestFRestHFuncResultadoButton = new JButton("VOLTAR");
+
+        mCliMRestFRestHFuncResultadoSuperPanel.add(norteMCliMRestFRestHFuncResultadoSubPanel, "North");
+        mCliMRestFRestHFuncResultadoSuperPanel.add(centroMCliMRestFRestHFuncResultadoSubPanel, "Center");
+        mCliMRestFRestHFuncResultadoSuperPanel.add(sulMCliMRestFRestHFuncResultadoSubPanel, "South");
+
+        JPanel norteMCliMRestFRestHFuncResultadoSSPanel = new JPanel();
+        norteMCliMRestFRestHFuncResultadoSSPanel.setLayout(new FlowLayout());
+        norteMCliMRestFRestHFuncResultadoSSPanel.add(mCliMRestsFRestsHFuncLabel);
+        norteMCliMRestFRestHFuncResultadoSubPanel.add(norteMCliMRestFRestHFuncResultadoSSPanel, BorderLayout.CENTER);
+        norteMCliMRestFRestHFuncResultadoSubPanel.add(ptEnMCliMRestFRestHFuncResultadoButton, BorderLayout.EAST);
+
+        JPanel centroMCliMRestFRestHFuncResultadoSSPanel = new JPanel();
+        centroMCliMRestFRestHFuncResultadoSSPanel.setLayout(new FlowLayout());
+        centroMCliMRestFRestHFuncResultadoSubPanel.add(centroMCliMRestFRestHFuncResultadoSSPanel);
+
+        JPanel centroMCliMRestFRestHFuncResultadoSSPanel1 = new JPanel();
+        centroMCliMRestFRestHFuncResultadoSSPanel1.setLayout(new FlowLayout());
+        centroMCliMRestFRestHFuncResultadoSubPanel.add(centroMCliMRestFRestHFuncResultadoSSPanel1);
+
+        centroMCliMRestFRestHFuncResultadoSSPanel2 = new JPanel();
+        centroMCliMRestFRestHFuncResultadoSSPanel2.setLayout(new FlowLayout());
+        centroMCliMRestFRestHFuncResultadoSubPanel.add(centroMCliMRestFRestHFuncResultadoSSPanel2);
+
+        centroMCliMRestFRestHFuncResultadoSSPanel.add(MCliMRestFRestHFuncResultadoLabel);
+        centroMCliMRestFRestHFuncResultadoSSPanel1.add(fHoraMCliMRestFRestHFuncResultadoLabel);
+        centroMCliMRestFRestHFuncResultadoSSPanel1.add(fHoraMCliMRestFRestHFuncResultadoText);
+
+        sulMCliMRestFRestHFuncResultadoSubPanel.setLayout(new FlowLayout());
+        sulMCliMRestFRestHFuncResultadoSubPanel.add(voltarMCliMRestFRestHFuncResultadoButton);
+        sulMCliMRestFRestHFuncResultadoSubPanel.add(retornarMCliMRestFRestHFuncResultadoButton);
+
+        retornarMCliMRestFRestHFuncResultadoButton.addActionListener(a -> mostrarJanela(MCLIMRESTFORDRESTS_CARD));
+
+        voltarMCliMRestFRestHFuncResultadoButton.addActionListener(a -> mostrarJanela(MENUCLIENTE_CARD));
+    }
+
+    //////MENU CLIENTE – RESTAURANTES – MENU FILTROS - LOTAÇÃO//////////
     private void construirPanelMCliMRestFRestLot(JPanel mCliMRestFRestLotSuperPanel) {
 
         /////SUBPAINEIS//////
@@ -2480,7 +2548,7 @@ public class Interface extends JFrame {
         JPanel centroMCliMRestFRestCidSubPanel = new JPanel();
         JPanel sulMCliMRestFRestCidSubPanel = new JPanel();
 
-        JLabel mCliMRestsFRestsCidLabel = new JLabel("MENU CLIENTE - PESQUISAR RESTAURANTES");
+        JLabel mCliMRestsFRestCidLabel = new JLabel("MENU CLIENTE - PESQUISAR RESTAURANTES");
         JLabel mCliMRestFRestCidLabel = new JLabel("CIDADE");
 
         JTextField mCliMRestFRestCidText = new JTextField(15);
@@ -2496,7 +2564,7 @@ public class Interface extends JFrame {
 
         JPanel norteMCliMRestFRestCidSSPanel = new JPanel();
         norteMCliMRestFRestCidSSPanel.setLayout(new FlowLayout());
-        norteMCliMRestFRestCidSSPanel.add(mCliMRestsFRestsCidLabel);
+        norteMCliMRestFRestCidSSPanel.add(mCliMRestsFRestCidLabel);
         norteMCliMRestFRestCidSubPanel.add(norteMCliMRestFRestCidSSPanel, BorderLayout.CENTER);
         norteMCliMRestFRestCidSubPanel.add(ptEnMCliMRestFRestCidButton, BorderLayout.EAST);
 
@@ -2527,9 +2595,9 @@ public class Interface extends JFrame {
             if (listasRestCid != null) {
                 String[][] dadosMCliMRestFRestCidSSPanel = new String[listasRestCid.size()][2];
                 int i = 0;
-                for (Restaurante c : listasRestCid) {
-                    dadosMCliMRestFRestCidSSPanel[i][0] = c.getRestaurante().getNome();
-                    dadosMCliMRestFRestCidSSPanel[i][1] = c.getRestaurante().getCidade();
+                for (Restaurante reste : listasRestCid) {
+                    dadosMCliMRestFRestCidSSPanel[i][0] = reste.getRestaurante().getNome();
+                    dadosMCliMRestFRestCidSSPanel[i][1] = reste.getRestaurante().getCidade();
                     i++;
                 }
 
@@ -2537,15 +2605,62 @@ public class Interface extends JFrame {
                 JTable tabelaMCliMComFCliSSPanel = new JTable(dadosMCliMRestFRestCidSSPanel, nomeColunasMCliMRestFRestCidSSPanel);
                 JScrollPane jScrollMCliMRestFRestCid = new JScrollPane();
                 jScrollMCliMRestFRestCid.add(tabelaMCliMComFCliSSPanel);
-                centroMCliMRestFRestCidSSPanel1.add(jScrollMCliMRestFRestCid, BorderLayout.CENTER);
+                centroMCliMRestFRestCidResultadoSSPanel1.add(jScrollMCliMRestFRestCid, BorderLayout.CENTER);
             } else
                 JOptionPane.showMessageDialog(null, "Sem restaurante registado!");
 
-            mostrarJanela(MCLIMRESTFORDRESTS_CARD);
+            mostrarJanela(MCLIMRESTFRESTCIDRESULTADO_CARD);
         });
 
     }
 
+    //////MENU CLIENTE – RESTAURANTES – MENU FILTROS - CIDADE - RESULTADO//////////
+    private void construirPanelMCliMRestFRestCidResultado(JPanel mCliMRestFRestCidResultadoSuperPanel) {
+
+        /////SUBPAINEIS//////
+        JPanel norteMCliMRestFRestCidResultadoSubPanel = new JPanel();
+        norteMCliMRestFRestCidResultadoSubPanel.setLayout(new BorderLayout());
+        JPanel centroMCliMRestFRestCidResultadoSubPanel = new JPanel();
+        JPanel sulMCliMRestFRestCidResultadoSubPanel = new JPanel();
+
+        JLabel mCliMRestFRestCidLabel = new JLabel("MENU CLIENTE - PESQUISAR RESTAURANTES");
+        JLabel mCliMRestFRestCidResultadoLabel = new JLabel("CIDADE");
+
+        JTextField mCliMRestFRestCidResultadoText = new JTextField(15);
+
+        JButton ptEnMCliMRestFRestCidResultadoButton = new JButton("PT/EN");
+        JButton voltarMCliMRestFRestCidResultadoButton = new JButton("MENU CLIENTE");
+        JButton retornarMCliMRestFRestCidResultadoButton = new JButton("VOLTAR");
+
+        mCliMRestFRestCidResultadoSuperPanel.add(norteMCliMRestFRestCidResultadoSubPanel, "North");
+        mCliMRestFRestCidResultadoSuperPanel.add(centroMCliMRestFRestCidResultadoSubPanel, "Center");
+        mCliMRestFRestCidResultadoSuperPanel.add(sulMCliMRestFRestCidResultadoSubPanel, "South");
+
+        JPanel norteMCliMRestFRestCidResultadoSSPanel = new JPanel();
+        norteMCliMRestFRestCidResultadoSSPanel.setLayout(new FlowLayout());
+        norteMCliMRestFRestCidResultadoSSPanel.add(mCliMRestFRestCidLabel);
+        norteMCliMRestFRestCidResultadoSubPanel.add(norteMCliMRestFRestCidResultadoSSPanel, BorderLayout.CENTER);
+        norteMCliMRestFRestCidResultadoSubPanel.add(ptEnMCliMRestFRestCidResultadoButton, BorderLayout.EAST);
+
+        JPanel centroMCliMRestFRestCidResultadoSSPanel = new JPanel();
+        centroMCliMRestFRestCidResultadoSSPanel.setLayout(new FlowLayout());
+        centroMCliMRestFRestCidResultadoSubPanel.add(centroMCliMRestFRestCidResultadoSSPanel);
+
+        centroMCliMRestFRestCidResultadoSSPanel1 = new JPanel();
+        centroMCliMRestFRestCidResultadoSubPanel.add(centroMCliMRestFRestCidResultadoSSPanel1, BorderLayout.CENTER);
+
+        centroMCliMRestFRestCidResultadoSSPanel.add(mCliMRestFRestCidResultadoLabel);
+        centroMCliMRestFRestCidResultadoSSPanel.add(mCliMRestFRestCidResultadoText);
+
+        sulMCliMRestFRestCidResultadoSubPanel.setLayout(new FlowLayout());
+        sulMCliMRestFRestCidResultadoSubPanel.add(voltarMCliMRestFRestCidResultadoButton);
+        sulMCliMRestFRestCidResultadoSubPanel.add(retornarMCliMRestFRestCidResultadoButton);
+
+
+        retornarMCliMRestFRestCidResultadoButton.addActionListener(a -> mostrarJanela(MCLIMRESTFORDRESTS_CARD));
+
+        voltarMCliMRestFRestCidResultadoButton.addActionListener(a -> mostrarJanela(MENUCLIENTE_CARD));
+    }
 
 //TODO ver como criar o apagar e editar comentário na seleção da tabela e ver a questão do OK
 //////MENU CLIENTE – CONSULTAR COMENTÁRIOS MENU//////////
@@ -3108,15 +3223,16 @@ public class Interface extends JFrame {
         JLabel novaPasswordAtualizarMCliMCliLabel = new JLabel("Nova Password");
         JLabel confirmarPasswordAtualizarMCliMCliLabel = new JLabel("Confirmar Nova Password");
 
-        JTextField nomeCliMCliText = new JTextField(20);
+        JTextField nomeCliMCliText = new JTextField(sistema.getClienteAtivo().getNome(), 20);
         nomeCliMCliText.setMargin(new Insets(3, 3, 3, 3));
-        JTextField emailCliMCliText = new JTextField(20);
-        JTextField moradaCliMCliText = new JTextField(20);
-        JTextField telemovelCliMCliText = new JFormattedTextField(mascaraTelemovel);
-        telemovelCliMCliText.setColumns(20);
-        JTextField usernameCliMCliText = new JTextField(20);
+        JTextField emailCliMCliText = new JTextField(sistema.getClienteAtivo().getEmail(), 20);
+        JTextField moradaCliMCliText = new JTextField(sistema.getClienteAtivo().getMorada(), 20);
+        JTextField telemovelCliMCliText = new JTextField(sistema.getClienteAtivo().getTelefone(), 10);
+        //JTextField telemovelCliMCliText = new JFormattedTextField(mascaraTelemovel);
+        //telemovelCliMCliText.setColumns(20);
+        JTextField usernameCliMCliText = new JTextField(sistema.getClienteAtivo().getUsername(), 20);
 
-        JPasswordField passwordCliMCliField = new JPasswordField(20);
+        JPasswordField passwordCliMCliField = new JPasswordField(sistema.getClienteAtivo().getPassword(), 20);
         passwordCliMCliField.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {
@@ -3178,7 +3294,7 @@ public class Interface extends JFrame {
         norteAtDadosMCliSubPanel.add(ptEnAtDadosMCliButton, BorderLayout.EAST);
 
         JPanel centroAtDadosMCliSSPanel = new JPanel();
-        centroAtDadosMCliSSPanel.setLayout(new GridLayout(7, 2));
+        centroAtDadosMCliSSPanel.setLayout(new GridLayout(8, 2));
         centroAtDadosMCliSubPanel.add(centroAtDadosMCliSSPanel);
         centroAtDadosMCliSSPanel.add(nomeAtualizarMCliMCliLabel);
         centroAtDadosMCliSSPanel.add(nomeCliMCliText);
@@ -3202,7 +3318,12 @@ public class Interface extends JFrame {
         sulAtDadosMCliSubPanel.add(actualizarCliMCliButton);
 
         actualizarCliMCliButton.addActionListener(a -> {
-            if (!passwordValido) {
+//            if (!passwordValido) {
+//                JOptionPane.showMessageDialog(((Component) a.getSource()).getParent(), "Password Inválido: deve conter o mínimo de 6 caracteres!");
+//                passwordCliMCliField.requestFocus();
+//                return;
+            //}
+            if (!passwordValido ) {
                 JOptionPane.showMessageDialog(((Component) a.getSource()).getParent(), "Password Inválido: deve conter o mínimo de 6 caracteres!");
                 passwordCliMCliField.requestFocus();
                 return;
@@ -3218,8 +3339,10 @@ public class Interface extends JFrame {
                     telemovelCliMCliText.getText(),
                     emailCliMCliText.getText(),
                     passwordCliMCliField.getPassword().toString(),
-                    confirmarNovaPassawordCliMCliField.getPassword().toString(),
-                    confirmarNovaPassawordCliMCliField.getPassword().toString());
+//                    novaPasswordCliMCliField.getPassword().toString(),
+//                    confirmarNovaPassawordCliMCliField.getPassword().toString());
+                    new String(novaPasswordCliMCliField.getPassword()),
+                    new String(confirmarNovaPassawordCliMCliField.getPassword()));
         });
         voltarCliMCliButton.addActionListener(a -> mostrarJanela(MENUCLIENTE_CARD));
     }

@@ -30,11 +30,11 @@ public class Main {
 ////
 //
         sistema.criarRestaurante("C", "rua z", "Porto",
-                "333333333", "email3@com.pt", "user3",
+                "330333333", "emil3@com.pt", "user",
                 "pass", "pass", 20, 10,
                 10, LocalTime.of(12, 00), LocalTime.of(14, 00),
                 LocalTime.of(19, 00), LocalTime.of(22, 00));
-//
+////
 ////
 ////        sistema.criarCliente("A4", "cliente1@com.pt", "rua A", "444444444",
 ////                "cliente4", "pass", "pass");
@@ -51,7 +51,6 @@ public class Main {
 //        sistema.getClienteAtivo().criarReservaPresencial(sistema.getListaRestaurantes().get(0), new GregorianCalendar(2021, 03, 01),
 //                LocalTime.of(13, 00), 1, 20);
 //
-
 
 //        sistema.adicionarComentario("Mal atendimento", 2, sistema.getListaClientes().get(0), sistema.getListaRestaurantes().get(0));
 //        sistema.adicionarComentario("Excelente", 3, sistema.getListaClientes().get(0), sistema.getListaRestaurantes().get(0));
@@ -73,12 +72,24 @@ public class Main {
 //        //System.out.println("Restaurantes por valores "+ sistema.consultarRestaurantePorValores(5,50));
 //
 //
-////        sistema.getClienteAtivo().criarReservaPresencial(sistema.getListaRestaurantes().get(0), new GregorianCalendar(2021, 03, 01),
-////                LocalTime.of(13, 00), 1, 20);
-//
-//        sistema.getClienteAtivo().criarReservaPresencial(sistema.getListaRestaurantes().get(0),
-//                new GregorianCalendar(2020,01,10),LocalTime.of(13,00),1, 15);
-//
+        sistema.login("1", "1");
+        sistema.getClienteAtivo().criarReservaPresencial2(sistema.getListaRestaurantes().get(0), new GregorianCalendar(2021, 03, 01),
+                LocalTime.of(13, 00), 1, 20);
+
+        sistema.getClienteAtivo().criarReservaPresencial2(sistema.getListaRestaurantes().get(0),
+                new GregorianCalendar(2020,01,10),LocalTime.of(13,00),1, 15);
+
+
+        sistema.getClienteAtivo().criarReservaTakeAway(sistema.getClienteAtivo(), sistema.getListaRestaurantes().get(0),
+                new GregorianCalendar(2021, 04, 01),
+                LocalTime.of(13, 00), 1);
+
+        sistema.getClienteAtivo().criarReservaTakeAway(sistema.getClienteAtivo(), sistema.getListaRestaurantes().get(1),
+                new GregorianCalendar(2021, 05, 01),
+                LocalTime.of(13, 00), 1);
+
+
+
 //        System.out.println("Lista RESERVAS");
 //
 //        System.out.println(sistema.getClienteAtivo().getListaReservas());
