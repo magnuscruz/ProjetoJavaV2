@@ -97,7 +97,6 @@ public class Interface extends JFrame {
     private JPanel centroMCliMComFRestResultadoSSPanel;
     private JPanel centroMCliMComFIDSSPanel3;
     private ArrayList<Restaurante> listaRestHF;
-    private JPanel centroMCliMRestFRestPontSSPanel1;
     private JPanel mCliMRestFRestPontSuperPanel;
     private JPanel centroMCliMComFIDResultadoSSPanel;
     private JTextField fHoraMCliMRestFRestHFuncText;

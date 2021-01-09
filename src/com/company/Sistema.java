@@ -402,6 +402,7 @@ public class Sistema implements Serializable {
                 System.out.println("Email já esta registado");
                 JOptionPane.showMessageDialog(null, "Email já esta registado");
             }
+            //Incluído a pedido do Adriano
 //        } else {
 //            System.out.println("O nome não é válido");
 //        }
