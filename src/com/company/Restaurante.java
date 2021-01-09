@@ -20,6 +20,12 @@ public class Restaurante extends Utilizador implements Serializable {
     // private double precoMedio;
     // private double pontuacaoMedia;
     private Ementa ementa;
+    private int lotacaoEsplanadaAlmoco;
+    private int lotacaoNFumAlmoco;
+    private int lotacaoFumAlmoco;
+    private int lotacaoEsplanadaJantar;
+    private int lotacaoNFumJantar;
+    private int lotacaoFumJantar;
 
 
     public Restaurante(String nome, String morada, String cidade, String telefone, String email, String username, String password, String confirmarPass, int lotacaoEsplanada, int lotacaoFum, int lotacaoNFum, LocalTime inicioAlm, LocalTime fimAlm, LocalTime inicioJan, LocalTime fimJan) {
@@ -35,6 +41,12 @@ public class Restaurante extends Utilizador implements Serializable {
         this.fimJan = fimJan;
         this.ementa = new Ementa();
         this.status = true;
+        this.lotacaoFum = lotacaoFum;
+        this.lotacaoFumAlmoco = lotacaoFum;
+        this.lotacaoFumJantar = lotacaoFum;
+        this.lotacaoNFum = lotacaoNFum;
+        this.lotacaoNFumAlmoco = lotacaoNFum;
+        this.lotacaoNFumJantar = lotacaoNFum;
     }
 
 
@@ -46,16 +58,7 @@ public class Restaurante extends Utilizador implements Serializable {
         this.restaurante = restaurante;
     }
 
-    public void TESTEENTRARCICLOFOREACHCOMLISTARESERVAS() {
-        if (getListaReservas().isEmpty()) {
-            System.out.println("ENTROU NO IF DO METODO");
-            for (Reserva r : getListaReservas()) {
-                if (getListaReservas().isEmpty()) {
-                    System.out.println("ENTROU NO FOREACH");
-                }
-            }
-        }
-    }
+
 
     //TODO : ainda nao funciona correctamente, ou pelo menos nao encaixa no metodo final
     // tem de ter data e hora para verificar se ha vagas
@@ -151,9 +154,9 @@ public class Restaurante extends Utilizador implements Serializable {
         this.ementa = ementa;
     }
 
-    public ArrayList<Reserva> getListaReservasRestaurante() {
-        return restaurante.getListaReservas();
-    }
+//    public ArrayList<Reserva> getListaReservasRestaurante() {
+//        return restaurante.getListaReservas();
+//    }
 
     public String getCidade() {
         return cidade;
@@ -243,19 +246,66 @@ public class Restaurante extends Utilizador implements Serializable {
     }
 
     //TODO - Testar, e verificar se fica aqui ou em Sistema
-    public double disponibilidadeRestaurante(Restaurante restaurante, GregorianCalendar dia) {
-        double disponibilidade = 0;
-        for (Reserva r : getListaReservas()) {
-            if (r.getData().equals(dia)) {
-                disponibilidade = +r.getRestaurante().getLotacaoEsplanada() + r.getRestaurante().getLotacaoNFum() + r.getRestaurante().getLotacaoFum();
-            }
-        }
-        return disponibilidade;
-    }
+//    public double disponibilidadeRestaurante(Restaurante restaurante, GregorianCalendar dia) {
+//        double disponibilidade = 0;
+//        for (Reserva r : getListaReservas()) {
+//            if (r.getData().equals(dia)) {
+//                disponibilidade = +r.getRestaurante().getLotacaoEsplanada() + r.getRestaurante().getLotacaoNFum() + r.getRestaurante().getLotacaoFum();
+//            }
+//        }
+//        return disponibilidade;
+//    }
 
     public double lotacaoTotalRestaurante (){
         double total = getLotacaoEsplanada()+getLotacaoNFum()+getLotacaoFum();
         return total;
     }
 
+    public int getLotacaoEsplanadaAlmoco() {
+        return lotacaoEsplanadaAlmoco;
+    }
+
+    public void setLotacaoEsplanadaAlmoco(int lotacaoEsplanadaAlmoco) {
+        this.lotacaoEsplanadaAlmoco = lotacaoEsplanadaAlmoco;
+    }
+
+    public int getLotacaoNFumAlmoco() {
+        return lotacaoNFumAlmoco;
+    }
+
+    public void setLotacaoNFumAlmoco(int lotacaoNFumAlmoco) {
+        this.lotacaoNFumAlmoco = lotacaoNFumAlmoco;
+    }
+
+    public int getLotacaoFumAlmoco() {
+        return lotacaoFumAlmoco;
+    }
+
+    public void setLotacaoFumAlmoco(int lotacaoFumAlmoco) {
+        this.lotacaoFumAlmoco = lotacaoFumAlmoco;
+    }
+
+    public int getLotacaoEsplanadaJantar() {
+        return lotacaoEsplanadaJantar;
+    }
+
+    public void setLotacaoEsplanadaJantar(int lotacaoEsplanadaJantar) {
+        this.lotacaoEsplanadaJantar = lotacaoEsplanadaJantar;
+    }
+
+    public int getLotacaoNFumJantar() {
+        return lotacaoNFumJantar;
+    }
+
+    public void setLotacaoNFumJantar(int lotacaoNFumJantar) {
+        this.lotacaoNFumJantar = lotacaoNFumJantar;
+    }
+
+    public int getLotacaoFumJantar() {
+        return lotacaoFumJantar;
+    }
+
+    public void setLotacaoFumJantar(int lotacaoFumJantar) {
+        this.lotacaoFumJantar = lotacaoFumJantar;
+    }
 }

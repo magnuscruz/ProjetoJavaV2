@@ -6,10 +6,10 @@ import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
 public class TakeAway extends Reserva implements Serializable {
-    private static int idEstaticoTakeAway = 1;
     private ArrayList<Prato> listaPratos;
     private int quantidade;
     private double valorTotal;
+    private Prato prato;
 
 //    public TakeAway(Cliente cliente, Restaurante restaurante, GregorianCalendar data, LocalTime hora, int quantidade) {
 //        super(cliente, restaurante, data, hora);
@@ -22,10 +22,10 @@ public class TakeAway extends Reserva implements Serializable {
 ///SO PARA TESTAR, TEM DE SER O DE CIMA O FINAL!////
 public TakeAway(Cliente cliente, Restaurante restaurante, GregorianCalendar data, LocalTime hora, int quantidade) {
     super(cliente, restaurante, data, hora);
-    this.idReserva = idEstaticoTakeAway;
     this.quantidade= quantidade;
     this.valorTotal = getValorTotal(); //FAZER METODO PARA CALcular o total a pagar! Preco vs qt,  tem é de aceder ao ArrayPratos
     this.status = true;
+    this.prato = prato;
 }
 
 
@@ -35,6 +35,14 @@ public TakeAway(Cliente cliente, Restaurante restaurante, GregorianCalendar data
                 ", quantidade=" + quantidade +
                 ", valorTotal=" + valorTotal +
                 '}';
+    }
+
+    public Prato getPrato() {
+        return prato;
+    }
+
+    public void setPrato(Prato prato) {
+        this.prato = prato;
     }
 
     public int getQuantidade() {

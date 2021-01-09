@@ -7,7 +7,11 @@ import java.util.GregorianCalendar;
 public abstract class Reserva implements Serializable {
 
 
-    protected  int idReserva;
+    public void setIdReserva(Integer idReserva) {
+        this.idReserva = idReserva;
+    }
+
+    protected Integer idReserva;
     protected Cliente cliente;
     protected Restaurante restaurante;
     protected GregorianCalendar data;
@@ -53,7 +57,7 @@ public abstract class Reserva implements Serializable {
         this.status = status;
     }
 
-    public int getIdReserva() {
+    public Integer getIdReserva() {
         return idReserva;
     }
 }

@@ -127,15 +127,15 @@ public class Cliente extends Utilizador implements Serializable {
 //        return 0;
 //    }
 
-    public void criarReservaPresencial2(Restaurante restaurante, GregorianCalendar data, LocalTime horario, int numeroLugares, int zona) {
-        Presencial p = new Presencial(this, restaurante, data, horario, numeroLugares, zona);
-        restaurante.getListaReservas().add(p);
-        boolean res = getListaReservas().add(p);
-        if (!res) {
-            System.out.println("Erro, nao adicionou");
-            JOptionPane.showMessageDialog(null, "Erro, não criou");
-        }
-    }
+//    public void criarReservaPresencial2(Restaurante restaurante, GregorianCalendar data, LocalTime horario, int numeroLugares, int zona) {
+//        Presencial p = new Presencial(this, restaurante, data, horario, numeroLugares, zona);
+//        restaurante.getListaReservas().add(p);
+//        boolean res = getListaReservas().add(p);
+//        if (!res) {
+//            System.out.println("Erro, nao adicionou");
+//            JOptionPane.showMessageDialog(null, "Erro, não criou");
+//        }
+//    }
 
     //TODO  - só permite que take away seja 30 % de lotacao
     public boolean validarQtdRefeicoesPedidas(int quantidade, Restaurante restaurante) {
@@ -155,7 +155,7 @@ public class Cliente extends Utilizador implements Serializable {
         return true;
     }
 
-    public void criarReservaTakeAway(Cliente cliente, Restaurante restaurante, GregorianCalendar data, LocalTime horario, int quantidade) {
+    public void criarReservaTakeAway(Cliente cliente, Restaurante restaurante, GregorianCalendar data, LocalTime horario, int quantidade, int cartaOuPratoDoDia, int indexPrato) {
         boolean validarDatas = validarDataHoraDeReserva(data, horario);
         int restauranteAberto = restauranteAberto(restaurante, horario);
         boolean validarQtdRefeicoes = validarQtdRefeicoesPedidas(quantidade, restaurante);
@@ -163,8 +163,16 @@ public class Cliente extends Utilizador implements Serializable {
         if (validarDatas) {
             if (restauranteAberto == 1 || restauranteAberto == 2) {
                 if (validarQtdRefeicoes) {
-                    TakeAway t = new TakeAway(cliente, restaurante, data, horario, quantidade);
-                    getListaReservas().add(t);
+                    if (cartaOuPratoDoDia == 1) {
+                        TakeAway t = new TakeAway(cliente, restaurante, data, horario, quantidade);
+                        t.setPrato(restaurante.getEmenta().getCarta().get(indexPrato));
+                        //getListaReservas().add(t);
+                    } else {
+                        TakeAway t = new TakeAway(cliente, restaurante, data, horario, quantidade);
+                        t.setPrato(restaurante.getEmenta().getPratosDia().get(indexPrato));
+                        //getListaReservas().add(t);
+                    }
+
                 }
             }
         }
@@ -177,7 +185,7 @@ public class Cliente extends Utilizador implements Serializable {
         if (validarDatas) {
             if (validarQtdRefeicoes) {
                 TakeAway t = new TakeAway(cliente, restaurante, data, horario, quantidade);
-                getListaReservas().add(t);
+                //getListaReservas().add(t);
             }
         }
     }
@@ -186,16 +194,16 @@ public class Cliente extends Utilizador implements Serializable {
 
     }
 
-    public void cancelarReserva(Reserva reserva) {
-
-        for (Reserva r : getListaReservas()) {
-            if (r instanceof TakeAway && r.getIdReserva() == reserva.getIdReserva()) {
-                r.setStatus(false);
-            } else {
-                r.setStatus(false);
-            }
-        }
-    }
+//    public void cancelarReserva(Reserva reserva) {
+//
+//        for (Reserva r : getListaReservas()) {
+//            if (r instanceof TakeAway && r.getIdReserva() == reserva.getIdReserva()) {
+//                r.setStatus(false);
+//            } else {
+//                r.setStatus(false);
+//            }
+//        }
+//    }
 
 
     @Override

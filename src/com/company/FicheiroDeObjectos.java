@@ -44,10 +44,14 @@ public class FicheiroDeObjectos {
 //Devolve:
 //  objecto lido
 
-    public Object leObjecto () throws IOException, ClassNotFoundException {
-
-        return iS.readObject();
-
+    public Object leObjecto () {
+        //Proteção para quando o ficheiro estiver vazio.
+        try {
+            return iS.readObject();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return new Object();
+        }
     }
 
 //M�todo para escrever um objecto num ficheiro

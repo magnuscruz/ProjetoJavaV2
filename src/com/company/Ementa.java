@@ -30,13 +30,14 @@ import java.util.ArrayList;
             }
         }
 
-        public void adicionarPrato( String nome, String descricao, double preco, String letra) {
+        public void adicionarPrato(String nome, String descricao, double preco, int cartaOuPratoDia) {
+// cartaOuPratoDia: 1=carta || 2=pratoDia
 
-            if (letra.equals("c")) {
+            if (cartaOuPratoDia==1) {
                 Prato p = new Prato(nome, descricao, preco);
                 carta.add(p);
             }
-            else if (letra.equals("p")){
+            else if (cartaOuPratoDia==2){
                 Prato p = new Prato(nome, descricao, preco);
                 pratosDia.add(p);
             }

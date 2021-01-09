@@ -8,10 +8,7 @@ public class Utilizador implements Serializable {
 
     Restaurante restaurante;
     Cliente cliente;
-
-    private ArrayList<Reserva> listaReservas = new ArrayList<>();// cada utilizador vai ter a sua lista.
-
-    protected int id;
+    protected Integer id;
     protected String nome;
     protected String morada;
     protected String telefone;
@@ -44,14 +41,6 @@ public class Utilizador implements Serializable {
                 ", username='" + username + '\'' +
                 ", pass='" + password + '\'' +
                 '}';
-    }
-
-    public ArrayList<Reserva> getListaReservas() {
-        return listaReservas;
-    }
-
-    public void setListaReservas(ArrayList<Reserva> listaReservas) {
-        this.listaReservas = listaReservas;
     }
 
     public String getNome() {
@@ -110,27 +99,11 @@ public class Utilizador implements Serializable {
         this.status = status;
     }
 
-    public double getPrecoMedioReservaTakeAway() {
-        double media = 0;
-        double precoTotal = 0;
-        int count =0;
-        for (Reserva r : getListaReservas()) {
-            if (r instanceof TakeAway) {
-                precoTotal += ((TakeAway) r).getValorTotal();
-            }
-        }
-        if (count > 0){
-            return media = precoTotal/count;
-        }
-        JOptionPane.showMessageDialog(null, "Sem reservas TakeAway!");
-        return 0;
-    }
-
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 }
