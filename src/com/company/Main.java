@@ -126,10 +126,10 @@ public class Main {
 //
         System.out.println("LISTA UTILIZADORES");
         System.out.println(sistema.getListaUtilizadores());
-        System.out.println("CLIENTE");
-        System.out.println(sistema.getListaClientes());
         System.out.println("RESTAURANTE");
         System.out.println(sistema.getListaRestaurantes());
+        System.out.println("RESERVAS");
+        System.out.println(sistema.getListaReservas());
         //System.out.println(sistema.consultarListaComentariosPorIntervaloDatas(new GregorianCalendar(2020,1,1), new GregorianCalendar(2021, 2, 2)));
 
 //

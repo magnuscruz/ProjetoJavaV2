@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 public class Sistema implements Serializable {
     private ArrayList<Utilizador> listaUtilizadores = new ArrayList<>();
     private ArrayList<Comentario> listaComentarios = new ArrayList<>();
-    private ArrayList<Reserva> listaReservas = new ArrayList<>();
+    private List<Reserva> listaReservas = new ArrayList<>();
     private static HashMap<Class, Integer> mapaDeSequenciasID = new HashMap<>();
     private Utilizador utilizarAtivo;
 
@@ -362,47 +362,46 @@ public class Sistema implements Serializable {
     public boolean criarCliente(String nome, String email, String morada, String telefone, String username, String password, String confirmarPass) {
         boolean valido = false;
         //if(validarNome (nome)) { // inserido a pedido do Adriano
-            if (emailUnico(email)) { //(emailUnico(email) || email=="")
-                if (validarEmail(email)) {
-                    // if (morada == "") { //
-                    if (telefoneUnico(telefone)) {//(telefoneUnico(telefone) || telefone=="")
-                        if (validarTelefone(telefone)) {
-                            if (usernameUnico(username)) { // (usernameUnico(username) || username=="")
-                                if (confirmarPass(password, confirmarPass)) { //(confirmarPass(password, confirmarPass)
-                                    gravarCliente(nome, email, morada, telefone, username, password, confirmarPass);
-                                    return true;
-                                } else {
-                                    System.out.println("Passwords não são iguais");
-                                    JOptionPane.showMessageDialog(null, "Passwords não são iguais");
-                                }
+        if (emailUnico(email)) { //(emailUnico(email) || email=="")
+            if (validarEmail(email)) {
+                // if (morada == "") { //
+                if (telefoneUnico(telefone)) {//(telefoneUnico(telefone) || telefone=="")
+                    if (validarTelefone(telefone)) {
+                        if (usernameUnico(username)) { // (usernameUnico(username) || username=="")
+                            if (confirmarPass(password, confirmarPass)) { //(confirmarPass(password, confirmarPass)
+                                gravarCliente(nome, email, morada, telefone, username, password, confirmarPass);
+                                return true;
                             } else {
-                                System.out.println("Username indisponivel");
-                                JOptionPane.showMessageDialog(null, "Username indisponivel");
+                                System.out.println("Passwords não são iguais");
+                                JOptionPane.showMessageDialog(null, "Passwords não são iguais");
                             }
                         } else {
-                            System.out.println("Telemovel não é valido");
-                            JOptionPane.showMessageDialog(null, "Telemovel não é valido");
-
+                            System.out.println("Username indisponivel");
+                            JOptionPane.showMessageDialog(null, "Username indisponivel");
                         }
                     } else {
-                        System.out.println("Telemovel já registado");
-                        JOptionPane.showMessageDialog(null, "Telemovel já registado");
+                        System.out.println("Telemovel não é valido");
+                        JOptionPane.showMessageDialog(null, "Telemovel não é valido");
+
                     }
+                } else {
+                    System.out.println("Telemovel já registado");
+                    JOptionPane.showMessageDialog(null, "Telemovel já registado");
+                }
 //
 //                } else {
 //                    System.out.println("Tem de inserir morada");
 //                    JOptionPane.showMessageDialog(null, "Tem de inserir morada");
 //                }
-                } else {
-                    System.out.println("Email não é valido");
-                    JOptionPane.showMessageDialog(null, "Email não é valido");
-
-                }
             } else {
-                System.out.println("Email já esta registado");
-                JOptionPane.showMessageDialog(null, "Email já esta registado");
+                System.out.println("Email não é valido");
+                JOptionPane.showMessageDialog(null, "Email não é valido");
+
             }
-            //Incluído a pedido do Adriano
+        } else {
+            System.out.println("Email já esta registado");
+            JOptionPane.showMessageDialog(null, "Email já esta registado");
+        }
 //        } else {
 //            System.out.println("O nome não é válido");
 //        }
@@ -606,6 +605,16 @@ public class Sistema implements Serializable {
         return listaComentariosPorData;
     }
 
+    public void responderComentario(Restaurante restaurante, Cliente cliente, String resposta) {
+
+        for (Comentario c : getListaComentarios()) {
+            if (c.getRestaurante().equals(restaurante) && c.getCliente().equals(cliente)) {
+                Comentario comentario = new Comentario(cliente, restaurante);
+                comentario.setOpiniao(resposta);
+                listaComentarios.add(comentario);
+            }
+        }
+    }
     /**
      * Consultar Restaurantes ordenados pela pontuação média.
      *
@@ -786,11 +795,11 @@ public class Sistema implements Serializable {
         return listaReservasPorData;
     }
 
-    public ArrayList<Reserva> getListaReservas() {
+    public List<Reserva> getListaReservas() {
         return listaReservas;
     }
 
-    public void setListaReservas(ArrayList<Reserva> listaReservas) {
+    public void setListaReservas(List<Reserva> listaReservas) {
         this.listaReservas = listaReservas;
     }
 
